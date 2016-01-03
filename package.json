@@ -1,0 +1,29 @@
+{
+  "name": "fractalui",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "react": "^0.14.3",
+    "react-native": "^0.17.0",
+    "react-redux": "^3.1.2",
+    "redux": "^3.0.5",
+    "redux-form": "^4.0.5",
+    "redux-thunk": "^1.0.3",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "babel-preset-react": "^6.3.13",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.13.1"
+  },
+  "babel": {
+    "presets": [
+      "react"
+    ]
+  }
+}
