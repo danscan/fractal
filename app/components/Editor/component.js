@@ -1,4 +1,7 @@
-import React, { Component, PanResponder, PropTypes, Text, View } from 'react-native';
+import React, { Component, PropTypes } from 'react-native';
+import ToggleGestureInterceptor from './ToggleGestureInterceptor';
+import Toolbar from './Toolbar';
+import Tree from './Tree';
 import Root from '../Root';
 
 export default class Editor extends Component {
@@ -7,46 +10,25 @@ export default class Editor extends Component {
     toggleEditor: PropTypes.func.isRequired,
   }
 
-  componentWillMount() {
-    const { toggleEditor } = this.props;
-
-    this._panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onStartShouldSetPanResponderCapture: () => true,
-      onMoveShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponderCapture: () => true,
-
-      onPanResponderGrant: (event, gestureState) => {
-        if (gestureState.numberActiveTouches >= 2) {
-          return toggleEditor();
-        }
-      },
-    });
-  }
-
-  renderEditor() {
+  renderToolbar() {
     const { editing } = this.props;
 
-    if (!editing) {
-      return null;
-    }
-
-    return (
-      <Text>
-        Editor: Contains tab bar editor stuff if editing...
-      </Text>
-    );
+    return editing
+            ? <Toolbar/>
+            : null;
   }
 
   render() {
+    const {
+      toggleEditor,
+    } = this.props;
+
     return (
-      <View
-        {...this._panResponder.panHandlers}
-        style={{ flex: 1 }}
-      >
+      <ToggleGestureInterceptor toggleEditor={toggleEditor}>
+        {this.renderToolbar()}
         <Root/>
-        {this.renderEditor()}
-      </View>
+        <Tree/>
+      </ToggleGestureInterceptor>
     );
   }
 }
