@@ -6,7 +6,7 @@ const NUMBER_OF_SECONDS = 2;
 
 export default class ToggleGestureInterceptor extends Component {
   static propTypes = {
-    children: View.propTypes.children,
+    children: PropTypes.any.isRequired,
     toggleEditor: PropTypes.func.isRequired,
   }
 
