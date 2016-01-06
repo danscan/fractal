@@ -1,4 +1,4 @@
-import React, { Component, Modal, PropTypes, Text, View } from 'react-native';
+import React, { Component, PropTypes, Text, View } from 'react-native';
 import styles from './styles';
 
 export default class Toolbar extends Component {
@@ -8,15 +8,19 @@ export default class Toolbar extends Component {
 
   render() {
     const { showingTree } = this.props;
+    const containerStyle = showingTree
+                          ? styles.container
+                          : [styles.container, { opacity: 0 }];
 
     return (
-      <Modal animated transparent visible={showingTree}>
-        <View style={styles.container}>
+      <View pointerEvents="none" style={styles.wrapper}>
+        <View pointerEvents="none" style={styles.maximum}/>
+        <View style={containerStyle}>
           <Text style={{ color: '#666', fontFamily: 'Avenir', fontSize: 20 }}>
             Tree
           </Text>
         </View>
-      </Modal>
+      </View>
     );
   }
 }
