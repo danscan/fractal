@@ -6,15 +6,15 @@ export default class Root extends Component {
     tree: PropTypes.object.isRequired,
   }
 
-  createElementFromNode(node) {
+  createElementFromNode(node, key) {
     if (typeof node === 'string') {
       return node;
     }
 
     const { type: nodeType, props = {} } = node || {};
     const { children } = props;
-    const nodeProps = omit(props, 'children');
-    const nodeChildren = children.map(childNode => this.createElementFromNode(childNode));
+    const nodeProps = { ...omit(props, 'children'), key };
+    const nodeChildren = children.map((childNode, childKey) => this.createElementFromNode(childNode, childKey));
 
     return createElement(nodeType, nodeProps, nodeChildren);
   }
