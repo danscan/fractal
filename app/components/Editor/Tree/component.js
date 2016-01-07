@@ -1,7 +1,8 @@
-import React, { Component, PropTypes, Text, View } from 'react-native';
+import React, { Component, PropTypes, View } from 'react-native';
+import Element from './Element';
 import styles from './styles';
 
-export default class Toolbar extends Component {
+export default class Tree extends Component {
   static propTypes = {
     showingTree: PropTypes.bool.isRequired,
   }
@@ -16,9 +17,11 @@ export default class Toolbar extends Component {
       <View pointerEvents="none" style={styles.wrapper}>
         <View pointerEvents="none" style={styles.maximum}/>
         <View style={containerStyle}>
-          <Text style={{ color: '#666', fontFamily: 'Avenir', fontSize: 20 }}>
-            Tree
-          </Text>
+          <Element type="Root">
+            <Element type="Text" props={{ style: { color: '#666', fontFamily: 'Avenir', fontSize: 20 } }}>
+              Your app root
+            </Element>
+          </Element>
         </View>
       </View>
     );

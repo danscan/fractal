@@ -5,7 +5,6 @@ export default StyleSheet.create({
     borderBottomColor: '#00b5ec',
     borderBottomWidth: 1,
     flexDirection: 'row',
-    height: 48,
     padding: 20,
     paddingTop: 40,
   },
