@@ -1,18 +1,34 @@
-// import { SHOW_TREE, HIDE_TREE, TOGGLE_TREE } from '../constants/actionTypes';
+import { Text, View } from 'react-native';
 
-const initialState = {};
+const initialState = {
+  displayName: 'Root',
+  type: View,
+  props: {
+    children: [
+      {
+        type: Text,
+        props: {
+          children: [
+            'Your app root',
+          ],
+          style: {
+            color: '#666',
+            fontFamily: 'Avenir',
+            fontSize: 20,
+          },
+        },
+      },
+    ],
+    style: {
+      alignItems: 'center',
+      flex: 1,
+      justifyContent: 'center',
+    },
+  },
+};
 
 export default function tree(state = initialState, action) {
   switch (action.type) {
-    // case SHOW_TREE:
-    //   return true;
-    //
-    // case HIDE_TREE:
-    //   return false;
-    //
-    // case TOGGLE_TREE:
-    //   return !state;
-
     default:
       return state;
   }

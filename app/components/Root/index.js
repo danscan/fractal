@@ -1,13 +1,11 @@
-import React, { Component, Text, View } from 'react-native';
+import { connect } from 'react-redux/native';
+import Root from './component';
 
-export default class Root extends Component {
-  render() {
-    return (
-      <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-        <Text style={{ color: '#666', fontFamily: 'Avenir', fontSize: 20 }}>
-          Your app root
-        </Text>
-      </View>
-    );
-  }
-}
+const mapStateToProps = (state) => ({
+  tree: state.tree,
+});
+
+const actionCreators = {};
+
+export default connect(mapStateToProps, actionCreators)(Root);
+export { Root };
