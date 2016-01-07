@@ -3,6 +3,7 @@ import Tree from './component';
 
 const mapStateToProps = (state) => ({
   showingTree: state.showingTree,
+  tree: state.tree,
 });
 
 const actionCreators = {};

@@ -23,4 +23,9 @@ export default StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 20,
   },
+  nodeValueLabel: {
+    color: 'white',
+    fontFamily: 'Avenir',
+    fontSize: 10,
+  },
 });

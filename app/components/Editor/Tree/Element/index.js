@@ -6,7 +6,7 @@ import styles from './styles';
 export default class Element extends Component {
   static propTypes = {
     children: PropTypes.any,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.func.isRequired,
     props: PropTypes.object,
   }
 
@@ -16,7 +16,7 @@ export default class Element extends Component {
     return (
       <View style={styles.handleSection}>
         <Text style={styles.typeLabel}>
-          {type}
+          {type.displayName}
         </Text>
       </View>
     );
