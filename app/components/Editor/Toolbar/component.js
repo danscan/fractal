@@ -1,42 +1,27 @@
-import React, { Component, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
+import showTreeButtonImage from '../../../assets/img/showTreeButton.png';
 import styles from './styles';
 
 export default class Toolbar extends Component {
   static propTypes = {
-    hideTree: PropTypes.func.isRequired,
     showTree: PropTypes.func.isRequired,
-    showingTree: PropTypes.bool.isRequired,
   }
 
   renderShowTreeButton() {
     const { showTree } = this.props;
 
-    return this.renderButton('Show Tree', () => showTree());
-  }
-
-  renderHideTreeButton() {
-    const { hideTree } = this.props;
-
-    return this.renderButton('Hide Tree', () => hideTree());
-  }
-
-  renderButton(text, onPress) {
     return (
-      <TouchableOpacity onPress={() => onPress()} style={styles.button}>
-        <Text style={styles.buttonLabel}>
-          {text}
-        </Text>
+      <TouchableOpacity onPress={() => showTree()} style={styles.button}>
+        <Image source={showTreeButtonImage} style={styles.buttonImage}/>
       </TouchableOpacity>
     );
   }
 
   render() {
-    const { showingTree } = this.props;
-
     return (
       <View style={styles.container}>
         <View style={styles.buttons}>
-          {showingTree ? this.renderHideTreeButton() : this.renderShowTreeButton()}
+          {this.renderShowTreeButton()}
         </View>
       </View>
     );

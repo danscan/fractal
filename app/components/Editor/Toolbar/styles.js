@@ -2,23 +2,20 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    borderBottomColor: '#00b5ec',
-    borderBottomWidth: 1,
+    alignItems: 'center',
+    backgroundColor: '#2e3538',
     flexDirection: 'row',
-    padding: 20,
-    paddingTop: 40,
+    height: 48,
+    paddingHorizontal: 10,
   },
 
   buttons: {
-    justifyContent: 'flex-end',
     flex: 1,
     flexDirection: 'row',
   },
   button: {},
-  buttonLabel: {
-    color: '#00b5ec',
-    fontFamily: 'Avenir',
-    fontSize: 14,
-    fontWeight: 'bold',
+  buttonImage: {
+    height: 24,
+    width: 22,
   },
 });

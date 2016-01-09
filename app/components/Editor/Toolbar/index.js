@@ -1,14 +1,11 @@
 import { connect } from 'react-redux/native';
 import Toolbar from './component';
-import { showTree, hideTree } from '../../../actions/showingTree';
+import { showTree } from '../../../actions/showingTree';
 
-const mapStateToProps = (state) => ({
-  showingTree: state.showingTree,
-});
+const mapStateToProps = () => ({});
 
 const actionCreators = {
   showTree,
-  hideTree,
 };
 
 export default connect(mapStateToProps, actionCreators)(Toolbar);
