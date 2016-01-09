@@ -1,4 +1,4 @@
-import { SHOW_TREE, HIDE_TREE, TOGGLE_TREE } from '../constants/actionTypes';
+import { SHOW_TREE, HIDE_TREE } from '../constants/actionTypes';
 
 const initialState = false;
 
@@ -9,9 +9,6 @@ export default function showingTree(state = initialState, action) {
 
     case HIDE_TREE:
       return false;
-
-    case TOGGLE_TREE:
-      return !state;
 
     default:
       return state;
