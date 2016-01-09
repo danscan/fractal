@@ -13,9 +13,18 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
+  buttonsRight: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
   button: {},
-  buttonImage: {
+  showTreeButtonImage: {
     height: 24,
     width: 22,
+  },
+  closeEditorButtonImage: {
+    height: 14,
+    width: 14,
   },
 });
