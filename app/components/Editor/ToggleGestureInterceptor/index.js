@@ -64,16 +64,25 @@ export default class ToggleGestureInterceptor extends Component {
     });
   }
 
+  renderToggleGestureOverlay() {
+    const { currentGestureQualifiesAsToggleGesture } = this.state;
+
+    if (!currentGestureQualifiesAsToggleGesture) {
+      return null;
+    }
+
+    return (
+      <View style={styles.toggleGestureOverlay}/>
+    );
+  }
+
   render() {
     const { children } = this.props;
-    const overlayStyle = this.state.currentGestureQualifiesAsToggleGesture
-                        ? styles.overlay
-                        : [styles.overlay, { opacity: 0 }];
 
     return (
       <View {...this._panResponder.panHandlers} style={styles.container}>
         {children}
-        <View style={overlayStyle}/>
+        {this.renderToggleGestureOverlay()}
       </View>
     );
   }

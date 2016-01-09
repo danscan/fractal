@@ -5,7 +5,7 @@ export default StyleSheet.create({
     flex: 1,
   },
 
-  overlay: {
+  toggleGestureOverlay: {
     position: 'absolute',
     top: 0,
     right: 0,
