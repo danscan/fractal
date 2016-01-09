@@ -10,6 +10,14 @@ export default class ToggleGestureInterceptor extends Component {
     toggleEditor: PropTypes.func.isRequired,
   }
 
+  constructor(...args) {
+    super(...args);
+
+    this.state = {
+      currentGestureQualifiesAsToggleGesture: false,
+    };
+  }
+
   componentWillMount() {
     this._toggleGestureTimerId = null;
 
@@ -34,6 +42,10 @@ export default class ToggleGestureInterceptor extends Component {
   resetToggleTimer() {
     clearTimeout(this._toggleGestureTimerId);
     this._toggleGestureTimerId = null;
+
+    this.setState({
+      currentGestureQualifiesAsToggleGesture: false,
+    });
   }
 
   applyCurrentGestureState(event, gestureState) {
@@ -46,14 +58,22 @@ export default class ToggleGestureInterceptor extends Component {
     if (!currentGestureQualifiesAsToggleGesture && this._toggleGestureTimerId) {
       this.resetToggleTimer();
     }
+
+    this.setState({
+      currentGestureQualifiesAsToggleGesture,
+    });
   }
 
   render() {
     const { children } = this.props;
+    const overlayStyle = this.state.currentGestureQualifiesAsToggleGesture
+                        ? styles.overlay
+                        : [styles.overlay, { opacity: 0 }];
 
     return (
       <View {...this._panResponder.panHandlers} style={styles.container}>
         {children}
+        <View style={overlayStyle}/>
       </View>
     );
   }
