@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    backgroundColor: 'transparent',
     flex: 1,
   },
 
@@ -37,6 +38,7 @@ export default StyleSheet.create({
   },
 
   childrenSection: {
+    backgroundColor: 'transparent',
     borderColor: '#94c600',
     borderRadius: 8,
     borderWidth: 1,
@@ -52,6 +54,7 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   childrenListSection: {
+    backgroundColor: 'transparent',
     flex: 1,
   },
   addChildButton: {

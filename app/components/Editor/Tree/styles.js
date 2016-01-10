@@ -21,6 +21,7 @@ export default StyleSheet.create({
   },
 
   scene: {
+    backgroundColor: 'transparent',
     paddingTop: 48,
   },
 });
