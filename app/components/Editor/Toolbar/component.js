@@ -32,10 +32,10 @@ export default class Toolbar extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.buttons}>
+        <View style={styles.leftButtons}>
           {this.renderShowTreeButton()}
         </View>
-        <View style={styles.buttonsRight}>
+        <View style={styles.rightButtons}>
           {this.renderCloseEditorButton()}
         </View>
       </View>

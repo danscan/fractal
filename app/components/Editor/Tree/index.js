@@ -1,4 +1,5 @@
 import { connect } from 'react-redux/native';
+import Navigator from './navigator';
 import Tree from './component';
 
 const mapStateToProps = (state) => ({
@@ -8,5 +9,5 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {};
 
-export default connect(mapStateToProps, actionCreators)(Tree);
+export default connect(mapStateToProps, actionCreators)(Navigator);
 export { Tree };

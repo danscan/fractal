@@ -1,6 +1,6 @@
 import { OPEN_EDITOR, CLOSE_EDITOR, TOGGLE_EDITOR } from '../constants/actionTypes';
 
-const initialState = false;
+const initialState = true;
 
 export default function editing(state = initialState, action) {
   switch (action.type) {

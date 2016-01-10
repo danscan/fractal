@@ -14,6 +14,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
 
+  peekTitle: {},
+
   rightButtons: {
     flex: 1,
     flexDirection: 'row',
@@ -21,11 +23,7 @@ export default StyleSheet.create({
   },
 
   button: {},
-  showTreeButtonImage: {
-    height: 24,
-    width: 22,
-  },
-  closeEditorButtonImage: {
+  closeTreeButtonImage: {
     height: 14,
     width: 14,
   },
