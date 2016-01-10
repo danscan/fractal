@@ -3,11 +3,19 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     backgroundColor: 'hsla(0,0,100,0.1)',
-    flex: 5,
+    flex: 1,
     padding: 10,
-    shadowColor: 'black',
-    shadowOffset: { height: -1 },
-    shadowOpacity: 0.3,
-    shadowRadius: 20,
+  },
+
+  navigationBar: {
+    alignItems: 'center',
+    backgroundColor: '#2e3538',
+    flexDirection: 'row',
+    height: 48,
+    paddingHorizontal: 10,
+  },
+
+  scene: {
+    paddingTop: 48,
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react-native';
-import PeekTitle from './PeekTitle';
+import PeekBehindTreeTitle from './PeekBehindTreeTitle';
 import Element from './Element';
 
 export default {
@@ -12,14 +12,8 @@ export default {
       },
 
       renderTitle() {
-        return renderPeekTitle(element.type.displayName);
+        return <PeekBehindTreeTitle title={element.displayName}/>;
       },
     };
   },
 };
-
-export function renderPeekTitle(title) {
-  return (
-    <PeekTitle title={title}/>
-  );
-}

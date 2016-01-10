@@ -1,40 +1,34 @@
-import React, { Component, Modal, PropTypes, View } from 'react-native';
-import Element from './Element';
-import { omit } from 'underscore';
+import React, { Component, Modal, PropTypes } from 'react-native';
+import ExNavigator from '@exponent/react-native-navigator';
+import Router from './router';
 import styles from './styles';
 
-export default class Tree extends Component {
+export default class TreeNavigator extends Component {
   static propTypes = {
-    tree: PropTypes.object.isRequired,
-  }
-
-  renderElementFromNode(node, key) {
-    const nodeProps = node.props || {};
-    const nodePropsWithoutChildren = omit(node.props, 'children');
-    const nodeChildren = nodeProps.children || [];
-
-    return (
-      <Element type={node.type} props={nodePropsWithoutChildren} key={key}>
-        {nodeChildren.map((childNode, childKey) => this.renderElementFromNode(childNode, childKey))}
-      </Element>
-    );
+    showingTree: PropTypes.bool.isRequired,
+    peekBehindTree: PropTypes.bool.isRequired,
+    tree: PropTypes.any.isRequired,
   }
 
   render() {
     const {
       showingTree,
+      peekBehindTree,
       tree,
     } = this.props;
-
-    if (!showingTree) {
-      return null;
-    }
+    const containerStyle = [
+      styles.container,
+      peekBehindTree ? { opacity: 0 } : {},
+    ];
 
     return (
       <Modal animated transparent visible={showingTree}>
-        <View style={styles.container}>
-          {/*this.renderElementFromNode(tree)*/}
-        </View>
+        <ExNavigator
+          initialRoute={Router.getElementRoute(tree)}
+          navigationBarStyle={styles.navigationBar}
+          sceneStyle={styles.scene}
+          style={containerStyle}
+        />
       </Modal>
     );
   }

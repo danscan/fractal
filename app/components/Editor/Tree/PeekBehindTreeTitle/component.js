@@ -2,20 +2,26 @@ import React, { Component, Image, PropTypes, Text, TouchableOpacity } from 'reac
 import peekButtonImage from '../../../../assets/img/peekButton.png';
 import styles from './styles';
 
-export default class PeekTitle extends Component {
+export default class PeekBehindTreeTitle extends Component {
   static propTypes = {
-    onPress: PropTypes.func.isRequired,
+    onPressIn: PropTypes.func.isRequired,
+    onPressOut: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
   }
 
   render() {
     const {
-      onPress,
+      onPressIn,
+      onPressOut,
       title,
     } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => onPress()} style={styles.container}>
+      <TouchableOpacity
+        onPressIn={() => onPressIn()}
+        onPressOut={() => onPressOut()}
+        style={styles.container}
+      >
         <Image source={peekButtonImage} style={styles.peekButtonImage}/>
         <Text style={styles.titleLabel}>
           {title}
