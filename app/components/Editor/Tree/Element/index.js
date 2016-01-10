@@ -1,96 +1,62 @@
-import React, { Component, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import { map, omit } from 'underscore';
+import { elementPropType } from '../../../../constants/propTypes';
+import addButtonImage from '../../../../assets/img/addButton.png';
+import Child from './Child';
 import Prop from './Prop';
-import { map } from 'underscore';
 import styles from './styles';
 
 export default class Element extends Component {
   static propTypes = {
-    children: PropTypes.any,
-    expanded: PropTypes.bool,
-    type: PropTypes.func.isRequired,
-    props: PropTypes.object,
+    element: elementPropType.isRequired,
   }
 
-  renderHandleSection() {
-    const { type } = this.props;
+  renderPropsSection() {
+    const { element } = this.props;
+    const elementProps = element.props || {};
+    const elementPropsWithoutChildren = omit(elementProps, 'children');
 
     return (
-      <View style={styles.handleSection}>
-        <Text style={styles.typeLabel}>
-          {type.displayName}
+      <View style={styles.propsSection}>
+        <Text style={styles.propsSectionLabel}>
+          Props
         </Text>
+        <View style={styles.propsListSection}>
+          {map(elementPropsWithoutChildren, (propValue, propName) => <Prop key={propName} name={propName} value={propValue}/>)}
+        </View>
+        <TouchableOpacity onPress={() => console.log('add prop')} style={styles.addPropButton}>
+          <Image source={addButtonImage} style={styles.addPropButtonImage}/>
+        </TouchableOpacity>
       </View>
     );
   }
 
   renderChildrenSection() {
-    const { children } = this.props;
-
-    if (typeof children === 'string') {
-      return (
-        <Text style={styles.childrenValueLabel}>
-          {children}
-        </Text>
-      );
-    }
+    const { element } = this.props;
+    const elementProps = element.props || {};
+    const elementChildren = elementProps.children;
 
     return (
       <View style={styles.childrenSection}>
-        {children}
-      </View>
-    );
-  }
-
-  renderPropsSection() {
-    const { props } = this.props;
-
-    // Don't render props section if node has no props
-    if (!props) {
-      return null;
-    }
-
-    return (
-      <View style={styles.propsSection}>
-        {map(props, (propValue, propName) => <Prop key={propName} name={propName} value={propValue}/>)}
-      </View>
-    );
-  }
-
-  renderExpandedChildrenSection() {
-    const { children } = this.props;
-
-    if (typeof children === 'string') {
-      return (
-        <Text style={styles.childrenValueLabel}>
-          {children}
+        <Text style={styles.childrenSectionLabel}>
+          Children
         </Text>
-      );
-    }
-
-    return (
-      <View style={styles.childrenSection}>
-        {children}
-      </View>
-    );
-  }
-
-  renderExpandedContentSection() {
-    return (
-      <View style={styles.expandedContent}>
-        {this.renderPropsSection()}
-        {this.renderExpandedChildrenSection()}
+        <View style={styles.childrenListSection}>
+          {map(elementChildren, (childElement, childIndex) => <Child key={childIndex} element={childElement}/>)}
+        </View>
+        <TouchableOpacity onPress={() => console.log('add child')} style={styles.addChildButton}>
+          <Image source={addButtonImage} style={styles.addChildButtonImage}/>
+        </TouchableOpacity>
       </View>
     );
   }
 
   render() {
-    const { expanded } = this.props;
-
     return (
-      <TouchableOpacity onPress={() => console.log('select (should expand)...')} style={styles.container}>
-        {this.renderHandleSection()}
-        {expanded ? this.renderExpandedContentSection() : this.renderChildrenSection()}
-      </TouchableOpacity>
+      <View style={styles.container}>
+        {this.renderPropsSection()}
+        {this.renderChildrenSection()}
+      </View>
     );
   }
 }

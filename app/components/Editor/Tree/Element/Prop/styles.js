@@ -2,9 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'hsla(0,0,100,0.5)',
+    backgroundColor: 'hsla(198,18,22,0.2)',
+    borderColor: 'hsla(198,18,22,0.3)',
     borderRadius: 8,
-    flex: 1,
+    borderWidth: 1,
+    marginBottom: 10,
     padding: 10,
   },
 
@@ -12,7 +14,7 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   nameLabel: {
-    color: 'white',
+    color: 'hsla(198,18,22,0.5)',
     fontFamily: 'Avenir',
     fontSize: 13,
     fontWeight: '600',
@@ -20,7 +22,7 @@ export default StyleSheet.create({
 
   valueSection: {},
   valueLabel: {
-    color: 'white',
+    color: 'hsla(198,18,22,0.5)',
     fontFamily: 'Avenir',
     fontSize: 10,
   },

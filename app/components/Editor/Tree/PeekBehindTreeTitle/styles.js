@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   peekButtonImage: {

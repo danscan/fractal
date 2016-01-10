@@ -14,6 +14,11 @@ export default StyleSheet.create({
     height: 48,
     paddingHorizontal: 10,
   },
+  navigationBarRightButton: {
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
 
   scene: {
     paddingTop: 48,

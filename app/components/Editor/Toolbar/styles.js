@@ -6,7 +6,7 @@ export default StyleSheet.create({
     backgroundColor: '#2e3538',
     flexDirection: 'row',
     height: 48,
-    paddingHorizontal: 10,
+    paddingHorizontal: 2,
   },
 
   leftButtons: {
@@ -20,7 +20,9 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
 
-  button: {},
+  button: {
+    padding: 8,
+  },
   showTreeButtonImage: {
     height: 24,
     width: 22,

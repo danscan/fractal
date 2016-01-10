@@ -20,6 +20,12 @@ export default class PeekBehindTreeTitle extends Component {
       <TouchableOpacity
         onPressIn={() => onPressIn()}
         onPressOut={() => onPressOut()}
+        pressRetentionOffset={{
+          top: 10,
+          right: 20,
+          bottom: 10,
+          left: 20,
+        }}
         style={styles.container}
       >
         <Image source={peekButtonImage} style={styles.peekButtonImage}/>
