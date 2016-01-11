@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
     flex: 1,
+    padding: 10,
   },
 
   propsSection: {
@@ -55,6 +56,9 @@ export default StyleSheet.create({
   },
   childrenListSection: {
     backgroundColor: 'transparent',
+    flex: 1,
+  },
+  childButton: {
     flex: 1,
   },
   addChildButton: {

@@ -1,6 +1,7 @@
 import React, { Component, Modal, PropTypes } from 'react-native';
 import ExNavigator from '@exponent/react-native-navigator';
 import Router from './router';
+import NavigationBar from './NavigationBar';
 import styles from './styles';
 
 export default class TreeNavigator extends Component {
@@ -8,6 +9,12 @@ export default class TreeNavigator extends Component {
     showingTree: PropTypes.bool.isRequired,
     peekBehindTree: PropTypes.bool.isRequired,
     tree: PropTypes.any.isRequired,
+  }
+
+  renderNavigationBar() {
+    return (
+      <NavigationBar/>
+    );
   }
 
   render() {
@@ -25,7 +32,7 @@ export default class TreeNavigator extends Component {
       <Modal animated transparent visible={showingTree}>
         <ExNavigator
           initialRoute={Router.getElementRoute(tree)}
-          navigationBarStyle={styles.navigationBar}
+          renderNavigationBar={() => this.renderNavigationBar()}
           sceneStyle={styles.scene}
           style={containerStyle}
         />

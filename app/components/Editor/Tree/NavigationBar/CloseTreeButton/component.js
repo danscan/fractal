@@ -1,5 +1,5 @@
-import React, { Component, Image, PropTypes, Text, TouchableOpacity } from 'react-native';
-import closeButtonImage from '../../../../assets/img/closeButton.png';
+import React, { Component, Image, PropTypes, TouchableOpacity } from 'react-native';
+import closeButtonImage from '../../../../../assets/img/closeButton.png';
 import styles from './styles';
 
 export default class CloseTreeButton extends Component {

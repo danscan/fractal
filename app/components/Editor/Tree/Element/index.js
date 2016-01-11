@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import { map, omit } from 'underscore';
 import { elementPropType } from '../../../../constants/propTypes';
 import addButtonImage from '../../../../assets/img/addButton.png';
@@ -9,10 +9,18 @@ import styles from './styles';
 export default class Element extends Component {
   static propTypes = {
     element: elementPropType.isRequired,
+    onPressAddChild: PropTypes.func.isRequired,
+    onPressAddProp: PropTypes.func.isRequired,
+    onPressChild: PropTypes.func.isRequired,
+    onPressProp: PropTypes.func.isRequired,
   }
 
   renderPropsSection() {
-    const { element } = this.props;
+    const {
+      element,
+      onPressAddProp,
+      onPressProp,
+    } = this.props;
     const elementProps = element.props || {};
     const elementPropsWithoutChildren = omit(elementProps, 'children');
 
@@ -22,9 +30,13 @@ export default class Element extends Component {
           Props
         </Text>
         <View style={styles.propsListSection}>
-          {map(elementPropsWithoutChildren, (propValue, propName) => <Prop key={propName} name={propName} value={propValue}/>)}
+          {map(elementPropsWithoutChildren, (propValue, propName) => (
+            <TouchableOpacity onPress={() => onPressProp(propName)}>
+              <Prop key={propName} name={propName} value={propValue}/>
+            </TouchableOpacity>
+          ))}
         </View>
-        <TouchableOpacity onPress={() => console.log('add prop')} style={styles.addPropButton}>
+        <TouchableOpacity onPress={() => onPressAddProp()} style={styles.addPropButton}>
           <Image source={addButtonImage} style={styles.addPropButtonImage}/>
         </TouchableOpacity>
       </View>
@@ -32,7 +44,11 @@ export default class Element extends Component {
   }
 
   renderChildrenSection() {
-    const { element } = this.props;
+    const {
+      element,
+      onPressAddChild,
+      onPressChild,
+    } = this.props;
     const elementProps = element.props || {};
     const elementChildren = elementProps.children;
 
@@ -42,9 +58,13 @@ export default class Element extends Component {
           Children
         </Text>
         <View style={styles.childrenListSection}>
-          {map(elementChildren, (childElement, childIndex) => <Child key={childIndex} element={childElement}/>)}
+          {map(elementChildren, (childElement, childIndex) => (
+            <TouchableOpacity onPress={() => onPressChild(childIndex)} style={styles.childButton}>
+              <Child key={childIndex} element={childElement}/>
+            </TouchableOpacity>
+          ))}
         </View>
-        <TouchableOpacity onPress={() => console.log('add child')} style={styles.addChildButton}>
+        <TouchableOpacity onPress={() => onPressAddChild()} style={styles.addChildButton}>
           <Image source={addButtonImage} style={styles.addChildButtonImage}/>
         </TouchableOpacity>
       </View>
@@ -53,10 +73,10 @@ export default class Element extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         {this.renderPropsSection()}
         {this.renderChildrenSection()}
-      </ScrollView>
+      </View>
     );
   }
 }

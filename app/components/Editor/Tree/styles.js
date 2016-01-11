@@ -1,27 +1,24 @@
 import { StyleSheet } from 'react-native';
 
+// (Configuration constants)
+const NAVIGATION_BAR_HEIGHT = 48;
+
 export default StyleSheet.create({
   container: {
     backgroundColor: 'hsla(0,0,100,0.1)',
     flex: 1,
-    padding: 10,
   },
 
   navigationBar: {
     alignItems: 'center',
     backgroundColor: '#2e3538',
     flexDirection: 'row',
-    height: 48,
+    height: NAVIGATION_BAR_HEIGHT,
     paddingHorizontal: 10,
-  },
-  navigationBarRightButton: {
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    justifyContent: 'center',
   },
 
   scene: {
     backgroundColor: 'transparent',
-    paddingTop: 48,
+    paddingTop: NAVIGATION_BAR_HEIGHT,
   },
 });

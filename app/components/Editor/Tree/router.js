@@ -1,6 +1,4 @@
 import React from 'react-native';
-import CloseTreeButton from './CloseTreeButton';
-import PeekBehindTreeTitle from './PeekBehindTreeTitle';
 import Element from './Element';
 
 export default {
@@ -12,12 +10,8 @@ export default {
         );
       },
 
-      renderTitle() {
-        return <PeekBehindTreeTitle title={element.displayName}/>;
-      },
-
-      renderRightButton() {
-        return <CloseTreeButton/>;
+      getTitle() {
+        return element.displayName;
       },
     };
   },

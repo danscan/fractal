@@ -1,6 +1,6 @@
 import { connect } from 'react-redux/native';
 import PeekBehindTreeTitle from './component';
-import { beginPeekBehindTree, endPeekBehindTree } from '../../../../actions/peekBehindTree';
+import { beginPeekBehindTree, endPeekBehindTree } from '../../../../../actions/peekBehindTree';
 
 const mapStateToProps = () => ({});
 

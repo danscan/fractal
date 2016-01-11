@@ -1,5 +1,5 @@
 import React, { Component, Image, PropTypes, Text, TouchableOpacity } from 'react-native';
-import peekButtonImage from '../../../../assets/img/peekButton.png';
+import peekButtonImage from '../../../../../assets/img/peekButton.png';
 import styles from './styles';
 
 export default class PeekBehindTreeTitle extends Component {

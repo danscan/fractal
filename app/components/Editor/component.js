@@ -5,7 +5,7 @@ import Tree from './Tree';
 import Root from '../Root';
 
 // (Configuration constants)
-const ANIMATE_STATUS_BAR_TOGGLE = true;
+const ANIMATE_STATUS_BAR_TOGGLE = false;
 
 export default class Editor extends Component {
   static propTypes = {

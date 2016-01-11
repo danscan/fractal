@@ -2,7 +2,7 @@ import React, { Component, PropTypes, Text, View } from 'react-native';
 import { elementPropType } from '../../../../../constants/propTypes';
 import styles from './styles';
 
-export default class Element extends Component {
+export default class Child extends Component {
   static propTypes = {
     element: elementPropType.isRequired,
   }
