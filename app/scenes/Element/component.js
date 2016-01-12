@@ -31,7 +31,7 @@ export default class Element extends Component {
         </Text>
         <View style={styles.propsListSection}>
           {map(elementPropsWithoutChildren, (propValue, propName) => (
-            <TouchableOpacity onPress={() => onPressProp(propName)}>
+            <TouchableOpacity key={propName} onPress={() => onPressProp(propName)}>
               <Prop key={propName} name={propName} value={propValue}/>
             </TouchableOpacity>
           ))}
@@ -59,7 +59,7 @@ export default class Element extends Component {
         </Text>
         <View style={styles.childrenListSection}>
           {map(elementChildren, (childElement, childIndex) => (
-            <TouchableOpacity onPress={() => onPressChild(childIndex)} style={styles.childButton}>
+            <TouchableOpacity key={childIndex} onPress={() => onPressChild(childIndex)} style={styles.childButton}>
               <Child key={childIndex} element={childElement}/>
             </TouchableOpacity>
           ))}

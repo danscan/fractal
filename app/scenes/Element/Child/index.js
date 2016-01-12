@@ -47,6 +47,12 @@ export default class Child extends Component {
   }
 
   render() {
+    const { element } = this.props;
+
+    if (typeof element === 'string') {
+      return this.renderChild(element);
+    }
+
     return (
       <View style={styles.container}>
         {this.renderHandleSection()}
