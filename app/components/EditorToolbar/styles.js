@@ -5,8 +5,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#2e3538',
     flexDirection: 'row',
-    height: 48,
+    height: 64,
     paddingHorizontal: 2,
+    paddingTop: 20,
   },
 
   leftButtons: {

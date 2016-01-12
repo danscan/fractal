@@ -5,7 +5,7 @@ import EditorModalNavigator from '../EditorModalNavigator';
 import Root from '../Root';
 
 // (Configuration constants)
-const ANIMATE_STATUS_BAR_TOGGLE = false;
+const STATUS_BAR_STYLE = 'light-content';
 
 export default class EditorRoot extends Component {
   static propTypes = {
@@ -14,11 +14,7 @@ export default class EditorRoot extends Component {
   }
 
   componentDidMount() {
-    StatusBarIOS.setHidden(true, ANIMATE_STATUS_BAR_TOGGLE);
-  }
-
-  componentWillUnmount() {
-    StatusBarIOS.setHidden(false, ANIMATE_STATUS_BAR_TOGGLE);
+    StatusBarIOS.setStyle(STATUS_BAR_STYLE);
   }
 
   renderEditorToolbar() {

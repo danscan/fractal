@@ -10,14 +10,15 @@ export default StyleSheet.create({
   },
 
   scene: {
-    paddingTop: Navigator.NavigationBar.Styles.General.NavBarHeight,
+    paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight,
   },
 
   navigationBar: {
     alignItems: 'center',
     backgroundColor: '#2e3538',
+    // backgroundColor: 'rgba(255,0,0,0.3)',
     justifyContent: 'center',
-    padding: 15,
+    paddingVertical: 15,
   },
   navigationBarTitle: {
     marginTop: 6,

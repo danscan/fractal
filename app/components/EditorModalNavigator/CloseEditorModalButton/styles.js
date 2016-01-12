@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     justifyContent: 'center',
-    padding: 8,
+    marginTop: 5,
+    padding: 10,
   },
 
   closeButtonImage: {
