@@ -1,13 +1,13 @@
-import { OPEN_EDITOR, CLOSE_EDITOR, TOGGLE_EDITOR } from '../constants/actionTypes';
+import { SHOW_EDITOR, HIDE_EDITOR, TOGGLE_EDITOR } from '../constants/actionTypes';
 
 const initialState = true;
 
 export default function showEditor(state = initialState, action) {
   switch (action.type) {
-    case OPEN_EDITOR:
+    case SHOW_EDITOR:
       return true;
 
-    case CLOSE_EDITOR:
+    case HIDE_EDITOR:
       return false;
 
     case TOGGLE_EDITOR:
