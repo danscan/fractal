@@ -1,6 +1,6 @@
 import { connect } from 'react-redux/native';
 import CloseEditorModalButton from './component';
-import { resetEditorModalRouteStack } from '../../actions/editorModalRouteStack';
+import { resetEditorModalRouteStack } from '../../../actions/editorModalRouteStack';
 
 const mapStateToProps = () => ({});
 

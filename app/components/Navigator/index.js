@@ -15,6 +15,7 @@ export default class _Navigator extends Component {
     popRoute: PropTypes.func.isRequired,
     pushRoute: PropTypes.func.isRequired,
     resetRouteStack: PropTypes.func.isRequired,
+    rightButton: PropTypes.element,
     routeStack: ImmutablePropTypes.listOf(routePropType).isRequired,
     sceneStyle: View.propTypes.style,
     shouldUpdateWhenRouteStackIsReset: PropTypes.bool.isRequired,
@@ -128,12 +129,15 @@ export default class _Navigator extends Component {
   }
 
   getNavigationBarRightButton(route, _, index) {
-    const { routeStack } = this.props;
+    const {
+      rightButton,
+      routeStack,
+    } = this.props;
     const { renderRightButton } = routeStack.last();
 
     return !!renderRightButton
       ? renderRightButton(this, index, routeStack)
-      : null;
+      : rightButton;
   }
 
   getNavigationBar() {
