@@ -50,6 +50,26 @@ export default function tree(state = initialState, action) {
   }
 }
 
+function _getChildNodeByIndex(node, index) {
+  const { props = {} } = node;
+  const { children = [] } = props;
+
+  return children[index];
+}
+
+function _addChildNode(node, childNode) {
+  return {
+    ...node,
+    props: {
+      ...node.props,
+      children: [
+        ...node.props.children,
+        childNode,
+      ],
+    },
+  };
+}
+
 function reduceAddElement(state, action) {
   const {
     element,
@@ -58,19 +78,23 @@ function reduceAddElement(state, action) {
 
   // If parentElementPath is empty, it's a path to the root
   if (isEmpty(parentElementPath)) {
-    return {
-      ...state,
-      props: {
-        ...state.props,
-        children: [
-          ...state.props.children,
-          action.element,
-        ],
-      },
-    };
+    return _addChildNode(state, element);
   }
 
-  return parentElementPath.reduce((newState, pathNode) => {
+  const newPathBranchSequence = parentElementPath.reduce((aggregateSequentialTree, pathNode, index) => {
+    if (index === parentElementPath.length - 1) {
+      return [...aggregateSequentialTree, element];
+    }
 
+    return [
+      ...aggregateSequentialTree,
+      _getChildNodeByIndex(aggregateSequentialTree[index], pathNode),
+    ];
+  }, [state]);
+
+  return newPathBranchSequence.reduceRight((newState, branchElement, index) => {
+    if (index === 0) {
+
+    }
   }, {});
 }
