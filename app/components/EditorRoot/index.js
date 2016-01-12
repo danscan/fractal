@@ -1,14 +1,14 @@
 import { connect } from 'react-redux/native';
-import Editor from './component';
+import EditorRoot from './component';
 import { toggleEditor } from '../../actions/showEditor';
 
 const mapStateToProps = (state) => ({
-  editing: state.editing,
+  showEditor: state.showEditor,
 });
 
 const actionCreators = {
   toggleEditor,
 };
 
-export default connect(mapStateToProps, actionCreators)(Editor);
-export { Editor };
+export default connect(mapStateToProps, actionCreators)(EditorRoot);
+export { EditorRoot };

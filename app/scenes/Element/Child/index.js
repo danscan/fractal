@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Text, View } from 'react-native';
-import { elementPropType } from '../../../../../constants/propTypes';
+import { elementPropType } from '../../../constants/propTypes';
 import styles from './styles';
 
 export default class Child extends Component {

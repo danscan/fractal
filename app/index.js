@@ -1,7 +1,7 @@
 import React, { Component } from 'react-native';
 import { Provider } from 'react-redux/native';
 import getStore from './store/index';
-import Editor from './components/Editor';
+import EditorRoot from './components/EditorRoot';
 
 export default class App extends Component {
   render() {
@@ -10,7 +10,7 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
-        {() => <Editor/>}
+        {() => <EditorRoot/>}
       </Provider>
     );
   }

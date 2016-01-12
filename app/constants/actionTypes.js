@@ -1,3 +1,8 @@
+// editorModalRouteStack
+export const PUSH_EDITOR_MODAL_ROUTE = 'PUSH_EDITOR_MODAL_ROUTE';
+export const POP_EDITOR_MODAL_ROUTE = 'POP_EDITOR_MODAL_ROUTE';
+export const RESET_EDITOR_MODAL_ROUTE_STACK = 'RESET_EDITOR_MODAL_ROUTE_STACK';
+
 // showEditor
 export const SHOW_EDITOR = 'SHOW_EDITOR';
 export const HIDE_EDITOR = 'HIDE_EDITOR';

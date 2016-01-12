@@ -1,9 +1,18 @@
-import { autoNavigator } from 'auto-navigator';
+import { connect } from 'react-redux/native';
+import EditorModalNavigator from './component';
+import { pushRoute, popRoute, resetEditorModalRouteStack } from '../../actions/editorModalRouteStack';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  peekBehindEditorModal: state.peekBehindEditorModal,
+  routeStack: state.editorModalRouteStack,
+});
 
-const mapDispatchToProps = () => ({});
+const actionCreators = {
+  pushRoute,
+  popRoute,
+  resetRouteStack: resetEditorModalRouteStack,
+  onPressClose: resetEditorModalRouteStack,
+};
 
-export default autoNavigator({
-  key: 'editorModal',
-}, mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, actionCreators)(EditorModalNavigator);
+export { EditorModalNavigator };

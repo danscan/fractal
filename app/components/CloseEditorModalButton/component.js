@@ -1,8 +1,8 @@
 import React, { Component, Image, PropTypes, TouchableOpacity } from 'react-native';
-import closeButtonImage from '../../../../../assets/img/closeButton.png';
+import closeButtonImage from '../../assets/img/closeButton.png';
 import styles from './styles';
 
-export default class CloseTreeButton extends Component {
+export default class CloseEditorModalButton extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
   }

@@ -27,7 +27,7 @@ export default StyleSheet.create({
     height: 24,
     width: 22,
   },
-  closeEditorButtonImage: {
+  hideEditorButtonImage: {
     height: 14,
     width: 14,
   },

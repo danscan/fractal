@@ -1,6 +1,6 @@
 import { connect } from 'react-redux/native';
 import PeekBehindEditorModalTitle from './component';
-import { beginPeekBehindEditorModal, endPeekBehindEditorModal } from '../../../../../actions/peekBehindEditorModal';
+import { beginPeekBehindEditorModal, endPeekBehindEditorModal } from '../../actions/peekBehindEditorModal';
 
 const mapStateToProps = () => ({});
 

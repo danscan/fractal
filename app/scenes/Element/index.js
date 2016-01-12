@@ -1,5 +1,5 @@
 import { connect } from 'react-redux/native';
-import { addElement, addElementProp, editElementProp } from '../../../../actions/tree';
+import { addElement, addElementProp, editElementProp } from '../../actions/tree';
 import Element from './component';
 
 const mapStateToProps = () => ({});

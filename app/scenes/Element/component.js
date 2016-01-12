@@ -1,7 +1,7 @@
 import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import { map, omit } from 'underscore';
-import { elementPropType } from '../../../../constants/propTypes';
-import addButtonImage from '../../../../assets/img/addButton.png';
+import { elementPropType } from '../../constants/propTypes';
+import addButtonImage from '../../assets/img/addButton.png';
 import Child from './Child';
 import Prop from './Prop';
 import styles from './styles';

@@ -4,7 +4,7 @@ import styles from './styles';
 const NUMBER_OF_TOUCHES = 2;
 const NUMBER_OF_SECONDS = 2;
 
-export default class ToggleGestureInterceptor extends Component {
+export default class EditorToggleGestureInterceptor extends Component {
   static propTypes = {
     children: PropTypes.any,
     toggleEditor: PropTypes.func.isRequired,
