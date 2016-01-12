@@ -1,11 +1,11 @@
 import {
   ADD_ELEMENT,
   REMOVE_ELEMENT,
-  CHANGE_CHILD_INDEX,
+  CHANGE_ELEMENT_CHILD_INDEX,
   ADD_ELEMENT_PROP,
   CHANGE_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
-} from '../constants/actionsTypes';
+} from '../constants/actionTypes';
 import { isEmpty } from 'underscore';
 
 import { Text, View } from 'react-native';
@@ -41,7 +41,7 @@ export default function tree(state = initialState, action) {
     case ADD_ELEMENT:
       return reduceAddElement(state, action);
     case REMOVE_ELEMENT:
-    case CHANGE_CHILD_INDEX:
+    case CHANGE_ELEMENT_CHILD_INDEX:
     case ADD_ELEMENT_PROP:
     case CHANGE_ELEMENT_PROP:
     case REMOVE_ELEMENT_PROP:

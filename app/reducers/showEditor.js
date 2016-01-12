@@ -2,7 +2,7 @@ import { OPEN_EDITOR, CLOSE_EDITOR, TOGGLE_EDITOR } from '../constants/actionTyp
 
 const initialState = true;
 
-export default function editing(state = initialState, action) {
+export default function showEditor(state = initialState, action) {
   switch (action.type) {
     case OPEN_EDITOR:
       return true;

@@ -1,6 +1,6 @@
 import React, { Component, Navigator, Text, TouchableOpacity, View } from 'react-native';
 import CloseTreeButton from './CloseTreeButton';
-import PeekBehindTreeTitle from './PeekBehindTreeTitle';
+import PeekBehindEditorModalTitle from './PeekBehindEditorModalTitle';
 import styles from './styles';
 
 export const routeMapper = {
@@ -33,7 +33,7 @@ export const routeMapper = {
     const routeTitle = route.getTitle();
 
     return (
-      <PeekBehindTreeTitle title={routeTitle}/>
+      <PeekBehindEditorModalTitle title={routeTitle}/>
     );
   },
 };

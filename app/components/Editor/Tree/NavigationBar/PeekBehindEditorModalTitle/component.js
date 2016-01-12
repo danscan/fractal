@@ -2,7 +2,7 @@ import React, { Component, Image, PropTypes, Text, TouchableOpacity } from 'reac
 import peekButtonImage from '../../../../../assets/img/peekButton.png';
 import styles from './styles';
 
-export default class PeekBehindTreeTitle extends Component {
+export default class PeekBehindEditorModalTitle extends Component {
   static propTypes = {
     onPressIn: PropTypes.func.isRequired,
     onPressOut: PropTypes.func.isRequired,

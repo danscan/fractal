@@ -1,6 +1,6 @@
 import { connect } from 'react-redux/native';
 import Editor from './component';
-import { toggleEditor } from '../../actions/editing';
+import { toggleEditor } from '../../actions/showEditor';
 
 const mapStateToProps = (state) => ({
   editing: state.editing,
