@@ -6,6 +6,10 @@ export const elementPropType = PropTypes.shape({
   props: PropTypes.object,
 });
 
+export const elementIndexPropType = PropTypes.arrayOf(
+  PropTypes.number,
+);
+
 export const routePropType = PropTypes.shape({
   getTitle: PropTypes.func, // (navigator, index, routeStack) => ?string
   renderTitle: PropTypes.func, // (navigator, index, routeStack) => ?Component

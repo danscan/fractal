@@ -108,14 +108,14 @@ export default class _Navigator extends Component {
     } = routeStack.last();
     const canRenderBackButton = index > 0;
 
-    if (canRenderBackButton && getBackButtonTitle) {
+    if (canRenderBackButton) {
       return (
         <TouchableOpacity
           onPress={() => popRoute()}
           style={[styles.navigationBarButton, styles.navigationBarBackButton]}
         >
           <Text style={styles.navigationBarBackButtonLabel}>
-            {getBackButtonTitle(this, index, routeStack)}
+            {getBackButtonTitle ? getBackButtonTitle(this, index, routeStack) : 'Back'}
           </Text>
         </TouchableOpacity>
       );

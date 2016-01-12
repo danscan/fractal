@@ -1,6 +1,6 @@
 import { connect } from 'react-redux/native';
 import EditorModalNavigator from './component';
-import { pushRoute, popRoute, resetEditorModalRouteStack } from '../../actions/editorModalRouteStack';
+import { pushEditorModalRoute, popEditorModalRoute, resetEditorModalRouteStack } from '../../actions/editorModalRouteStack';
 
 const mapStateToProps = (state) => ({
   peekBehindEditorModal: state.peekBehindEditorModal,
@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
 });
 
 const actionCreators = {
-  pushRoute,
-  popRoute,
+  pushRoute: pushEditorModalRoute,
+  popRoute: popEditorModalRoute,
   resetRouteStack: resetEditorModalRouteStack,
   onPressClose: resetEditorModalRouteStack,
 };

@@ -34,6 +34,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     flex: 1,
     padding: 10,
+    marginBottom: 10,
   },
   stringChildLabel: {
     color: '#94c600',

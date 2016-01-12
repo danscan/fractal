@@ -1,6 +1,6 @@
 import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import { map, omit } from 'underscore';
-import { elementPropType } from '../../constants/propTypes';
+import { elementPropType, elementIndexPropType } from '../../constants/propTypes';
 import addButtonImage from '../../assets/img/addButton.png';
 import Child from './Child';
 import Prop from './Prop';
@@ -8,7 +8,11 @@ import styles from './styles';
 
 export default class Element extends Component {
   static propTypes = {
-    element: elementPropType.isRequired,
+    elementIndex: elementIndexPropType.isRequired,
+    element: PropTypes.oneOfType([
+      elementPropType,
+      PropTypes.string,
+    ]).isRequired,
     onPressAddChild: PropTypes.func.isRequired,
     onPressAddProp: PropTypes.func.isRequired,
     onPressChild: PropTypes.func.isRequired,
@@ -46,6 +50,7 @@ export default class Element extends Component {
   renderChildrenSection() {
     const {
       element,
+      elementIndex,
       onPressAddChild,
       onPressChild,
     } = this.props;
@@ -64,7 +69,7 @@ export default class Element extends Component {
             </TouchableOpacity>
           ))}
         </View>
-        <TouchableOpacity onPress={() => onPressAddChild()} style={styles.addChildButton}>
+        <TouchableOpacity onPress={() => onPressAddChild(elementIndex)} style={styles.addChildButton}>
           <Image source={addButtonImage} style={styles.addChildButtonImage}/>
         </TouchableOpacity>
       </View>

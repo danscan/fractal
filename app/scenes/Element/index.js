@@ -6,12 +6,18 @@ import Element from './component';
 const mapStateToProps = () => ({});
 
 const actionCreators = (dispatch, ownProps) => ({
-  onPressAddChild: () => console.log('TODO: pushEditorModalRoute for AddElementChildScene'),
+  onPressAddChild: (parentElementIndex) => {
+    return dispatch(pushEditorModalRoute(router.getAddElementRoute(parentElementIndex)));
+  },
   onPressAddProp: () => console.log('TODO: pushEditorModalRoute for AddElementPropScene'),
   onPressChild: (childIndex) => {
-    console.log('ownProps:', ownProps);
-    const child = ownProps.element.props.children[childIndex];
-    return dispatch(pushEditorModalRoute(router.getElementRoute(child)));
+    const {
+      element,
+      elementIndex,
+    } = ownProps;
+    const child = element.props.children[childIndex];
+    const childElementIndex = [...elementIndex, childIndex];
+    return dispatch(pushEditorModalRoute(router.getElementRoute(child, childElementIndex)));
   },
   onPressProp: () => console.log('TODO: pushEditorModalRoute for EditElementPropScene'),
 });

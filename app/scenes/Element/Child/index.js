@@ -4,7 +4,10 @@ import styles from './styles';
 
 export default class Child extends Component {
   static propTypes = {
-    element: elementPropType.isRequired,
+    element: PropTypes.oneOfType([
+      elementPropType,
+      PropTypes.string,
+    ]).isRequired,
   }
 
   renderHandleSection() {
