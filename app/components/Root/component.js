@@ -12,7 +12,7 @@ export default class Root extends Component {
     }
 
     const { type: nodeType, props = {} } = node || {};
-    const { children } = props;
+    const { children = [] } = props;
     const nodeProps = { ...omit(props, 'children'), key };
     const nodeChildren = children.map((childNode, childKey) => this.createElementFromNode(childNode, childKey));
 
