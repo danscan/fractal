@@ -10,7 +10,11 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   onPressHideEditor: hideEditor,
-  onPressShowTree: (tree) => pushEditorModalRoute(router.getElementRoute(tree, [])),
+  onPressShowTree: (tree) => {
+    const rootNode = tree.get();
+
+    return pushEditorModalRoute(router.getElementRoute(rootNode, []));
+  },
 };
 
 export default connect(mapStateToProps, actionCreators)(Toolbar);

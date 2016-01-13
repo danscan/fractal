@@ -21,7 +21,8 @@ export default class Root extends Component {
 
   render() {
     const { tree } = this.props;
+    const rootNode = tree.get();
 
-    return this.createElementFromNode(tree);
+    return this.createElementFromNode(rootNode);
   }
 }

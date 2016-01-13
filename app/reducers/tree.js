@@ -1,15 +1,19 @@
 import {
-  ADD_ELEMENT,
+  ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   CHANGE_ELEMENT_CHILD_INDEX,
   ADD_ELEMENT_PROP,
   CHANGE_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
 } from '../constants/actionTypes';
-import { isEmpty } from 'underscore';
+import Baobab from 'baobab';
+
+// (Configuration constants)
+const ELEMENT_PROPS_KEY = 'props';
+const ELEMENT_PROPS_CHILDREN_KEY = 'children';
 
 import { Text, View } from 'react-native';
-const initialState = {
+const initialState = new Baobab({
   displayName: 'Root',
   type: View,
   props: {
@@ -34,67 +38,66 @@ const initialState = {
       justifyContent: 'center',
     },
   },
-};
+});
 
 export default function tree(state = initialState, action) {
   switch (action.type) {
-    case ADD_ELEMENT:
-      return reduceAddElement(state, action);
+    case ADD_ELEMENT_CHILD:
+      return reduceAddElementChild(state, action);
     case REMOVE_ELEMENT:
+      return reduceRemoveElement(state, action);
     case CHANGE_ELEMENT_CHILD_INDEX:
+      return reduceChangeElementIndex(state, action);
     case ADD_ELEMENT_PROP:
     case CHANGE_ELEMENT_PROP:
+      return reduceApplyElementProp(state, action);
     case REMOVE_ELEMENT_PROP:
+      return reduceRemoveElementProp(state, action);
     default:
       return state;
   }
 }
 
-function _getChildNodeByIndex(node, index) {
-  const { props = {} } = node;
-  const { children = [] } = props;
-
-  return children[index];
+function reduceAddElementChild(state, { elementPath, child }) {
+  return state.push(elementPath, child);
 }
 
-function _addChildNode(node, childNode) {
-  return {
-    ...node,
-    props: {
-      ...node.props,
-      children: [
-        ...node.props.children,
-        childNode,
-      ],
-    },
-  };
+function reduceRemoveElement(state, { elementPath }) {
+  state.unset(elementPath);
+
+  return state;
 }
 
-function reduceAddElement(state, action) {
-  const {
-    element,
-    parentElementPath = [],
-  } = action;
+function reduceChangeElementIndex(state, { elementPath, oldChildIndex, newChildIndex }) {
+  const elementChildrenCursor = state.select([
+    ...elementPath,
+    ELEMENT_PROPS_KEY,
+    ELEMENT_PROPS_CHILDREN_KEY,
+  ]);
+  const elementChild = state.select([
+    ...elementChildrenCursor,
+    oldChildIndex,
+  ]).get();
+  elementChildrenCursor.unset(oldChildIndex);
+  elementChildrenCursor.splice(newChildIndex, 0, elementChild);
 
-  // If parentElementPath is empty, it's a path to the root
-  if (isEmpty(parentElementPath)) {
-    return _addChildNode(state, element);
-  }
+  return state;
+}
 
-  const newPathBranchSequence = parentElementPath.reduce((aggregateSequentialTree, pathNode, index) => {
-    if (index === parentElementPath.length - 1) {
-      return [...aggregateSequentialTree, element];
-    }
+function reduceApplyElementProp(state, { elementPath, propName, propValue }) {
+  return state.push([
+    ...elementPath,
+    ELEMENT_PROPS_KEY,
+    propName,
+  ], propValue);
+}
 
-    return [
-      ...aggregateSequentialTree,
-      _getChildNodeByIndex(aggregateSequentialTree[index], pathNode),
-    ];
-  }, [state]);
+function reduceRemoveElementProp(state, { elementPath, propName }) {
+  state.unset([
+    ...elementPath,
+    ELEMENT_PROPS_KEY,
+    propName,
+  ]);
 
-  return newPathBranchSequence.reduceRight((newState, branchElement, index) => {
-    if (index === 0) {
-
-    }
-  }, {});
+  return state;
 }

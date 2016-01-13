@@ -13,10 +13,11 @@ const actionCreators = (dispatch, ownProps) => ({
   onPressChild: (childIndex) => {
     const {
       element,
-      elementIndex,
+      elementPath,
     } = ownProps;
     const child = element.props.children[childIndex];
-    const childElementIndex = [...elementIndex, childIndex];
+    const childElementIndex = [...elementPath, childIndex];
+
     return dispatch(pushEditorModalRoute(router.getElementRoute(child, childElementIndex)));
   },
   onPressProp: () => console.log('TODO: pushEditorModalRoute for EditElementPropScene'),

@@ -1,12 +1,11 @@
 import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
-import { elementPropType } from '../../constants/propTypes';
 import hideEditorButtonImage from '../../assets/img/closeButton.png';
 import showTreeButtonImage from '../../assets/img/showTreeButton.png';
 import styles from './styles';
 
 export default class EditorToolbar extends Component {
   static propTypes = {
-    tree: elementPropType.isRequired,
+    tree: PropTypes.object.isRequired,
     onPressHideEditor: PropTypes.func.isRequired,
     onPressShowTree: PropTypes.func.isRequired,
   }

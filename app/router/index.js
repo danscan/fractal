@@ -1,14 +1,14 @@
 import React from 'react-native';
 import PeekBehindEditorModalTitle from '../components/PeekBehindEditorModalTitle';
 import ElementScene from '../scenes/Element';
-import AddElementScene from '../scenes/AddElement';
+import AddElementChildScene from '../scenes/AddElementChild';
 
 export default {
-  getElementRoute(element, elementIndex) {
+  getElementRoute(element, elementPath) {
     return {
       renderScene() {
         return (
-          <ElementScene element={element} elementIndex={elementIndex}/>
+          <ElementScene element={element} elementPath={elementPath}/>
         );
       },
 
@@ -24,11 +24,11 @@ export default {
     };
   },
 
-  getAddElementRoute(parentElementIndex) {
+  getAddElementChildRoute(parentElementPath) {
     return {
       renderScene() {
         return (
-          <AddElementScene parentElementIndex={parentElementIndex}/>
+          <AddElementChildScene parentElementPath={parentElementPath}/>
         );
       },
 

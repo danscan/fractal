@@ -1,5 +1,5 @@
 import {
-  ADD_ELEMENT,
+  ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   CHANGE_ELEMENT_CHILD_INDEX,
   ADD_ELEMENT_PROP,
@@ -7,11 +7,11 @@ import {
   REMOVE_ELEMENT_PROP,
 } from '../constants/actionTypes';
 
-export function addElement(parentElementPath, element) {
+export function addElementChild(elementPath, child) {
   return {
-    type: ADD_ELEMENT,
-    parentElementPath,
-    element,
+    type: ADD_ELEMENT_CHILD,
+    elementPath,
+    child,
   };
 }
 
@@ -22,12 +22,12 @@ export function removeElement(elementPath) {
   };
 }
 
-export function changeElementChildIndex(elementPath, oldElementChildIndex, newElementChildIndex) {
+export function changeElementChildIndex(elementPath, oldChildIndex, newChildIndex) {
   return {
     type: CHANGE_ELEMENT_CHILD_INDEX,
     elementPath,
-    oldElementChildIndex,
-    newElementChildIndex,
+    oldChildIndex,
+    newChildIndex,
   };
 }
 

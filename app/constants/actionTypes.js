@@ -17,7 +17,7 @@ export const SHOW_TREE = 'SHOW_TREE';
 export const HIDE_TREE = 'HIDE_TREE';
 
 // tree
-export const ADD_ELEMENT = 'ADD_ELEMENT';
+export const ADD_ELEMENT_CHILD = 'ADD_ELEMENT_CHILD';
 export const REMOVE_ELEMENT = 'REMOVE_ELEMENT';
 export const CHANGE_ELEMENT_CHILD_INDEX = 'CHANGE_ELEMENT_CHILD_INDEX';
 export const ADD_ELEMENT_PROP = 'ADD_ELEMENT_PROP';

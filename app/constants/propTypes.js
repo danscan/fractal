@@ -1,14 +1,20 @@
 import { PropTypes } from 'react-native';
+import Baobab from 'baobab';
+
+export const elementCursorPropType = PropTypes.instanceOf(Baobab);
+
+export const elementPathPropType = PropTypes.arrayOf(
+  PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ])
+);
 
 export const elementPropType = PropTypes.shape({
   displayName: PropTypes.string,
   type: PropTypes.func.isRequired,
   props: PropTypes.object,
 });
-
-export const elementIndexPropType = PropTypes.arrayOf(
-  PropTypes.number,
-);
 
 export const routePropType = PropTypes.shape({
   getTitle: PropTypes.func, // (navigator, index, routeStack) => ?string

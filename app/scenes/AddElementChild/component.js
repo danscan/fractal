@@ -2,9 +2,9 @@ import React, { Component, PropTypes, ScrollView, Text, TouchableOpacity, TextIn
 import { reduce } from 'underscore';
 import styles from './styles';
 
-export default class AddElement extends Component {
+export default class AddElementChild extends Component {
   static propTypes = {
-    parentElementIndex: PropTypes.arrayOf(PropTypes.number).isRequired,
+    parentElementPath: PropTypes.arrayOf(PropTypes.number).isRequired,
     addElementChild: PropTypes.func.isRequired,
   }
 
@@ -52,9 +52,15 @@ export default class AddElement extends Component {
   }
 
   renderAutoCompleteResult(componentTypeName) {
+    const {
+      addElementChild,
+    } = this.props;
+    const childElement = React[componentTypeName];
+
     return (
       <TouchableOpacity
         key={componentTypeName}
+        onPress={() => addElementChild(childElement)}
         style={styles.autoCompleteResult}
       >
         <Text style={styles.autoCompleteResultLabel}>
