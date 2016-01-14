@@ -1,18 +1,17 @@
 import { connect } from 'react-redux/native';
-import { addElement } from '../../actions/tree';
-import { pushEditorModalRoute } from '../../actions/editorModalRouteStack';
-import router from '../../router';
+import { addElementChild } from '../../actions/tree';
+import { popEditorModalRoute } from '../../actions/editorModalRouteStack';
 import AddElementChild from './component';
 
 const mapStateToProps = () => ({});
 
-const actionCreators = (dispatch, ownProps) => ({
-  addElementChild: (elementChildType) => {
-    const { parentElementPath } = ownProps;
+const actionCreators = (dispatch) => ({
+  addElementChild: (elementPath, childType) => {
+    const childElement = { type: childType, props: {} };
 
-    return dispatch(addElement(elementChildType, parentElementPath));
+    dispatch(addElementChild(elementPath, childElement));
 
-    // return pushEditorModalRoute(router.getElementRoute());
+    return dispatch(popEditorModalRoute());
   },
 });
 

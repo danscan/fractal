@@ -2,8 +2,7 @@ import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   CHANGE_ELEMENT_CHILD_INDEX,
-  ADD_ELEMENT_PROP,
-  CHANGE_ELEMENT_PROP,
+  APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
 } from '../constants/actionTypes';
 import Baobab from 'baobab';
@@ -48,8 +47,7 @@ export default function tree(state = initialState, action) {
       return reduceRemoveElement(state, action);
     case CHANGE_ELEMENT_CHILD_INDEX:
       return reduceChangeElementIndex(state, action);
-    case ADD_ELEMENT_PROP:
-    case CHANGE_ELEMENT_PROP:
+    case APPLY_ELEMENT_PROP:
       return reduceApplyElementProp(state, action);
     case REMOVE_ELEMENT_PROP:
       return reduceRemoveElementProp(state, action);
@@ -59,7 +57,15 @@ export default function tree(state = initialState, action) {
 }
 
 function reduceAddElementChild(state, { elementPath, child }) {
-  return state.push(elementPath, child);
+  const elementChildrenPath = [
+    ...elementPath,
+    ELEMENT_PROPS_KEY,
+    ELEMENT_PROPS_CHILDREN_KEY,
+  ];
+
+  state.push(elementChildrenPath, child);
+
+  return state;
 }
 
 function reduceRemoveElement(state, { elementPath }) {
@@ -85,11 +91,13 @@ function reduceChangeElementIndex(state, { elementPath, oldChildIndex, newChildI
 }
 
 function reduceApplyElementProp(state, { elementPath, propName, propValue }) {
-  return state.push([
+  state.set([
     ...elementPath,
     ELEMENT_PROPS_KEY,
     propName,
   ], propValue);
+
+  return state;
 }
 
 function reduceRemoveElementProp(state, { elementPath, propName }) {

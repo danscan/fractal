@@ -1,27 +1,33 @@
 import { connect } from 'react-redux/native';
 import { pushEditorModalRoute } from '../../actions/editorModalRouteStack';
+import { selectElementWithElementPath } from '../../selectors/tree';
 import router from '../../router';
 import Element from './component';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state, ownProps) => ({
+  element: selectElementWithElementPath(ownProps.elementPath)(state),
+});
 
-const actionCreators = (dispatch, ownProps) => ({
-  onPressAddChild: (parentElementIndex) => {
-    return dispatch(pushEditorModalRoute(router.getAddElementRoute(parentElementIndex)));
+const actionCreators = dispatch => ({
+  onPressAddChild: (elementPath) => {
+    return dispatch(pushEditorModalRoute(router.getAddElementChildRoute(elementPath)));
   },
-  onPressAddProp: () => console.log('TODO: pushEditorModalRoute for AddElementPropScene'),
-  onPressChild: (childIndex) => {
-    const {
-      element,
-      elementPath,
-    } = ownProps;
-    const child = element.props.children[childIndex];
-    const childElementIndex = [...elementPath, childIndex];
+  onPressAddProp: (elementPath) => {
+    dispatch(navigateToApplyProp(elementPath));
+  },
+  onPressChild: (elementPath, childIndex) => {
+    const childElementPath = [...elementPath, 'props', 'children', childIndex];
 
-    return dispatch(pushEditorModalRoute(router.getElementRoute(child, childElementIndex)));
+    return dispatch(pushEditorModalRoute(router.getElementRoute(childElementPath)));
   },
-  onPressProp: () => console.log('TODO: pushEditorModalRoute for EditElementPropScene'),
+  onPressProp: (elementPath, propName, propValue) => {
+    dispatch(navigateToApplyProp(elementPath, propName, propValue));
+  },
 });
 
 export default connect(mapStateToProps, actionCreators)(Element);
 export { Element };
+
+function navigateToApplyProp(elementPath, propName, propValue) {
+  return pushEditorModalRoute(router.getApplyElementPropRoute(elementPath, propName, propValue));
+}

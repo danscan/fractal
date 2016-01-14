@@ -2,8 +2,7 @@ import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   CHANGE_ELEMENT_CHILD_INDEX,
-  ADD_ELEMENT_PROP,
-  CHANGE_ELEMENT_PROP,
+  APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
 } from '../constants/actionTypes';
 
@@ -31,18 +30,9 @@ export function changeElementChildIndex(elementPath, oldChildIndex, newChildInde
   };
 }
 
-export function addElementProp(elementPath, propName, propValue) {
+export function applyElementProp(elementPath, propName, propValue) {
   return {
-    type: ADD_ELEMENT_PROP,
-    elementPath,
-    propName,
-    propValue,
-  };
-}
-
-export function changeElementProp(elementPath, propName, propValue) {
-  return {
-    type: CHANGE_ELEMENT_PROP,
+    type: APPLY_ELEMENT_PROP,
     elementPath,
     propName,
     propValue,

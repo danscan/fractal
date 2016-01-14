@@ -1,34 +1,32 @@
 import React from 'react-native';
 import PeekBehindEditorModalTitle from '../components/PeekBehindEditorModalTitle';
+import PeekBehindEditorModalElementTitle from '../components/PeekBehindEditorModalElementTitle';
 import ElementScene from '../scenes/Element';
 import AddElementChildScene from '../scenes/AddElementChild';
+import ApplyElementPropScene from '../scenes/ApplyElementProp';
 
 export default {
-  getElementRoute(element, elementPath) {
+  getElementRoute(elementPath) {
     return {
       renderScene() {
         return (
-          <ElementScene element={element} elementPath={elementPath}/>
+          <ElementScene elementPath={elementPath}/>
         );
       },
 
       renderTitle() {
-        const title = typeof element === 'string'
-                    ? element
-                    : element.displayName || element.type.displayName;
-
         return (
-          <PeekBehindEditorModalTitle title={title}/>
+          <PeekBehindEditorModalElementTitle elementPath={elementPath}/>
         );
       },
     };
   },
 
-  getAddElementChildRoute(parentElementPath) {
+  getAddElementChildRoute(elementPath) {
     return {
       renderScene() {
         return (
-          <AddElementChildScene parentElementPath={parentElementPath}/>
+          <AddElementChildScene elementPath={elementPath}/>
         );
       },
 
@@ -36,7 +34,26 @@ export default {
         return (
           <PeekBehindEditorModalTitle title="Add Element"/>
         );
-      }
+      },
+    };
+  },
+
+  getApplyElementPropRoute(elementPath, propName) {
+    return {
+      renderScene() {
+        return (
+          <ApplyElementPropScene
+            elementPath={elementPath}
+            propName={propName}
+          />
+        );
+      },
+
+      renderTitle() {
+        return (
+          <PeekBehindEditorModalTitle title="Apply Prop"/>
+        );
+      },
     };
   },
 };

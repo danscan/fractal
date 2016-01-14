@@ -4,8 +4,8 @@ import styles from './styles';
 
 export default class AddElementChild extends Component {
   static propTypes = {
-    parentElementPath: PropTypes.arrayOf(PropTypes.number).isRequired,
     addElementChild: PropTypes.func.isRequired,
+    elementPath: PropTypes.arrayOf(PropTypes.number).isRequired,
   }
 
   constructor(...args) {
@@ -54,13 +54,14 @@ export default class AddElementChild extends Component {
   renderAutoCompleteResult(componentTypeName) {
     const {
       addElementChild,
+      elementPath,
     } = this.props;
-    const childElement = React[componentTypeName];
+    const childType = React[componentTypeName];
 
     return (
       <TouchableOpacity
         key={componentTypeName}
-        onPress={() => addElementChild(childElement)}
+        onPress={() => addElementChild(elementPath, childType)}
         style={styles.autoCompleteResult}
       >
         <Text style={styles.autoCompleteResultLabel}>

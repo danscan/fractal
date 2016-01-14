@@ -5,7 +5,6 @@ import styles from './styles';
 
 export default class EditorToolbar extends Component {
   static propTypes = {
-    tree: PropTypes.object.isRequired,
     onPressHideEditor: PropTypes.func.isRequired,
     onPressShowTree: PropTypes.func.isRequired,
   }
@@ -13,11 +12,10 @@ export default class EditorToolbar extends Component {
   renderShowTreeButton() {
     const {
       onPressShowTree,
-      tree,
     } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => onPressShowTree(tree)} style={styles.button}>
+      <TouchableOpacity onPress={() => onPressShowTree()} style={styles.button}>
         <Image source={showTreeButtonImage} style={styles.showTreeButtonImage}/>
       </TouchableOpacity>
     );

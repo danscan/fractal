@@ -22,6 +22,7 @@ export default class Element extends Component {
   renderPropsSection() {
     const {
       element,
+      elementPath,
       onPressAddProp,
       onPressProp,
     } = this.props;
@@ -35,12 +36,12 @@ export default class Element extends Component {
         </Text>
         <View style={styles.propsListSection}>
           {map(elementPropsWithoutChildren, (propValue, propName) => (
-            <TouchableOpacity key={propName} onPress={() => onPressProp(propName)}>
+            <TouchableOpacity key={propName} onPress={() => onPressProp(elementPath, propName, element.props[propName])}>
               <Prop key={propName} name={propName} value={propValue}/>
             </TouchableOpacity>
           ))}
         </View>
-        <TouchableOpacity onPress={() => onPressAddProp()} style={styles.addPropButton}>
+        <TouchableOpacity onPress={() => onPressAddProp(elementPath)} style={styles.addPropButton}>
           <Image source={addButtonImage} style={styles.addPropButtonImage}/>
         </TouchableOpacity>
       </View>
@@ -64,7 +65,7 @@ export default class Element extends Component {
         </Text>
         <View style={styles.childrenListSection}>
           {map(elementChildren, (childElement, childIndex) => (
-            <TouchableOpacity key={childIndex} onPress={() => onPressChild(childIndex)} style={styles.childButton}>
+            <TouchableOpacity key={childIndex} onPress={() => onPressChild(elementPath, childIndex)} style={styles.childButton}>
               <Child key={childIndex} element={childElement}/>
             </TouchableOpacity>
           ))}

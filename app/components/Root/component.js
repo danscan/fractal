@@ -3,7 +3,7 @@ import { omit } from 'underscore';
 
 export default class Root extends Component {
   static propTypes = {
-    tree: PropTypes.object.isRequired,
+    element: PropTypes.object.isRequired,
   }
 
   createElementFromNode(node, key) {
@@ -20,9 +20,8 @@ export default class Root extends Component {
   }
 
   render() {
-    const { tree } = this.props;
-    const rootNode = tree.get();
+    const { element } = this.props;
 
-    return this.createElementFromNode(rootNode);
+    return this.createElementFromNode(element);
   }
 }

@@ -26,7 +26,7 @@ export default class Child extends Component {
   renderChildrenSection() {
     const { element } = this.props;
     const elementProps = element.props || {};
-    const elementChildren = elementProps.children;
+    const elementChildren = elementProps.children || [];
 
     return (
       <View style={styles.childrenSection}>

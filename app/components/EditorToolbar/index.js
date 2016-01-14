@@ -4,17 +4,11 @@ import { hideEditor } from '../../actions/showEditor';
 import { pushEditorModalRoute } from '../../actions/editorModalRouteStack';
 import router from '../../router';
 
-const mapStateToProps = (state) => ({
-  tree: state.tree,
-});
+const mapStateToProps = () => ({});
 
 const actionCreators = {
   onPressHideEditor: hideEditor,
-  onPressShowTree: (tree) => {
-    const rootNode = tree.get();
-
-    return pushEditorModalRoute(router.getElementRoute(rootNode, []));
-  },
+  onPressShowTree: () => pushEditorModalRoute(router.getElementRoute([])),
 };
 
 export default connect(mapStateToProps, actionCreators)(Toolbar);
