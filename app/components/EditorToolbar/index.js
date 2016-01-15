@@ -1,14 +1,18 @@
 import { connect } from 'react-redux/native';
+import { ActionCreators } from 'redux-undo';
+import { beginPreview } from '../../actions/preview';
+import { selectCanRedo, selectCanUndo } from '../../selectors/undo';
 import Toolbar from './component';
-import { hideEditor } from '../../actions/showEditor';
-import { pushEditorModalRoute } from '../../actions/editorModalRouteStack';
-import router from '../../router';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  canRedo: selectCanRedo(state),
+  canUndo: selectCanUndo(state),
+});
 
 const actionCreators = {
-  onPressHideEditor: hideEditor,
-  onPressShowTree: () => pushEditorModalRoute(router.getElementRoute([])),
+  onPressBeginPreview: beginPreview,
+  onPressRedo: ActionCreators.redo,
+  onPressUndo: ActionCreators.undo,
 };
 
 export default connect(mapStateToProps, actionCreators)(Toolbar);

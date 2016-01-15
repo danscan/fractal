@@ -1,9 +1,10 @@
 import { createSelector } from 'reselect';
+import { selectPresentState } from './undo';
 
-export function selectTree(state) {
-  // Present value of *undoable* tree reducer state
-  return state.tree.present;
-}
+export const selectTree = createSelector(
+  selectPresentState,
+  (state) => state.tree,
+);
 
 export const selectElementCursorWithElementPath = elementPath => createSelector(
   selectTree,

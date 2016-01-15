@@ -1,32 +1,62 @@
 import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
-import hideEditorButtonImage from '../../assets/img/closeButton.png';
-import showTreeButtonImage from '../../assets/img/showTreeButton.png';
+import beginPreviewButtonImage from '../../assets/img/beginPreviewButton.png';
+import redoButtonImage from '../../assets/img/redoButton.png';
+import undoButtonImage from '../../assets/img/undoButton.png';
 import styles from './styles';
 
 export default class EditorToolbar extends Component {
   static propTypes = {
-    onPressHideEditor: PropTypes.func.isRequired,
-    onPressShowTree: PropTypes.func.isRequired,
+    canRedo: PropTypes.bool.isRequired,
+    canUndo: PropTypes.bool.isRequired,
+    onPressBeginPreview: PropTypes.func.isRequired,
+    onPressRedo: PropTypes.func.isRequired,
+    onPressUndo: PropTypes.func.isRequired,
   }
 
-  renderShowTreeButton() {
+  renderRedoButton() {
     const {
-      onPressShowTree,
+      canRedo,
+      onPressRedo,
     } = this.props;
+    const buttonStyle = [
+      styles.button,
+      !canRedo
+        ? styles.buttonDisabled
+        : null,
+    ];
 
     return (
-      <TouchableOpacity onPress={() => onPressShowTree()} style={styles.button}>
-        <Image source={showTreeButtonImage} style={styles.showTreeButtonImage}/>
+      <TouchableOpacity onPress={() => onPressRedo()} style={buttonStyle}>
+        <Image source={redoButtonImage} style={styles.redoButtonImage}/>
       </TouchableOpacity>
     );
   }
 
-  renderHideEditorButton() {
-    const { onPressHideEditor } = this.props;
+  renderUndoButton() {
+    const {
+      canUndo,
+      onPressUndo,
+    } = this.props;
+    const buttonStyle = [
+      styles.button,
+      !canUndo
+        ? styles.buttonDisabled
+        : null,
+    ];
 
     return (
-      <TouchableOpacity onPress={() => onPressHideEditor()} style={styles.button}>
-        <Image source={hideEditorButtonImage} style={styles.hideEditorButtonImage}/>
+      <TouchableOpacity onPress={() => onPressUndo()} style={buttonStyle}>
+        <Image source={undoButtonImage} style={styles.undoButtonImage}/>
+      </TouchableOpacity>
+    );
+  }
+
+  renderBeginPreviewButton() {
+    const { onPressBeginPreview } = this.props;
+
+    return (
+      <TouchableOpacity onPress={() => onPressBeginPreview()} style={styles.button}>
+        <Image source={beginPreviewButtonImage} style={styles.beginPreviewButtonImage}/>
       </TouchableOpacity>
     );
   }
@@ -35,10 +65,11 @@ export default class EditorToolbar extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.leftButtons}>
-          {this.renderShowTreeButton()}
+          {this.renderUndoButton()}
+          {this.renderRedoButton()}
         </View>
         <View style={styles.rightButtons}>
-          {this.renderHideEditorButton()}
+          {this.renderBeginPreviewButton()}
         </View>
       </View>
     );

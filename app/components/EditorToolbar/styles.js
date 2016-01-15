@@ -5,9 +5,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#2e3538',
     flexDirection: 'row',
-    height: 64,
+    height: 48,
     paddingHorizontal: 2,
-    paddingTop: 20,
   },
 
   leftButtons: {
@@ -24,12 +23,19 @@ export default StyleSheet.create({
   button: {
     padding: 8,
   },
-  showTreeButtonImage: {
-    height: 24,
+  buttonDisabled: {
+    opacity: 0.2,
+  },
+  beginPreviewButtonImage: {
+    height: 22,
     width: 22,
   },
-  hideEditorButtonImage: {
-    height: 14,
-    width: 14,
+  redoButtonImage: {
+    height: 22,
+    width: 22,
+  },
+  undoButtonImage: {
+    height: 22,
+    width: 22,
   },
 });

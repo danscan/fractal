@@ -1,4 +1,3 @@
-import undoable from 'redux-undo';
 import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
@@ -15,7 +14,7 @@ import reduceChangeElementIndex from './reduceChangeElementIndex';
 import reduceApplyElementProp from './reduceApplyElementProp';
 import reduceRemoveElementProp from './reduceRemoveElementProp';
 
-export default undoable(function tree(state = initialState, action) {
+export default function tree(state = initialState, action) {
   switch (action.type) {
     case ADD_ELEMENT_CHILD:
       return reduceAddElementChild(state, action);
@@ -30,4 +29,4 @@ export default undoable(function tree(state = initialState, action) {
     default:
       return state;
   }
-});
+}

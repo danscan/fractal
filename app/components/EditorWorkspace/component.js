@@ -1,11 +1,8 @@
-import React, { Component, PropTypes, StatusBarIOS } from 'react-native';
-import EditorToggleGestureInterceptor from '../EditorToggleGestureInterceptor';
+import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
+import endPreviewButtonImage from '../../assets/img/closeButton.png';
 import EditorToolbar from '../EditorToolbar';
-import EditorModalNavigator from '../EditorModalNavigator';
 import Root from '../Root';
-
-// (Configuration constants)
-const STATUS_BAR_STYLE = 'light-content';
+import styles from './styles';
 
 export default class EditorWorkspace extends Component {
   static propTypes = {
@@ -15,28 +12,43 @@ export default class EditorWorkspace extends Component {
   }
 
   componentDidMount() {
-    StatusBarIOS.setStyle(STATUS_BAR_STYLE);
+    StatusBarIOS.setHidden(true);
   }
 
-  renderEditorToolbar() {
-    const { preview } = this.props;
+  renderPreview() {
+    // TODO: Animate style changes when preview prop changes...
+    return (
+      <View style={styles.container}>
+        <Root/>
+        {this.renderEndPreviewButton()}
+      </View>
+    );
+  }
 
-    return preview
-            ? <EditorToolbar/>
-            : null;
+  renderEndPreviewButton() {
+    const { endPreview } = this.props;
+
+    return (
+      <TouchableOpacity onPress={() => endPreview()} style={styles.endPreviewButton}>
+        <Image source={endPreviewButtonImage} style={styles.endPreviewButtonImage}/>
+      </TouchableOpacity>
+    );
   }
 
   render() {
     const {
-      toggleEditor,
+      preview,
     } = this.props;
 
+    if (preview) {
+      return this.renderPreview();
+    }
+
     return (
-      <EditorToggleGestureInterceptor toggleEditor={toggleEditor}>
-        {this.renderEditorToolbar()}
+      <View style={styles.container}>
+        <EditorToolbar/>
         <Root/>
-        <EditorModalNavigator/>
-      </EditorToggleGestureInterceptor>
+      </View>
     );
   }
 }
