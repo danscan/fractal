@@ -1,11 +1,12 @@
 import React, { Component, PropTypes, ScrollView, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { reduce } from 'underscore';
+import { elementPathPropType } from '../../constants/propTypes';
 import styles from './styles';
 
 export default class AddElementChild extends Component {
   static propTypes = {
     addElementChild: PropTypes.func.isRequired,
-    elementPath: PropTypes.arrayOf(PropTypes.number).isRequired,
+    elementPath: elementPathPropType.isRequired,
   }
 
   constructor(...args) {

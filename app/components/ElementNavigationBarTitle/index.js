@@ -1,5 +1,5 @@
 import { connect } from 'react-redux/native';
-import PeekBehindEditorModalElementTitle from './component';
+import ElementNavigationBarTitle from './component';
 import { selectElementWithElementPath } from '../../selectors/tree';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,5 +8,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 const actionCreators = {};
 
-export default connect(mapStateToProps, actionCreators)(PeekBehindEditorModalElementTitle);
-export { PeekBehindEditorModalElementTitle };
+export default connect(mapStateToProps, actionCreators)(ElementNavigationBarTitle);
+export { ElementNavigationBarTitle };

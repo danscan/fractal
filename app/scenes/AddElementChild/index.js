@@ -7,7 +7,7 @@ const mapStateToProps = () => ({});
 
 const actionCreators = (dispatch) => ({
   addElementChild: (elementPath, childType) => {
-    const childElement = { type: childType, props: {} };
+    const childElement = { type: childType, props: { children: [] } };
 
     dispatch(addElementChild(elementPath, childElement));
 

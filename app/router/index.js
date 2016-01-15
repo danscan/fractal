@@ -1,6 +1,5 @@
 import React from 'react-native';
-import PeekBehindEditorModalTitle from '../components/PeekBehindEditorModalTitle';
-import PeekBehindEditorModalElementTitle from '../components/PeekBehindEditorModalElementTitle';
+import ElementNavigationBarTitle from '../components/ElementNavigationBarTitle';
 import ElementScene from '../scenes/Element';
 import AddElementChildScene from '../scenes/AddElementChild';
 import ApplyElementPropScene from '../scenes/ApplyElementProp';
@@ -16,7 +15,7 @@ export default {
 
       renderTitle() {
         return (
-          <PeekBehindEditorModalElementTitle elementPath={elementPath}/>
+          <ElementNavigationBarTitle elementPath={elementPath}/>
         );
       },
     };
@@ -30,10 +29,8 @@ export default {
         );
       },
 
-      renderTitle() {
-        return (
-          <PeekBehindEditorModalTitle title="Add Element"/>
-        );
+      getTitle() {
+        return 'Add Child';
       },
     };
   },
@@ -49,10 +46,8 @@ export default {
         );
       },
 
-      renderTitle() {
-        return (
-          <PeekBehindEditorModalTitle title="Apply Prop"/>
-        );
+      getTitle() {
+        return 'Apply Prop';
       },
     };
   },

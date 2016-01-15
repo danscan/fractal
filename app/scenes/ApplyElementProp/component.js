@@ -1,10 +1,12 @@
 import React, { Component, PropTypes, Text, TouchableOpacity, TextInput, View } from 'react-native';
+import { elementPathPropType } from '../../constants/propTypes';
 import styles from './styles';
 
 export default class ApplyElementProp extends Component {
   static propTypes = {
     onPressApply: PropTypes.func.isRequired,
-    elementPath: PropTypes.arrayOf(PropTypes.number).isRequired,
+    onPressDelete: PropTypes.func.isRequired,
+    elementPath: elementPathPropType.isRequired,
     propName: PropTypes.string,
     propValue: PropTypes.any,
   }

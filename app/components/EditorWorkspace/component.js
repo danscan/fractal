@@ -7,10 +7,11 @@ import Root from '../Root';
 // (Configuration constants)
 const STATUS_BAR_STYLE = 'light-content';
 
-export default class EditorRoot extends Component {
+export default class EditorWorkspace extends Component {
   static propTypes = {
-    showEditor: PropTypes.bool.isRequired,
-    toggleEditor: PropTypes.func.isRequired,
+    beginPreview: PropTypes.func.isRequired,
+    endPreview: PropTypes.func.isRequired,
+    preview: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
@@ -18,9 +19,9 @@ export default class EditorRoot extends Component {
   }
 
   renderEditorToolbar() {
-    const { showEditor } = this.props;
+    const { preview } = this.props;
 
-    return showEditor
+    return preview
             ? <EditorToolbar/>
             : null;
   }

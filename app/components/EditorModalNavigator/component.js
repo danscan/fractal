@@ -7,7 +7,6 @@ import styles from './styles';
 
 export default class EditorModalNavigator extends Component {
   static propTypes = {
-    peekBehindEditorModal: PropTypes.bool.isRequired,
     popRoute: PropTypes.func.isRequired,
     pushRoute: PropTypes.func.isRequired,
     resetRouteStack: PropTypes.func.isRequired,
@@ -16,21 +15,16 @@ export default class EditorModalNavigator extends Component {
 
   render() {
     const {
-      peekBehindEditorModal,
       popRoute,
       pushRoute,
       resetRouteStack,
       routeStack,
     } = this.props;
     const routeStackIsEmpty = routeStack.count() < 1;
-    const containerStyle = [
-      styles.container,
-      peekBehindEditorModal ? { opacity: 0 } : {},
-    ];
 
     return (
       <Modal animated transparent visible={!routeStackIsEmpty}>
-        <View style={containerStyle}>
+        <View style={styles.container}>
           <Navigator
             popRoute={() => popRoute()}
             pushRoute={(route) => pushRoute(route)}

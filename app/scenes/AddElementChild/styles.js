@@ -25,6 +25,7 @@ export default StyleSheet.create({
   },
   autoCompleteList: {},
   autoCompleteResult: {
+    backgroundColor: 'white',
     borderBottomColor: '#e8e8e8',
     borderBottomWidth: 1,
     padding: 20,

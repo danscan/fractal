@@ -3,7 +3,6 @@ import EditorModalNavigator from './component';
 import { pushEditorModalRoute, popEditorModalRoute, resetEditorModalRouteStack } from '../../actions/editorModalRouteStack';
 
 const mapStateToProps = (state) => ({
-  peekBehindEditorModal: state.peekBehindEditorModal,
   routeStack: state.editorModalRouteStack,
 });
 

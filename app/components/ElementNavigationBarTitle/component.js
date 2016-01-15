@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react-native';
+import React, { Component, PropTypes, Text } from 'react-native';
 import { elementPropType, elementPathPropType } from '../../constants/propTypes';
-import PeekBehindEditorModalTitle from '../PeekBehindEditorModalTitle';
+import styles from './styles';
 
-export default class PeekBehindEditorModalElementTitle extends Component {
+export default class ElementNavigationBarTitle extends Component {
   static propTypes = {
     element: PropTypes.oneOfType([
       elementPropType,
@@ -15,14 +15,15 @@ export default class PeekBehindEditorModalElementTitle extends Component {
     const {
       element,
     } = this.props;
-    console.log('element:', element);
 
     const title = typeof element === 'string'
                 ? element
                 : element.displayName || element.type.displayName;
 
     return (
-      <PeekBehindEditorModalTitle title={title}/>
+      <Text style={styles.container}>
+        {title}
+      </Text>
     );
   }
 }

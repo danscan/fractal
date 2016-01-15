@@ -5,21 +5,13 @@ import {
 } from '../constants/actionTypes';
 
 export function pushEditorModalRoute(route) {
-  return {
-    type: PUSH_EDITOR_MODAL_ROUTE,
-    route,
-  };
+  return { type: PUSH_EDITOR_MODAL_ROUTE, route };
 }
 
 export function popEditorModalRoute() {
-  return {
-    type: POP_EDITOR_MODAL_ROUTE,
-  };
+  return { type: POP_EDITOR_MODAL_ROUTE };
 }
 
 export function resetEditorModalRouteStack(routes) {
-  return {
-    type: RESET_EDITOR_MODAL_ROUTE_STACK,
-    routes,
-  };
+  return { type: RESET_EDITOR_MODAL_ROUTE_STACK, routes };
 }

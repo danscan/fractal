@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 
 export function selectTree(state) {
-  return state.tree;
+  // Present value of *undoable* tree reducer state
+  return state.tree.present;
 }
 
 export const selectElementCursorWithElementPath = elementPath => createSelector(
