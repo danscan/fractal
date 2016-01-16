@@ -1,9 +1,9 @@
 import Baobab from 'baobab';
-import { Text, View } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 
 export default new Baobab({
   displayName: 'Root',
-  type: View,
+  type: ScrollView,
   props: {
     children: [
       {
@@ -20,10 +20,14 @@ export default new Baobab({
         },
       },
     ],
-    style: {
+    contentContainerStyle: {
       alignItems: 'center',
       flex: 1,
       justifyContent: 'center',
+    },
+    style: {
+      backgroundColor: 'white',
+      flex: 1,
     },
   },
 });

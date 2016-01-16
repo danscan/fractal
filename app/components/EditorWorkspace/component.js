@@ -1,6 +1,7 @@
 import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
 import { elementCursorPropType } from '../../constants/propTypes';
 import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
+import EditorInspector from '../EditorInspector';
 import EditorToolbar from '../EditorToolbar';
 import Element from '../Element';
 import styles from './styles';
@@ -53,6 +54,14 @@ export default class EditorWorkspace extends Component {
     );
   }
 
+  renderInspectorSection() {
+    return (
+      <View style={styles.inspectorSection}>
+        <EditorInspector/>
+      </View>
+    );
+  }
+
   render() {
     const {
       fullScreenPreview,
@@ -66,6 +75,7 @@ export default class EditorWorkspace extends Component {
       <View style={styles.container}>
         <EditorToolbar/>
         {this.renderPreviewSection()}
+        {this.renderInspectorSection()}
       </View>
     );
   }

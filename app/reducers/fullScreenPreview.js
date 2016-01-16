@@ -3,7 +3,7 @@ import {
   END_FULL_SCREEN_PREVIEW,
 } from '../constants/actionTypes';
 
-const initialState = true;
+const initialState = false;
 
 export default function fullScreenPreview(state = initialState, action) {
   switch (action.type) {

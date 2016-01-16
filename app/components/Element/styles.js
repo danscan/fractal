@@ -7,5 +7,8 @@ export default StyleSheet.create({
     borderWidth: 3,
     margin: -6,
     padding: 3,
+    transform: [
+      { scale: 0.3 },
+    ],
   },
 });

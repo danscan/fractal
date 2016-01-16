@@ -41,12 +41,16 @@ export default StyleSheet.create({
     borderColor: '#2e3538',
     borderRadius: 4,
     borderWidth: 1,
+    overflow: 'hidden',
   },
   previewScaledElement: {
-    width: windowDimensions.width / 3,
-    height: windowDimensions.height / 3,
-    transform: [
-      { scale: 0.3 },
-    ],
+    flex: 1,
+    // transform: [
+    //   { scale: 0.3 },
+    // ],
+  },
+
+  inspectorSection: {
+    flex: 1,
   },
 });
