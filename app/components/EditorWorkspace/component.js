@@ -38,8 +38,8 @@ export default class EditorWorkspace extends Component {
   renderPreviewSection() {
     return (
       <View style={styles.previewSection}>
-        <View style={styles.rootWrapper}>
-          <View style={styles.scaledRoot}>
+        <View style={styles.previewRootWrapper}>
+          <View style={styles.previewScaledRoot}>
             <Root/>
           </View>
         </View>

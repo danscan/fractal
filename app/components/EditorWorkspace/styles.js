@@ -34,7 +34,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  rootWrapper: {
+  previewRootWrapper: {
     width: windowDimensions.width / 3,
     height: windowDimensions.height / 3,
 
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
   },
-  scaledRoot: {
+  previewScaledRoot: {
     width: windowDimensions.width / 3,
     height: windowDimensions.height / 3,
     transform: [
