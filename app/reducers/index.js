@@ -10,7 +10,7 @@ import tree from './tree';
 // Filter actions that should be undoable
 import * as actionTypes from '../constants/actionTypes';
 function filterUndoableActions(action) {
-  const actionsToOmitFromHistory = [
+  const actionsToOmitFromUndoableHistory = [
     actionTypes.BEGIN_PREVIEW,
     actionTypes.END_PREVIEW,
     actionTypes.PUSH_SELECTED_ELEMENT_PATH,
@@ -18,7 +18,7 @@ function filterUndoableActions(action) {
     actionTypes.REPLACE_SELECTED_ELEMENT_PATH,
   ];
 
-  return actionsToOmitFromHistory.indexOf(action.type) < 0;
+  return actionsToOmitFromUndoableHistory.indexOf(action.type) < 0;
 }
 
 const reducer = undoable(combineReducers({
