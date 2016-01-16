@@ -1,7 +1,8 @@
 import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
+import { elementCursorPropType } from '../../constants/propTypes';
 import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
 import EditorToolbar from '../EditorToolbar';
-import Root from '../Root';
+import Element from '../Element';
 import styles from './styles';
 
 export default class EditorWorkspace extends Component {
@@ -9,6 +10,7 @@ export default class EditorWorkspace extends Component {
     beginFullScreenPreview: PropTypes.func.isRequired,
     endFullScreenPreview: PropTypes.func.isRequired,
     fullScreenPreview: PropTypes.bool.isRequired,
+    rootCursor: elementCursorPropType.isRequired,
   }
 
   componentDidMount() {
@@ -16,16 +18,18 @@ export default class EditorWorkspace extends Component {
   }
 
   renderFullScreenPreview() {
+    const { rootCursor } = this.props;
+
     // TODO: Animate style changes when fullScreenPreview prop changes...
     return (
       <View style={styles.container}>
-        <Root/>
-        {this.renderendFullScreenPreviewButton()}
+        <Element rootCursor={rootCursor}/>
+        {this.renderFullScreenPreviewButton()}
       </View>
     );
   }
 
-  renderendFullScreenPreviewButton() {
+  renderFullScreenPreviewButton() {
     const { endFullScreenPreview } = this.props;
 
     return (
@@ -36,11 +40,13 @@ export default class EditorWorkspace extends Component {
   }
 
   renderPreviewSection() {
+    const { rootCursor } = this.props;
+
     return (
       <View style={styles.previewSection}>
-        <View style={styles.previewRootWrapper}>
-          <View style={styles.previewScaledRoot}>
-            <Root/>
+        <View style={styles.previewElementWrapper}>
+          <View style={styles.previewScaledElement}>
+            <Element rootCursor={rootCursor} callOutPath={['props', 'children', 0]}/>
           </View>
         </View>
       </View>
