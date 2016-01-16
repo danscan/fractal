@@ -4,15 +4,13 @@ export function presentState(state) {
 }
 
 export function canRedo(state) {
-  const past = state.past || [];
-  const canRedo = past.length > 0;
+  const future = state.future || [];
 
-  return canRedo;
+  return future.length > 0;
 }
 
 export function canUndo(state) {
-  const future = state.future || [];
-  const canUndo = future.length > 0;
+  const past = state.past || [];
 
-  return canUndo;
+  return past.length > 0;
 }
