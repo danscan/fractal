@@ -1,5 +1,4 @@
-import React, { View } from 'react-native';
-import { createElement, Component } from 'react-native';
+import React, { createElement, Component, View } from 'react-native';
 import { elementCursorPropType, elementPathPropType } from '../../constants/propTypes';
 import { isEqual, last, omit } from 'underscore';
 import styles from './styles';
