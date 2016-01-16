@@ -18,18 +18,14 @@ export default class EditorToolbar extends Component {
       canRedo,
       onPressRedo,
     } = this.props;
-    const buttonStyle = [
-      styles.button,
-      !canRedo
-        ? styles.buttonDisabled
-        : null,
-    ];
 
-    return (
-      <TouchableOpacity onPress={() => onPressRedo()} style={buttonStyle}>
-        <Image source={redoButtonImage} style={styles.redoButtonImage}/>
-      </TouchableOpacity>
-    );
+    return this.renderImageButton({
+      buttonImageSource: redoButtonImage,
+      buttonImageStyle: styles.redoButtonImage,
+      buttonStyle: styles.button,
+      enabled: canRedo,
+      onPress: onPressRedo,
+    });
   }
 
   renderUndoButton() {
@@ -37,26 +33,48 @@ export default class EditorToolbar extends Component {
       canUndo,
       onPressUndo,
     } = this.props;
-    const buttonStyle = [
-      styles.button,
-      !canUndo
-        ? styles.buttonDisabled
-        : null,
-    ];
 
-    return (
-      <TouchableOpacity onPress={() => onPressUndo()} style={buttonStyle}>
-        <Image source={undoButtonImage} style={styles.undoButtonImage}/>
-      </TouchableOpacity>
-    );
+    return this.renderImageButton({
+      buttonImageSource: undoButtonImage,
+      buttonImageStyle: styles.undoButtonImage,
+      buttonStyle: styles.button,
+      enabled: canUndo,
+      onPress: onPressUndo,
+    });
   }
 
   renderBeginPreviewButton() {
     const { onPressBeginPreview } = this.props;
 
+    return this.renderImageButton({
+      buttonImageSource: beginPreviewButtonImage,
+      buttonImageStyle: styles.beginPreviewButtonImage,
+      buttonStyle: styles.button,
+      onPress: onPressBeginPreview,
+    });
+  }
+
+  renderImageButton({ buttonImageSource, buttonImageStyle, buttonStyle, enabled = true, onPress }) {
+    let activeOpacity;
+    let _onPress;
+    let _buttonImageStyle;
+
+    if (enabled) {
+      _onPress = onPress;
+      _buttonImageStyle = buttonImageStyle;
+    } else {
+      activeOpacity = 1;
+      _onPress = () => {};
+      _buttonImageStyle = [buttonImageStyle, styles.buttonImageDisabled];
+    }
+
     return (
-      <TouchableOpacity onPress={() => onPressBeginPreview()} style={styles.button}>
-        <Image source={beginPreviewButtonImage} style={styles.beginPreviewButtonImage}/>
+      <TouchableOpacity
+        activeOpacity={activeOpacity}
+        onPress={() => _onPress()}
+        style={buttonStyle}
+      >
+        <Image source={buttonImageSource} style={_buttonImageStyle}/>
       </TouchableOpacity>
     );
   }

@@ -23,7 +23,7 @@ export default StyleSheet.create({
   button: {
     padding: 8,
   },
-  buttonDisabled: {
+  buttonImageDisabled: {
     opacity: 0.2,
   },
   beginPreviewButtonImage: {
