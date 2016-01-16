@@ -1,53 +1,65 @@
 import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
-import endPreviewButtonImage from '../../assets/img/closeButton.png';
+import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
 import EditorToolbar from '../EditorToolbar';
 import Root from '../Root';
 import styles from './styles';
 
 export default class EditorWorkspace extends Component {
   static propTypes = {
-    beginPreview: PropTypes.func.isRequired,
-    endPreview: PropTypes.func.isRequired,
-    preview: PropTypes.bool.isRequired,
+    beginFullScreenPreview: PropTypes.func.isRequired,
+    endFullScreenPreview: PropTypes.func.isRequired,
+    fullScreenPreview: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
     StatusBarIOS.setHidden(true);
   }
 
-  renderPreview() {
-    // TODO: Animate style changes when preview prop changes...
+  renderFullScreenPreview() {
+    // TODO: Animate style changes when fullScreenPreview prop changes...
     return (
       <View style={styles.container}>
         <Root/>
-        {this.renderEndPreviewButton()}
+        {this.renderendFullScreenPreviewButton()}
       </View>
     );
   }
 
-  renderEndPreviewButton() {
-    const { endPreview } = this.props;
+  renderendFullScreenPreviewButton() {
+    const { endFullScreenPreview } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => endPreview()} style={styles.endPreviewButton}>
-        <Image source={endPreviewButtonImage} style={styles.endPreviewButtonImage}/>
+      <TouchableOpacity onPress={() => endFullScreenPreview()} style={styles.endFullScreenPreviewButton}>
+        <Image source={endFullScreenPreviewButtonImage} style={styles.endFullScreenPreviewButtonImage}/>
       </TouchableOpacity>
+    );
+  }
+
+  renderPreviewSection() {
+    return (
+      <View style={styles.previewSection}>
+        <View style={styles.rootWrapper}>
+          <View style={styles.scaledRoot}>
+            <Root/>
+          </View>
+        </View>
+      </View>
     );
   }
 
   render() {
     const {
-      preview,
+      fullScreenPreview,
     } = this.props;
 
-    if (preview) {
-      return this.renderPreview();
+    if (fullScreenPreview) {
+      return this.renderFullScreenPreview();
     }
 
     return (
       <View style={styles.container}>
         <EditorToolbar/>
-        <Root/>
+        {this.renderPreviewSection()}
       </View>
     );
   }

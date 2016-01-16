@@ -1,6 +1,6 @@
 import { connect } from 'react-redux/native';
 import { ActionCreators } from 'redux-undo';
-import { beginPreview } from '../../actions/preview';
+import { beginFullScreenPreview } from '../../actions/fullScreenPreview';
 import { canRedo, canUndo } from '../../selectors/undo';
 import Toolbar from './component';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const actionCreators = {
-  onPressBeginPreview: beginPreview,
+  onPressbeginFullScreenPreview: beginFullScreenPreview,
   onPressRedo: ActionCreators.redo,
   onPressUndo: ActionCreators.undo,
 };

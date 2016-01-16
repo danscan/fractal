@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { presentState } from './undo';
 
-export const preview = createSelector(
+export const fullScreenPreview = createSelector(
   presentState,
-  (state) => state.preview,
+  (state) => state.fullScreenPreview,
 );

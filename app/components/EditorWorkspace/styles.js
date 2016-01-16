@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+
+const windowDimensions = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -6,7 +8,7 @@ export default StyleSheet.create({
     flex: 1,
   },
 
-  endPreviewButton: {
+  endFullScreenPreviewButton: {
     position: 'absolute',
     right: 30,
     bottom: 30,
@@ -22,8 +24,29 @@ export default StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
   },
-  endPreviewButtonImage: {
+  endFullScreenPreviewButtonImage: {
     width: 18,
     height: 18,
+  },
+
+  previewSection: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  rootWrapper: {
+    width: windowDimensions.width / 3,
+    height: windowDimensions.height / 3,
+
+    borderColor: '#2e3538',
+    borderRadius: 4,
+    borderWidth: 1,
+  },
+  scaledRoot: {
+    width: windowDimensions.width / 3,
+    height: windowDimensions.height / 3,
+    transform: [
+      { scale: 0.3 },
+    ],
   },
 });

@@ -1,18 +1,18 @@
 import { connect } from 'react-redux/native';
 import EditorWorkspace from './component';
 import {
-  beginPreview,
-  endPreview,
-} from '../../actions/preview';
-import { preview } from '../../selectors/preview';
+  beginFullScreenPreview,
+  endFullScreenPreview,
+} from '../../actions/fullScreenPreview';
+import { fullScreenPreview } from '../../selectors/fullScreenPreview';
 
 const mapStateToProps = (state) => ({
-  preview: preview(state),
+  fullScreenPreview: fullScreenPreview(state),
 });
 
 const actionCreators = {
-  beginPreview,
-  endPreview,
+  beginFullScreenPreview,
+  endFullScreenPreview,
 };
 
 export default connect(mapStateToProps, actionCreators)(EditorWorkspace);

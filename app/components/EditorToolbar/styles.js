@@ -26,7 +26,7 @@ export default StyleSheet.create({
   buttonImageDisabled: {
     opacity: 0.2,
   },
-  beginPreviewButtonImage: {
+  beginFullScreenPreviewButtonImage: {
     height: 22,
     width: 22,
   },

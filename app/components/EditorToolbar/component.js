@@ -1,5 +1,5 @@
 import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
-import beginPreviewButtonImage from '../../assets/img/beginPreviewButton.png';
+import beginFullScreenPreviewButtonImage from '../../assets/img/beginFullScreenPreviewButton.png';
 import redoButtonImage from '../../assets/img/redoButton.png';
 import undoButtonImage from '../../assets/img/undoButton.png';
 import styles from './styles';
@@ -8,7 +8,7 @@ export default class EditorToolbar extends Component {
   static propTypes = {
     canRedo: PropTypes.bool.isRequired,
     canUndo: PropTypes.bool.isRequired,
-    onPressBeginPreview: PropTypes.func.isRequired,
+    onPressbeginFullScreenPreview: PropTypes.func.isRequired,
     onPressRedo: PropTypes.func.isRequired,
     onPressUndo: PropTypes.func.isRequired,
   }
@@ -43,14 +43,14 @@ export default class EditorToolbar extends Component {
     });
   }
 
-  renderBeginPreviewButton() {
-    const { onPressBeginPreview } = this.props;
+  renderbeginFullScreenPreviewButton() {
+    const { onPressbeginFullScreenPreview } = this.props;
 
     return this.renderImageButton({
-      buttonImageSource: beginPreviewButtonImage,
-      buttonImageStyle: styles.beginPreviewButtonImage,
+      buttonImageSource: beginFullScreenPreviewButtonImage,
+      buttonImageStyle: styles.beginFullScreenPreviewButtonImage,
       buttonStyle: styles.button,
-      onPress: onPressBeginPreview,
+      onPress: onPressbeginFullScreenPreview,
     });
   }
 
@@ -87,7 +87,7 @@ export default class EditorToolbar extends Component {
           {this.renderRedoButton()}
         </View>
         <View style={styles.rightButtons}>
-          {this.renderBeginPreviewButton()}
+          {this.renderbeginFullScreenPreviewButton()}
         </View>
       </View>
     );
