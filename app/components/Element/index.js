@@ -38,9 +38,7 @@ export default class Element extends Component {
     const { type: elementType, props = {} } = element || {};
     const { children = [] } = props;
     const elementKeyProp = last(elementPath);
-    // TODO: Something smarter...
-    const elementTransformScaleStyle = ((!children.length || typeof last(children) === 'string') && !isEqual(elementPath, this.props.callOutPath) ? { scale: 0.3 } : { scale: 1 });
-    const elementProps = { ...omit(props, 'children'), key: elementKeyProp, style: { ...props.style, transform: [elementTransformScaleStyle] } };
+    const elementProps = { ...omit(props, 'children'), key: elementKeyProp };
     const elementChildren = children.map((childElement, childKey) => {
       const childElementPath = [...elementPath, 'props', 'children', childKey];
 

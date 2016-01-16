@@ -35,19 +35,17 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   previewElementWrapper: {
-    width: windowDimensions.width / 3,
-    height: windowDimensions.height / 3,
+    width: windowDimensions.width,
+    height: windowDimensions.height,
 
     borderColor: '#2e3538',
     borderRadius: 4,
-    borderWidth: 1,
+    borderWidth: 3,
+    padding: -3,
+    transform: [
+      { scale: 0.3 },
+    ],
     overflow: 'hidden',
-  },
-  previewScaledElement: {
-    flex: 1,
-    // transform: [
-    //   { scale: 0.3 },
-    // ],
   },
 
   inspectorSection: {

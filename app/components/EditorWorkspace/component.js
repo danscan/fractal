@@ -46,9 +46,7 @@ export default class EditorWorkspace extends Component {
     return (
       <View style={styles.previewSection}>
         <View style={styles.previewElementWrapper}>
-          <View style={styles.previewScaledElement}>
-            <Element rootCursor={rootCursor} callOutPath={['props', 'children', 0]}/>
-          </View>
+          <Element rootCursor={rootCursor} callOutPath={['props', 'children', 0]}/>
         </View>
       </View>
     );
