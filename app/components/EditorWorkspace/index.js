@@ -4,10 +4,10 @@ import {
   beginPreview,
   endPreview,
 } from '../../actions/preview';
-import { selectPreview } from '../../selectors/preview';
+import { preview } from '../../selectors/preview';
 
 const mapStateToProps = (state) => ({
-  preview: selectPreview(state),
+  preview: preview(state),
 });
 
 const actionCreators = {

@@ -1,12 +1,12 @@
 import { connect } from 'react-redux/native';
 import { ActionCreators } from 'redux-undo';
 import { beginPreview } from '../../actions/preview';
-import { selectCanRedo, selectCanUndo } from '../../selectors/undo';
+import { canRedo, canUndo } from '../../selectors/undo';
 import Toolbar from './component';
 
 const mapStateToProps = (state) => ({
-  canRedo: selectCanRedo(state),
-  canUndo: selectCanUndo(state),
+  canRedo: canRedo(state),
+  canUndo: canUndo(state),
 });
 
 const actionCreators = {

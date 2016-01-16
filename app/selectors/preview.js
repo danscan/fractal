@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { selectPresentState } from './undo';
+import { presentState } from './undo';
 
-export const selectPreview = createSelector(
-  selectPresentState,
+export const preview = createSelector(
+  presentState,
   (state) => state.preview,
 );

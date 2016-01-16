@@ -1,23 +1,23 @@
 import { createSelector } from 'reselect';
-import { selectPresentState } from './undo';
+import { presentState } from './undo';
 
-export const selectTree = createSelector(
-  selectPresentState,
+export const tree = createSelector(
+  presentState,
   (state) => state.tree,
 );
 
-export const selectElementCursorWithElementPath = elementPath => createSelector(
-  selectTree,
+export const elementCursorByElementPath = elementPath => createSelector(
+  tree,
   (tree) => tree.select(elementPath),
 );
 
-export const selectElementWithElementPath = elementPath => createSelector(
-  selectElementCursorWithElementPath(elementPath),
+export const elementByElementPath = elementPath => createSelector(
+  elementCursorByElementPath(elementPath),
   (elementCursor) => elementCursor.get(),
 );
 
-export const selectElementPropValueWithElementPathAndPropName = (elementPath, propName) => createSelector(
-  selectElementWithElementPath(elementPath),
+export const elementPropValueByElementPathAndPropName = (elementPath, propName) => createSelector(
+  elementByElementPath(elementPath),
   (element) => {
     const elementProps = element.props || {};
 

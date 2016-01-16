@@ -1,11 +1,11 @@
 import { connect } from 'react-redux/native';
 import { pushEditorModalRoute } from '../../actions/editorModalRouteStack';
-import { selectElementWithElementPath } from '../../selectors/tree';
+import { elementByElementPath } from '../../selectors/tree';
 import router from '../../router';
 import Element from './component';
 
 const mapStateToProps = (state, ownProps) => ({
-  element: selectElementWithElementPath(ownProps.elementPath)(state),
+  element: elementByElementPath(ownProps.elementPath)(state),
 });
 
 const actionCreators = dispatch => ({

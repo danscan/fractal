@@ -1,9 +1,9 @@
 import { connect } from 'react-redux/native';
 import ElementNavigationBarTitle from './component';
-import { selectElementWithElementPath } from '../../selectors/tree';
+import { elementByElementPath } from '../../selectors/tree';
 
 const mapStateToProps = (state, ownProps) => ({
-  element: selectElementWithElementPath(ownProps.elementPath)(state),
+  element: elementByElementPath(ownProps.elementPath)(state),
 });
 
 const actionCreators = {};
