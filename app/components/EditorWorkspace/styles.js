@@ -39,7 +39,7 @@ export default StyleSheet.create({
     height: windowDimensions.height,
 
     borderColor: '#2e3538',
-    borderRadius: 4,
+    borderRadius: 12,
     borderWidth: 3,
     padding: -3,
     transform: [
