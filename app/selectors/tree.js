@@ -8,7 +8,7 @@ export const tree = createSelector(
 
 export const elementCursorByElementPath = elementPath => createSelector(
   tree,
-  (tree) => tree.select(elementPath),
+  (treeState) => treeState.select(elementPath),
 );
 
 export const elementByElementPath = elementPath => createSelector(
