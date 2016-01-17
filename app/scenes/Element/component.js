@@ -1,6 +1,6 @@
 import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import { map, omit } from 'underscore';
-import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import { elementPropType, treePathPropType } from '../../constants/propTypes';
 import addButtonImage from '../../assets/img/addButton.png';
 import Child from './Child';
 import Prop from './Prop';
@@ -8,7 +8,7 @@ import styles from './styles';
 
 export default class Element extends Component {
   static propTypes = {
-    elementPath: elementPathPropType.isRequired,
+    elementPath: treePathPropType.isRequired,
     element: PropTypes.oneOfType([
       elementPropType,
       PropTypes.string,

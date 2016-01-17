@@ -1,9 +1,9 @@
 import { PropTypes } from 'react-native';
 import Baobab from 'baobab';
 
-export const elementCursorPropType = PropTypes.instanceOf(Baobab);
+export const treeCursorPropType = PropTypes.instanceOf(Baobab);
 
-export const elementPathPropType = PropTypes.arrayOf(
+export const treePathPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

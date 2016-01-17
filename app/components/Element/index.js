@@ -1,13 +1,13 @@
 import React, { createElement, Component, View } from 'react-native';
-import { elementCursorPropType, elementPathPropType } from '../../constants/propTypes';
+import { treeCursorPropType, treePathPropType } from '../../constants/propTypes';
 import { isEqual, last, omit } from 'underscore';
 import styles from './styles';
 
 export default class Element extends Component {
   static propTypes = {
-    callOutPath: elementPathPropType,
-    elementPath: elementPathPropType.isRequired,
-    rootCursor: elementCursorPropType.isRequired,
+    callOutPath: treePathPropType,
+    elementPath: treePathPropType.isRequired,
+    rootCursor: treeCursorPropType.isRequired,
   }
 
   static defaultProps = {

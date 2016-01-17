@@ -1,5 +1,5 @@
 import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
-import { elementCursorPropType } from '../../constants/propTypes';
+import { treeCursorPropType } from '../../constants/propTypes';
 import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
 import EditorInspector from '../EditorInspector';
 import EditorToolbar from '../EditorToolbar';
@@ -11,7 +11,7 @@ export default class EditorWorkspace extends Component {
     beginFullScreenPreview: PropTypes.func.isRequired,
     endFullScreenPreview: PropTypes.func.isRequired,
     fullScreenPreview: PropTypes.bool.isRequired,
-    rootCursor: elementCursorPropType.isRequired,
+    rootCursor: treeCursorPropType.isRequired,
   }
 
   componentDidMount() {

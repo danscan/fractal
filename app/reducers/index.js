@@ -4,7 +4,7 @@ import undoable from 'redux-undo';
 // (App reducers)
 import editorModalRouteStack from './editorModalRouteStack';
 import fullScreenPreview from './fullScreenPreview';
-import selectedElementPath from './selectedElementPath';
+import inspectorTreePath from './inspectorTreePath';
 import tree from './tree';
 
 // Filter actions that should be undoable
@@ -13,9 +13,9 @@ function filterUndoableActions(action) {
   const actionsToOmitFromUndoableHistory = [
     actionTypes.BEGIN_FULL_SCREEN_PREVIEW,
     actionTypes.END_FULL_SCREEN_PREVIEW,
-    actionTypes.PUSH_SELECTED_ELEMENT_PATH,
-    actionTypes.POP_SELECTED_ELEMENT_PATH,
-    actionTypes.REPLACE_SELECTED_ELEMENT_PATH,
+    actionTypes.PUSH_INSPECTOR_TREE_PATH,
+    actionTypes.POP_INSPECTOR_TREE_PATH,
+    actionTypes.REPLACE_INSPECTOR_TREE_PATH,
   ];
 
   return actionsToOmitFromUndoableHistory.indexOf(action.type) < 0;
@@ -24,7 +24,7 @@ function filterUndoableActions(action) {
 const reducer = undoable(combineReducers({
   editorModalRouteStack,
   fullScreenPreview,
-  selectedElementPath,
+  inspectorTreePath,
   tree,
 }), {
   filter: filterUndoableActions,

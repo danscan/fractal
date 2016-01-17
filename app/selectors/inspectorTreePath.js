@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { presentState } from './undo';
 
-export const selectedElementPath = createSelector(
+export const inspectorTreePath = createSelector(
   presentState,
-  (state) => state.selectedElementPath,
+  (state) => state.inspectorTreePath,
 );

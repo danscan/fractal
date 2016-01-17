@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Text } from 'react-native';
-import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import { elementPropType, treePathPropType } from '../../constants/propTypes';
 import styles from './styles';
 
 export default class ElementNavigationBarTitle extends Component {
@@ -8,7 +8,7 @@ export default class ElementNavigationBarTitle extends Component {
       elementPropType,
       PropTypes.string,
     ]).isRequired,
-    elementPath: elementPathPropType.isRequired,
+    elementPath: treePathPropType.isRequired,
   }
 
   render() {
