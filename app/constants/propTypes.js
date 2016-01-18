@@ -10,11 +10,20 @@ export const treePathPropType = PropTypes.arrayOf(
   ])
 );
 
+export const elementPathPropType = PropTypes.arrayOf(
+  PropTypes.number,
+);
+
 export const elementPropType = PropTypes.shape({
   displayName: PropTypes.string,
   type: PropTypes.func.isRequired,
   props: PropTypes.object,
 });
+
+export const treeNodePropType = PropTypes.oneOfType([
+  elementPropType,
+  PropTypes.object,
+]);
 
 export const routePropType = PropTypes.shape({
   getTitle: PropTypes.func, // (navigator, index, routeStack) => ?string
