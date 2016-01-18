@@ -1,16 +1,10 @@
-import {
-  ELEMENT_PROPS_KEY,
-  ELEMENT_PROPS_CHILDREN_KEY,
-} from './constants';
+import elementChildrenTreePathByElementPath from '../../utils/elementChildrenTreePathByElementPath';
 
 export default function reduceAddElementChild(state, { elementPath, child }) {
-  const elementChildrenPath = [
-    ...elementPath,
-    ELEMENT_PROPS_KEY,
-    ELEMENT_PROPS_CHILDREN_KEY,
-  ];
+  const elementChildrenTreePath = elementChildrenTreePathByElementPath(elementPath);
+  const elementChildrenTreePathArray = elementChildrenTreePath.toArray();
 
-  state.push(elementChildrenPath, child);
+  state.push(elementChildrenTreePathArray, child);
 
   return state;
 }
