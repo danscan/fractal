@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import { presentState } from './undo';
 import { elementByElementPath } from './tree';
-import treePathByElementPath from '../utils/treePathByElementPath';
 
 export const inspector = createSelector(
   presentState,
@@ -18,20 +17,15 @@ export const selectedElementPath = createSelector(
   (inspectorState) => inspectorState.selectedElementPath,
 );
 
-export const selectedElementTreePath = createSelector(
-  selectedElementPath,
-  (selectedElementPathState) => treePathByElementPath(selectedElementPathState),
-);
+export function selectedElement(state) {
+  const selectedElementPathState = selectedElementPath(state);
+  const selectedElementState = elementByElementPath(selectedElementPathState)(state);
 
-export const selectedElement = createSelector(
-  (state) => state,
-  selectedElementPath,
-  (state, selectedElementPathState) => elementByElementPath(selectedElementPathState)(state),
-);
+  return selectedElementState;
+}
 
-export const selectedElementTitle = createSelector(
-  selectedElement,
-  (selectedElementState) => {
-    return selectedElementState.displayName || selectedElementState.type.displayName;
-  },
-);
+export function selectedElementTitle(state) {
+  const selectedElementState = selectedElement(state);
+
+  return selectedElementState.displayName || selectedElementState.type.displayName;
+}
