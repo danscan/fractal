@@ -21,8 +21,6 @@ export default class Element extends Component {
   }
 
   createElement(element, elementPath = new List()) {
-    console.log('createElement... element:', element);
-    console.log('createElement... elementPath:', elementPath);
     if (typeof element === 'string') {
       return element;
     }
