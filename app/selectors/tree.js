@@ -1,20 +1,20 @@
 import { createSelector } from 'reselect';
 import { presentState } from './undo';
+import treePathByElementPath from '../utils/treePathByElementPath';
 
 export const tree = createSelector(
   presentState,
   (state) => state.tree,
 );
 
-export const elementCursorByElementPath = elementPath => createSelector(
+export const treeCursorByTreePath = treePath => createSelector(
   tree,
-  (treeState) => treeState.select(elementPath),
+  (treeState) => treeState.select(treePath),
 );
 
-export const elementByElementPath = elementPath => createSelector(
-  elementCursorByElementPath(elementPath),
-  (elementCursor) => elementCursor.get(),
-);
+export const elementByElementPath = elementPath => {
+  return _treeNodeByTreePath(treePathByElementPath(elementPath));
+};
 
 export const elementPropValueByElementPathAndPropName = (elementPath, propName) => createSelector(
   elementByElementPath(elementPath),
@@ -24,3 +24,10 @@ export const elementPropValueByElementPathAndPropName = (elementPath, propName) 
     return elementProps[propName];
   },
 );
+
+function _treeNodeByTreePath(treePath) {
+  return createSelector(
+    treeCursorByTreePath(treePath),
+    (nodeCursor) => nodeCursor.get(),
+  );
+}
