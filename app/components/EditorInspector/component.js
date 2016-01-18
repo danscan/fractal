@@ -5,16 +5,23 @@ import styles from './styles';
 
 export default class EditorInspector extends Component {
   static propTypes = {
+    onPressBack: PropTypes.func,
     selectedElement: elementPropType.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     selectedElementTitle: PropTypes.string.isRequired,
   }
 
   renderNavigationBar() {
-    const { selectedElementTitle: title } = this.props;
+    const {
+      onPressBack,
+      selectedElementTitle,
+    } = this.props;
 
     return (
-      <NavigationBar title={title}/>
+      <NavigationBar
+        onPressBack={onPressBack}
+        title={selectedElementTitle}
+      />
     );
   }
 

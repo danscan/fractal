@@ -15,25 +15,31 @@ export default class NavigationBar extends Component {
     backButtonTitle: 'Back',
   }
 
+  renderLeftButtons() {
+    return (
+      <View style={styles.leftButtons}>
+        {this.renderBackButton()}
+      </View>
+    );
+  }
+
   renderBackButton() {
     const {
       backButtonTitle,
       onPressBack,
     } = this.props;
 
-    // if (!onPressBack) {
-    //   return null;
-    // }
+    if (!onPressBack) {
+      return null;
+    }
 
     return (
-      <View style={styles.leftButtons}>
-        <TouchableOpacity style={[styles.button, styles.backButton]}>
-          <Image source={backButtonChevronImage} style={styles.backButtonChevronImage}/>
-          <Text style={styles.backButtonTitleLabel}>
-            {backButtonTitle}
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={onPressBack} style={[styles.button, styles.backButton]}>
+        <Image source={backButtonChevronImage} style={styles.backButtonChevronImage}/>
+        <Text style={styles.backButtonTitleLabel}>
+          {backButtonTitle}
+        </Text>
+      </TouchableOpacity>
     );
   }
 
@@ -58,7 +64,7 @@ export default class NavigationBar extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.renderBackButton()}
+        {this.renderLeftButtons()}
         {this.renderTitle()}
         {this.renderRightButtons()}
       </View>

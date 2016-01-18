@@ -3,7 +3,7 @@ import { reduce } from 'underscore';
 import { treePathPropType } from '../../constants/propTypes';
 import styles from './styles';
 
-export default class AddElementChild extends Component {
+export default class CreateElementChild extends Component {
   static propTypes = {
     addElementChild: PropTypes.func.isRequired,
     elementPath: treePathPropType.isRequired,

@@ -1,33 +1,28 @@
 import { connect } from 'react-redux/native';
-import { pushEditorModalRoute } from '../../actions/editorModalRouteStack';
-import { treeNodeByTreePath } from '../../selectors/tree';
-import router from '../../router';
+import { selectElementPath, editElementProp, createElementChild } from '../../actions/inspector';
+import { elementByElementPath } from '../../selectors/tree';
 import Element from './component';
 
 const mapStateToProps = (state, ownProps) => ({
-  element: treeNodeByTreePath(ownProps.elementPath)(state),
+  element: elementByElementPath(ownProps.elementPath)(state),
 });
 
 const actionCreators = dispatch => ({
   onPressAddChild: (elementPath) => {
-    return dispatch(pushEditorModalRoute(router.getAddElementChildRoute(elementPath)));
+    return dispatch(createElementChild(elementPath));
   },
   onPressAddProp: (elementPath) => {
-    dispatch(navigateToApplyProp(elementPath));
+    return dispatch(editElementProp(elementPath));
   },
   onPressChild: (elementPath, childIndex) => {
-    const childElementPath = [...elementPath, 'props', 'children', childIndex];
+    const childElementPath = elementPath.push(childIndex);
 
-    return dispatch(pushEditorModalRoute(router.getElementRoute(childElementPath)));
+    return dispatch(selectElementPath(childElementPath));
   },
-  onPressProp: (elementPath, propName, propValue) => {
-    dispatch(navigateToApplyProp(elementPath, propName, propValue));
+  onPressProp: (elementPath, propName) => {
+    return dispatch(editElementProp(elementPath, propName));
   },
 });
 
 export default connect(mapStateToProps, actionCreators)(Element);
 export { Element };
-
-function navigateToApplyProp(elementPath, propName, propValue) {
-  return pushEditorModalRoute(router.getApplyElementPropRoute(elementPath, propName, propValue));
-}
