@@ -1,34 +1,26 @@
-import React, { createElement, Component, View } from 'react-native';
-import { treeCursorPropType, treePathPropType } from '../../constants/propTypes';
-import { isEqual, last, omit } from 'underscore';
+import { createElement, Component } from 'react-native';
+import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import { omit } from 'underscore';
+import { List } from 'immutable';
 import styles from './styles';
 
 export default class Element extends Component {
   static propTypes = {
-    callOutPath: treePathPropType,
-    elementPath: treePathPropType.isRequired,
-    rootCursor: treeCursorPropType.isRequired,
+    element: elementPropType.isRequired,
+    callOutPath: elementPathPropType,
   }
 
-  static defaultProps = {
-    elementPath: [],
-  }
-
-  wrapElementWithCallOutIfAppropriate(element, elementPath) {
+  getCallOutStyleForElementPath(elementPath) {
     const { callOutPath } = this.props;
 
-    if (callOutPath && isEqual(callOutPath, elementPath)) {
-      return (
-        <View key="callOutWrapper" style={styles.callOutWrapper}>
-          {element}
-        </View>
-      );
+    if (callOutPath && callOutPath.equals(elementPath)) {
+      return styles.callOutWrapper;
     }
 
-    return element;
+    return {};
   }
 
-  createElement(element, elementPath) {
+  createElement(element, elementPath = new List()) {
     console.log('createElement... element:', element);
     console.log('createElement... elementPath:', elementPath);
     if (typeof element === 'string') {
@@ -37,25 +29,28 @@ export default class Element extends Component {
 
     const { type: elementType, props = {} } = element || {};
     const { children = [] } = props;
-    const elementKeyProp = last(elementPath);
-    const elementProps = { ...omit(props, 'children'), key: elementKeyProp };
+    const elementKeyProp = elementPath;
+    const elementCallOutStyle = this.getCallOutStyleForElementPath(elementPath);
+    const elementProps = {
+      ...omit(props, 'children'),
+      key: elementKeyProp,
+      style: [
+        props.style,
+        elementCallOutStyle,
+      ],
+    };
     const elementChildren = children.map((childElement, childKey) => {
-      const childElementPath = [...elementPath, 'props', 'children', childKey];
+      const childElementPath = elementPath.push(childKey);
 
       return this.createElement(childElement, childElementPath);
     });
 
-    const _element = createElement(elementType, elementProps, elementChildren);
-    return this.wrapElementWithCallOutIfAppropriate(_element, elementPath);
+    return createElement(elementType, elementProps, elementChildren);
   }
 
   render() {
-    const {
-      elementPath,
-      rootCursor,
-    } = this.props;
-    const element = rootCursor.get(elementPath);
+    const { element } = this.props;
 
-    return this.createElement(element, elementPath);
+    return this.createElement(element);
   }
 }

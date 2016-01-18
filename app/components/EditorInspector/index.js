@@ -1,13 +1,18 @@
-import React, { Component, View } from 'react-native';
-import styles from './styles';
+import { connect } from 'react-redux/native';
+import {
+  selectedElement,
+  selectedElementPath,
+  selectedElementTitle,
+} from '../../selectors/inspector';
+import EditorInspector from './component';
 
-export default class EditorInspector extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.navigationBar}/>
-        <View style={styles.scene}/>
-      </View>
-    );
-  }
-}
+const mapStateToProps = (state) => ({
+  selectedElement: selectedElement(state),
+  selectedElementPath: selectedElementPath(state),
+  selectedElementTitle: selectedElementTitle(state),
+});
+
+const actionCreators = {};
+
+export default connect(mapStateToProps, actionCreators)(EditorInspector);
+export { EditorInspector };

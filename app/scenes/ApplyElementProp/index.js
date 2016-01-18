@@ -1,11 +1,11 @@
 import { connect } from 'react-redux/native';
 import { applyElementProp } from '../../actions/tree';
 import { popEditorModalRoute } from '../../actions/editorModalRouteStack';
-import { elementPropValueByElementPathAndPropName } from '../../selectors/tree';
+import { elementPropValueByElementTreePathAndPropName } from '../../selectors/tree';
 import AddElementChild from './component';
 
 const mapStateToProps = (state, ownProps) => ({
-  propValue: elementPropValueByElementPathAndPropName(ownProps.elementPath, ownProps.propName)(state),
+  propValue: elementPropValueByElementTreePathAndPropName(ownProps.elementPath, ownProps.propName)(state),
 });
 
 const actionCreators = (dispatch) => ({

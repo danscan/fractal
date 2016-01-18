@@ -1,5 +1,5 @@
 import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
-import { treeCursorPropType } from '../../constants/propTypes';
+import { elementPropType, elementPathPropType } from '../../constants/propTypes';
 import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
 import EditorInspector from '../EditorInspector';
 import EditorToolbar from '../EditorToolbar';
@@ -11,7 +11,8 @@ export default class EditorWorkspace extends Component {
     beginFullScreenPreview: PropTypes.func.isRequired,
     endFullScreenPreview: PropTypes.func.isRequired,
     fullScreenPreview: PropTypes.bool.isRequired,
-    rootCursor: treeCursorPropType.isRequired,
+    selectedElementPath: elementPathPropType.isRequired,
+    treeRootElement: elementPropType.isRequired,
   }
 
   componentDidMount() {
@@ -19,12 +20,12 @@ export default class EditorWorkspace extends Component {
   }
 
   renderFullScreenPreview() {
-    const { rootCursor } = this.props;
+    const { treeRootElement } = this.props;
 
     // TODO: Animate style changes when fullScreenPreview prop changes...
     return (
       <View style={styles.container}>
-        <Element rootCursor={rootCursor}/>
+        <Element element={treeRootElement}/>
         {this.renderFullScreenPreviewButton()}
       </View>
     );
@@ -41,12 +42,15 @@ export default class EditorWorkspace extends Component {
   }
 
   renderPreviewSection() {
-    const { rootCursor } = this.props;
+    const {
+      treeRootElement,
+      selectedElementPath,
+    } = this.props;
 
     return (
       <View style={styles.previewSection}>
         <View style={styles.previewElementWrapper}>
-          <Element rootCursor={rootCursor} callOutPath={['props', 'children', 0]}/>
+          <Element element={treeRootElement} callOutPath={selectedElementPath}/>
         </View>
       </View>
     );
