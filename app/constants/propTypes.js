@@ -1,16 +1,14 @@
 import { PropTypes } from 'react-native';
-import Baobab from 'baobab';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
-export const treeCursorPropType = PropTypes.instanceOf(Baobab);
-
-export const treePathPropType = PropTypes.arrayOf(
+export const treePathPropType = ImmutablePropTypes.listOf(
   PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ])
 );
 
-export const elementPathPropType = PropTypes.arrayOf(
+export const elementPathPropType = ImmutablePropTypes.listOf(
   PropTypes.number,
 );
 
@@ -19,11 +17,6 @@ export const elementPropType = PropTypes.shape({
   type: PropTypes.func.isRequired,
   props: PropTypes.object,
 });
-
-export const treeNodePropType = PropTypes.oneOfType([
-  elementPropType,
-  PropTypes.object,
-]);
 
 export const routePropType = PropTypes.shape({
   getTitle: PropTypes.func, // (navigator, index, routeStack) => ?string
