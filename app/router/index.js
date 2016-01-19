@@ -1,7 +1,7 @@
 import React from 'react-native';
 import ElementScene from '../scenes/Element';
 import CreateElementChildScene from '../scenes/CreateElementChild';
-import ApplyElementPropScene from '../scenes/ApplyElementProp';
+import EditElementPropScene from '../scenes/EditElementProp';
 
 export default {
   getElementRoute(elementPath) {
@@ -24,11 +24,11 @@ export default {
     };
   },
 
-  getApplyElementPropRoute(elementPath, propName) {
+  getEditElementPropRoute(elementPath, propName) {
     return {
       renderScene() {
         return (
-          <ApplyElementPropScene
+          <EditElementPropScene
             elementPath={elementPath}
             propName={propName}
           />

@@ -2,7 +2,7 @@ import React, { Component, PropTypes, Text, TouchableOpacity, TextInput, View } 
 import { treePathPropType } from '../../constants/propTypes';
 import styles from './styles';
 
-export default class ApplyElementProp extends Component {
+export default class EditElementProp extends Component {
   static propTypes = {
     onPressApply: PropTypes.func.isRequired,
     onPressDelete: PropTypes.func.isRequired,
