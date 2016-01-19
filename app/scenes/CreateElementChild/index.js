@@ -1,6 +1,6 @@
 import { connect } from 'react-redux/native';
+import { selectElementPath } from '../../actions/inspector';
 import { addElementChild } from '../../actions/tree';
-import { popEditorModalRoute } from '../../actions/editorModalRouteStack';
 import AddElementChild from './component';
 
 const mapStateToProps = () => ({});
@@ -11,7 +11,7 @@ const actionCreators = (dispatch) => ({
 
     dispatch(addElementChild(elementPath, childElement));
 
-    return dispatch(popEditorModalRoute());
+    return dispatch(selectElementPath(elementPath.pop()));
   },
 });
 
