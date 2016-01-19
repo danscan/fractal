@@ -1,6 +1,9 @@
+import router from '../../router';
 import { List } from 'immutable';
 
+const initialSelectedElementPath = new List();
+
 export default {
-  routeStack: new List(),
-  selectedElementPath: new List(),
+  routeStack: new List([router.getElementRoute(initialSelectedElementPath)]),
+  selectedElementPath: initialSelectedElementPath,
 };

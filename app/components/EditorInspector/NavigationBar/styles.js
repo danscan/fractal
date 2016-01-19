@@ -6,6 +6,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: 48,
     paddingHorizontal: 10,
+    shadowColor: 'black',
+    shadowOffset: { height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 0,
   },
 
   leftButtons: {

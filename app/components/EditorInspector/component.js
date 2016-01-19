@@ -1,10 +1,12 @@
-import React, { Component, PropTypes, View } from 'react-native';
-import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import React, { Component, PropTypes, ScrollView, View } from 'react-native';
+import { elementPropType, elementPathPropType, routePropType } from '../../constants/propTypes';
 import NavigationBar from './NavigationBar';
 import styles from './styles';
 
 export default class EditorInspector extends Component {
   static propTypes = {
+    currentRoute: routePropType.isRequired,
+    previousRoute: routePropType,
     onPressBack: PropTypes.func,
     selectedElement: elementPropType.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
@@ -26,8 +28,12 @@ export default class EditorInspector extends Component {
   }
 
   renderScene() {
+    const { currentRoute } = this.props;
+
     return (
-      <View style={styles.scene}/>
+      <ScrollView style={styles.scene}>
+        {currentRoute.renderScene()}
+      </ScrollView>
     );
   }
 

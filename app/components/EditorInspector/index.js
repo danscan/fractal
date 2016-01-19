@@ -1,6 +1,8 @@
 import { connect } from 'react-redux/native';
 import { selectElementPath } from '../../actions/inspector';
 import {
+  currentRoute,
+  previousRoute,
   selectedElement,
   selectedElementPath,
   selectedElementTitle,
@@ -8,6 +10,8 @@ import {
 import EditorInspector from './component';
 
 const mapStateToProps = (state) => ({
+  currentRoute: currentRoute(state),
+  previousRoute: previousRoute(state),
   selectedElement: selectedElement(state),
   selectedElementPath: selectedElementPath(state),
   selectedElementTitle: selectedElementTitle(state),
