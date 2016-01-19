@@ -12,6 +12,16 @@ export const routeStack = createSelector(
   (inspectorState) => inspectorState.routeStack,
 );
 
+export const currentRoute = createSelector(
+  routeStack,
+  (routeStackState) => routeStackState.last(),
+);
+
+export const previousRoute = createSelector(
+  routeStack,
+  (routeStackState) => routeStackState.get(-2),
+);
+
 export const selectedElementPath = createSelector(
   inspector,
   (inspectorState) => inspectorState.selectedElementPath,
