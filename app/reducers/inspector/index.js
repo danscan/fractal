@@ -1,23 +1,19 @@
 import {
-  SELECT_ELEMENT_PATH,
-  EDIT_ELEMENT_PROP,
-  CREATE_ELEMENT_CHILD,
+  PUSH_INSPECTOR_ROUTE,
+  POP_INSPECTOR_ROUTE,
 } from '../../constants/actionTypes';
 import initialState from './initialState';
 
 // (Action reducer functions)
-import reduceSelectElementPath from './reduceSelectElementPath';
-import reduceEditElementProp from './reduceEditElementProp';
-import reduceCreateElementChild from './reduceCreateElementChild';
+import reducePushInspectorRoute from './reducePushInspectorRoute';
+import reducePopInspectorRoute from './reducePopInspectorRoute';
 
 export default function inspector(state = initialState, action) {
   switch (action.type) {
-    case SELECT_ELEMENT_PATH:
-      return reduceSelectElementPath(state, action);
-    case EDIT_ELEMENT_PROP:
-      return reduceEditElementProp(state, action);
-    case CREATE_ELEMENT_CHILD:
-      return reduceCreateElementChild(state, action);
+    case PUSH_INSPECTOR_ROUTE:
+      return reducePushInspectorRoute(state, action);
+    case POP_INSPECTOR_ROUTE:
+      return reducePopInspectorRoute(state, action);
     default:
       return state;
   }

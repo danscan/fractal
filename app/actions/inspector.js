@@ -1,27 +1,15 @@
 import {
-  SELECT_ELEMENT_PATH,
-  EDIT_ELEMENT_PROP,
-  CREATE_ELEMENT_CHILD,
+  PUSH_INSPECTOR_ROUTE,
+  POP_INSPECTOR_ROUTE,
 } from '../constants/actionTypes';
 
-export function selectElementPath(elementPath) {
+export function pushInspectorRoute(route) {
   return {
-    type: SELECT_ELEMENT_PATH,
-    elementPath,
+    type: PUSH_INSPECTOR_ROUTE,
+    route,
   };
 }
 
-export function editElementProp(elementPath, propName) {
-  return {
-    type: EDIT_ELEMENT_PROP,
-    elementPath,
-    propName,
-  };
-}
-
-export function createElementChild(elementPath) {
-  return {
-    type: CREATE_ELEMENT_CHILD,
-    elementPath,
-  };
+export function popInspectorRoute() {
+  return { type: POP_INSPECTOR_ROUTE };
 }

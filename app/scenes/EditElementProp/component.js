@@ -5,7 +5,7 @@ import styles from './styles';
 export default class EditElementProp extends Component {
   static propTypes = {
     onPressApply: PropTypes.func.isRequired,
-    onPressDelete: PropTypes.func.isRequired,
+    onPressDelete: PropTypes.func,
     elementPath: treePathPropType.isRequired,
     propName: PropTypes.string,
     propValue: PropTypes.any,

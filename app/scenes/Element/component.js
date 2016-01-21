@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { map, omit } from 'underscore';
 import { elementPropType, treePathPropType } from '../../constants/propTypes';
 import addButtonImage from '../../assets/img/addButton.png';
@@ -79,10 +79,10 @@ export default class Element extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {this.renderPropsSection()}
         {this.renderChildrenSection()}
-      </View>
+      </ScrollView>
     );
   }
 }

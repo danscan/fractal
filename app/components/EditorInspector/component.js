@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, ScrollView, View } from 'react-native';
+import React, { Component, PropTypes, View } from 'react-native';
 import { elementPropType, elementPathPropType, routePropType } from '../../constants/propTypes';
 import NavigationBar from './NavigationBar';
 import styles from './styles';
@@ -15,13 +15,14 @@ export default class EditorInspector extends Component {
 
   renderNavigationBar() {
     const {
+      previousRoute,
       onPressBack,
       selectedElementTitle,
     } = this.props;
 
     return (
       <NavigationBar
-        onPressBack={onPressBack}
+        onPressBack={previousRoute ? onPressBack : null}
         title={selectedElementTitle}
       />
     );
@@ -31,9 +32,9 @@ export default class EditorInspector extends Component {
     const { currentRoute } = this.props;
 
     return (
-      <ScrollView style={styles.scene}>
+      <View style={styles.scene}>
         {currentRoute.renderScene()}
-      </ScrollView>
+      </View>
     );
   }
 

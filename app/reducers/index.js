@@ -13,8 +13,6 @@ function filterUndoableActions(action) {
     actionTypes.BEGIN_FULL_SCREEN_PREVIEW,
     actionTypes.END_FULL_SCREEN_PREVIEW,
     actionTypes.SELECT_ELEMENT_PATH,
-    actionTypes.EDIT_ELEMENT_PROP,
-    actionTypes.CREATE_ELEMENT_CHILD,
   ];
 
   return actionsToOmitFromUndoableHistory.indexOf(action.type) < 0;

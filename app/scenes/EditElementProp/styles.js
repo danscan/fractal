@@ -28,10 +28,10 @@ export default StyleSheet.create({
   },
   valueInput: {
     color: '#2e3538',
+    flex: 1,
     fontFamily: 'Avenir',
     fontSize: 12,
     fontWeight: '600',
-    height: 30,
   },
 
   applyButtonSection: {

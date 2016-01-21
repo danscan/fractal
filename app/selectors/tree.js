@@ -1,14 +1,14 @@
 import { createSelector } from 'reselect';
 import { presentState } from './undo';
 import treePathByElementPath from '../utils/treePathByElementPath';
-import { List } from 'immutable';
 
-export const tree = createSelector(
-  presentState,
-  (state) => state.tree,
-);
+function tree(state) {
+  return presentState(state).tree;
+}
 
-export const treeRootElement = _treeNodeByTreePath(new List());
+export function treeRootElement(state) {
+  return tree(state).get();
+}
 
 export const elementByElementPath = elementPath => {
   const elementTreePath = treePathByElementPath(elementPath);

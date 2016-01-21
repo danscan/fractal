@@ -1,36 +1,44 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-multi-comp */
 import React from 'react-native';
 import ElementScene from '../scenes/Element';
 import CreateElementChildScene from '../scenes/CreateElementChild';
 import EditElementPropScene from '../scenes/EditElementProp';
 
 export default {
-  getElementRoute(elementPath) {
+  getElementRoute(props) {
     return {
+      props,
+
       renderScene() {
         return (
-          <ElementScene elementPath={elementPath}/>
+          <ElementScene elementPath={props.elementPath}/>
         );
       },
     };
   },
 
-  getAddElementChildRoute(elementPath) {
+  getCreateElementChildRoute(props) {
     return {
+      props,
+
       renderScene() {
         return (
-          <CreateElementChildScene elementPath={elementPath}/>
+          <CreateElementChildScene elementPath={props.elementPath}/>
         );
       },
     };
   },
 
-  getEditElementPropRoute(elementPath, propName) {
+  getEditElementPropRoute(props) {
     return {
+      props,
+
       renderScene() {
         return (
           <EditElementPropScene
-            elementPath={elementPath}
-            propName={propName}
+            elementPath={props.elementPath}
+            propName={props.propName}
           />
         );
       },

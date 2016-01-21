@@ -23,8 +23,8 @@ export const previousRoute = createSelector(
 );
 
 export const selectedElementPath = createSelector(
-  inspector,
-  (inspectorState) => inspectorState.selectedElementPath,
+  currentRoute,
+  (currentRouteState) => currentRouteState.props.elementPath,
 );
 
 export function selectedElement(state) {

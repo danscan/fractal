@@ -1,5 +1,8 @@
 import { connect } from 'react-redux/native';
-import { selectElementPath } from '../../actions/inspector';
+import {
+  selectElementPath,
+  popInspectorRoute,
+} from '../../actions/inspector';
 import {
   currentRoute,
   previousRoute,
@@ -19,15 +22,13 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   selectElementPath,
+  onPressBack: popInspectorRoute,
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   ...stateProps,
   ...dispatchProps,
   ...ownProps,
-  onPressBack: !!stateProps.selectedElementPath.size
-    ? () => dispatchProps.selectElementPath(stateProps.selectedElementPath.pop())
-    : null,
 });
 
 export default connect(mapStateToProps, actionCreators, mergeProps)(EditorInspector);
