@@ -4,6 +4,8 @@ import {
   CHANGE_ELEMENT_PATH,
   APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
+  REDO_TREE_ACTION,
+  UNDO_TREE_ACTION,
 } from '../constants/actionTypes';
 
 export function addElementChild(elementPath, child) {
@@ -44,4 +46,12 @@ export function removeElementProp(elementPath, propName) {
     elementPath,
     propName,
   };
+}
+
+export function redoTreeAction() {
+  return { type: REDO_TREE_ACTION };
+}
+
+export function undoTreeAction() {
+  return { type: UNDO_TREE_ACTION };
 }

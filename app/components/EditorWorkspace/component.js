@@ -76,8 +76,10 @@ export default class EditorWorkspace extends Component {
     return (
       <View style={styles.container}>
         <EditorToolbar/>
-        {this.renderPreviewSection()}
-        {this.renderInspectorSection()}
+        <View style={styles.contentSection}>
+          {this.renderPreviewSection()}
+          {this.renderInspectorSection()}
+        </View>
       </View>
     );
   }

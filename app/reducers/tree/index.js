@@ -4,7 +4,10 @@ import {
   CHANGE_ELEMENT_PATH,
   APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
+  REDO_TREE_ACTION,
+  UNDO_TREE_ACTION,
 } from '../../constants/actionTypes';
+import undoable from 'redux-undo';
 import initialState from './initialState';
 
 // (Action reducer functions)
@@ -14,7 +17,20 @@ import reduceChangeElementPath from './reduceChangeElementPath';
 import reduceApplyElementProp from './reduceApplyElementProp';
 import reduceRemoveElementProp from './reduceRemoveElementProp';
 
-export default function tree(state = initialState, action) {
+// Filter undoable action types
+function filterUndoableActionTypes(action) {
+  const undoableActionTypes = [
+    ADD_ELEMENT_CHILD,
+    REMOVE_ELEMENT,
+    CHANGE_ELEMENT_PATH,
+    APPLY_ELEMENT_PROP,
+    REMOVE_ELEMENT_PROP,
+  ];
+
+  return undoableActionTypes.indexOf(action.type) >= 0;
+}
+
+export default undoable(function tree(state = initialState, action) {
   switch (action.type) {
     case ADD_ELEMENT_CHILD:
       return reduceAddElementChild(state, action);
@@ -29,4 +45,9 @@ export default function tree(state = initialState, action) {
     default:
       return state;
   }
-}
+}, {
+  redoType: REDO_TREE_ACTION,
+  undoType: UNDO_TREE_ACTION,
+
+  filter: filterUndoableActionTypes,
+});

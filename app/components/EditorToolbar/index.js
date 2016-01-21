@@ -1,18 +1,18 @@
 import { connect } from 'react-redux/native';
-import { ActionCreators } from 'redux-undo';
 import { beginFullScreenPreview } from '../../actions/fullScreenPreview';
-import { canRedo, canUndo } from '../../selectors/undo';
+import { redoTreeAction, undoTreeAction } from '../../actions/tree';
+import { canRedoTreeAction, canUndoTreeAction } from '../../selectors/tree';
 import Toolbar from './component';
 
 const mapStateToProps = (state) => ({
-  canRedo: canRedo(state),
-  canUndo: canUndo(state),
+  canRedo: canRedoTreeAction(state),
+  canUndo: canUndoTreeAction(state),
 });
 
 const actionCreators = {
   onPressbeginFullScreenPreview: beginFullScreenPreview,
-  onPressRedo: ActionCreators.redo,
-  onPressUndo: ActionCreators.undo,
+  onPressRedo: redoTreeAction,
+  onPressUndo: undoTreeAction,
 };
 
 export default connect(mapStateToProps, actionCreators)(Toolbar);

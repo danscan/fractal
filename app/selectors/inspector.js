@@ -1,11 +1,9 @@
 import { createSelector } from 'reselect';
-import { presentState } from './undo';
 import { elementByElementPath } from './tree';
 
-export const inspector = createSelector(
-  presentState,
-  (state) => state.inspector,
-);
+function inspector(state) {
+  return state.inspector;
+}
 
 export const routeStack = createSelector(
   inspector,

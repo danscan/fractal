@@ -29,9 +29,14 @@ export default StyleSheet.create({
     height: 18,
   },
 
+  contentSection: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+
   previewSection: {
     alignItems: 'center',
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
   },
   previewElementWrapper: {
@@ -43,7 +48,7 @@ export default StyleSheet.create({
     borderWidth: 3,
     padding: -3,
     transform: [
-      { scale: 0.3 },
+      { scale: 0.5 },
     ],
     overflow: 'hidden',
   },

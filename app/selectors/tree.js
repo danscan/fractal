@@ -1,9 +1,20 @@
 import { createSelector } from 'reselect';
-import { presentState } from './undo';
 import treePathByElementPath from '../utils/treePathByElementPath';
 
 function tree(state) {
-  return presentState(state).tree;
+  return state.tree.present;
+}
+
+export function canRedoTreeAction(state) {
+  const future = state.tree.future || [];
+
+  return future.length > 0;
+}
+
+export function canUndoTreeAction(state) {
+  const past = state.tree.past || [];
+
+  return past.length > 0;
 }
 
 export function treeRootElement(state) {
