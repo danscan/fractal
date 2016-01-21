@@ -38,11 +38,10 @@ export const elementPropValueByElementPathAndPropName = (elementPath, propName) 
 
 // (Private helpers)
 function _treeCursorByTreePath(treePath) {
-  const treePathArray = treePath.toArray();
-
+  console.log('treePath.toJS():', treePath.toJS());
   return createSelector(
     tree,
-    (treeState) => treeState.getIn(treePathArray),
+    (treeState) => treeState.getIn(treePath),
   );
 }
 

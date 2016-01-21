@@ -1,17 +1,19 @@
 import { connect } from 'react-redux/native';
-import { selectElementPath } from '../../actions/inspector';
+import { replaceInspectorRoute } from '../../actions/inspector';
 import { addElementChild } from '../../actions/tree';
+import elementByType from '../../utils/elementByType';
+import router from '../../router';
 import AddElementChild from './component';
 
 const mapStateToProps = () => ({});
 
 const actionCreators = (dispatch) => ({
   addElementChild: (elementPath, childType) => {
-    const childElement = { type: childType, props: { children: [] } };
+    const childElement = elementByType(childType);
 
     dispatch(addElementChild(elementPath, childElement));
 
-    return dispatch(selectElementPath(elementPath.pop()));
+    return dispatch(replaceInspectorRoute(router.getElementRoute({ elementPath })));
   },
 });
 
