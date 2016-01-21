@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { map, omit } from 'underscore';
 import { elementPropType, treePathPropType } from '../../constants/propTypes';
 import addButtonImage from '../../assets/img/addButton.png';
@@ -58,6 +58,10 @@ export default class Element extends Component {
     const elementProps = element.props || {};
     const elementChildren = elementProps.children;
 
+    if (element.type === Text) {
+      return this.renderTextChildrenSection();
+    }
+
     return (
       <View style={styles.childrenSection}>
         <Text style={styles.childrenSectionLabel}>
@@ -73,6 +77,25 @@ export default class Element extends Component {
         <TouchableOpacity onPress={() => onPressAddChild(elementPath)} style={styles.addChildButton}>
           <Image source={addButtonImage} style={styles.addChildButtonImage}/>
         </TouchableOpacity>
+      </View>
+    );
+  }
+
+  renderTextChildrenSection() {
+    const { element } = this.props;
+    const elementProps = element.props || {};
+    const elementChildren = elementProps.children;
+
+    return (
+      <View style={styles.childrenSection}>
+        <Text style={styles.childrenSectionLabel}>
+          Value
+        </Text>
+        <View style={styles.childrenListSection}>
+          {map(elementChildren, (childValue, childIndex) => (
+            <TextInput key={childIndex} multiline style={{ borderColor: '#94c600', borderRadius: 8, borderWidth: 1, color: '#333', fontSize: 12, fontFamily: 'Avenir', height: 100, padding: 10 }} value={childValue}/>
+          ))}
+        </View>
       </View>
     );
   }
