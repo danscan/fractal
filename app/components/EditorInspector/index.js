@@ -3,6 +3,7 @@ import {
   selectElementPath,
   popInspectorRoute,
 } from '../../actions/inspector';
+import { hideElement } from '../../actions/tree';
 import {
   currentRoute,
   previousRoute,
@@ -23,12 +24,14 @@ const mapStateToProps = (state) => ({
 const actionCreators = {
   selectElementPath,
   onPressBack: popInspectorRoute,
+  onPressHide: hideElement,
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   ...stateProps,
   ...dispatchProps,
   ...ownProps,
+  onPressHide: () => dispatchProps.onPressHide(stateProps.selectedElementPath),
 });
 
 export default connect(mapStateToProps, actionCreators, mergeProps)(EditorInspector);

@@ -1,6 +1,7 @@
 import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
+  HIDE_ELEMENT,
   CHANGE_ELEMENT_PATH,
   APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
@@ -19,6 +20,13 @@ export function addElementChild(elementPath, child) {
 export function removeElement(elementPath) {
   return {
     type: REMOVE_ELEMENT,
+    elementPath,
+  };
+}
+
+export function hideElement(elementPath) {
+  return {
+    type: HIDE_ELEMENT,
     elementPath,
   };
 }

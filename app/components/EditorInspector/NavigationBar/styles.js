@@ -14,9 +14,12 @@ export default StyleSheet.create({
 
   leftButtons: {
     flex: 1,
+    flexDirection: 'row',
   },
   rightButtons: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 
   button: {},
@@ -34,6 +37,12 @@ export default StyleSheet.create({
     fontFamily: 'Avenir',
     fontSize: 15,
     fontWeight: 'bold',
+  },
+
+  hideButton: {},
+  hideButtonImage: {
+    width: 23,
+    height: 12,
   },
 
   title: {

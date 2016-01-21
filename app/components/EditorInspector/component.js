@@ -8,6 +8,7 @@ export default class EditorInspector extends Component {
     currentRoute: routePropType.isRequired,
     previousRoute: routePropType,
     onPressBack: PropTypes.func,
+    onPressHide: PropTypes.func.isRequired,
     selectedElement: elementPropType.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     selectedElementTitle: PropTypes.string.isRequired,
@@ -17,12 +18,14 @@ export default class EditorInspector extends Component {
     const {
       previousRoute,
       onPressBack,
+      onPressHide,
       selectedElementTitle,
     } = this.props;
 
     return (
       <NavigationBar
         onPressBack={previousRoute ? onPressBack : null}
+        onPressHide={onPressHide}
         title={selectedElementTitle}
       />
     );

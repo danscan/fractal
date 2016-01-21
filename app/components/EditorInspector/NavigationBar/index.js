@@ -1,12 +1,13 @@
 import React, { Component, PropTypes, Image, Text, TouchableOpacity, View } from 'react-native';
 import backButtonChevronImage from '../../../assets/img/backChevron.png';
+import hideButtonImage from '../../../assets/img/hideButton.png';
 import styles from './styles';
 
 export default class NavigationBar extends Component {
   static propTypes = {
     backButtonTitle: PropTypes.string.isRequired,
     onPressBack: PropTypes.func,
-    onPressHide: PropTypes.func,
+    onPressHide: PropTypes.func.isRequired,
     onPressMore: PropTypes.func,
     title: PropTypes.string.isRequired,
   }
@@ -57,7 +58,21 @@ export default class NavigationBar extends Component {
 
   renderRightButtons() {
     return (
-      <View style={styles.rightButtons}/>
+      <View style={styles.rightButtons}>
+        {this.renderHideButton()}
+      </View>
+    );
+  }
+
+  renderHideButton() {
+    const {
+      onPressHide,
+    } = this.props;
+
+    return (
+      <TouchableOpacity onPress={onPressHide} style={[styles.button, styles.hideButton]}>
+        <Image source={hideButtonImage} style={styles.hideButtonImage}/>
+      </TouchableOpacity>
     );
   }
 
