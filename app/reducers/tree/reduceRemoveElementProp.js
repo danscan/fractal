@@ -2,9 +2,6 @@ import elementPropTreePathByElementPathAndPropName from '../../utils/elementProp
 
 export default function reduceRemoveElementProp(state, { elementPath, propName }) {
   const elementPropTreePath = elementPropTreePathByElementPathAndPropName(elementPath, propName);
-  const elementPropTreePathArray = elementPropTreePath.toArray();
 
-  state.unset(elementPropTreePathArray);
-
-  return state;
+  return state.deleteIn(elementPropTreePath);
 }

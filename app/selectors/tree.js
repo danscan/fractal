@@ -18,7 +18,7 @@ export function canUndoTreeAction(state) {
 }
 
 export function treeRootElement(state) {
-  return tree(state).get();
+  return tree(state).toJS();
 }
 
 export const elementByElementPath = elementPath => {
@@ -42,13 +42,13 @@ function _treeCursorByTreePath(treePath) {
 
   return createSelector(
     tree,
-    (treeState) => treeState.select(treePathArray),
+    (treeState) => treeState.getIn(treePathArray),
   );
 }
 
 function _treeNodeByTreePath(treePath) {
   return createSelector(
     _treeCursorByTreePath(treePath),
-    (treeNodeCursor) => treeNodeCursor.get(),
+    (treeNodeCursor) => treeNodeCursor.toJS(),
   );
 }

@@ -1,33 +1,33 @@
-import Baobab from 'baobab';
+import { Map, List } from 'immutable';
 import { Text, ScrollView } from 'react-native';
 
-export default new Baobab({
+export default new Map({
   displayName: 'Root',
   type: ScrollView,
-  props: {
-    children: [
-      {
+  props: new Map({
+    children: new List([
+      new Map({
         type: Text,
-        props: {
-          children: [
+        props: new Map({
+          children: new List([
             'Your app root',
-          ],
-          style: {
+          ]),
+          style: new Map({
             color: '#666',
             fontFamily: 'Avenir',
             fontSize: 20,
-          },
-        },
-      },
-    ],
-    contentContainerStyle: {
+          }),
+        }),
+      }),
+    ]),
+    contentContainerStyle: new Map({
       alignItems: 'center',
       flex: 1,
       justifyContent: 'center',
-    },
-    style: {
+    }),
+    style: new Map({
       backgroundColor: 'white',
       flex: 1,
-    },
-  },
+    }),
+  }),
 });

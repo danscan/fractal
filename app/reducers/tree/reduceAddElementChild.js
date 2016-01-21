@@ -2,9 +2,6 @@ import elementChildrenTreePathByElementPath from '../../utils/elementChildrenTre
 
 export default function reduceAddElementChild(state, { elementPath, child }) {
   const elementChildrenTreePath = elementChildrenTreePathByElementPath(elementPath);
-  const elementChildrenTreePathArray = elementChildrenTreePath.toArray();
 
-  state.push(elementChildrenTreePathArray, child);
-
-  return state;
+  return state.push(elementChildrenTreePath, child);
 }

@@ -6,7 +6,6 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "baobab": "^2.3.0",
     "immutable": "^3.7.6",
     "react": "^0.14.3",
     "react-immutable-proptypes": "^1.5.1",
