@@ -1,5 +1,6 @@
 import React, { Component, PropTypes, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { treePathPropType } from '../../constants/propTypes';
+import PropValueInput from './PropValueInput';
 import styles from './styles';
 
 export default class EditElementProp extends Component {
@@ -64,20 +65,14 @@ export default class EditElementProp extends Component {
 
   renderValueInputSection() {
     const { propType } = this.props;
-    console.log('propType:', propType);
     const { valueInputValue } = this.state;
-    const valueInputValueString = JSON.stringify(valueInputValue);
 
     return (
       <View style={styles.valueInputSection}>
-        <TextInput
-          autoCorrect={false}
-          keyboardAppearance="dark"
-          multiline
-          onChangeText={(text) => this.setState({ valueInputValue: text })}
-          placeholder="Enter prop value"
-          value={valueInputValueString}
-          style={styles.nameInput}
+        <PropValueInput
+          onChangePropValue={(propValue) => this.setState({ valueInputValue: propValue })}
+          propType={propType}
+          propValue={valueInputValue}
         />
       </View>
     );

@@ -26,13 +26,6 @@ export default StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-  valueInput: {
-    color: '#2e3538',
-    flex: 1,
-    fontFamily: 'Avenir',
-    fontSize: 12,
-    fontWeight: '600',
-  },
 
   applyButtonSection: {
     padding: 10,
