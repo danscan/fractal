@@ -8,6 +8,7 @@ export default class EditElementProp extends Component {
     onPressDelete: PropTypes.func,
     elementPath: treePathPropType.isRequired,
     propName: PropTypes.string,
+    propType: PropTypes.func,
     propValue: PropTypes.any,
   }
 
@@ -62,6 +63,8 @@ export default class EditElementProp extends Component {
   }
 
   renderValueInputSection() {
+    const { propType } = this.props;
+    console.log('propType:', propType);
     const { valueInputValue } = this.state;
     const valueInputValueString = JSON.stringify(valueInputValue);
 

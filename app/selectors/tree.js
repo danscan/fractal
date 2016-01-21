@@ -36,6 +36,15 @@ export const elementPropValueByElementPathAndPropName = (elementPath, propName) 
   },
 );
 
+export const elementPropTypeByElementPathAndPropName = (elementPath, propName) => createSelector(
+  elementByElementPath(elementPath),
+  (element) => {
+    const elementPropTypes = element.type.propTypes || {};
+
+    return elementPropTypes[propName];
+  },
+);
+
 // (Private helpers)
 function _treeCursorByTreePath(treePath) {
   console.log('treePath.toJS():', treePath.toJS());

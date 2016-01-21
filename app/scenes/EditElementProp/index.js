@@ -1,9 +1,10 @@
 import { connect } from 'react-redux/native';
 import { applyElementProp } from '../../actions/tree';
-import { elementPropValueByElementPathAndPropName } from '../../selectors/tree';
+import { elementPropTypeByElementPathAndPropName, elementPropValueByElementPathAndPropName } from '../../selectors/tree';
 import AddElementChild from './component';
 
 const mapStateToProps = (state, ownProps) => ({
+  propType: elementPropTypeByElementPathAndPropName(ownProps.elementPath, ownProps.propName)(state),
   propValue: elementPropValueByElementPathAndPropName(ownProps.elementPath, ownProps.propName)(state),
 });
 
