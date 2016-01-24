@@ -1,5 +1,6 @@
 import React, { Component, Image, PropTypes, Switch, Text, TextInput, View } from 'react-native';
 import { contains } from 'underscore';
+import StyleEditor from '../../../components/StyleEditor';
 import styles from './styles';
 
 // (Prop type categories)
@@ -8,8 +9,10 @@ const numberPropTypes = [PropTypes.number, PropTypes.number.isRequired];
 const imageSourcePropTypes = [Image.propTypes.source, Image.propTypes.source.isRequired];
 const objectPropTypes = [PropTypes.object, PropTypes.object.isRequired];
 const stringPropTypes = [PropTypes.string, PropTypes.string.isRequired];
+const imageStylePropTypes = [Image.propTypes.style, Image.propTypes.style.isRequired];
 const textStylePropTypes = [Text.propTypes.style, Text.propTypes.style.isRequired];
 const viewStylePropTypes = [View.propTypes.style, View.propTypes.style.isRequired];
+const stylePropTypes = [...imageStylePropTypes, ...textStylePropTypes, ...viewStylePropTypes];
 
 export default class PropValueInput extends Component {
   static propTypes = {
@@ -65,13 +68,11 @@ export default class PropValueInput extends Component {
       console.log('string');
     }
 
-    if (contains(textStylePropTypes, propType)) {
-      console.log('text style');
+    if (contains(stylePropTypes, propType)) {
+      console.log('style');
+      return <StyleEditor onValueChange={(value) => onChangePropValue(value)} propType={propType}/>;
     }
-
-    if (contains(viewStylePropTypes, propType)) {
-      console.log('view style');
-    }
+    return <StyleEditor onValueChange={(value) => onChangePropValue(value)} propType={propType}/>;
 
     const propValueString = JSON.stringify(propValue);
     return (
