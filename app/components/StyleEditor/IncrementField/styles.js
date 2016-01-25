@@ -1,16 +1,19 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    marginBottom: 10,
+    marginRight: 20,
+  },
 
-  name: {},
+  nameSection: {},
   nameLabel: {
     color: '#ccc',
     fontFamily: 'Avenir',
     fontSize: 10,
   },
 
-  field: {
+  fieldSection: {
     flexDirection: 'row',
   },
 

@@ -36,7 +36,7 @@ export default class IncrementField extends Component {
     }
 
     return (
-      <View style={styles.name}>
+      <View style={styles.nameSection}>
         <Text style={styles.nameLabel}>
           {name}
         </Text>
@@ -51,16 +51,21 @@ export default class IncrementField extends Component {
       unit,
       value,
     } = this.props;
+    const stringValue = typeof value !== 'undefined'
+                      ? String(value)
+                      : null;
 
     return (
       <View style={styles.value}>
         <TextInput
           autoCorrect={false}
           autoCapitalize="none"
+          keyboardAppearance="dark"
           keyboardType="numeric"
           onChangeText={(valueText) => onChangeValue(Number(valueText))}
           placeholder={placeholder}
-          value={String(value)}
+          placeholderTextColor="hsla(0,0,100,0.3)"
+          value={stringValue}
           style={styles.valueInput}
         />
         <View style={styles.unit}>
@@ -89,7 +94,7 @@ export default class IncrementField extends Component {
     return (
       <View style={styles.container}>
         {this.renderName()}
-        <View style={styles.field}>
+        <View style={styles.fieldSection}>
           {this.renderValue()}
           {this.renderButtons()}
         </View>

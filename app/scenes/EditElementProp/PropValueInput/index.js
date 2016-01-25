@@ -32,7 +32,7 @@ export default class PropValueInput extends Component {
       return (
         <View style={styles.container}>
           <Switch
-            onValueChange={onChangePropValue}
+            onChangeValue={onChangePropValue}
             value={propValue}
           />
         </View>
@@ -70,9 +70,9 @@ export default class PropValueInput extends Component {
 
     if (contains(stylePropTypes, propType)) {
       console.log('style');
-      return <StyleEditor onValueChange={(value) => onChangePropValue(value)} propType={propType}/>;
+      return <StyleEditor onChangeValue={(value) => onChangePropValue(value)} propType={propType} value={propValue}/>;
     }
-    return <StyleEditor onValueChange={(value) => onChangePropValue(value)} propType={propType}/>;
+    return <StyleEditor onChangeValue={(value) => onChangePropValue(value)} propType={propType} value={propValue}/>;
 
     const propValueString = JSON.stringify(propValue);
     return (
