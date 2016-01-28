@@ -1,8 +1,8 @@
 import React from 'react-native';
-import EditorWorkspace from './components/EditorWorkspace';
+import Editor from './components/Editor';
 import reducerMountPoint from './constants/reducerMountPoint';
 import reducer from './reducers';
 
-export default () => <EditorWorkspace/>;
+export default () => <Editor/>;
 export { reducerMountPoint };
 export { reducer };

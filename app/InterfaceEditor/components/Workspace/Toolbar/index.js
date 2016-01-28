@@ -1,7 +1,7 @@
 import { connect } from 'react-redux/native';
-import { beginFullScreenPreview } from '../../actions/workspace';
-import { redoTreeAction, undoTreeAction } from '../../actions/tree';
-import { canRedoTreeAction, canUndoTreeAction } from '../../selectors/tree';
+import { beginFullScreenPreview } from '../../../actions/workspace';
+import { redoTreeAction, undoTreeAction } from '../../../actions/tree';
+import { canRedoTreeAction, canUndoTreeAction } from '../../../selectors/tree';
 import Toolbar from './component';
 
 const mapStateToProps = (state) => ({

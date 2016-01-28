@@ -1,10 +1,10 @@
 import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
-import beginFullScreenPreviewButtonImage from '../../assets/img/beginFullScreenPreviewButton.png';
-import redoButtonImage from '../../assets/img/redoButton.png';
-import undoButtonImage from '../../assets/img/undoButton.png';
+import beginFullScreenPreviewButtonImage from '../../../assets/img/beginFullScreenPreviewButton.png';
+import redoButtonImage from '../../../assets/img/redoButton.png';
+import undoButtonImage from '../../../assets/img/undoButton.png';
 import styles from './styles';
 
-export default class EditorToolbar extends Component {
+export default class Toolbar extends Component {
   static propTypes = {
     canRedo: PropTypes.bool.isRequired,
     canUndo: PropTypes.bool.isRequired,

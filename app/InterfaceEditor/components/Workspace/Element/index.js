@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react-native';
-import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import { elementPropType, elementPathPropType } from '../../../constants/propTypes';
 import { omit } from 'underscore';
 import { List } from 'immutable';
 import styles from './styles';

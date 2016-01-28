@@ -1,11 +1,11 @@
 import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
 import { elementPropType, elementPathPropType } from '../../constants/propTypes';
 import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
-import EditorToolbar from '../EditorToolbar';
-import Element from '../Element';
+import Toolbar from './Toolbar';
+import Element from './Element';
 import styles from './styles';
 
-export default class EditorWorkspace extends Component {
+export default class Workspace extends Component {
   static propTypes = {
     beginFullScreenPreview: PropTypes.func.isRequired,
     endFullScreenPreview: PropTypes.func.isRequired,
@@ -66,7 +66,7 @@ export default class EditorWorkspace extends Component {
 
     return (
       <View style={styles.container}>
-        <EditorToolbar/>
+        <Toolbar/>
         <View style={styles.contentSection}>
           {this.renderPreviewSection()}
         </View>
