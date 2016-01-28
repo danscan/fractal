@@ -13,7 +13,7 @@ export default class Element extends Component {
   getCallOutStyleForElementPath(elementPath) {
     const { callOutPath } = this.props;
 
-    if (callOutPath && callOutPath.equals(elementPath)) {
+    if (callOutPath && !callOutPath.isEmpty() && callOutPath.equals(elementPath)) {
       return styles.callOutWrapper;
     }
 

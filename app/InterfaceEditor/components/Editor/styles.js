@@ -13,6 +13,8 @@ export default StyleSheet.create({
 
   inspectorSection: {
     backgroundColor: '#393939',
+    borderLeftColor: '#191d1f',
+    borderLeftWidth: 1,
     flex: 1,
   },
 });

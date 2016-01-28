@@ -8,14 +8,24 @@ export default StyleSheet.create({
   },
 
   button: {
+    alignItems: 'center',
     borderRightColor: '#191d1f',
     borderRightWidth: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
     paddingHorizontal: 20,
   },
   buttonImage: {
     height: 22,
     tintColor: '#ccc',
     width: 22,
+  },
+  buttonLabel: {
+    color: '#ccc',
+    fontFamily: 'Avenir',
+    fontSize: 10,
+  },
+  buttonValueLabel: {
+    color: 'white',
+    marginLeft: 10,
   },
 });

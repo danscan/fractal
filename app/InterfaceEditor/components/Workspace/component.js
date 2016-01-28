@@ -1,5 +1,6 @@
-import React, { Component, Image, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
-import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import React, { Component, Image, Modal, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
+import { canvasDevicePropType, canvasOrientationPropType, elementPropType, elementPathPropType } from '../../constants/propTypes';
+import { portraitOrientation } from '../../constants/canvasOrientations';
 import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
 import Toolbar from './Toolbar';
 import Element from './Element';
@@ -8,6 +9,9 @@ import styles from './styles';
 export default class Workspace extends Component {
   static propTypes = {
     beginFullScreenPreview: PropTypes.func.isRequired,
+    canvasDevice: canvasDevicePropType,
+    canvasOrientation: canvasOrientationPropType.isRequired,
+    canvasZoom: PropTypes.number.isRequired,
     endFullScreenPreview: PropTypes.func.isRequired,
     fullScreenPreview: PropTypes.bool.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
@@ -19,14 +23,18 @@ export default class Workspace extends Component {
   }
 
   renderFullScreenPreview() {
-    const { treeRootElement } = this.props;
+    const {
+      fullScreenPreview,
+      treeRootElement,
+    } = this.props;
 
-    // TODO: Animate style changes when fullScreenPreview prop changes...
     return (
-      <View style={styles.container}>
-        <Element element={treeRootElement}/>
-        {this.renderFullScreenPreviewButton()}
-      </View>
+      <Modal animated visible={fullScreenPreview}>
+        <View style={styles.container}>
+          <Element element={treeRootElement}/>
+          {this.renderFullScreenPreviewButton()}
+        </View>
+      </Modal>
     );
   }
 
@@ -42,13 +50,32 @@ export default class Workspace extends Component {
 
   renderPreviewSection() {
     const {
+      canvasDevice,
+      canvasOrientation,
+      canvasZoom,
       treeRootElement,
       selectedElementPath,
     } = this.props;
+    const previewElementWidth = canvasOrientation === portraitOrientation
+                              ? canvasDevice.get('width')
+                              : canvasDevice.get('height');
+    const previewElementHeight = canvasOrientation === portraitOrientation
+                              ? canvasDevice.get('height')
+                              : canvasDevice.get('width');
+    const previewElementWrapperStyle = [
+      styles.previewElementWrapper,
+      {
+        width: previewElementWidth,
+        height: previewElementHeight,
+        transform: [
+          { scale: canvasZoom },
+        ],
+      },
+    ];
 
     return (
       <View style={styles.previewSection}>
-        <View style={styles.previewElementWrapper}>
+        <View style={previewElementWrapperStyle}>
           <Element element={treeRootElement} callOutPath={selectedElementPath}/>
         </View>
       </View>
@@ -56,20 +83,13 @@ export default class Workspace extends Component {
   }
 
   render() {
-    const {
-      fullScreenPreview,
-    } = this.props;
-
-    if (fullScreenPreview) {
-      return this.renderFullScreenPreview();
-    }
-
     return (
       <View style={styles.container}>
         <Toolbar/>
         <View style={styles.contentSection}>
           {this.renderPreviewSection()}
         </View>
+        {this.renderFullScreenPreview()}
       </View>
     );
   }

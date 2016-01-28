@@ -2,10 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   callOutWrapper: {
-    borderColor: '#94c600',
-    borderRadius: 6,
+    borderColor: '#00b5ec',
     borderWidth: 3,
-    margin: -9,
-    padding: 6,
+    margin: -3,
   },
 });

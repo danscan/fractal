@@ -1,11 +1,10 @@
-import { Dimensions, StyleSheet } from 'react-native';
-
-const windowDimensions = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: '#808080',
     flex: 1,
+    overflow: 'hidden',
   },
 
   endFullScreenPreviewButton: {
@@ -40,17 +39,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   previewElementWrapper: {
-    width: windowDimensions.width,
-    height: windowDimensions.height,
-
-    borderColor: '#2e3538',
-    borderRadius: 12,
-    borderWidth: 3,
-    padding: -3,
-    transform: [
-      { scale: 0.5 },
-    ],
-    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowOffset: { height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
   },
 
   inspectorSection: {
