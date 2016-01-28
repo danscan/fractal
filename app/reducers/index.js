@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux';
 
 // (App reducers)
-import fullScreenPreview from './fullScreenPreview';
-import inspector from './inspector';
-import tree from './tree';
+import {
+  reducerMountPoint as interfaceEditorReducerMountPoint,
+  reducer as interfaceEditorReducer,
+} from '../InterfaceEditor';
 
 const reducer = combineReducers({
-  fullScreenPreview,
-  inspector,
-  tree,
+  [interfaceEditorReducerMountPoint]: interfaceEditorReducer,
 });
 
 export default reducer;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react-native';
 import { Provider } from 'react-redux/native';
 import getStore from './store/index';
-import EditorWorkspace from './components/EditorWorkspace';
+import AppToolbarNavigator from './components/AppToolbarNavigator';
+import InterfaceEditor from './InterfaceEditor';
 
 export default class App extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
-        {() => <EditorWorkspace/>}
+        {() => <AppToolbarNavigator scene={<InterfaceEditor/>}/>}
       </Provider>
     );
   }
