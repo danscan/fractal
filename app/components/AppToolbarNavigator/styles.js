@@ -36,6 +36,7 @@ export default StyleSheet.create({
   },
   toolbarButtonImage: {
     width: 22,
+    tintColor: '#ccc',
     height: 22,
   },
 

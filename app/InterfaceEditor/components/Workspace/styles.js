@@ -4,7 +4,7 @@ const windowDimensions = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#808080',
     flex: 1,
   },
 

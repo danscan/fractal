@@ -39,6 +39,7 @@ export default StyleSheet.create({
   },
   buttonImage: {
     height: 22,
+    tintColor: '#ccc',
     width: 22,
   },
   buttonImageDisabled: {

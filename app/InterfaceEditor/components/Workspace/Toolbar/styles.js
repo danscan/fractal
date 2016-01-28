@@ -2,40 +2,20 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    alignItems: 'center',
-    backgroundColor: '#2e3538',
+    backgroundColor: '#333',
     flexDirection: 'row',
-    height: 48,
-    paddingHorizontal: 2,
-  },
-
-  leftButtons: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-
-  rightButtons: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    height: 38,
   },
 
   button: {
-    padding: 8,
+    borderRightColor: '#191d1f',
+    borderRightWidth: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
   },
-  buttonImageDisabled: {
-    opacity: 0.2,
-  },
-  beginFullScreenPreviewButtonImage: {
+  buttonImage: {
     height: 22,
-    width: 22,
-  },
-  redoButtonImage: {
-    height: 22,
-    width: 22,
-  },
-  undoButtonImage: {
-    height: 22,
+    tintColor: '#ccc',
     width: 22,
   },
 });
