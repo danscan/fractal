@@ -1,6 +1,7 @@
 import React, { Component, StatusBarIOS, View } from 'react-native';
 import Toolbar from '../Toolbar';
 import Workspace from '../Workspace';
+import Inspector from '../Inspector';
 import styles from './styles';
 
 export default class Editor extends Component {
@@ -15,7 +16,9 @@ export default class Editor extends Component {
           <Toolbar/>
           <Workspace/>
         </View>
-        <View style={styles.inspectorSection}/>
+        <View style={styles.inspectorSection}>
+          <Inspector/>
+        </View>
       </View>
     );
   }
