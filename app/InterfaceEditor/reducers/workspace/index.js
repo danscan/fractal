@@ -3,6 +3,7 @@ import {
   END_FULL_SCREEN_PREVIEW,
   SET_CANVAS_DEVICE,
   SET_CANVAS_ORIENTATION,
+  TOGGLE_CANVAS_ORIENTATION,
   SET_CANVAS_ZOOM,
 } from '../../constants/actionTypes';
 import initialState from './initialState';
@@ -12,6 +13,7 @@ import reduceBeginFullScreenPreview from './reduceBeginFullScreenPreview';
 import reduceEndFullScreenPreview from './reduceEndFullScreenPreview';
 import reduceSetCanvasDevice from './reduceSetCanvasDevice';
 import reduceSetCanvasOrientation from './reduceSetCanvasOrientation';
+import reduceToggleCanvasOrientation from './reduceToggleCanvasOrientation';
 import reduceSetCanvasZoom from './reduceSetCanvasZoom';
 
 export default function workspace(state = initialState, action) {
@@ -24,6 +26,8 @@ export default function workspace(state = initialState, action) {
       return reduceSetCanvasDevice(state, action);
     case SET_CANVAS_ORIENTATION:
       return reduceSetCanvasOrientation(state, action);
+    case TOGGLE_CANVAS_ORIENTATION:
+      return reduceToggleCanvasOrientation(state);
     case SET_CANVAS_ZOOM:
       return reduceSetCanvasZoom(state, action);
     default:

@@ -3,6 +3,7 @@ import {
   END_FULL_SCREEN_PREVIEW,
   SET_CANVAS_DEVICE,
   SET_CANVAS_ORIENTATION,
+  TOGGLE_CANVAS_ORIENTATION,
   SET_CANVAS_ZOOM,
 } from '../constants/actionTypes';
 
@@ -26,6 +27,10 @@ export function setCanvasOrientation(canvasOrientation) {
     type: SET_CANVAS_ORIENTATION,
     canvasOrientation,
   };
+}
+
+export function toggleCanvasOrientation() {
+  return { type: TOGGLE_CANVAS_ORIENTATION };
 }
 
 export function setCanvasZoom(canvasZoom) {

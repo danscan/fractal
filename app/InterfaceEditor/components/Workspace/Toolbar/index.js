@@ -1,5 +1,5 @@
 import { connect } from 'react-redux/native';
-import { beginFullScreenPreview } from '../../../actions/workspace';
+import { beginFullScreenPreview, toggleCanvasOrientation } from '../../../actions/workspace';
 import { canvasDevice, canvasOrientation, canvasZoom } from '../../../selectors/workspace';
 import Toolbar from './component';
 
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   onPressBeginFullScreenPreview: beginFullScreenPreview,
+  onPressCanvasOrientation: toggleCanvasOrientation,
 };
 
 export default connect(mapStateToProps, actionCreators)(Toolbar);

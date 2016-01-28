@@ -10,6 +10,7 @@ export default class Toolbar extends Component {
     canvasOrientation: canvasOrientationPropType.isRequired,
     canvasZoom: PropTypes.number.isRequired,
     onPressBeginFullScreenPreview: PropTypes.func.isRequired,
+    onPressCanvasOrientation: PropTypes.func.isRequired,
   }
 
   renderBeginFullScreenPreviewButton() {
@@ -53,10 +54,13 @@ export default class Toolbar extends Component {
   }
 
   renderCanvasOrientationButton() {
-    const { canvasOrientation } = this.props;
+    const {
+      canvasOrientation,
+      onPressCanvasOrientation,
+    } = this.props;
 
     return (
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={onPressCanvasOrientation} style={styles.button}>
         <Text style={styles.buttonLabel}>
           Canvas Orientation
         </Text>
