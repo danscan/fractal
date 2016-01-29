@@ -1,25 +1,12 @@
-import React, { Component, StatusBarIOS, View } from 'react-native';
-import Toolbar from '../Toolbar';
-import Workspace from '../Workspace';
-import Inspector from '../Inspector';
-import styles from './styles';
+import { connect } from 'react-redux/native';
+import { showAddElementModal } from '../../selectors/editor';
+import Editor from './component';
 
-export default class Editor extends Component {
-  componentDidMount() {
-    StatusBarIOS.setHidden(true);
-  }
+const mapStateToProps = (state) => ({
+  showAddElementModal: showAddElementModal(state),
+});
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.mainSection}>
-          <Toolbar/>
-          <Workspace/>
-        </View>
-        <View style={styles.inspectorSection}>
-          <Inspector/>
-        </View>
-      </View>
-    );
-  }
-}
+const actionCreators = {};
+
+export default connect(mapStateToProps, actionCreators)(Editor);
+export { Editor };
