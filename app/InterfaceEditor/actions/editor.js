@@ -3,7 +3,6 @@ import {
   HIDE_ADD_ELEMENT_MODAL,
   SET_SELECTED_ELEMENT_PATH,
   RESET_SELECTED_ELEMENT_PATH,
-  SET_SELECTED_INSPECTOR_TAB,
 } from '../constants/actionTypes';
 
 export function showAddElementModal() {
@@ -23,11 +22,4 @@ export function setSelectedElementPath(selectedElementPath) {
 
 export function resetSelectedElementPath() {
   return { type: RESET_SELECTED_ELEMENT_PATH };
-}
-
-export function setSelectedInspectorTab(selectedInspectorTab) {
-  return {
-    type: SET_SELECTED_INSPECTOR_TAB,
-    selectedInspectorTab,
-  };
 }

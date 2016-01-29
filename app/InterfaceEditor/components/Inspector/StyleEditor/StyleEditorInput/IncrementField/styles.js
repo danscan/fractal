@@ -19,7 +19,7 @@ export default StyleSheet.create({
 
   value: {
     alignItems: 'center',
-    backgroundColor: '#383c3d',
+    backgroundColor: '#333',
     borderColor: '#191d1f',
     borderBottomLeftRadius: 4,
     borderTopLeftRadius: 4,
@@ -49,7 +49,7 @@ export default StyleSheet.create({
   },
   incrementButton: {
     alignItems: 'center',
-    backgroundColor: '#60686b',
+    backgroundColor: '#4b4b4b',
     borderColor: '#191d1f',
     borderBottomRightRadius: 4,
     borderTopRightRadius: 4,
@@ -65,7 +65,7 @@ export default StyleSheet.create({
   },
   decrementButton: {
     alignItems: 'center',
-    backgroundColor: '#60686b',
+    backgroundColor: '#4b4b4b',
     borderColor: '#191d1f',
     borderLeftWidth: 0,
     borderWidth: 1,

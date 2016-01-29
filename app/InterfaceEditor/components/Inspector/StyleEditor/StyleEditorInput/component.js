@@ -1,15 +1,15 @@
-import React, { Component, PropTypes, ScrollView, View } from 'react-native';
-// import beginFullScreenPreviewButtonImage from '../../assets/img/beginFullScreenPreviewButton.png';
-// import redoButtonImage from '../../assets/img/redoButton.png';
-// import undoButtonImage from '../../assets/img/undoButton.png';
+import React, { Component, PropTypes, ScrollView } from 'react-native';
+import { elementPathPropType } from '../../../../constants/propTypes';
 import IncrementField from './IncrementField';
 import RadioButtonsGroup from './RadioButtonsGroup';
 import Section from './Section';
 import styles from './styles';
 
-export default class StyleEditor extends Component {
+export default class StyleEditorInput extends Component {
   static propTypes = {
+    elementPath: elementPathPropType.isRequired,
     onChangeValue: PropTypes.func.isRequired,
+    propName: PropTypes.string.isRequired,
     propType: PropTypes.func.isRequired,
     value: PropTypes.object,
   }

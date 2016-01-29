@@ -1,6 +1,6 @@
 import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
-import collapsedSectionArrowImage from '../../../assets/img/collapsedSectionArrow.png';
-import expandedSectionArrowImage from '../../../assets/img/expandedSectionArrow.png';
+import collapsedSectionArrowImage from '../../../../../assets/img/collapsedSectionArrow.png';
+import expandedSectionArrowImage from '../../../../../assets/img/expandedSectionArrow.png';
 import styles from './styles';
 
 export default class Section extends Component {

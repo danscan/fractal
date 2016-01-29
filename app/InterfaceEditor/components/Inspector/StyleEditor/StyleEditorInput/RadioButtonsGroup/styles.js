@@ -19,7 +19,7 @@ export default StyleSheet.create({
 
   optionButton: {
     alignItems: 'center',
-    backgroundColor: '#60686b',
+    backgroundColor: '#4b4b4b',
     borderColor: '#191d1f',
     borderWidth: 1,
     justifyContent: 'center',
@@ -28,11 +28,11 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
   },
   optionButtonSelected: {
-    backgroundColor: '#383c3d',
+    backgroundColor: '#333',
   },
   buttonText: {
     color: 'white',
     fontFamily: 'Avenir',
     fontSize: 10,
-  }
+  },
 });

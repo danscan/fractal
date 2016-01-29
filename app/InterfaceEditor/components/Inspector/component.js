@@ -2,9 +2,11 @@ import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'reac
 import navigatorButtonImage from '../../assets/img/navigatorButton.png';
 import styleEditorButtonImage from '../../assets/img/styleEditorButton.png';
 import propsEditorButtonImage from '../../assets/img/propsEditorButton.png';
+import Navigator from './Navigator';
+import StyleEditor from './StyleEditor';
 import styles from './styles';
 
-export default class Toolbar extends Component {
+export default class Inspector extends Component {
   static propTypes = {
     selectedTab: PropTypes.number.isRequired,
     onSelectTab: PropTypes.func.isRequired,
@@ -51,10 +53,23 @@ export default class Toolbar extends Component {
     );
   }
 
+  renderSelectedTabComponent() {
+    const { selectedTab } = this.props;
+
+    if (selectedTab === 0) {
+      return <Navigator/>;
+    }
+
+    if (selectedTab === 1) {
+      return <StyleEditor/>;
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
         {this.renderTabBar()}
+        {this.renderSelectedTabComponent()}
       </View>
     );
   }
