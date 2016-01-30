@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
 const actionCreators = {
   addElementChild,
   hideAddElementModal,
+  onPressOutsideModal: hideAddElementModal,
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

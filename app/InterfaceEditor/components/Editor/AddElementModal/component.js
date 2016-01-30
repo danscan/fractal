@@ -5,18 +5,31 @@ import styles from './styles';
 export default class AddElementModal extends Component {
   static propTypes = {
     onPressElementType: PropTypes.func.isRequired,
+    onPressOutsideModal: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
+  }
+
+  renderElementType(elementType) {
+    const { onPressElementType } = this.props;
+
+    return (
+      <TouchableOpacity onPress={() => onPressElementType(elementType)} style={styles.elementType}>
+        <Text style={styles.elementTypeLabel}>
+          {elementType.name}
+        </Text>
+      </TouchableOpacity>
+    );
   }
 
   render() {
     const {
-      onPressElementType,
+      onPressOutsideModal,
       visible,
     } = this.props;
 
     return (
       <Modal animated transparent visible={visible}>
-        <View style={styles.wrapper}>
+        <TouchableOpacity onPress={() => onPressOutsideModal()} style={styles.wrapper}>
           <View style={styles.container}>
             <View style={styles.headerSection}>
               <Text style={styles.headerLabel}>
@@ -24,14 +37,10 @@ export default class AddElementModal extends Component {
               </Text>
             </View>
             <View style={styles.contentSection}>
-              {elementTypes.map(elementType => (
-                <TouchableOpacity onPress={() => onPressElementType(elementType)}>
-                  <Text>{elementType.name}</Text>
-                </TouchableOpacity>
-              ))}
+              {elementTypes.map(elementType => this.renderElementType(elementType))}
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </Modal>
     );
   }
