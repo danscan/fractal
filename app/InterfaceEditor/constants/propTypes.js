@@ -2,7 +2,7 @@ import { PropTypes } from 'react-native';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { portraitOrientation, landscapeOrientation } from './canvasOrientations';
 
-export const canvasDevicePropType = ImmutablePropTypes.mapOf({
+export const canvasDevicePropType = ImmutablePropTypes.contains({
   name: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
