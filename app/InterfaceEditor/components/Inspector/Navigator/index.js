@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 const actionCreators = {
   onPressHide: (elementPath) => hideElement(elementPath),
   onPressDelete: (elementPath) => removeElement(elementPath),
-  onSelectElement: (elementPath) => setSelectedElementPath(elementPath),
+  onPressElement: (elementPath) => setSelectedElementPath(elementPath),
 };
 
 export default connect(mapStateToProps, actionCreators)(Navigator);

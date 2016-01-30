@@ -2,6 +2,7 @@ import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from
 import hideButtonImage from '../../../assets/img/hideButton.png';
 import deleteButtonImage from '../../../assets/img/deleteButton.png';
 import { elementPropType, elementPathPropType } from '../../../constants/propTypes';
+import elementDisplayNameByElement from '../../../utils/elementDisplayNameByElement';
 import { List } from 'immutable';
 import { map } from 'underscore';
 import styles from './styles';
@@ -10,33 +11,48 @@ export default class Navigator extends Component {
   static propTypes = {
     onPressDelete: PropTypes.func.isRequired,
     onPressHide: PropTypes.func.isRequired,
-    onSelectElement: PropTypes.func.isRequired,
+    onPressElement: PropTypes.func.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     root: elementPropType.isRequired,
   }
 
   renderElementsSection() {
-    const {
-      root: element,
-      onSelectElement,
-    } = this.props;
-    const elementProps = element.props || {};
-    const elementChildren = elementProps.children;
-
-    if (element.type === Text) {
-      return this.renderTextChildrenSection();
-    }
+    const { root: element } = this.props;
 
     return (
       <View style={styles.elementsSection}>
-        <View style={styles.childrenListSection}>
-          {map(elementChildren, (childElement, childIndex) => (
-            <TouchableOpacity key={childIndex} onPress={() => onSelectElement(new List([childIndex]))} style={styles.childButton}>
-              <Text>{childIndex} {JSON.stringify(childElement)}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+        {this.renderElement(element, new List([]))}
       </View>
+    );
+  }
+
+  renderElement(element, elementPath) {
+    const {
+      onPressElement,
+      selectedElementPath,
+    } = this.props;
+    const elementProps = element.props || {};
+    const elementChildren = elementProps.children;
+    const elementKey = elementPath.join(',');
+    const elementDisplayName = elementDisplayNameByElement(element);
+    const elementIsRoot = elementPath.isEmpty();
+    const elementStyle = [
+      styles.element,
+      elementIsRoot ? styles.rootElement : {},
+      selectedElementPath.equals(elementPath) ? styles.selectedElement : {},
+    ];
+
+    return (
+      <TouchableOpacity
+        key={elementKey}
+        onPress={() => onPressElement(elementPath)}
+        style={elementStyle}
+      >
+        <Text style={styles.elementNameLabel}>
+          {elementDisplayName}
+        </Text>
+        {map(elementChildren, (childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))}
+      </TouchableOpacity>
     );
   }
 
