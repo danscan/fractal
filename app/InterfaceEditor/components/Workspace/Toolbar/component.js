@@ -6,7 +6,7 @@ import styles from './styles';
 
 export default class Toolbar extends Component {
   static propTypes = {
-    canvasDevice: canvasDevicePropType,
+    canvasDevice: canvasDevicePropType.isRequired,
     canvasOrientation: canvasOrientationPropType.isRequired,
     canvasZoom: PropTypes.number.isRequired,
     onPressBeginFullScreenPreview: PropTypes.func.isRequired,
