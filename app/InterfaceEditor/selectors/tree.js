@@ -52,7 +52,6 @@ export const elementPropTypeByElementPathAndPropName = (elementPath, propName) =
 
 // (Private helpers)
 function _treeCursorByTreePath(treePath) {
-  console.log('treePath.toJS():', treePath.toJS());
   return createSelector(
     tree,
     (treeState) => treeState.getIn(treePath),
