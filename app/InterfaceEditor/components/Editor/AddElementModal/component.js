@@ -13,7 +13,7 @@ export default class AddElementModal extends Component {
     const { onPressElementType } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => onPressElementType(elementType)} style={styles.elementType}>
+      <TouchableOpacity key={elementType.name} onPress={() => onPressElementType(elementType)} style={styles.elementType}>
         <Text style={styles.elementTypeLabel}>
           {elementType.name}
         </Text>
