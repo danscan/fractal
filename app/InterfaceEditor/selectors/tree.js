@@ -51,16 +51,9 @@ export const elementPropTypeByElementPathAndPropName = (elementPath, propName) =
 );
 
 // (Private helpers)
-function _treeCursorByTreePath(treePath) {
-  return createSelector(
-    tree,
-    (treeState) => treeState.getIn(treePath),
-  );
-}
-
 function _treeNodeByTreePath(treePath) {
   return createSelector(
-    _treeCursorByTreePath(treePath),
-    (treeNodeCursor) => treeNodeCursor.toJS(),
+    tree,
+    (treeState) => treeState.getIn(treePath).toJS(),
   );
 }
