@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import reducerMountPoint from './reducerMountPoint';
 import { elementByElementPath } from './tree';
+import elementDisplayNameByElement from '../utils/elementDisplayNameByElement';
 
 function editor(state) {
   return reducerMountPoint(state).editor;
@@ -26,5 +27,5 @@ export function selectedElement(state) {
 export function selectedElementDisplayName(state) {
   const selectedElementState = selectedElement(state);
 
-  return selectedElementState.displayName || selectedElementState.type.displayName;
+  return elementDisplayNameByElement(selectedElementState);
 }

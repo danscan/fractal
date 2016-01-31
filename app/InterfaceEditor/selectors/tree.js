@@ -26,11 +26,11 @@ export function treeRootElement(state) {
   return tree(state);
 }
 
-export const elementByElementPath = elementPath => {
+export function elementByElementPath(elementPath) {
   const elementTreePath = treePathByElementPath(elementPath);
 
   return _treeNodeByTreePath(elementTreePath);
-};
+}
 
 export const elementPropValueByElementPathAndPropName = (elementPath, propName) => createSelector(
   elementByElementPath(elementPath),

@@ -1,9 +1,9 @@
-import React, { Component, Image, Modal, PropTypes, StatusBarIOS, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes, StatusBarIOS, View } from 'react-native';
 import { canvasDevicePropType, canvasOrientationPropType, elementPropType, elementPathPropType } from '../../constants/propTypes';
 import { portraitOrientation } from '../../constants/canvasOrientations';
-import endFullScreenPreviewButtonImage from '../../assets/img/closeButton.png';
 import Toolbar from './Toolbar';
 import Element from './Element';
+import FullScreenPreview from './FullScreenPreview';
 import styles from './styles';
 
 export default class Workspace extends Component {
@@ -24,27 +24,17 @@ export default class Workspace extends Component {
 
   renderFullScreenPreview() {
     const {
+      endFullScreenPreview,
       fullScreenPreview,
       treeRootElement,
     } = this.props;
 
     return (
-      <Modal animated visible={fullScreenPreview}>
-        <View style={styles.container}>
-          <Element element={treeRootElement}/>
-          {this.renderFullScreenPreviewButton()}
-        </View>
-      </Modal>
-    );
-  }
-
-  renderFullScreenPreviewButton() {
-    const { endFullScreenPreview } = this.props;
-
-    return (
-      <TouchableOpacity onPress={() => endFullScreenPreview()} style={styles.endFullScreenPreviewButton}>
-        <Image source={endFullScreenPreviewButtonImage} style={styles.endFullScreenPreviewButtonImage}/>
-      </TouchableOpacity>
+      <FullScreenPreview
+        element={treeRootElement}
+        visible={fullScreenPreview}
+        onPressClose={endFullScreenPreview}
+      />
     );
   }
 

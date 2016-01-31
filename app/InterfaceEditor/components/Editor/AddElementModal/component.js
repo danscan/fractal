@@ -9,6 +9,24 @@ export default class AddElementModal extends Component {
     visible: PropTypes.bool.isRequired,
   }
 
+  renderHeaderSection() {
+    return (
+      <View style={styles.headerSection}>
+        <Text style={styles.headerLabel}>
+          Add Element
+        </Text>
+      </View>
+    );
+  }
+
+  renderContentSection() {
+    return (
+      <View style={styles.contentSection}>
+        {elementTypes.map(elementType => this.renderElementType(elementType))}
+      </View>
+    );
+  }
+
   renderElementType(elementType) {
     const { onPressElementType } = this.props;
     const elementTypeName = elementType.get('name');
@@ -32,14 +50,8 @@ export default class AddElementModal extends Component {
       <Modal animated transparent visible={visible}>
         <TouchableOpacity onPress={() => onPressOutsideModal()} style={styles.wrapper}>
           <View style={styles.container}>
-            <View style={styles.headerSection}>
-              <Text style={styles.headerLabel}>
-                Add Element
-              </Text>
-            </View>
-            <View style={styles.contentSection}>
-              {elementTypes.map(elementType => this.renderElementType(elementType))}
-            </View>
+            {this.renderHeaderSection()}
+            {this.renderContentSection()}
           </View>
         </TouchableOpacity>
       </Modal>
