@@ -16,21 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81I-Jd-20x" userLabel="Toolbar Area">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
-                                <color key="backgroundColor" red="0.13588884472846985" green="0.15706023573875427" blue="0.16644549369812012" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="LNp-Ab-pcw"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.93999999999999995" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="81I-Jd-20x" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JUq-1Z-Umz"/>
-                            <constraint firstItem="81I-Jd-20x" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="VwZ-2m-bAt"/>
-                            <constraint firstItem="81I-Jd-20x" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="n3R-6Y-27f"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.42467421293258667" green="0.42466151714324951" blue="0.42466866970062256" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
