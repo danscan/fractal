@@ -3,5 +3,5 @@ export default function elementDisplayNameByElement(element) {
     return element;
   }
 
-  return element.displayName || element.type.displayName;
+  return element.get('displayName') || element.get('type').displayName;
 }

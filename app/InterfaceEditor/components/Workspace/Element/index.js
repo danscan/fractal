@@ -1,6 +1,5 @@
 import { createElement, Component } from 'react-native';
 import { elementPropType, elementPathPropType } from '../../../constants/propTypes';
-import { omit } from 'underscore';
 import { List } from 'immutable';
 import styles from './styles';
 
@@ -25,15 +24,16 @@ export default class Element extends Component {
       return element;
     }
 
-    const { type: elementType, props = {} } = element || {};
-    const { children = [] } = props;
+    const elementType = element.get('type');
+    const propsWithoutChildren = element.get('props').delete('children').toJS();
+    const children = element.getIn(['props', 'children']);
     const elementKeyProp = elementPath;
     const elementCallOutStyle = this.getCallOutStyleForElementPath(elementPath);
     const elementProps = {
-      ...omit(props, 'children'),
+      ...propsWithoutChildren,
       key: elementKeyProp,
       style: [
-        props.style,
+        propsWithoutChildren.style,
         elementCallOutStyle,
       ],
     };

@@ -17,7 +17,7 @@ export const elementPathPropType = ImmutablePropTypes.listOf(
   PropTypes.number,
 );
 
-export const elementPropType = PropTypes.shape({
+export const elementPropType = ImmutablePropTypes.contains({
   displayName: PropTypes.string,
   type: PropTypes.func.isRequired,
   props: PropTypes.object,

@@ -23,7 +23,7 @@ export function canUndoTreeAction(state) {
 }
 
 export function treeRootElement(state) {
-  return tree(state).toJS();
+  return tree(state);
 }
 
 export const elementByElementPath = elementPath => {
@@ -34,19 +34,16 @@ export const elementByElementPath = elementPath => {
 
 export const elementPropValueByElementPathAndPropName = (elementPath, propName) => createSelector(
   elementByElementPath(elementPath),
-  (element) => {
-    const elementProps = element.props || {};
-
-    return elementProps[propName];
-  },
+  (element) => element.getIn(['props', propName]),
 );
 
 export const elementPropTypeByElementPathAndPropName = (elementPath, propName) => createSelector(
   elementByElementPath(elementPath),
   (element) => {
-    const elementPropTypes = element.type.propTypes || {};
+    const elementType = element.get('type');
+    const elementTypePropTypes = elementType.propTypes || {};
 
-    return elementPropTypes[propName];
+    return elementTypePropTypes[propName];
   },
 );
 
@@ -54,6 +51,6 @@ export const elementPropTypeByElementPathAndPropName = (elementPath, propName) =
 function _treeNodeByTreePath(treePath) {
   return createSelector(
     tree,
-    (treeState) => treeState.getIn(treePath).toJS(),
+    (treeState) => treeState.getIn(treePath),
   );
 }

@@ -4,7 +4,6 @@ import deleteButtonImage from '../../../assets/img/deleteButton.png';
 import { elementPropType, elementPathPropType } from '../../../constants/propTypes';
 import elementDisplayNameByElement from '../../../utils/elementDisplayNameByElement';
 import { List } from 'immutable';
-import { map } from 'underscore';
 import styles from './styles';
 
 export default class Navigator extends Component {
@@ -31,8 +30,12 @@ export default class Navigator extends Component {
       onPressElement,
       selectedElementPath,
     } = this.props;
-    const elementProps = element.props || {};
-    const elementChildren = elementProps.children;
+    if (typeof element === 'string') {
+      return null;
+    }
+
+    const elementProps = element.get('props');
+    const elementChildren = elementProps.get('children');
     const elementKey = elementPath.join(',');
     const elementDisplayName = elementDisplayNameByElement(element);
     const elementIsRoot = elementPath.isEmpty();
@@ -54,7 +57,7 @@ export default class Navigator extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.elementChildrenSection}>
-          {map(elementChildren, (childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))}
+          {elementChildren.map((childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))}
         </View>
       </View>
     );
