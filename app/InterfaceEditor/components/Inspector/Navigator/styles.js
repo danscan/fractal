@@ -8,22 +8,35 @@ export default StyleSheet.create({
   elementsSection: {
     flex: 1,
   },
-  rootElement: {
-    borderTopWidth: 0,
-  },
-  selectedElement: {
-    backgroundColor: '#00b5ec',
-  },
   element: {
     backgroundColor: '#4b4b4b',
     borderBottomColor: 'hsla(0,0,0,0.3)',
     borderBottomWidth: 1,
+    justifyContent: 'center',
+  },
+  elementHandleSection: {
+    alignItems: 'center',
     borderTopColor: 'hsla(0,0,100,0.1)',
     borderTopWidth: 1,
-    justifyContent: 'center',
-    // paddingHorizontal: 14,
-    paddingTop: 10,
+    flexDirection: 'row',
   },
+  rootElementHandleSection: {
+    borderTopWidth: 0,
+  },
+  selectedElementHandleSection: {
+    backgroundColor: '#00b5ec',
+    borderTopColor: 'hsla(0,0,100,0.2)',
+  },
+  elementToggleExpansionArrow: {
+    backgroundColor: 'gray',
+    marginRight: 10,
+    height: 10,
+    width: 10,
+  },
+  elementHandle: {
+    paddingVertical: 10,
+  },
+  elementChildrenSection: {},
   elementNameLabel: {
     color: 'white',
     fontFamily: 'Avenir',

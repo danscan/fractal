@@ -36,23 +36,31 @@ export default class Navigator extends Component {
     const elementKey = elementPath.join(',');
     const elementDisplayName = elementDisplayNameByElement(element);
     const elementIsRoot = elementPath.isEmpty();
-    const elementStyle = [
-      styles.element,
-      elementIsRoot ? styles.rootElement : {},
-      selectedElementPath.equals(elementPath) ? styles.selectedElement : {},
+    const elementHandleSectionStyle = [
+      styles.elementHandleSection,
+      elementIsRoot ? styles.rootElementHandleSection : {},
+      selectedElementPath.equals(elementPath) ? styles.selectedElementHandleSection : {},
+      { paddingLeft: 20 * elementPath.count() },
     ];
 
     return (
-      <TouchableOpacity
-        key={elementKey}
-        onPress={() => onPressElement(elementPath)}
-        style={elementStyle}
-      >
-        <Text style={styles.elementNameLabel}>
-          {elementDisplayName}
-        </Text>
-        {map(elementChildren, (childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))}
-      </TouchableOpacity>
+      <View style={styles.element}>
+        <View style={elementHandleSectionStyle}>
+          <TouchableOpacity style={styles.elementToggleExpansionArrow}/>
+          <TouchableOpacity
+            key={elementKey}
+            onPress={() => onPressElement(elementPath)}
+            style={styles.elementHandle}
+          >
+            <Text style={styles.elementNameLabel}>
+              {elementDisplayName}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.elementChildrenSection}>
+          {map(elementChildren, (childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))}
+        </View>
+      </View>
     );
   }
 

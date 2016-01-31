@@ -4,6 +4,7 @@ import styleEditorButtonImage from '../../assets/img/styleEditorButton.png';
 import propsEditorButtonImage from '../../assets/img/propsEditorButton.png';
 import Navigator from './Navigator';
 import StyleEditor from './StyleEditor';
+import PropsEditor from './PropsEditor';
 import styles from './styles';
 
 export default class Inspector extends Component {
@@ -62,6 +63,10 @@ export default class Inspector extends Component {
 
     if (selectedTab === 1) {
       return <StyleEditor/>;
+    }
+
+    if (selectedTab === 2) {
+      return <PropsEditor/>;
     }
   }
 
