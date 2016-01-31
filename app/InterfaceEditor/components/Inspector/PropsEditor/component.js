@@ -42,6 +42,7 @@ export default class PropsEditor extends Component {
           <TextInput
             autoCapitalize="none"
             autoCorrect={false}
+            keyboardAppearance="dark"
             placeholder="Prop name"
             placeholderTextColor="#ccc"
             value={propName}
@@ -55,6 +56,7 @@ export default class PropsEditor extends Component {
           <TextInput
             autoCapitalize="none"
             autoCorrect={false}
+            keyboardAppearance="dark"
             placeholder="Prop type"
             placeholderTextColor="#ccc"
             style={styles.propTypeInput}
@@ -64,6 +66,7 @@ export default class PropsEditor extends Component {
           <TextInput
             autoCapitalize="none"
             autoCorrect={false}
+            keyboardAppearance="dark"
             placeholder="Prop value"
             placeholderTextColor="#ccc"
             value={propValue}

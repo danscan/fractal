@@ -1,6 +1,7 @@
 import React, { Component } from 'react-native';
 import { Provider } from 'react-redux/native';
 import getStore from './store/index';
+import KeyboardAwareView from './components/KeyboardAwareView';
 import AppToolbarNavigator from './components/AppToolbarNavigator';
 import InterfaceEditor from './InterfaceEditor';
 
@@ -11,7 +12,11 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
-        {() => <AppToolbarNavigator scene={<InterfaceEditor/>}/>}
+        {() => (
+          <KeyboardAwareView animated>
+            <AppToolbarNavigator scene={<InterfaceEditor/>}/>
+          </KeyboardAwareView>
+        )}
       </Provider>
     );
   }
