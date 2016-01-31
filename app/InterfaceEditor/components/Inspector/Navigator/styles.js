@@ -10,12 +10,11 @@ export default StyleSheet.create({
   },
   element: {
     backgroundColor: '#4b4b4b',
-    borderBottomColor: 'hsla(0,0,0,0.3)',
-    borderBottomWidth: 1,
-    justifyContent: 'center',
   },
   elementHandleSection: {
     alignItems: 'center',
+    borderBottomColor: 'hsla(0,0,0,0.3)',
+    borderBottomWidth: 1,
     borderTopColor: 'hsla(0,0,100,0.1)',
     borderTopWidth: 1,
     flexDirection: 'row',
