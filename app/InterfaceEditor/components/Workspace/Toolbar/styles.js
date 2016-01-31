@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+
     backgroundColor: '#333',
     flexDirection: 'row',
     height: 38,
@@ -27,5 +32,8 @@ export default StyleSheet.create({
   buttonValueLabel: {
     color: 'white',
     marginLeft: 10,
+  },
+  zoomValueLabel: {
+    marginRight: 10,
   },
 });

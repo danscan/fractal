@@ -1,5 +1,7 @@
 import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import beginFullScreenPreviewButtonImage from '../../../assets/img/beginFullScreenPreviewButton.png';
+import zoomInButtonImage from '../../../assets/img/zoomInButton.png';
+import zoomOutButtonImage from '../../../assets/img/zoomOutButton.png';
 import { portraitOrientation } from '../../../constants/canvasOrientations';
 import { canvasDevicePropType, canvasOrientationPropType } from '../../../constants/propTypes';
 import styles from './styles';
@@ -11,6 +13,7 @@ export default class Toolbar extends Component {
     canvasZoom: PropTypes.number.isRequired,
     onPressBeginFullScreenPreview: PropTypes.func.isRequired,
     onPressCanvasOrientation: PropTypes.func.isRequired,
+    setCanvasZoom: PropTypes.func.isRequired,
   }
 
   renderBeginFullScreenPreviewButton() {
@@ -24,17 +27,28 @@ export default class Toolbar extends Component {
   }
 
   renderZoomButton() {
-    const { canvasZoom } = this.props;
+    const {
+      canvasZoom,
+      setCanvasZoom,
+    } = this.props;
+    const canvasZoomPercentage = canvasZoom * 100;
+    // const canZoomOut = canvasZoomPercentage > 25;
+    // const canZoomIn = canvasZoomPercentage < 400;
+    const zoomOutValue = canvasZoom - 0.25;
+    const zoomInValue = canvasZoom + 0.25;
 
     return (
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonLabel}>
-          Zoom
+      <View style={styles.button}>
+        <TouchableOpacity onPress={() => setCanvasZoom(zoomOutValue)}>
+          <Image source={zoomOutButtonImage} style={styles.buttonImage}/>
+        </TouchableOpacity>
+        <Text style={[styles.buttonLabel, styles.buttonValueLabel, styles.zoomValueLabel]}>
+          {canvasZoomPercentage}%
         </Text>
-        <Text style={[styles.buttonLabel, styles.buttonValueLabel]}>
-          {canvasZoom * 100}%
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => setCanvasZoom(zoomInValue)}>
+          <Image source={zoomInButtonImage} style={styles.buttonImage}/>
+        </TouchableOpacity>
+      </View>
     );
   }
 

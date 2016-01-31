@@ -85,10 +85,10 @@ export default class Workspace extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Toolbar/>
         <View style={styles.contentSection}>
           {this.renderPreviewSection()}
         </View>
+        <Toolbar/>
         {this.renderFullScreenPreview()}
       </View>
     );
