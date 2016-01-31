@@ -44,14 +44,10 @@ export default class Navigator extends Component {
     ];
 
     return (
-      <View style={styles.element}>
+      <View key={elementKey} style={styles.element}>
         <View style={elementHandleSectionStyle}>
           <TouchableOpacity style={styles.elementToggleExpansionArrow}/>
-          <TouchableOpacity
-            key={elementKey}
-            onPress={() => onPressElement(elementPath)}
-            style={styles.elementHandle}
-          >
+          <TouchableOpacity onPress={() => onPressElement(elementPath)} style={styles.elementHandle}>
             <Text style={styles.elementNameLabel}>
               {elementDisplayName}
             </Text>
