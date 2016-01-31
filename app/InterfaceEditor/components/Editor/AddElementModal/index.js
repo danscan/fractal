@@ -20,7 +20,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   ...dispatchProps,
   ...ownProps,
   onPressElementType: (elementType) => {
-    dispatchProps.addElementChild(stateProps.selectedElementPath, elementByType(elementType.component));
+    dispatchProps.addElementChild(stateProps.selectedElementPath, elementByType(elementType.get('component')));
     dispatchProps.hideAddElementModal();
   },
 });
