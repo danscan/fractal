@@ -21,7 +21,7 @@ export default class Toolbar extends Component {
     const { onPressBeginFullScreenPreview } = this.props;
 
     return (
-      <TouchableOpacity onPress={onPressBeginFullScreenPreview} style={styles.button}>
+      <TouchableOpacity onPress={onPressBeginFullScreenPreview} style={styles.column}>
         <Image source={beginFullScreenPreviewButtonImage} style={styles.buttonImage}/>
       </TouchableOpacity>
     );
@@ -39,14 +39,14 @@ export default class Toolbar extends Component {
     const zoomInValue = canvasZoom + 0.25;
 
     return (
-      <View style={styles.button}>
-        <TouchableOpacity onPress={() => setCanvasZoom(zoomOutValue)}>
+      <View style={styles.column}>
+        <TouchableOpacity onPress={() => setCanvasZoom(zoomOutValue)} style={styles.button}>
           <Image source={zoomOutButtonImage} style={styles.buttonImage}/>
         </TouchableOpacity>
         <Text style={[styles.buttonLabel, styles.buttonValueLabel, styles.zoomValueLabel]}>
           {canvasZoomPercentage}%
         </Text>
-        <TouchableOpacity onPress={() => setCanvasZoom(zoomInValue)}>
+        <TouchableOpacity onPress={() => setCanvasZoom(zoomInValue)} style={styles.button}>
           <Image source={zoomInButtonImage} style={styles.buttonImage}/>
         </TouchableOpacity>
       </View>
@@ -60,7 +60,7 @@ export default class Toolbar extends Component {
     } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => onPressCanvasDevice(canvasDevice)} style={styles.button}>
+      <TouchableOpacity onPress={() => onPressCanvasDevice(canvasDevice)} style={styles.column}>
         <Text style={styles.buttonLabel}>
           Canvas Device
         </Text>
@@ -78,7 +78,7 @@ export default class Toolbar extends Component {
     } = this.props;
 
     return (
-      <TouchableOpacity onPress={onPressCanvasOrientation} style={styles.button}>
+      <TouchableOpacity onPress={onPressCanvasOrientation} style={styles.column}>
         <Text style={styles.buttonLabel}>
           Canvas Orientation
         </Text>

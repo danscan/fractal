@@ -41,7 +41,6 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     flexDirection: 'row',
     paddingHorizontal: 15,
-    paddingVertical: 4,
   },
   propNameInput: {
     color: 'white',
@@ -63,20 +62,18 @@ export default StyleSheet.create({
     borderTopColor: 'hsla(0,0,100,0.1)',
     borderTopWidth: 1,
     paddingHorizontal: 15,
-    paddingVertical: 10,
   },
   propTypeInput: {
     color: 'white',
     flex: 1,
     fontSize: 10,
     fontFamily: 'Avenir',
-    height: 12,
+    height: 32,
   },
   propValueSection: {
     borderTopColor: 'hsla(0,0,100,0.1)',
     borderTopWidth: 1,
     paddingHorizontal: 15,
-    paddingVertical: 10,
   },
   propValueInput: {
     color: 'white',

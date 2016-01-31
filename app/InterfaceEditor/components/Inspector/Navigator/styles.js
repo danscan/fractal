@@ -28,11 +28,11 @@ export default StyleSheet.create({
   },
   elementToggleExpansionArrow: {
     backgroundColor: 'gray',
-    marginRight: 10,
-    height: 10,
-    width: 10,
+    height: 32,
+    width: 24,
   },
   elementHandle: {
+    flex: 1,
     paddingVertical: 10,
   },
   elementChildrenSection: {},

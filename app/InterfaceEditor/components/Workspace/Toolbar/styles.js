@@ -12,12 +12,15 @@ export default StyleSheet.create({
     height: 38,
   },
 
-  button: {
+  column: {
     alignItems: 'center',
     borderRightColor: '#191d1f',
     borderRightWidth: 1,
     flexDirection: 'row',
     paddingHorizontal: 20,
+  },
+  button: {
+    padding: 8,
   },
   buttonImage: {
     height: 22,
