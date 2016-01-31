@@ -1,6 +1,7 @@
 import { connect } from 'react-redux/native';
-import { beginFullScreenPreview, setCanvasZoom, toggleCanvasOrientation } from '../../../actions/workspace';
+import { beginFullScreenPreview, setCanvasZoom, setCanvasDevice, toggleCanvasOrientation } from '../../../actions/workspace';
 import { canvasDevice, canvasOrientation, canvasZoom } from '../../../selectors/workspace';
+import canvasDevices from '../../../constants/canvasDevices';
 import Toolbar from './component';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +12,15 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   onPressBeginFullScreenPreview: beginFullScreenPreview,
+  onPressCanvasDevice: (currentCanvasDevice) => {
+    const currentCanvasDeviceIndex = canvasDevices.indexOf(currentCanvasDevice);
+    const nextCanvasDeviceIndex = (currentCanvasDeviceIndex + 1) >= canvasDevices.size
+                                ? 0
+                                : currentCanvasDeviceIndex + 1;
+    const nextCanvasDevice = canvasDevices.get(nextCanvasDeviceIndex);
+
+    return setCanvasDevice(nextCanvasDevice);
+  },
   onPressCanvasOrientation: toggleCanvasOrientation,
   setCanvasZoom,
 };

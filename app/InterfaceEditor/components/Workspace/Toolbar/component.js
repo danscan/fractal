@@ -12,6 +12,7 @@ export default class Toolbar extends Component {
     canvasOrientation: canvasOrientationPropType.isRequired,
     canvasZoom: PropTypes.number.isRequired,
     onPressBeginFullScreenPreview: PropTypes.func.isRequired,
+    onPressCanvasDevice: PropTypes.func.isRequired,
     onPressCanvasOrientation: PropTypes.func.isRequired,
     setCanvasZoom: PropTypes.func.isRequired,
   }
@@ -53,10 +54,13 @@ export default class Toolbar extends Component {
   }
 
   renderCanvasDeviceButton() {
-    const { canvasDevice } = this.props;
+    const {
+      canvasDevice,
+      onPressCanvasDevice,
+    } = this.props;
 
     return (
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={() => onPressCanvasDevice(canvasDevice)} style={styles.button}>
         <Text style={styles.buttonLabel}>
           Canvas Device
         </Text>
