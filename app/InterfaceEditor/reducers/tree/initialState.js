@@ -16,12 +16,12 @@ export default new Map({
             color: '#666',
             fontFamily: 'Avenir',
             fontSize: 20,
+            textAlign: 'center',
           }),
         }),
       }),
     ]),
     contentContainerStyle: new Map({
-      alignItems: 'center',
       flex: 1,
       justifyContent: 'center',
     }),
