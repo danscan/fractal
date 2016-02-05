@@ -11,7 +11,7 @@ export default class Toolbar extends Component {
     onPressAddElement: PropTypes.func.isRequired,
     onPressRedo: PropTypes.func.isRequired,
     onPressUndo: PropTypes.func.isRequired,
-  }
+  };
 
   renderRedoButton() {
     const {

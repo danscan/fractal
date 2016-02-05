@@ -11,11 +11,11 @@ export default class IncrementField extends Component {
     placeholder: PropTypes.string,
     unit: PropTypes.string,
     value: PropTypes.number,
-  }
+  };
 
   static defaultProps = {
     incrementBy: 1,
-  }
+  };
 
   incrementValue(increment = 1) {
     const {

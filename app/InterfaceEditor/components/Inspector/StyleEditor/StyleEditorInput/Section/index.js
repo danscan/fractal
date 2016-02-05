@@ -8,11 +8,11 @@ export default class Section extends Component {
     children: PropTypes.any,
     initiallyExpanded: PropTypes.bool,
     title: PropTypes.string.isRequired,
-  }
+  };
 
   static defaultProps = {
     initiallyExpanded: true,
-  }
+  };
 
   constructor(...args) {
     super(...args);

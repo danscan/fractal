@@ -15,7 +15,7 @@ export default class Toolbar extends Component {
     onPressCanvasDevice: PropTypes.func.isRequired,
     onPressCanvasOrientation: PropTypes.func.isRequired,
     setCanvasZoom: PropTypes.func.isRequired,
-  }
+  };
 
   renderBeginFullScreenPreviewButton() {
     const { onPressBeginFullScreenPreview } = this.props;

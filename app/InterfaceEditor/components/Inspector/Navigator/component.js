@@ -13,7 +13,7 @@ export default class Navigator extends Component {
     onPressElement: PropTypes.func.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     root: elementPropType.isRequired,
-  }
+  };
 
   renderElementsSection() {
     const { root: element } = this.props;

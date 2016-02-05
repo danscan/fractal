@@ -7,11 +7,11 @@ export default class StyleEditor extends Component {
   static propTypes = {
     propName: PropTypes.string.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
-  }
+  };
 
   static defaultProps = {
     propName: 'style',
-  }
+  };
 
   render() {
     const {

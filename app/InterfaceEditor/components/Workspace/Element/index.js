@@ -7,7 +7,7 @@ export default class Element extends Component {
   static propTypes = {
     element: elementPropType.isRequired,
     callOutPath: elementPathPropType,
-  }
+  };
 
   getCallOutStyleForElementPath(elementPath) {
     const { callOutPath } = this.props;

@@ -14,7 +14,7 @@ export default class KeyboardAwareView extends Component {
     children: PropTypes.any,
     contentContainerStyle: View.propTypes.style,
     style: View.propTypes.style,
-  }
+  };
 
   constructor(...args) {
     super(...args);

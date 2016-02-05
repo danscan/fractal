@@ -8,7 +8,7 @@ import styles from './styles';
 export default class AppToolbarNavigator extends Component {
   static propTypes = {
     scene: PropTypes.element.isRequired,
-  }
+  };
 
   renderToolbar() {
     return (

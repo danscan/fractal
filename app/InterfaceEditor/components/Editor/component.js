@@ -8,7 +8,7 @@ import styles from './styles';
 export default class Editor extends Component {
   static propTypes = {
     showAddElementModal: PropTypes.bool.isRequired,
-  }
+  };
 
   componentDidMount() {
     StatusBarIOS.setHidden(true);

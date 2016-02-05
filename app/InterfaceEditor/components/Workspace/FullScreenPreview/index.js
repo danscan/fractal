@@ -9,7 +9,7 @@ export default class FullScreenPreview extends Component {
     onPressClose: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     element: elementPropType.isRequired,
-  }
+  };
 
   renderCloseButton() {
     const { onPressClose } = this.props;

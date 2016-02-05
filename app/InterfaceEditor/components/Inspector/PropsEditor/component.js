@@ -8,7 +8,7 @@ export default class PropsEditor extends Component {
     applyElementProp: PropTypes.func.isRequired,
     selectedElement: elementPropType.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
-  }
+  };
 
   renderPropsSection() {
     const { selectedElement } = this.props;

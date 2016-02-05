@@ -1,4 +1,4 @@
-import { connect } from 'react-redux/native';
+import { connect } from 'react-redux';
 import { beginFullScreenPreview, setCanvasZoom, setCanvasDevice, toggleCanvasOrientation } from '../../../actions/workspace';
 import { canvasDevice, canvasOrientation, canvasZoom } from '../../../selectors/workspace';
 import canvasDevices from '../../../constants/canvasDevices';

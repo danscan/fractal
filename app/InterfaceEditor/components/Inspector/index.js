@@ -1,4 +1,4 @@
-import { connect } from 'react-redux/native';
+import { connect } from 'react-redux';
 import { setSelectedTab } from '../../actions/inspector';
 import { selectedTab } from '../../selectors/inspector';
 import Inspector from './component';

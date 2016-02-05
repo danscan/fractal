@@ -1,4 +1,4 @@
-import { connect } from 'react-redux/native';
+import { connect } from 'react-redux';
 import { hideAddElementModal } from '../../../actions/editor';
 import { addElementChild } from '../../../actions/tree';
 import { selectedElementPath } from '../../../selectors/editor';

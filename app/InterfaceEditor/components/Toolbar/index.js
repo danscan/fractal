@@ -1,4 +1,4 @@
-import { connect } from 'react-redux/native';
+import { connect } from 'react-redux';
 import { showAddElementModal } from '../../actions/editor';
 import { redoTreeAction, undoTreeAction } from '../../actions/tree';
 import { canRedoTreeAction, canUndoTreeAction } from '../../selectors/tree';

@@ -7,7 +7,7 @@ export default class AddElementModal extends Component {
     onPressElementType: PropTypes.func.isRequired,
     onPressOutsideModal: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
-  }
+  };
 
   renderHeaderSection() {
     return (

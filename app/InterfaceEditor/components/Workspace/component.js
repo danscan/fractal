@@ -16,7 +16,7 @@ export default class Workspace extends Component {
     fullScreenPreview: PropTypes.bool.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     treeRootElement: elementPropType.isRequired,
-  }
+  };
 
   componentDidMount() {
     StatusBarIOS.setHidden(true);

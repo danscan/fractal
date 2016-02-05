@@ -1,4 +1,4 @@
-import { connect } from 'react-redux/native';
+import { connect } from 'react-redux';
 import { applyElementProp } from '../../../selectors/tree';
 import { selectedElement, selectedElementPath } from '../../../selectors/editor';
 import PropsEditor from './component';

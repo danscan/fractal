@@ -11,7 +11,7 @@ export default class RadioButtonsGroup extends Component {
       value: PropTypes.any,
     })),
     value: PropTypes.any,
-  }
+  };
 
   renderName() {
     const { name } = this.props;

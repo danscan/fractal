@@ -12,7 +12,7 @@ export default class StyleEditorInput extends Component {
     propName: PropTypes.string.isRequired,
     propType: PropTypes.func.isRequired,
     value: PropTypes.object,
-  }
+  };
 
   render() {
     const {

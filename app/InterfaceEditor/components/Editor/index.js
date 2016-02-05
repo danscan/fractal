@@ -1,4 +1,4 @@
-import { connect } from 'react-redux/native';
+import { connect } from 'react-redux';
 import { showAddElementModal } from '../../selectors/editor';
 import Editor from './component';
 

@@ -11,7 +11,7 @@ export default class Inspector extends Component {
   static propTypes = {
     selectedTab: PropTypes.number.isRequired,
     onSelectTab: PropTypes.func.isRequired,
-  }
+  };
 
   renderTabBar() {
     return (
