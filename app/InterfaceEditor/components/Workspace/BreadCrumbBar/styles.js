@@ -15,7 +15,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingLeft: 10,
-    paddingRight: 20,
+    paddingRight: 25,
   },
 
   breadCrumbElementLabel: {
@@ -31,14 +31,14 @@ export default StyleSheet.create({
     bottom: 0,
 
     borderRightColor: '#666',
-    borderRightWidth: 1,
+    borderRightWidth: 2,
     borderTopColor: '#666',
-    borderTopWidth: 1,
+    borderTopWidth: 2,
     height: 35,
     width: 35,
 
     transform: [
-      { rotateY: '45deg' },
+      { rotateY: '65deg' },
       { rotateZ: '45deg' },
     ],
   },
