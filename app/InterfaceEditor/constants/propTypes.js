@@ -27,6 +27,11 @@ export const breadCrumbElementsMapPropType = ImmutablePropTypes.mapOf(
   elementPropType,
 );
 
+export const propInputTypePropType = PropTypes.oneOf([
+  'Object',
+  'Switch',
+]);
+
 export const treePathPropType = ImmutablePropTypes.listOf(
   PropTypes.oneOfType([
     PropTypes.string,

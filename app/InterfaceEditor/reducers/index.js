@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
 
 // (App reducers)
-import inspector from './inspector';
 import editor from './editor';
+import inspector from './inspector';
+import propsEditor from './propsEditor';
 import tree from './tree';
 import workspace from './workspace';
 
 const reducer = combineReducers({
-  inspector,
   editor,
+  inspector,
+  propsEditor,
   tree,
   workspace,
 });
