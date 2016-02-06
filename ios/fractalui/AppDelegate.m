@@ -11,6 +11,9 @@
 
 #import "RCTRootView.h"
 #import "AppHub.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @implementation AppDelegate
 
@@ -54,6 +57,8 @@
 //  jsCodeLocation = [build.bundle URLForResource:@"main"
 //                                  withExtension:@"jsbundle"];
   
+  [Fabric with:@[[Crashlytics class]]];
+
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"App"
@@ -64,6 +69,7 @@
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
+  
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
