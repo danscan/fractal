@@ -27,7 +27,6 @@ export default class StyleEditorInput extends Component {
             name="Flex Grow"
             onChangeValue={(newValue) => onChangeValue(value.set('flex', newValue))}
             placeholder="--"
-            unit="px"
             value={value.get('flex')}
           />
           <RadioButtonsGroup
