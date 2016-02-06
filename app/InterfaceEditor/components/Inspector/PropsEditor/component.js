@@ -16,28 +16,18 @@ export default class PropsEditor extends Component {
 
     return (
       <View style={styles.propsSection}>
-        {selectedElementProps.map((propValue, propName) => this.renderProp(propValue, propName))}
+        {selectedElementProps.map((propValue, propName) => this.renderProp(propValue, propName)).toArray()}
       </View>
     );
   }
 
   renderProp(propValue, propName) {
     const propValueString = typeof propValue === 'object'
-                          ? JSON.stringify(propValue)
+                          ? JSON.stringify(propValue, null, 2)
                           : String(propValue);
 
     return (
-      <TouchableOpacity style={styles.prop}>
-        <Text style={styles.propLabel}>
-          {`${propName}={`}<Text style={styles.propValueLabel}>{propValueString}</Text>{'}'}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-
-  renderPropEditor(propValue, propName) {
-    return (
-      <View style={styles.propEditor}>
+      <View key={propName} style={styles.propEditor}>
         <View style={styles.propNameSection}>
           <TextInput
             autoCapitalize="none"
@@ -67,9 +57,10 @@ export default class PropsEditor extends Component {
             autoCapitalize="none"
             autoCorrect={false}
             keyboardAppearance="dark"
+            multiline
             placeholder="Prop value"
             placeholderTextColor="#ccc"
-            value={propValue}
+            value={propValueString}
             style={styles.propValueInput}
           />
         </View>
@@ -93,7 +84,6 @@ export default class PropsEditor extends Component {
     return (
       <View style={styles.container}>
         {this.renderPropsSection()}
-        {this.renderPropEditor()}
         {this.renderAddPropSection()}
       </View>
     );

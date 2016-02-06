@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { applyElementProp } from '../../../selectors/tree';
+import { applyElementProp } from '../../../actions/tree';
 import { selectedElement, selectedElementPath } from '../../../selectors/editor';
 import PropsEditor from './component';
 

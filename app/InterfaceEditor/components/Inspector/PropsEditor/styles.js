@@ -50,7 +50,7 @@ export default StyleSheet.create({
     height: 32,
   },
   deletePropButton: {
-    padding: 6,
+    padding: 4,
   },
   deletePropButtonImage: {
     width: 16,
@@ -80,7 +80,7 @@ export default StyleSheet.create({
     flex: 1,
     fontSize: 10,
     fontFamily: 'Avenir',
-    height: 40,
+    minHeight: 100,
   },
 
   addPropSection: {},
