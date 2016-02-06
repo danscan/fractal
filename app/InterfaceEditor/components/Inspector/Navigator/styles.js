@@ -34,6 +34,7 @@ export default StyleSheet.create({
   elementHandle: {
     flex: 1,
     paddingVertical: 10,
+    paddingLeft: 10,
   },
   elementChildrenSection: {},
   elementNameLabel: {
