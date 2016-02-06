@@ -4,6 +4,7 @@ import { portraitOrientation } from '../../constants/canvasOrientations';
 import Toolbar from './Toolbar';
 import Element from './Element';
 import FullScreenPreview from './FullScreenPreview';
+import BreadCrumbBar from './BreadCrumbBar';
 import styles from './styles';
 
 export default class Workspace extends Component {
@@ -79,6 +80,7 @@ export default class Workspace extends Component {
           {this.renderPreviewSection()}
         </View>
         <Toolbar/>
+        <BreadCrumbBar/>
         {this.renderFullScreenPreview()}
       </View>
     );

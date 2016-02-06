@@ -23,6 +23,10 @@ export const elementPropType = ImmutablePropTypes.contains({
   props: PropTypes.object,
 });
 
+export const breadCrumbElementsMapPropType = ImmutablePropTypes.mapOf(
+  elementPropType,
+);
+
 export const treePathPropType = ImmutablePropTypes.listOf(
   PropTypes.oneOfType([
     PropTypes.string,

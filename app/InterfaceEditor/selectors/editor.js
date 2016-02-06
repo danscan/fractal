@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
+import { List, OrderedMap } from 'immutable';
 import reducerMountPoint from './reducerMountPoint';
-import { elementByElementPath } from './tree';
+import { elementByElementPath, treeRootElement } from './tree';
 import elementDisplayNameByElement from '../utils/elementDisplayNameByElement';
 
 function editor(state) {
@@ -28,4 +29,22 @@ export function selectedElementDisplayName(state) {
   const selectedElementState = selectedElement(state);
 
   return elementDisplayNameByElement(selectedElementState);
+}
+
+export function selectedElementBreadCrumbElements(state) {
+  const selectedElementPathState = selectedElementPath(state);
+  const baseBreadCrumbElements = new OrderedMap([[new List(), treeRootElement(state)]]);
+  console.log('baseBreadCrumbElements:', baseBreadCrumbElements);
+
+  // Return root element if root path is selected
+  if (selectedElementPathState.isEmpty()) {
+    return baseBreadCrumbElements;
+  }
+
+  return selectedElementPathState.reduce((aggregateElements, elementIndex, pathEntryIndex) => {
+    const elementPath = selectedElementPathState.take(pathEntryIndex + 1);
+    const element = elementByElementPath(elementPath)(state);
+
+    return aggregateElements.set(elementPath, element);
+  }, baseBreadCrumbElements);
 }
