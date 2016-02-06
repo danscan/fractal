@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import hideButtonImage from '../../../assets/img/hideButton.png';
 import deleteButtonImage from '../../../assets/img/deleteButton.png';
 import { elementPropType, elementPathPropType } from '../../../constants/propTypes';
@@ -19,9 +19,9 @@ export default class Navigator extends Component {
     const { root: element } = this.props;
 
     return (
-      <View style={styles.elementsSection}>
+      <ScrollView style={styles.elementsSection}>
         {this.renderElement(element, new List([]))}
-      </View>
+      </ScrollView>
     );
   }
 
