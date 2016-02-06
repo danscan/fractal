@@ -2,16 +2,19 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#4b4b4b',
+    backgroundColor: '#393939',
+    flex: 1,
   },
 
-  addPropSection: {},
+  addPropSection: {
+    padding: 20,
+  },
   addPropButton: {
+    backgroundColor: 'hsla(0,0,39,0.3)',
     borderColor: '#191d1f',
     borderRadius: 4,
     borderStyle: 'dashed',
     borderWidth: 1,
-    marginBottom: 10,
     paddingHorizontal: 20,
     paddingVertical: 15,
   },
