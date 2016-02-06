@@ -34,7 +34,6 @@ export function selectedElementDisplayName(state) {
 export function selectedElementBreadCrumbElements(state) {
   const selectedElementPathState = selectedElementPath(state);
   const baseBreadCrumbElements = new OrderedMap([[new List(), treeRootElement(state)]]);
-  console.log('baseBreadCrumbElements:', baseBreadCrumbElements);
 
   // Return root element if root path is selected
   if (selectedElementPathState.isEmpty()) {
