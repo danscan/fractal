@@ -8,20 +8,21 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: 35,
     overflow: 'hidden',
+    paddingLeft: 10,
   },
 
   breadCrumbElement: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingLeft: 10,
+    paddingLeft: 4,
     paddingRight: 25,
   },
 
   breadCrumbElementLabel: {
     color: '#808080',
     fontFamily: 'Avenir',
-    fontSize: 12,
+    fontSize: 10,
   },
 
   breadCrumbElementPoint: {
