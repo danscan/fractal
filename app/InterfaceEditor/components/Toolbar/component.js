@@ -1,7 +1,8 @@
-import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import addElementButtonImage from '../../assets/img/addElementButton.png';
 import redoButtonImage from '../../assets/img/redoButton.png';
 import undoButtonImage from '../../assets/img/undoButton.png';
+import { elementPropType } from '../../constants/propTypes';
 import styles from './styles';
 
 export default class Toolbar extends Component {
@@ -11,6 +12,7 @@ export default class Toolbar extends Component {
     onPressAddElement: PropTypes.func.isRequired,
     onPressRedo: PropTypes.func.isRequired,
     onPressUndo: PropTypes.func.isRequired,
+    selectedElement: elementPropType.isRequired,
   };
 
   renderRedoButton() {
@@ -44,13 +46,22 @@ export default class Toolbar extends Component {
   }
 
   renderAddElementButton() {
-    const { onPressAddElement } = this.props;
+    const {
+      onPressAddElement,
+      selectedElement,
+    } = this.props;
+    const selectedElementType = selectedElement.get('type');
+    // Add element button should be disabled if selected element type is Text.
+    // Text elements can only have other Text elements as children, and text
+    // children should be edited using the Inspector's Text Editor tab instead.
+    const addElementButtonShouldBeEnabled = selectedElementType !== Text;
 
     return this.renderImageButton({
       buttonImageSource: addElementButtonImage,
       buttonImageStyle: styles.buttonImage,
       buttonStyle: styles.button,
       onPress: onPressAddElement,
+      enabled: addElementButtonShouldBeEnabled,
     });
   }
 
