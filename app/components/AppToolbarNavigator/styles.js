@@ -12,13 +12,17 @@ export default StyleSheet.create({
     borderRightWidth: 1,
     width: 49,
   },
-  toolbarLogoButton: {
+  toolbarLogoButtonSection: {
     borderBottomColor: '#191d1f',
     borderBottomWidth: 1,
   },
   toolbarLogoButtonImage: {
     height: 48,
     width: 49,
+  },
+
+  toolbarItemsSection: {
+    flex: 1,
   },
   toolbarButton: {
     alignItems: 'center',

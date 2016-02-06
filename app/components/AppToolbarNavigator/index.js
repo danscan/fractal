@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, ScrollView, TouchableOpacity, View } from 'react-native';
 import logoButtonImage from '../../assets/img/logoButton.png';
 import interfaceEditorButtonImage from '../../assets/img/interfaceEditorButton.png';
 import schemaButtonImage from '../../assets/img/schemaButton.png';
@@ -13,18 +13,20 @@ export default class AppToolbarNavigator extends Component {
   renderToolbar() {
     return (
       <View style={styles.toolbar}>
-        <View style={styles.toolbarLogoButton}>
+        <View style={styles.toolbarLogoButtonSection}>
           <Image style={styles.toolbarLogoButtonImage} source={logoButtonImage}/>
         </View>
-        <TouchableOpacity style={[styles.toolbarButton, styles.toolbarButtonSelected]}>
-          <Image style={styles.toolbarButtonImage} source={interfaceEditorButtonImage}/>
-        </TouchableOpacity>
-        <View style={[styles.toolbarButton, styles.toolbarButtonDisabled]}>
-          <Image style={styles.toolbarButtonImage} source={schemaButtonImage}/>
-        </View>
-        <View style={[styles.toolbarButton, styles.toolbarButtonDisabled]}>
-          <Image style={styles.toolbarButtonImage} source={metricsButtonImage}/>
-        </View>
+        <ScrollView style={styles.toolbarItemsSection}>
+          <TouchableOpacity style={[styles.toolbarButton, styles.toolbarButtonSelected]}>
+            <Image style={styles.toolbarButtonImage} source={interfaceEditorButtonImage}/>
+          </TouchableOpacity>
+          <View style={[styles.toolbarButton, styles.toolbarButtonDisabled]}>
+            <Image style={styles.toolbarButtonImage} source={schemaButtonImage}/>
+          </View>
+          <View style={[styles.toolbarButton, styles.toolbarButtonDisabled]}>
+            <Image style={styles.toolbarButtonImage} source={metricsButtonImage}/>
+          </View>
+        </ScrollView>
       </View>
     );
   }
