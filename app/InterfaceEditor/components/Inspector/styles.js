@@ -39,4 +39,8 @@ export default StyleSheet.create({
     width: 23,
     height: 17,
   },
+  textEditorTabBarButtonImage: {
+    width: 18,
+    height: 22,
+  },
 });

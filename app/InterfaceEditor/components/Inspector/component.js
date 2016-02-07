@@ -1,17 +1,41 @@
-import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import navigatorButtonImage from '../../assets/img/navigatorButton.png';
 import styleEditorButtonImage from '../../assets/img/styleEditorButton.png';
 import propsEditorButtonImage from '../../assets/img/propsEditorButton.png';
+import textEditorButtonImage from '../../assets/img/textEditorButton.png';
+import { elementPropType } from '../../constants/propTypes';
 import Navigator from './Navigator';
 import StyleEditor from './StyleEditor';
 import PropsEditor from './PropsEditor';
+import TextEditor from './TextEditor';
 import styles from './styles';
 
 export default class Inspector extends Component {
   static propTypes = {
+    selectedElement: elementPropType.isRequired,
     selectedTab: PropTypes.number.isRequired,
     onSelectTab: PropTypes.func.isRequired,
   };
+
+  getSelectedElementTypeDependentContentTabElement() {
+    const { selectedElement } = this.props;
+
+    if (selectedElement.get('type') === Text) {
+      return <TextEditor/>;
+    }
+  }
+
+  getSelectedElementTypeDependentContentTab() {
+    const { selectedElement } = this.props;
+
+    if (selectedElement.get('type') === Text) {
+      return this.renderTabBarButton({
+        index: 3,
+        imageSource: textEditorButtonImage,
+        imageStyle: styles.textEditorTabBarButtonImage,
+      });
+    }
+  }
 
   renderTabBar() {
     return (
@@ -31,6 +55,7 @@ export default class Inspector extends Component {
           imageSource: propsEditorButtonImage,
           imageStyle: styles.propsEditorTabBarButtonImage,
         })}
+        {this.getSelectedElementTypeDependentContentTab()}
       </View>
     );
   }
@@ -67,6 +92,10 @@ export default class Inspector extends Component {
 
     if (selectedTab === 2) {
       return <PropsEditor/>;
+    }
+
+    if (selectedTab === 3) {
+      return this.getSelectedElementTypeDependentContentTabElement();
     }
   }
 

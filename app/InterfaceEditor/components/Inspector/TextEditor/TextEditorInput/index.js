@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import { applyElementProp } from '../../../../actions/tree';
-import { elementPropValueByElementPathAndPropName, elementPropTypeByElementPathAndPropName } from '../../../../selectors/tree';
+import { elementPropValueByElementPathAndPropName } from '../../../../selectors/tree';
 import StyleEditorInput from './component';
 
 const mapStateToProps = (state, ownProps) => ({
-  propType: elementPropTypeByElementPathAndPropName(ownProps.elementPath, ownProps.propName)(state),
   propValue: elementPropValueByElementPathAndPropName(ownProps.elementPath, ownProps.propName)(state),
 });
 

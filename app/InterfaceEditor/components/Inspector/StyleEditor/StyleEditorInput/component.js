@@ -11,13 +11,13 @@ export default class StyleEditorInput extends Component {
     onChangeValue: PropTypes.func.isRequired,
     propName: PropTypes.string.isRequired,
     propType: PropTypes.func.isRequired,
-    value: PropTypes.object,
+    propValue: PropTypes.object,
   };
 
   render() {
     const {
       onChangeValue,
-      value,
+      propValue,
     } = this.props;
 
     return (
@@ -25,249 +25,249 @@ export default class StyleEditorInput extends Component {
         <Section title="Position & Content">
           <IncrementField
             name="Flex Grow"
-            onChangeValue={(newValue) => onChangeValue(value.set('flex', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('flex', newValue))}
             placeholder="--"
-            value={value.get('flex')}
+            value={propValue.get('flex')}
           />
           <RadioButtonsGroup
             name="Flex Direction"
-            onChangeValue={(newValue) => onChangeValue(value.set('flexDirection', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('flexDirection', newValue))}
             options={[
-              { text: 'Row', value: 'row' },
-              { text: 'Column', value: 'column' },
+              { text: 'Row', propValue: 'row' },
+              { text: 'Column', propValue: 'column' },
             ]}
-            value={value.get('flexDirection') || 'row'}
+            value={propValue.get('flexDirection') || 'row'}
           />
           <RadioButtonsGroup
             name="Flex Wrap"
-            onChangeValue={(newValue) => onChangeValue(value.set('flexWrap', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('flexWrap', newValue))}
             options={[
-              { text: 'On', value: 'wrap' },
-              { text: 'Off', value: 'nowrap' },
+              { text: 'On', propValue: 'wrap' },
+              { text: 'Off', propValue: 'nowrap' },
             ]}
-            value={value.get('flexWrap') || 'nowrap'}
+            value={propValue.get('flexWrap') || 'nowrap'}
           />
           <RadioButtonsGroup
             name="Align Items"
-            onChangeValue={(newValue) => onChangeValue(value.set('alignItems', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('alignItems', newValue))}
             options={[
-              { text: 'Flex Start', value: 'flex-start' },
-              { text: 'Stretch', value: 'stretch' },
-              { text: 'Center', value: 'center' },
-              { text: 'Flex End', value: 'flex-end' },
+              { text: 'Flex Start', propValue: 'flex-start' },
+              { text: 'Stretch', propValue: 'stretch' },
+              { text: 'Center', propValue: 'center' },
+              { text: 'Flex End', propValue: 'flex-end' },
             ]}
-            value={value.get('alignItems') || 'stretch'}
+            value={propValue.get('alignItems') || 'stretch'}
           />
           <RadioButtonsGroup
             name="Justify Content"
-            onChangeValue={(newValue) => onChangeValue(value.set('justifyContent', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('justifyContent', newValue))}
             options={[
-              { text: 'Flex Start', value: 'flex-start' },
-              { text: 'Center', value: 'center' },
-              { text: 'Flex End', value: 'flex-end' },
-              { text: 'Space Between', value: 'space-between' },
-              { text: 'Space Around', value: 'space-around' },
+              { text: 'Flex Start', propValue: 'flex-start' },
+              { text: 'Center', propValue: 'center' },
+              { text: 'Flex End', propValue: 'flex-end' },
+              { text: 'Space Between', propValue: 'space-between' },
+              { text: 'Space Around', propValue: 'space-around' },
             ]}
-            value={value.get('justifyContent') || 'flex-start'}
+            value={propValue.get('justifyContent') || 'flex-start'}
           />
           <RadioButtonsGroup
             name="Align Self"
-            onChangeValue={(newValue) => onChangeValue(value.set('alignSelf', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('alignSelf', newValue))}
             options={[
-              { text: 'Auto', value: 'auto' },
-              { text: 'Flex Start', value: 'flex-start' },
-              { text: 'Stretch', value: 'stretch' },
-              { text: 'Center', value: 'center' },
-              { text: 'Flex End', value: 'flex-end' },
+              { text: 'Auto', propValue: 'auto' },
+              { text: 'Flex Start', propValue: 'flex-start' },
+              { text: 'Stretch', propValue: 'stretch' },
+              { text: 'Center', propValue: 'center' },
+              { text: 'Flex End', propValue: 'flex-end' },
             ]}
-            value={value.get('alignSelf') || 'auto'}
+            value={propValue.get('alignSelf') || 'auto'}
           />
           <RadioButtonsGroup
             name="Overflow"
-            onChangeValue={(newValue) => onChangeValue(value.set('overflow', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('overflow', newValue))}
             options={[
-              { text: 'Visible', value: 'visible' },
-              { text: 'Hidden', value: 'hidden' },
+              { text: 'Visible', propValue: 'visible' },
+              { text: 'Hidden', propValue: 'hidden' },
             ]}
-            value={value.get('overflow') || 'visible'}
+            value={propValue.get('overflow') || 'visible'}
           />
           <IncrementField
             name="Margin"
-            onChangeValue={(newValue) => onChangeValue(value.set('margin', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('margin', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('margin')}
+            value={propValue.get('margin')}
           />
           <IncrementField
             name="Margin Top"
-            onChangeValue={(newValue) => onChangeValue(value.set('marginTop', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('marginTop', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('marginTop')}
+            value={propValue.get('marginTop')}
           />
           <IncrementField
             name="Margin Right"
-            onChangeValue={(newValue) => onChangeValue(value.set('marginRight', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('marginRight', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('marginRight')}
+            value={propValue.get('marginRight')}
           />
           <IncrementField
             name="Margin Bottom"
-            onChangeValue={(newValue) => onChangeValue(value.set('marginBottom', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('marginBottom', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('marginBottom')}
+            value={propValue.get('marginBottom')}
           />
           <IncrementField
             name="Margin Left"
-            onChangeValue={(newValue) => onChangeValue(value.set('marginLeft', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('marginLeft', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('marginLeft')}
+            value={propValue.get('marginLeft')}
           />
           <IncrementField
             name="Padding"
-            onChangeValue={(newValue) => onChangeValue(value.set('padding', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('padding', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('padding')}
+            value={propValue.get('padding')}
           />
           <IncrementField
             name="Padding Top"
-            onChangeValue={(newValue) => onChangeValue(value.set('paddingTop', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('paddingTop', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('paddingTop')}
+            value={propValue.get('paddingTop')}
           />
           <IncrementField
             name="Padding Right"
-            onChangeValue={(newValue) => onChangeValue(value.set('paddingRight', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('paddingRight', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('paddingRight')}
+            value={propValue.get('paddingRight')}
           />
           <IncrementField
             name="Padding Bottom"
-            onChangeValue={(newValue) => onChangeValue(value.set('paddingBottom', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('paddingBottom', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('paddingBottom')}
+            value={propValue.get('paddingBottom')}
           />
           <IncrementField
             name="Padding Left"
-            onChangeValue={(newValue) => onChangeValue(value.set('paddingLeft', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('paddingLeft', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('paddingLeft')}
+            value={propValue.get('paddingLeft')}
           />
           <IncrementField
             name="Width"
-            onChangeValue={(newValue) => onChangeValue(value.set('width', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('width', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('width')}
+            value={propValue.get('width')}
           />
           <IncrementField
             name="Min Width"
-            onChangeValue={(newValue) => onChangeValue(value.set('minWidth', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('minWidth', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('minWidth')}
+            value={propValue.get('minWidth')}
           />
           <IncrementField
             name="Max Width"
-            onChangeValue={(newValue) => onChangeValue(value.set('maxWidth', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('maxWidth', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('maxWidth')}
+            value={propValue.get('maxWidth')}
           />
           <IncrementField
             name="Height"
-            onChangeValue={(newValue) => onChangeValue(value.set('height', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('height', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('height')}
+            value={propValue.get('height')}
           />
           <IncrementField
             name="Min Height"
-            onChangeValue={(newValue) => onChangeValue(value.set('minHeight', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('minHeight', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('minHeight')}
+            value={propValue.get('minHeight')}
           />
           <IncrementField
             name="Max Height"
-            onChangeValue={(newValue) => onChangeValue(value.set('maxHeight', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('maxHeight', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('maxHeight')}
+            value={propValue.get('maxHeight')}
           />
           <RadioButtonsGroup
             name="Position"
-            onChangeValue={(newValue) => onChangeValue(value.set('position', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('position', newValue))}
             options={[
-              { text: 'Relative', value: 'relative' },
-              { text: 'absolute', value: 'absolute' },
+              { text: 'Relative', propValue: 'relative' },
+              { text: 'absolute', propValue: 'absolute' },
             ]}
-            value={value.get('position') || 'relative'}
+            value={propValue.get('position') || 'relative'}
           />
           <IncrementField
             name="Top"
-            onChangeValue={(newValue) => onChangeValue(value.set('top', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('top', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('top')}
+            value={propValue.get('top')}
           />
           <IncrementField
             name="Right"
-            onChangeValue={(newValue) => onChangeValue(value.set('right', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('right', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('right')}
+            value={propValue.get('right')}
           />
           <IncrementField
             name="Bottom"
-            onChangeValue={(newValue) => onChangeValue(value.set('bottom', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('bottom', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('bottom')}
+            value={propValue.get('bottom')}
           />
           <IncrementField
             name="Left"
-            onChangeValue={(newValue) => onChangeValue(value.set('left', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('left', newValue))}
             placeholder="--"
             unit="px"
-            value={value.get('left')}
+            value={propValue.get('left')}
           />
         </Section>
         <Section title="Appearance">
           <RadioButtonsGroup
             name="Background Color"
-            onChangeValue={(newValue) => onChangeValue(value.set('backgroundColor', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('backgroundColor', newValue))}
             options={[
-              { text: 'None', value: null },
-              { text: 'White', value: 'white' },
-              { text: 'Red', value: 'red' },
-              { text: 'Black', value: 'black' },
+              { text: 'None', propValue: null },
+              { text: 'White', propValue: 'white' },
+              { text: 'Red', propValue: 'red' },
+              { text: 'Black', propValue: 'black' },
             ]}
-            value={value.get('backgroundColor') || null}
+            value={propValue.get('backgroundColor') || null}
           />
           <RadioButtonsGroup
             name="Backface Visibility"
-            onChangeValue={(newValue) => onChangeValue(value.set('backfaceVisibility', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('backfaceVisibility', newValue))}
             options={[
-              { text: 'Visible', value: 'visible' },
-              { text: 'Hidden', value: 'hidden' },
+              { text: 'Visible', propValue: 'visible' },
+              { text: 'Hidden', propValue: 'hidden' },
             ]}
-            value={value.get('backfaceVisibility') || 'visible'}
+            value={propValue.get('backfaceVisibility') || 'visible'}
           />
           <IncrementField
             name="Opacity"
-            onChangeValue={(newValue) => onChangeValue(value.set('opacity', newValue))}
+            onChangeValue={(newValue) => onChangeValue(propValue.set('opacity', newValue))}
             placeholder="--"
             unit="%"
-            value={value.get('opacity') || 100}
+            value={propValue.get('opacity') || 100}
           />
         </Section>
         <Section title="Border"/>
