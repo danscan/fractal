@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { Component, Text, TouchableOpacity, View } from 'react-native';
 import { elementPropType, elementPathPropType } from '../../../constants/propTypes';
 import Section from './Section';
 import styles from './styles';
