@@ -1,4 +1,4 @@
-import React, { Component, PickerIOS, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes, View } from 'react-native';
 import { elementPathPropType } from '../../../constants/propTypes';
 import StyleEditorInput from './StyleEditorInput';
 import styles from './styles';
