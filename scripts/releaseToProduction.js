@@ -17,10 +17,12 @@ const apphubAppId = process.env.APPHUB_APP_ID;
 const apphubAppSecret = process.env.APPHUB_APP_SECRET;
 const apphubBuildTarget = 'all';
 const apphubBuildLocation = './build.zip';
+const apphubBuildName = 'v' + require('../package.json').version;
 const latestCommitMessageQueryExecResult = exec('git log -1 --pretty=%B');
-const apphubBuildDescription = latestCommitMessageQueryExecResult.code === 0
+const latestCommitMessageResult = latestCommitMessageQueryExecResult.code === 0
                               ? latestCommitMessageQueryExecResult.stdout
                               : '';
+const apphubBuildDescription = latestCommitMessageResult.replace(/(?:\r\n|\r|\n|")/g, '');
 
 // - Create Apphub build -
 if (exec('./node_modules/.bin/apphub build -o build.zip --plist-file ./ios/fractalui/Info.plist').code !== 0) {
@@ -35,19 +37,20 @@ if (exec('ls ' + apphubBuildLocation).code !== 0) {
 }
 
 // - Upload Apphub build & release for all users -
-const releaseSuccessful = exec(
-  'curl -X PUT '
-  + '-H "X-AppHub-Application-ID: ' + apphubAppId + '"'
-  + '-H "X-AppHub-Application-Secret: ' + apphubAppSecret + '"'
-  + '-H "Content-Type: application/zip"'
-  + '-H \'X-AppHub-Build-Metadata: {'
-    + '"target": "' + apphubBuildTarget + '",'
-    + '"description": "' + apphubBuildDescription + '",'
-  + '}\''
-  + '-L https://api.apphub.io/v1/upload'
-  + '--upload-file ' + apphubBuildLocation
-).code === 0;
+const curlCall = 'curl -X PUT '
++ '-H "X-AppHub-Application-ID: ' + apphubAppId + '" '
++ '-H "X-AppHub-Application-Secret: ' + apphubAppSecret + '" '
++ '-H "Content-Type: application/zip" '
++ '-H \'X-AppHub-Build-Metadata: { '
+  + '"target": "' + apphubBuildTarget + '", '
+  + '"name": "' + apphubBuildName + '", '
+  + '"description": "' + apphubBuildDescription + '"'
++ '}\' '
++ '-L https://api.apphub.io/v1/upload '
++ '--upload-file ' + apphubBuildLocation;
+echo('curlCall', curlCall);
+const releaseSuccessful = exec(curlCall).code === 0;
 
 if (releaseSuccessful) {
-  echo('Apphub build released for all users');
+  echo('Apphub build released for ' + apphubBuildTarget + ' users');
 }
