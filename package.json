@@ -5,8 +5,7 @@
   "scripts": {
     "start": "react-native start",
     "test": "mocha --compilers js:babel-core/register ./app/**/*.spec.js",
-    "test:watch": "npm test -- --watch",
-    "apphub:build": "./node_modules/.bin/apphub build -o build.zip --plist-file ./ios/fractalui/Info.plist"
+    "test:watch": "npm test -- --watch"
   },
   "dependencies": {
     "apphub": "^0.5.0",

@@ -23,7 +23,7 @@ const apphubBuildDescription = latestCommitMessageQueryExecResult.code === 0
                               : '';
 
 // - Create Apphub build -
-if (exec('npm run apphub:build').code !== 0) {
+if (exec('./node_modules/.bin/apphub build -o build.zip --plist-file ./ios/fractalui/Info.plist').code !== 0) {
   echo('Error: Apphub build failed');
   exit(1);
 }
