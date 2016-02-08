@@ -1,0 +1,9 @@
+deployment:
+  # production:
+  #   branch: production
+  #   commands:
+  #     - node ./scripts/releaseToProduction.js
+  staging:
+    branch: master
+    commands:
+      - node ./scripts/releaseToStaging.js
