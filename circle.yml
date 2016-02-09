@@ -11,7 +11,7 @@ dependencies:
 # Fix for `apphub build ...` (from scripts/releaseTo*.js), which will otherwise
 # complain about "wrong-react-native"... >:(
   post:
-    - rm ./node_modules/.bin/react-native
+    - rm ./node_modules/.bin/react-native && echo "told ya" || echo "oh well"
     - npm install -g react-native-cli
 
 # Deploy via Apphub
