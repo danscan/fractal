@@ -1,11 +1,17 @@
 machine:
+  npm:
+    version: 3
   node:
     version: 4.2.2
+
+# Fix for `apphub build ...` (from scripts/releaseTo*.js), which will otherwise
+# complain about "wrong-react-native"... >:(
 dependencies:
   post:
-    - npm uninstall -g react-native
     - rm ./node_modules/.bin/react-native
     - npm install -g react-native-cli
+
+# Deploy via Apphub
 deployment:
   # production:
   #   branch: production
