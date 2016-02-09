@@ -1,6 +1,6 @@
+import analytics from 'react-native-redux-segment';
 import thunk from 'redux-thunk';
 import logger from './logger';
-import analytics from './analytics';
 
 export default [
   thunk,
