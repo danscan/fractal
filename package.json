@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "mocha --compilers js:babel-core/register ./app/**/*.spec.js",
+    "test": "node_modules/.bin/mocha --compilers js:babel-core/register app/**/*.spec.js app/**/**/*.spec.js app/**/**/**/*.spec.js",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {

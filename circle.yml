@@ -5,9 +5,6 @@ dependencies:
   post:
     - npm uninstall -g react-native
     - npm install -g react-native-cli
-test:
-  override:
-    - ./node_modules/.bin/mocha --compilers js:babel-core/register ./app/**/*.spec.js
 deployment:
   # production:
   #   branch: production
