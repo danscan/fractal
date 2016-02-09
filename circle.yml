@@ -3,16 +3,17 @@ machine:
     version: 4.2.2
 
 dependencies:
-# Use npm@3 to resolve dependency collisions in react packager step in Apphub
-# build (deployment).
   pre:
+    # Use npm@3 to resolve dependency collisions in react packager step in Apphub
+    # build (deployment).
     - npm install -g npm@3
-
-# Fix for `apphub build ...` (from scripts/releaseTo*.js), which will otherwise
-# complain about "wrong-react-native"... >:(
   post:
-    - rm ./node_modules/.bin/react-native && echo "told ya" || echo "oh well"
+    # Fix for `apphub build ...` (from scripts/releaseTo*.js), which will otherwise
+    # complain about "wrong-react-native"... >:(
+    - rm ./node_modules/.bin/react-native && echo "good thing I deleted it" || echo "better safe than sorry"
     - npm install -g react-native-cli
+    # Remove old .babelrc that causes issues in deploy step...
+    - rm ./node_modules/redux-undo/.babelrc && echo "good thing I deleted it" || echo "better safe than sorry"
 
 # Deploy via Apphub
 deployment:
