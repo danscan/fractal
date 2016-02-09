@@ -1,6 +1,9 @@
 machine:
   node:
     version: 4.2.2
+dependencies:
+  post:
+    - npm install -g react-native-cli
 test:
   override:
     - ./node_modules/.bin/mocha --compilers js:babel-core/register ./app/**/*.spec.js
