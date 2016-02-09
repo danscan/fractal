@@ -4,6 +4,7 @@ machine:
 dependencies:
   post:
     - npm uninstall -g react-native
+    - rm ./node_modules/.bin/react-native
     - npm install -g react-native-cli
 deployment:
   # production:
