@@ -1,12 +1,15 @@
 machine:
-  npm:
-    version: 3
   node:
     version: 4.2.2
 
+dependencies:
+# Use npm@3 to resolve dependency collisions in react packager step in Apphub
+# build (deployment).
+  pre:
+    - npm install -g npm@3
+
 # Fix for `apphub build ...` (from scripts/releaseTo*.js), which will otherwise
 # complain about "wrong-react-native"... >:(
-dependencies:
   post:
     - rm ./node_modules/.bin/react-native
     - npm install -g react-native-cli
