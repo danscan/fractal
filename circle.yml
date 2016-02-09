@@ -3,6 +3,7 @@ machine:
     version: 4.2.2
 dependencies:
   post:
+    - npm uninstall -g react-native
     - npm install -g react-native-cli
 test:
   override:
