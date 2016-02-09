@@ -1,11 +1,10 @@
-import Analytics from 'analytics-node';
+import track from './client';
 import Inflect from 'i';
 
 // Instantiate inflector library
 const inflect = new Inflect();
 
 export default ({ writeKey, selectEventName = defaultSelectEventName, selectUserId = defaultSelectUserId }) => {
-  const analytics = new Analytics(writeKey);
   const anonymousId = Math.random().toString(35).substr(2, 7);
 
   return store => next => action => {
@@ -13,7 +12,7 @@ export default ({ writeKey, selectEventName = defaultSelectEventName, selectUser
     const eventName = selectEventName(action, state);
     const userId = selectUserId(action, state);
 
-    analytics.track({
+    track(writeKey, {
       userId,
       anonymousId: !userId ? anonymousId : undefined,
       event: eventName,
