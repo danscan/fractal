@@ -39,12 +39,12 @@ export default class RadioButtonsGroup extends Component {
     );
   }
 
-  renderOptionButton({ image, text, value }) {
+  renderOptionButton({ image, text, propValue }) {
     const {
       onChangeValue,
       value: selectedValue,
     } = this.props;
-    const selected = selectedValue === value;
+    const selected = selectedValue === propValue;
     const buttonStyle = selected
                       ? [styles.optionButton, styles.optionButtonSelected]
                       : styles.optionButton;
@@ -53,7 +53,7 @@ export default class RadioButtonsGroup extends Component {
                           : image;
 
     return (
-      <TouchableOpacity key={value} onPress={() => onChangeValue(value)} style={buttonStyle}>
+      <TouchableOpacity key={propValue} onPress={() => onChangeValue(propValue)} style={buttonStyle}>
         {buttonContents}
       </TouchableOpacity>
     );

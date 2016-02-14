@@ -8,6 +8,15 @@ import styles from './styles';
 // (Radio button images)
 import radioArrowDownImage from './assets/img/radioArrowDown.png';
 import radioArrowRightImage from './assets/img/radioArrowRight.png';
+import radioAlignCenterImage from './assets/img/radioAlignCenter.png';
+import radioAlignStretchImage from './assets/img/radioAlignStretch.png';
+import radioAlignTopImage from './assets/img/radioAlignTop.png';
+import radioAlignRightImage from './assets/img/radioAlignRight.png';
+import radioAlignBottomImage from './assets/img/radioAlignBottom.png';
+import radioAlignLeftImage from './assets/img/radioAlignLeft.png';
+import radioCrossImage from './assets/img/radioCross.png';
+import radioShowImage from './assets/img/radioShow.png';
+import radioFillBucketImage from './assets/img/radioFillBucket.png';
 
 export default class StyleEditorInput extends Component {
   static propTypes = {
@@ -39,7 +48,7 @@ export default class StyleEditorInput extends Component {
             { image: <Image source={radioArrowDownImage} style={{ width: 15, height: 16 }}/>, propValue: 'column' },
             { image: <Image source={radioArrowRightImage} style={{ width: 15, height: 14 }}/>, propValue: 'row' },
           ]}
-          value={propValue.get('flexDirection') || 'row'}
+          value={propValue.get('flexDirection', 'row')}
         />
         <RadioButtonsGroup
           name="Flex Wrap"
@@ -48,51 +57,51 @@ export default class StyleEditorInput extends Component {
             { text: 'On', propValue: 'wrap' },
             { text: 'Off', propValue: 'nowrap' },
           ]}
-          value={propValue.get('flexWrap') || 'nowrap'}
+          value={propValue.get('flexWrap', 'nowrap')}
         />
         <RadioButtonsGroup
           name="Align Items"
           onChangeValue={(newValue) => onChangeValue(propValue.set('alignItems', newValue))}
           options={[
-            { text: 'Flex Start', propValue: 'flex-start' },
-            { text: 'Stretch', propValue: 'stretch' },
-            { text: 'Center', propValue: 'center' },
-            { text: 'Flex End', propValue: 'flex-end' },
+            { image: <Image source={radioAlignLeftImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-start' },
+            { image: <Image source={radioAlignStretchImage} style={{ width: 13, height: 13 }}/>, propValue: 'stretch' },
+            { image: <Image source={radioAlignCenterImage} style={{ width: 13, height: 13 }}/>, propValue: 'center' },
+            { image: <Image source={radioAlignRightImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-end' },
           ]}
-          value={propValue.get('alignItems') || 'stretch'}
+          value={propValue.get('alignItems', 'stretch')}
         />
         <RadioButtonsGroup
           name="Justify Content"
           onChangeValue={(newValue) => onChangeValue(propValue.set('justifyContent', newValue))}
           options={[
-            { text: 'Flex Start', propValue: 'flex-start' },
-            { text: 'Center', propValue: 'center' },
-            { text: 'Flex End', propValue: 'flex-end' },
+            { image: <Image source={radioAlignTopImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-start' },
+            { image: <Image source={radioAlignCenterImage} style={{ width: 13, height: 13, transform: [{ rotate: '90deg' }] }}/>, propValue: 'center' },
+            { image: <Image source={radioAlignBottomImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-end' },
             { text: 'Space Between', propValue: 'space-between' },
             { text: 'Space Around', propValue: 'space-around' },
           ]}
-          value={propValue.get('justifyContent') || 'flex-start'}
+          value={propValue.get('justifyContent', 'flex-start')}
         />
         <RadioButtonsGroup
           name="Align Self"
           onChangeValue={(newValue) => onChangeValue(propValue.set('alignSelf', newValue))}
           options={[
             { text: 'Auto', propValue: 'auto' },
-            { text: 'Flex Start', propValue: 'flex-start' },
-            { text: 'Stretch', propValue: 'stretch' },
-            { text: 'Center', propValue: 'center' },
-            { text: 'Flex End', propValue: 'flex-end' },
+            { image: <Image source={radioAlignLeftImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-start' },
+            { image: <Image source={radioAlignStretchImage} style={{ width: 13, height: 13 }}/>, propValue: 'stretch' },
+            { image: <Image source={radioAlignCenterImage} style={{ width: 13, height: 13 }}/>, propValue: 'center' },
+            { image: <Image source={radioAlignRightImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-end' },
           ]}
-          value={propValue.get('alignSelf') || 'auto'}
+          value={propValue.get('alignSelf', 'auto')}
         />
         <RadioButtonsGroup
           name="Overflow"
           onChangeValue={(newValue) => onChangeValue(propValue.set('overflow', newValue))}
           options={[
-            { text: 'Visible', propValue: 'visible' },
-            { text: 'Hidden', propValue: 'hidden' },
+            { image: <Image source={radioShowImage} style={{ width: 17, height: 9 }}/>, propValue: 'visible' },
+            { image: <Image source={radioCrossImage} style={{ width: 12, height: 12 }}/>, propValue: 'hidden' },
           ]}
-          value={propValue.get('overflow') || 'visible'}
+          value={propValue.get('overflow', 'visible')}
         />
         <IncrementField
           name="Margin"
@@ -213,7 +222,7 @@ export default class StyleEditorInput extends Component {
             { text: 'Relative', propValue: 'relative' },
             { text: 'absolute', propValue: 'absolute' },
           ]}
-          value={propValue.get('position') || 'relative'}
+          value={propValue.get('position', 'relative')}
         />
         <IncrementField
           name="Top"
@@ -272,10 +281,10 @@ export default class StyleEditorInput extends Component {
             name="Backface Visibility"
             onChangeValue={(newValue) => onChangeValue(propValue.set('backfaceVisibility', newValue))}
             options={[
-              { text: 'Visible', propValue: 'visible' },
-              { text: 'Hidden', propValue: 'hidden' },
+              { image: <Image source={radioShowImage} style={{ width: 17, height: 9 }}/>, propValue: 'visible' },
+              { image: <Image source={radioCrossImage} style={{ width: 12, height: 12 }}/>, propValue: 'hidden' },
             ]}
-            value={propValue.get('backfaceVisibility') || 'visible'}
+            value={propValue.get('backfaceVisibility', 'visible')}
           />
           <IncrementField
             name="Opacity"

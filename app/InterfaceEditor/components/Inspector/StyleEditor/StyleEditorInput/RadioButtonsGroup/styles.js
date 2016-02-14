@@ -14,14 +14,22 @@ export default StyleSheet.create({
   },
 
   buttonsGroupSection: {
+    borderColor: '#191d1f',
+    borderRadius: 4,
+    borderWidth: 1,
+    borderRightWidth: 0,
     flexDirection: 'row',
+    overflow: 'hidden',
   },
 
   optionButton: {
     alignItems: 'center',
     backgroundColor: '#4b4b4b',
-    borderColor: '#191d1f',
-    borderWidth: 1,
+    borderRadius: 4,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderRightColor: '#191d1f',
+    borderRightWidth: 1,
     justifyContent: 'center',
     height: 34,
     minWidth: 38,
