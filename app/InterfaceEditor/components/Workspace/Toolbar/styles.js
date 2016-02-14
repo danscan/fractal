@@ -19,6 +19,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
   },
+  canvasZoomColumn: {
+    paddingHorizontal: 10,
+  },
   button: {
     padding: 8,
   },

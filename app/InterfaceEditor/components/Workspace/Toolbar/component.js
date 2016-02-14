@@ -29,7 +29,7 @@ export default class Toolbar extends Component {
     );
   }
 
-  renderZoomButton() {
+  renderCanvasZoomColumn() {
     const {
       canvasZoom,
       setCanvasZoom,
@@ -41,7 +41,7 @@ export default class Toolbar extends Component {
     const zoomInValue = canvasZoom + 0.25;
 
     return (
-      <View style={styles.column}>
+      <View style={[styles.column, styles.canvasZoomColumn]}>
         <TouchableOpacity onPress={() => setCanvasZoom(zoomOutValue)} style={styles.button}>
           <Image source={zoomOutButtonImage} style={[styles.buttonImage, styles.zoomOutButtonImage]}/>
         </TouchableOpacity>
@@ -91,7 +91,7 @@ export default class Toolbar extends Component {
     return (
       <View style={styles.container}>
         {this.renderBeginFullScreenPreviewButton()}
-        {this.renderZoomButton()}
+        {this.renderCanvasZoomColumn()}
         {this.renderCanvasDeviceButton()}
         {this.renderCanvasOrientationButton()}
       </View>
