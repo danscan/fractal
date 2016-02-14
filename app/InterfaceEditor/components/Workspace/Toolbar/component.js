@@ -2,6 +2,8 @@ import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from
 import beginFullScreenPreviewButtonImage from '../../../assets/img/beginFullScreenPreviewButton.png';
 import zoomInButtonImage from '../../../assets/img/zoomInButton.png';
 import zoomOutButtonImage from '../../../assets/img/zoomOutButton.png';
+import canvasDeviceImage from '../../../assets/img/canvasDevice.png';
+import canvasOrientationImage from '../../../assets/img/canvasOrientation.png';
 import { portraitOrientation } from '../../../constants/canvasOrientations';
 import { canvasDevicePropType, canvasOrientationPropType } from '../../../constants/propTypes';
 import styles from './styles';
@@ -22,7 +24,7 @@ export default class Toolbar extends Component {
 
     return (
       <TouchableOpacity onPress={onPressBeginFullScreenPreview} style={styles.column}>
-        <Image source={beginFullScreenPreviewButtonImage} style={styles.buttonImage}/>
+        <Image source={beginFullScreenPreviewButtonImage} style={[styles.buttonImage, styles.beginFullScreenPreviewButtonImage]}/>
       </TouchableOpacity>
     );
   }
@@ -41,13 +43,13 @@ export default class Toolbar extends Component {
     return (
       <View style={styles.column}>
         <TouchableOpacity onPress={() => setCanvasZoom(zoomOutValue)} style={styles.button}>
-          <Image source={zoomOutButtonImage} style={styles.buttonImage}/>
+          <Image source={zoomOutButtonImage} style={[styles.buttonImage, styles.zoomOutButtonImage]}/>
         </TouchableOpacity>
         <Text style={[styles.buttonLabel, styles.buttonValueLabel, styles.zoomValueLabel]}>
           {canvasZoomPercentage}%
         </Text>
         <TouchableOpacity onPress={() => setCanvasZoom(zoomInValue)} style={styles.button}>
-          <Image source={zoomInButtonImage} style={styles.buttonImage}/>
+          <Image source={zoomInButtonImage} style={[styles.buttonImage, styles.zoomInButtonImage]}/>
         </TouchableOpacity>
       </View>
     );
@@ -61,9 +63,7 @@ export default class Toolbar extends Component {
 
     return (
       <TouchableOpacity onPress={() => onPressCanvasDevice(canvasDevice)} style={styles.column}>
-        <Text style={styles.buttonLabel}>
-          Canvas Device
-        </Text>
+        <Image source={canvasDeviceImage} style={[styles.buttonImage, styles.canvasDeviceImage]}/>
         <Text style={[styles.buttonLabel, styles.buttonValueLabel]}>
           {canvasDevice.get('name')}
         </Text>
@@ -79,9 +79,7 @@ export default class Toolbar extends Component {
 
     return (
       <TouchableOpacity onPress={onPressCanvasOrientation} style={styles.column}>
-        <Text style={styles.buttonLabel}>
-          Canvas Orientation
-        </Text>
+        <Image source={canvasOrientationImage} style={[styles.buttonImage, styles.canvasOrientationImage]}/>
         <Text style={[styles.buttonLabel, styles.buttonValueLabel]}>
           {canvasOrientation === portraitOrientation ? 'Portrait' : 'Landscape'}
         </Text>

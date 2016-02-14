@@ -23,9 +23,27 @@ export default StyleSheet.create({
     padding: 8,
   },
   buttonImage: {
-    height: 22,
     tintColor: '#ccc',
+  },
+  beginFullScreenPreviewButtonImage: {
     width: 22,
+    height: 12,
+  },
+  zoomOutButtonImage: {
+    height: 22,
+    width: 22,
+  },
+  zoomInButtonImage: {
+    height: 22,
+    width: 22,
+  },
+  canvasDeviceImage: {
+    width: 16,
+    height: 22,
+  },
+  canvasOrientationImage: {
+    width: 22,
+    height: 20,
   },
   buttonLabel: {
     color: '#ccc',
