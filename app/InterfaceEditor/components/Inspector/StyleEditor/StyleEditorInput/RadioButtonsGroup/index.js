@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 export default class RadioButtonsGroup extends Component {
