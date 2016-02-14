@@ -1,10 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-
   contentRow: {
     backgroundColor: 'rgba(255,0,0,0.3)',
 
@@ -17,20 +13,24 @@ export default StyleSheet.create({
 
     alignItems: 'center',
     flex: 1,
+    justifyContent: 'center',
   },
+
+  marginColumn: {},
+  paddingColumn: {},
 
   value: {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-    padding: 10,
+    padding: 8,
   },
   valueLabel: {
     color: '#aaa',
     fontFamily: 'Avenir',
     fontSize: 12,
     fontWeight: '600',
-    textAlign: 'center',
+    flex: 1,
   },
 
   marginTopButton: {},

@@ -15,6 +15,6 @@ export default StyleSheet.create({
     backgroundColor: '#393939',
     borderLeftColor: '#191d1f',
     borderLeftWidth: 1,
-    flex: 1,
+    flex: 4,
   },
 });

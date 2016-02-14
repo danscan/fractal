@@ -19,7 +19,7 @@ export default class MarginPaddingInput extends Component {
 
   renderMarginColumn() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.contentColumn, styles.marginColumn]}>
         <View style={styles.value}>
           <Text style={styles.valueLabel}>
             30
@@ -39,9 +39,7 @@ export default class MarginPaddingInput extends Component {
               <TouchableOpacity style={styles.marginLeftButton}>
                 <Image source={marginLeftImage} style={styles.marginLeftButtonImage}/>
               </TouchableOpacity>
-              <View style={styles.contentColumn}>
-                {this.renderPaddingColumn()}
-              </View>
+              {this.renderPaddingColumn()}
               <TouchableOpacity style={styles.marginRightButton}>
                 <Image source={marginRightImage} style={styles.marginRightButtonImage}/>
               </TouchableOpacity>
@@ -67,44 +65,46 @@ export default class MarginPaddingInput extends Component {
 
   renderPaddingColumn() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.contentColumn, styles.paddingColumn]}>
         <TouchableOpacity style={styles.paddingTopButton}>
           <Image source={paddingTopImage} style={styles.paddingTopButtonImage}/>
         </TouchableOpacity>
         <View style={styles.contentRow}>
-          <View style={styles.value}>
-            <TouchableOpacity style={styles.paddingLeftButton}>
-              <Image source={paddingLeftImage} style={styles.paddingLeftButtonImage}/>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.paddingLeftButton}>
+            <Image source={paddingLeftImage} style={styles.paddingLeftButtonImage}/>
+          </TouchableOpacity>
           <View style={styles.contentColumn}>
-            <Text style={styles.valueLabel}>
-              30
-            </Text>
-            <View style={styles.contentRow}>
-              <Text style={styles.valueLabel}>
-                30
-              </Text>
-              <View style={styles.contentColumn}/>
+            <View style={styles.value}>
               <Text style={styles.valueLabel}>
                 30
               </Text>
             </View>
-            <Text style={styles.valueLabel}>
-              30
-            </Text>
+            <View style={styles.contentRow}>
+              <View style={styles.value}>
+                <Text style={styles.valueLabel}>
+                  30
+                </Text>
+              </View>
+              <View style={styles.contentColumn}/>
+              <View style={styles.value}>
+                <Text style={styles.valueLabel}>
+                  30
+                </Text>
+              </View>
+            </View>
+            <View style={styles.value}>
+              <Text style={styles.valueLabel}>
+                30
+              </Text>
+            </View>
           </View>
-          <View style={styles.value}>
           <TouchableOpacity style={styles.paddingRightButton}>
             <Image source={paddingRightImage} style={styles.paddingRightButtonImage}/>
           </TouchableOpacity>
-          </View>
         </View>
-        <View style={styles.value}>
         <TouchableOpacity style={styles.paddingBottomButton}>
           <Image source={paddingBottomImage} style={styles.paddingBottomButtonImage}/>
         </TouchableOpacity>
-        </View>
       </View>
     );
   }
