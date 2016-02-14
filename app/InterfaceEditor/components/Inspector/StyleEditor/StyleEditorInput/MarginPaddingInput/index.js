@@ -1,0 +1,115 @@
+import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import styles from './styles';
+
+// (Image assets)
+import marginTopImage from '../assets/img/marginTop.png';
+import marginRightImage from '../assets/img/marginRight.png';
+import marginBottomImage from '../assets/img/marginBottom.png';
+import marginLeftImage from '../assets/img/marginLeft.png';
+import paddingTopImage from '../assets/img/paddingTop.png';
+import paddingRightImage from '../assets/img/paddingRight.png';
+import paddingBottomImage from '../assets/img/paddingBottom.png';
+import paddingLeftImage from '../assets/img/paddingLeft.png';
+
+export default class MarginPaddingInput extends Component {
+  static propTypes = {
+    onChangeValue: PropTypes.func.isRequired,
+    value: PropTypes.any,
+  };
+
+  renderMarginColumn() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.value}>
+          <Text style={styles.valueLabel}>
+            30
+          </Text>
+        </View>
+        <View style={styles.contentRow}>
+          <View style={styles.value}>
+            <Text style={styles.valueLabel}>
+              30
+            </Text>
+          </View>
+          <View style={styles.contentColumn}>
+            <TouchableOpacity style={styles.marginTopButton}>
+              <Image source={marginTopImage} style={styles.marginTopButtonImage}/>
+            </TouchableOpacity>
+            <View style={styles.contentRow}>
+              <TouchableOpacity style={styles.marginLeftButton}>
+                <Image source={marginLeftImage} style={styles.marginLeftButtonImage}/>
+              </TouchableOpacity>
+              <View style={styles.contentColumn}>
+                {this.renderPaddingColumn()}
+              </View>
+              <TouchableOpacity style={styles.marginRightButton}>
+                <Image source={marginRightImage} style={styles.marginRightButtonImage}/>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.marginBottomButton}>
+              <Image source={marginBottomImage} style={styles.marginBottomButtonImage}/>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.value}>
+            <Text style={styles.valueLabel}>
+              30
+            </Text>
+          </View>
+        </View>
+        <View style={styles.value}>
+          <Text style={styles.valueLabel}>
+            30
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
+  renderPaddingColumn() {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.paddingTopButton}>
+          <Image source={paddingTopImage} style={styles.paddingTopButtonImage}/>
+        </TouchableOpacity>
+        <View style={styles.contentRow}>
+          <View style={styles.value}>
+            <TouchableOpacity style={styles.paddingLeftButton}>
+              <Image source={paddingLeftImage} style={styles.paddingLeftButtonImage}/>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.contentColumn}>
+            <Text style={styles.valueLabel}>
+              30
+            </Text>
+            <View style={styles.contentRow}>
+              <Text style={styles.valueLabel}>
+                30
+              </Text>
+              <View style={styles.contentColumn}/>
+              <Text style={styles.valueLabel}>
+                30
+              </Text>
+            </View>
+            <Text style={styles.valueLabel}>
+              30
+            </Text>
+          </View>
+          <View style={styles.value}>
+          <TouchableOpacity style={styles.paddingRightButton}>
+            <Image source={paddingRightImage} style={styles.paddingRightButtonImage}/>
+          </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.value}>
+        <TouchableOpacity style={styles.paddingBottomButton}>
+          <Image source={paddingBottomImage} style={styles.paddingBottomButtonImage}/>
+        </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
+  render() {
+    return this.renderMarginColumn();
+  }
+}

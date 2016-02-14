@@ -73,8 +73,8 @@ export default class Section extends Component {
     const { children } = this.props;
     const { expanded } = this.state;
 
-    // If section isn't expanded, don't render children
-    if (!expanded) {
+    // If section isn't expanded or it doesn't have children, don't render children
+    if (!expanded || !children) {
       return null;
     }
 

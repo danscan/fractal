@@ -2,6 +2,7 @@ import React, { Component, Image, PropTypes, ScrollView } from 'react-native';
 import { elementPathPropType } from '../../../../constants/propTypes';
 import IncrementField from './IncrementField';
 import RadioButtonsGroup from './RadioButtonsGroup';
+import MarginPaddingInput from './MarginPaddingInput';
 import Section from './Section';
 import styles from './styles';
 
@@ -14,6 +15,8 @@ import radioAlignTopImage from './assets/img/radioAlignTop.png';
 import radioAlignRightImage from './assets/img/radioAlignRight.png';
 import radioAlignBottomImage from './assets/img/radioAlignBottom.png';
 import radioAlignLeftImage from './assets/img/radioAlignLeft.png';
+import radioJustifySpaceBetweenImage from './assets/img/radioJustifySpaceBetween.png';
+import radioJustifySpaceAroundImage from './assets/img/radioJustifySpaceAround.png';
 import radioCrossImage from './assets/img/radioCross.png';
 import radioShowImage from './assets/img/radioShow.png';
 import radioFillBucketImage from './assets/img/radioFillBucket.png';
@@ -48,7 +51,7 @@ export default class StyleEditorInput extends Component {
             { image: <Image source={radioArrowDownImage} style={{ width: 15, height: 16 }}/>, propValue: 'column' },
             { image: <Image source={radioArrowRightImage} style={{ width: 15, height: 14 }}/>, propValue: 'row' },
           ]}
-          value={propValue.get('flexDirection', 'row')}
+          value={propValue.get('flexDirection', 'column')}
         />
         <RadioButtonsGroup
           name="Flex Wrap"
@@ -77,8 +80,8 @@ export default class StyleEditorInput extends Component {
             { image: <Image source={radioAlignTopImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-start' },
             { image: <Image source={radioAlignCenterImage} style={{ width: 13, height: 13, transform: [{ rotate: '90deg' }] }}/>, propValue: 'center' },
             { image: <Image source={radioAlignBottomImage} style={{ width: 13, height: 13 }}/>, propValue: 'flex-end' },
-            { text: 'Space Between', propValue: 'space-between' },
-            { text: 'Space Around', propValue: 'space-around' },
+            { image: <Image source={radioJustifySpaceBetweenImage} style={{ width: 13, height: 13 }}/>, propValue: 'space-between' },
+            { image: <Image source={radioJustifySpaceAroundImage} style={{ width: 13, height: 13 }}/>, propValue: 'space-around' },
           ]}
           value={propValue.get('justifyContent', 'flex-start')}
         />
@@ -103,75 +106,9 @@ export default class StyleEditorInput extends Component {
           ]}
           value={propValue.get('overflow', 'visible')}
         />
-        <IncrementField
-          name="Margin"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('margin', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('margin')}
-        />
-        <IncrementField
-          name="Margin Top"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('marginTop', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('marginTop')}
-        />
-        <IncrementField
-          name="Margin Right"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('marginRight', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('marginRight')}
-        />
-        <IncrementField
-          name="Margin Bottom"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('marginBottom', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('marginBottom')}
-        />
-        <IncrementField
-          name="Margin Left"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('marginLeft', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('marginLeft')}
-        />
-        <IncrementField
-          name="Padding"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('padding', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('padding')}
-        />
-        <IncrementField
-          name="Padding Top"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('paddingTop', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('paddingTop')}
-        />
-        <IncrementField
-          name="Padding Right"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('paddingRight', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('paddingRight')}
-        />
-        <IncrementField
-          name="Padding Bottom"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('paddingBottom', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('paddingBottom')}
-        />
-        <IncrementField
-          name="Padding Left"
-          onChangeValue={(newValue) => onChangeValue(propValue.set('paddingLeft', newValue))}
-          placeholder="--"
-          unit="px"
-          value={propValue.get('paddingLeft')}
+        <MarginPaddingInput
+          onChangeValue={(newValue) => onChangeValue(newValue)}
+          value={propValue}
         />
         <IncrementField
           name="Width"
