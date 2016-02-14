@@ -71,10 +71,17 @@ export default class Inspector extends Component {
         ? styles.tabBarButtonSelected
         : {}),
     ];
+    const tabBarButtonImageStyle = [
+      styles.tabBarButtonImage,
+      (selectedTab === index
+        ? styles.tabBarButtonImageSelected
+        : {}),
+      imageStyle,
+    ];
 
     return (
       <TouchableOpacity key={index} onPress={() => onSelectTab(index)} style={tabBarButtonStyle}>
-        <Image source={imageSource} style={imageStyle}/>
+        <Image source={imageSource} style={tabBarButtonImageStyle}/>
       </TouchableOpacity>
     );
   }

@@ -27,9 +27,15 @@ export default StyleSheet.create({
     backgroundColor: '#4b4b4b',
     borderBottomWidth: 0,
   },
+  tabBarButtonImage: {
+    tintColor: '#ccc',
+  },
+  tabBarButtonImageSelected: {
+    tintColor: '#fff',
+  },
   navigatorTabBarButtonImage: {
-    width: 22,
-    height: 22,
+    width: 24,
+    height: 24,
   },
   styleEditorTabBarButtonImage: {
     width: 28,
