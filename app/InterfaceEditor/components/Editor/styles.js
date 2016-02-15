@@ -16,5 +16,6 @@ export default StyleSheet.create({
     borderLeftColor: '#191d1f',
     borderLeftWidth: 1,
     flex: 1,
+    minWidth: 326,
   },
 });

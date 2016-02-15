@@ -10,6 +10,7 @@ export default class RadioButtonsGroup extends Component {
       text: PropTypes.string,
       value: PropTypes.any,
     })),
+    style: View.propTypes.style,
     value: PropTypes.any,
   };
 
@@ -60,8 +61,10 @@ export default class RadioButtonsGroup extends Component {
   }
 
   render() {
+    const { style } = this.props;
+
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         {this.renderName()}
         {this.renderButtonsGroup()}
       </View>

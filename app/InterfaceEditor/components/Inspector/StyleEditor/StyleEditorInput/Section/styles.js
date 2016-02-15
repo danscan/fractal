@@ -36,8 +36,6 @@ export default StyleSheet.create({
   },
 
   childrenSection: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     paddingBottom: 30,
     paddingHorizontal: 10,
     paddingTop: 20,

@@ -32,19 +32,19 @@ export default class MarginPaddingInput extends Component {
             </Text>
           </View>
           <View style={styles.contentColumn}>
-            <TouchableOpacity style={styles.marginTopButton}>
+            <TouchableOpacity style={[styles.button, styles.marginTopButton]}>
               <Image source={marginTopImage} style={styles.marginTopButtonImage}/>
             </TouchableOpacity>
-            <View style={styles.contentRow}>
-              <TouchableOpacity style={styles.marginLeftButton}>
+            <View style={[styles.contentRow, { marginTop: -30 }]}>
+              <TouchableOpacity style={[styles.button, styles.marginLeftButton]}>
                 <Image source={marginLeftImage} style={styles.marginLeftButtonImage}/>
               </TouchableOpacity>
               {this.renderPaddingColumn()}
-              <TouchableOpacity style={styles.marginRightButton}>
+              <TouchableOpacity style={[styles.button, styles.marginRightButton]}>
                 <Image source={marginRightImage} style={styles.marginRightButtonImage}/>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.marginBottomButton}>
+            <TouchableOpacity style={[styles.button, styles.marginBottomButton]}>
               <Image source={marginBottomImage} style={styles.marginBottomButtonImage}/>
             </TouchableOpacity>
           </View>
@@ -66,14 +66,14 @@ export default class MarginPaddingInput extends Component {
   renderPaddingColumn() {
     return (
       <View style={[styles.contentColumn, styles.paddingColumn]}>
-        <TouchableOpacity style={styles.paddingTopButton}>
+        <TouchableOpacity style={[styles.button, styles.paddingTopButton]}>
           <Image source={paddingTopImage} style={styles.paddingTopButtonImage}/>
         </TouchableOpacity>
         <View style={styles.contentRow}>
-          <TouchableOpacity style={styles.paddingLeftButton}>
+          <TouchableOpacity style={[styles.button, styles.paddingLeftButton]}>
             <Image source={paddingLeftImage} style={styles.paddingLeftButtonImage}/>
           </TouchableOpacity>
-          <View style={styles.contentColumn}>
+          <View style={[styles.contentColumn, { marginTop: -28 }]}>
             <View style={styles.value}>
               <Text style={styles.valueLabel}>
                 30
@@ -98,11 +98,11 @@ export default class MarginPaddingInput extends Component {
               </Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.paddingRightButton}>
+          <TouchableOpacity style={[styles.button, styles.paddingRightButton]}>
             <Image source={paddingRightImage} style={styles.paddingRightButtonImage}/>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.paddingBottomButton}>
+        <TouchableOpacity style={[styles.button, styles.paddingBottomButton]}>
           <Image source={paddingBottomImage} style={styles.paddingBottomButtonImage}/>
         </TouchableOpacity>
       </View>
@@ -110,6 +110,10 @@ export default class MarginPaddingInput extends Component {
   }
 
   render() {
-    return this.renderMarginColumn();
+    return (
+      <View style={styles.container}>
+        {this.renderMarginColumn()}
+      </View>
+    );
   }
 }

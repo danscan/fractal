@@ -1,19 +1,25 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  contentRow: {
-    backgroundColor: 'rgba(255,0,0,0.3)',
-
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
+  container: {
+    borderBottomColor: '#383C3D',
+    borderBottomWidth: 1,
+    borderTopColor: '#383C3D',
+    borderTopWidth: 1,
+    marginVertical: 20,
+    paddingVertical: 10,
   },
-  contentColumn: {
-    backgroundColor: 'rgba(0,255,0,0.3)',
 
-    alignItems: 'center',
+  contentColumn: {
+    backgroundColor: 'transparent',
     flex: 1,
     justifyContent: 'center',
+  },
+  contentRow: {
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    flex: 1,
+    flexDirection: 'row',
   },
 
   marginColumn: {},
@@ -21,7 +27,6 @@ export default StyleSheet.create({
 
   value: {
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'center',
     padding: 8,
   },
@@ -30,7 +35,10 @@ export default StyleSheet.create({
     fontFamily: 'Avenir',
     fontSize: 12,
     fontWeight: '600',
-    flex: 1,
+  },
+
+  button: {
+    alignItems: 'center',
   },
 
   marginTopButton: {},
@@ -43,7 +51,9 @@ export default StyleSheet.create({
     width: 34,
     height: 221,
   },
-  marginBottomButton: {},
+  marginBottomButton: {
+    marginTop: -30,
+  },
   marginBottomButtonImage: {
     width: 247,
     height: 34,
@@ -54,22 +64,32 @@ export default StyleSheet.create({
     height: 221,
   },
 
-  paddingTopButton: {},
+  paddingTopButton: {
+    // marginTop: 26,
+  },
   paddingTopButtonImage: {
     width: 171,
     height: 34,
   },
-  paddingRightButton: {},
+  paddingRightButton: {
+    marginTop: -30,
+    paddingRight: 4,
+  },
   paddingRightButtonImage: {
     width: 34,
     height: 145,
   },
-  paddingBottomButton: {},
+  paddingBottomButton: {
+    marginTop: -30,
+  },
   paddingBottomButtonImage: {
     width: 171,
     height: 34,
   },
-  paddingLeftButton: {},
+  paddingLeftButton: {
+    marginTop: -30,
+    paddingLeft: 4,
+  },
   paddingLeftButtonImage: {
     width: 34,
     height: 145,
