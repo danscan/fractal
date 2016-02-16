@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { AlertIOS, Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 // (Image assets)
@@ -17,79 +17,202 @@ export default class MarginPaddingInput extends Component {
     value: PropTypes.any,
   };
 
-  renderMarginValueLabels() {
+  onChangeStylePropValue({ stylePropValue, styleProp }) {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+    const stylePropNumberValue = Number(stylePropValue);
+    const newValue = value.set(styleProp, stylePropNumberValue);
+
+    if (isNaN(stylePropNumberValue)) {
+      return null;
+    }
+
+    return onChangeValue(newValue);
+  }
+
+  promptForStylePropValue(styleProp) {
+    return AlertIOS.prompt(
+      `Enter new ${styleProp} value`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Set Value', onPress: (stylePropValue) => this.onChangeStylePropValue({ stylePropValue, styleProp }) },
+      ],
+    );
+  }
+
+  renderTouchableValue({ value: stylePropValue, styleProp, labelStyle, style }) {
     return (
-      <View style={styles.marginValueLabels}>
+      <TouchableOpacity onPress={() => this.promptForStylePropValue(styleProp)} style={style}>
+        <Text style={[styles.valueLabel, labelStyle]}>
+          {stylePropValue}
+        </Text>
+      </TouchableOpacity>
+    );
+  }
+
+  renderControlButton({ value: stylePropValue, styleProp, imageSource, imageStyle, style }) {
+    const incrementedStylePropValue = stylePropValue + 1;
+
+    return (
+      <TouchableOpacity
+        onPress={() => this.onChangeStylePropValue({ stylePropValue: incrementedStylePropValue, styleProp })}
+        style={[styles.button, style]}
+      >
+        <Image source={imageSource} style={[styles.buttonImage, imageStyle]}/>
+      </TouchableOpacity>
+    );
+  }
+
+  renderMarginValues() {
+    const { value } = this.props;
+    const marginValue = value.get('margin', 0);
+    const marginTopValue = value.get('marginTop') || marginValue;
+    const marginRightValue = value.get('marginRight') || marginValue;
+    const marginBottomValue = value.get('marginBottom') || marginValue;
+    const marginLeftValue = value.get('marginLeft') || marginValue;
+
+    return (
+      <View style={styles.marginValues}>
         <View style={styles.contentRow}>
-          <Text style={[styles.valueLabel, styles.marginTopValueLabel]}>
-            30
-          </Text>
+          {this.renderTouchableValue({
+            styleProp: 'marginTop',
+            value: marginTopValue,
+            labelStyle: styles.marginTopValueLabel,
+            style: styles.marginTopValue,
+          })}
         </View>
         <View style={styles.contentRow}>
           <View style={styles.contentColumn}>
-            <Text style={[styles.valueLabel, styles.marginLeftValueLabel]}>
-              30
-            </Text>
+            {this.renderTouchableValue({
+              styleProp: 'marginLeft',
+              value: marginLeftValue,
+              labelStyle: styles.marginLeftValueLabel,
+              style: styles.marginLeftValue,
+            })}
           </View>
           <View style={styles.contentColumn}>
             {this.renderControls()}
           </View>
           <View style={styles.contentColumn}>
-            <Text style={[styles.valueLabel, styles.marginRightValueLabel]}>
-              30
-            </Text>
+            {this.renderTouchableValue({
+              styleProp: 'marginRight',
+              value: marginRightValue,
+              labelStyle: styles.marginRightValueLabel,
+              style: styles.marginRightValue,
+            })}
           </View>
         </View>
         <View style={styles.contentRow}>
-          <Text style={[styles.valueLabel, styles.marginBottomValueLabel]}>
-            30
-          </Text>
+          {this.renderTouchableValue({
+            styleProp: 'marginBottom',
+            value: marginBottomValue,
+            labelStyle: styles.marginBottomValueLabel,
+            style: styles.marginBottomValue,
+          })}
         </View>
       </View>
     );
   }
 
   renderControls() {
+    const { value } = this.props;
+    const marginValue = value.get('margin', 0);
+    const marginTopValue = value.get('marginTop') || marginValue;
+    const marginRightValue = value.get('marginRight') || marginValue;
+    const marginBottomValue = value.get('marginBottom') || marginValue;
+    const marginLeftValue = value.get('marginLeft') || marginValue;
+    const paddingValue = value.get('padding', 0);
+    const paddingTopValue = value.get('paddingTop') || paddingValue;
+    const paddingRightValue = value.get('paddingRight') || paddingValue;
+    const paddingBottomValue = value.get('paddingBottom') || paddingValue;
+    const paddingLeftValue = value.get('paddingLeft') || paddingValue;
+
     return (
       <View style={styles.controls}>
-        <TouchableOpacity style={[styles.button, styles.marginTopButton]}>
-          <Image source={marginTopImage} style={[styles.buttonImage, styles.marginTopButtonImage]}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.marginRightButton]}>
-          <Image source={marginRightImage} style={[styles.buttonImage, styles.marginRightButtonImage]}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.marginBottomButton]}>
-          <Image source={marginBottomImage} style={[styles.buttonImage, styles.marginBottomButtonImage]}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.marginLeftButton]}>
-          <Image source={marginLeftImage} style={[styles.buttonImage, styles.marginLeftButtonImage]}/>
-        </TouchableOpacity>
+        {this.renderControlButton({
+          value: marginTopValue,
+          styleProp: 'marginTop',
+          imageSource: marginTopImage,
+          imageStyle: styles.marginTopButtonImage,
+          style: styles.marginTopButton,
+        })}
+        {this.renderControlButton({
+          value: marginRightValue,
+          styleProp: 'marginRight',
+          imageSource: marginRightImage,
+          imageStyle: styles.marginRightButtonImage,
+          style: styles.marginRightButton,
+        })}
+        {this.renderControlButton({
+          value: marginBottomValue,
+          styleProp: 'marginBottom',
+          imageSource: marginBottomImage,
+          imageStyle: styles.marginBottomButtonImage,
+          style: styles.marginBottomButton,
+        })}
+        {this.renderControlButton({
+          value: marginLeftValue,
+          styleProp: 'marginLeft',
+          imageSource: marginLeftImage,
+          imageStyle: styles.marginLeftButtonImage,
+          style: styles.marginLeftButton,
+        })}
 
-        <TouchableOpacity style={[styles.button, styles.paddingTopButton]}>
-          <Image source={paddingTopImage} style={[styles.buttonImage, styles.paddingTopButtonImage]}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.paddingRightButton]}>
-          <Image source={paddingRightImage} style={[styles.buttonImage, styles.paddingRightButtonImage]}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.paddingBottomButton]}>
-          <Image source={paddingBottomImage} style={[styles.buttonImage, styles.paddingBottomButtonImage]}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.paddingLeftButton]}>
-          <Image source={paddingLeftImage} style={[styles.buttonImage, styles.paddingLeftButtonImage]}/>
-        </TouchableOpacity>
+        {this.renderControlButton({
+          value: paddingTopValue,
+          styleProp: 'paddingTop',
+          imageSource: paddingTopImage,
+          imageStyle: styles.paddingTopButtonImage,
+          style: styles.paddingTopButton,
+        })}
+        {this.renderControlButton({
+          value: paddingRightValue,
+          styleProp: 'paddingRight',
+          imageSource: paddingRightImage,
+          imageStyle: styles.paddingRightButtonImage,
+          style: styles.paddingRightButton,
+        })}
+        {this.renderControlButton({
+          value: paddingBottomValue,
+          styleProp: 'paddingBottom',
+          imageSource: paddingBottomImage,
+          imageStyle: styles.paddingBottomButtonImage,
+          style: styles.paddingBottomButton,
+        })}
+        {this.renderControlButton({
+          value: paddingLeftValue,
+          styleProp: 'paddingLeft',
+          imageSource: paddingLeftImage,
+          imageStyle: styles.paddingLeftButtonImage,
+          style: styles.paddingLeftButton,
+        })}
 
-        <Text style={[styles.valueLabel, styles.paddingTopValueLabel]}>
-          30
-        </Text>
-        <Text style={[styles.valueLabel, styles.paddingLeftValueLabel]}>
-          30
-        </Text>
-        <Text style={[styles.valueLabel, styles.paddingRightValueLabel]}>
-          30
-        </Text>
-        <Text style={[styles.valueLabel, styles.paddingBottomValueLabel]}>
-          30
-        </Text>
+        {this.renderTouchableValue({
+          styleProp: 'paddingTop',
+          value: paddingTopValue,
+          labelStyle: styles.paddingTopValueLabel,
+          style: styles.paddingTopValue,
+        })}
+        {this.renderTouchableValue({
+          styleProp: 'paddingRight',
+          value: paddingRightValue,
+          labelStyle: styles.paddingRightValueLabel,
+          style: styles.paddingRightValue,
+        })}
+        {this.renderTouchableValue({
+          styleProp: 'paddingBottom',
+          value: paddingBottomValue,
+          labelStyle: styles.paddingBottomValueLabel,
+          style: styles.paddingBottomValue,
+        })}
+        {this.renderTouchableValue({
+          styleProp: 'paddingLeft',
+          value: paddingLeftValue,
+          labelStyle: styles.paddingLeftValueLabel,
+          style: styles.paddingLeftValue,
+        })}
       </View>
     );
   }
@@ -97,7 +220,7 @@ export default class MarginPaddingInput extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.renderMarginValueLabels()}
+        {this.renderMarginValues()}
       </View>
     );
   }

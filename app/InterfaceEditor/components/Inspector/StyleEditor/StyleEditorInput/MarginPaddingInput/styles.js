@@ -18,7 +18,7 @@ export default StyleSheet.create({
     height: 228,
   },
 
-  marginValueLabels: {
+  marginValues: {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
@@ -40,44 +40,54 @@ export default StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
   },
-  marginTopValueLabel: {
+  marginTopValue: {
     paddingBottom: 6,
   },
-  marginRightValueLabel: {
+  marginTopValueLabel: {},
+  marginRightValue: {
     marginTop: 106,
     paddingLeft: 10,
+  },
+  marginRightValueLabel: {
     textAlign: 'left',
   },
-  marginBottomValueLabel: {
+  marginBottomValue: {
     paddingTop: 6,
   },
-  marginLeftValueLabel: {
+  marginBottomValueLabel: {},
+  marginLeftValue: {
     marginTop: 106,
     paddingRight: 10,
+  },
+  marginLeftValueLabel: {
     textAlign: 'right',
   },
-  paddingTopValueLabel: {
+  paddingTopValue: {
     position: 'absolute',
     top: 75,
     right: 70,
     left: 70,
   },
-  paddingRightValueLabel: {
+  paddingTopValueLabel: {},
+  paddingRightValue: {
     position: 'absolute',
     top: 105,
     right: 78,
   },
-  paddingBottomValueLabel: {
+  paddingRightValueLabel: {},
+  paddingBottomValue: {
     position: 'absolute',
     right: 70,
     bottom: 75,
     left: 70,
   },
-  paddingLeftValueLabel: {
+  paddingBottomValueLabel: {},
+  paddingLeftValue: {
     position: 'absolute',
     top: 105,
     left: 78,
   },
+  paddingLeftValueLabel: {},
 
   button: {
     alignItems: 'center',
