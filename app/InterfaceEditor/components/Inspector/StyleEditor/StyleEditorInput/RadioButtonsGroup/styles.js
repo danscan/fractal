@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     marginBottom: 10,
-    marginRight: 20,
+    marginRight: 10,
   },
 
   nameSection: {},

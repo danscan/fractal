@@ -2,96 +2,171 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    alignItems: 'center',
     borderBottomColor: '#383C3D',
     borderBottomWidth: 1,
     borderTopColor: '#383C3D',
     borderTopWidth: 1,
+    flex: 1,
     marginVertical: 20,
     paddingVertical: 10,
   },
 
-  contentColumn: {
-    backgroundColor: 'transparent',
+  controls: {
+    flex: 1,
+    width: 256,
+    height: 228,
+  },
+
+  marginValueLabels: {
+    alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
   },
+  contentColumn: {
+    flex: 1,
+  },
   contentRow: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
     flex: 1,
     flexDirection: 'row',
   },
 
-  marginColumn: {},
-  paddingColumn: {},
-
-  value: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8,
-  },
   valueLabel: {
+    backgroundColor: 'transparent',
     color: '#aaa',
+    flex: 1,
     fontFamily: 'Avenir',
     fontSize: 12,
     fontWeight: '600',
+    textAlign: 'center',
+  },
+  marginTopValueLabel: {
+    paddingBottom: 6,
+  },
+  marginRightValueLabel: {
+    marginTop: 106,
+    paddingLeft: 10,
+    textAlign: 'left',
+  },
+  marginBottomValueLabel: {
+    paddingTop: 6,
+  },
+  marginLeftValueLabel: {
+    marginTop: 106,
+    paddingRight: 10,
+    textAlign: 'right',
+  },
+  paddingTopValueLabel: {
+    position: 'absolute',
+    top: 75,
+    right: 70,
+    left: 70,
+  },
+  paddingRightValueLabel: {
+    position: 'absolute',
+    top: 105,
+    right: 78,
+  },
+  paddingBottomValueLabel: {
+    position: 'absolute',
+    right: 70,
+    bottom: 75,
+    left: 70,
+  },
+  paddingLeftValueLabel: {
+    position: 'absolute',
+    top: 105,
+    left: 78,
   },
 
   button: {
     alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+  },
+  buttonImage: {
+    resizeMode: 'contain',
   },
 
-  marginTopButton: {},
-  marginTopButtonImage: {
-    width: 247,
+  marginTopButton: {
+    top: 0,
+    right: 0,
+    left: 0,
     height: 34,
   },
-  marginRightButton: {},
-  marginRightButtonImage: {
+  marginTopButtonImage: {
+    maxWidth: 247,
+    maxHeight: 34,
+  },
+  marginRightButton: {
+    top: 0,
+    right: 0,
+    bottom: 0,
     width: 34,
-    height: 221,
+  },
+  marginRightButtonImage: {
+    maxWidth: 34,
+    maxHeight: 221,
   },
   marginBottomButton: {
-    marginTop: -30,
-  },
-  marginBottomButtonImage: {
-    width: 247,
+    right: 0,
+    bottom: 0,
+    left: 0,
     height: 34,
   },
-  marginLeftButton: {},
-  marginLeftButtonImage: {
+  marginBottomButtonImage: {
+    maxWidth: 247,
+    maxHeight: 34,
+  },
+  marginLeftButton: {
+    top: 0,
+    bottom: 0,
+    left: 0,
     width: 34,
-    height: 221,
+  },
+  marginLeftButtonImage: {
+    maxWidth: 34,
+    maxHeight: 221,
   },
 
   paddingTopButton: {
-    // marginTop: 26,
+    top: 38,
+    right: 38,
+    left: 38,
+    height: 34,
   },
   paddingTopButtonImage: {
-    width: 171,
-    height: 34,
+    maxWidth: 171,
+    maxHeight: 34,
   },
   paddingRightButton: {
-    marginTop: -30,
-    paddingRight: 4,
+    top: 38,
+    right: 38,
+    bottom: 38,
+    width: 34,
   },
   paddingRightButtonImage: {
-    width: 34,
-    height: 145,
+    maxWidth: 34,
+    maxHeight: 145,
   },
   paddingBottomButton: {
-    marginTop: -30,
-  },
-  paddingBottomButtonImage: {
-    width: 171,
+    right: 38,
+    bottom: 38,
+    left: 38,
     height: 34,
   },
+  paddingBottomButtonImage: {
+    maxWidth: 171,
+    maxHeight: 34,
+  },
   paddingLeftButton: {
-    marginTop: -30,
-    paddingLeft: 4,
+    top: 38,
+    bottom: 38,
+    left: 38,
+    width: 34,
   },
   paddingLeftButtonImage: {
-    width: 34,
-    height: 145,
+    maxWidth: 34,
+    maxHeight: 145,
   },
 });

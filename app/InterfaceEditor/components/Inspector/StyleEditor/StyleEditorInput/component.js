@@ -164,7 +164,7 @@ export default class StyleEditorInput extends Component {
             onChangeValue={(newValue) => onChangeValue(propValue.set('position', newValue))}
             options={[
               { text: 'Relative', propValue: 'relative' },
-              { text: 'absolute', propValue: 'absolute' },
+              { text: 'Absolute', propValue: 'absolute' },
             ]}
             value={propValue.get('position', 'relative')}
           />

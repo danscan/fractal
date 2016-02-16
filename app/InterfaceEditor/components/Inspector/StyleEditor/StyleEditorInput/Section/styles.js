@@ -36,8 +36,8 @@ export default StyleSheet.create({
   },
 
   childrenSection: {
-    paddingBottom: 30,
-    paddingHorizontal: 10,
     paddingTop: 20,
+    paddingBottom: 30,
+    paddingLeft: 10,
   },
 });

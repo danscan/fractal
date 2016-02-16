@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     marginBottom: 10,
-    marginRight: 20,
+    marginRight: 10,
   },
 
   nameSection: {},
@@ -27,7 +27,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: 34,
     padding: 10,
-    width: 76,
+    width: 70,
   },
   valueInput: {
     color: 'white',

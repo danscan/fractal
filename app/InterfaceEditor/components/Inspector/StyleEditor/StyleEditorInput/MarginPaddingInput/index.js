@@ -17,45 +17,31 @@ export default class MarginPaddingInput extends Component {
     value: PropTypes.any,
   };
 
-  renderMarginColumn() {
+  renderMarginValueLabels() {
     return (
-      <View style={[styles.contentColumn, styles.marginColumn]}>
-        <View style={styles.value}>
-          <Text style={styles.valueLabel}>
+      <View style={styles.marginValueLabels}>
+        <View style={styles.contentRow}>
+          <Text style={[styles.valueLabel, styles.marginTopValueLabel]}>
             30
           </Text>
         </View>
         <View style={styles.contentRow}>
-          <View style={styles.value}>
-            <Text style={styles.valueLabel}>
+          <View style={styles.contentColumn}>
+            <Text style={[styles.valueLabel, styles.marginLeftValueLabel]}>
               30
             </Text>
           </View>
           <View style={styles.contentColumn}>
-            <TouchableOpacity style={[styles.button, styles.marginTopButton]}>
-              <Image source={marginTopImage} style={styles.marginTopButtonImage}/>
-            </TouchableOpacity>
-            <View style={[styles.contentRow, { marginTop: -30 }]}>
-              <TouchableOpacity style={[styles.button, styles.marginLeftButton]}>
-                <Image source={marginLeftImage} style={styles.marginLeftButtonImage}/>
-              </TouchableOpacity>
-              {this.renderPaddingColumn()}
-              <TouchableOpacity style={[styles.button, styles.marginRightButton]}>
-                <Image source={marginRightImage} style={styles.marginRightButtonImage}/>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity style={[styles.button, styles.marginBottomButton]}>
-              <Image source={marginBottomImage} style={styles.marginBottomButtonImage}/>
-            </TouchableOpacity>
+            {this.renderControls()}
           </View>
-          <View style={styles.value}>
-            <Text style={styles.valueLabel}>
+          <View style={styles.contentColumn}>
+            <Text style={[styles.valueLabel, styles.marginRightValueLabel]}>
               30
             </Text>
           </View>
         </View>
-        <View style={styles.value}>
-          <Text style={styles.valueLabel}>
+        <View style={styles.contentRow}>
+          <Text style={[styles.valueLabel, styles.marginBottomValueLabel]}>
             30
           </Text>
         </View>
@@ -63,48 +49,47 @@ export default class MarginPaddingInput extends Component {
     );
   }
 
-  renderPaddingColumn() {
+  renderControls() {
     return (
-      <View style={[styles.contentColumn, styles.paddingColumn]}>
+      <View style={styles.controls}>
+        <TouchableOpacity style={[styles.button, styles.marginTopButton]}>
+          <Image source={marginTopImage} style={[styles.buttonImage, styles.marginTopButtonImage]}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.marginRightButton]}>
+          <Image source={marginRightImage} style={[styles.buttonImage, styles.marginRightButtonImage]}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.marginBottomButton]}>
+          <Image source={marginBottomImage} style={[styles.buttonImage, styles.marginBottomButtonImage]}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.marginLeftButton]}>
+          <Image source={marginLeftImage} style={[styles.buttonImage, styles.marginLeftButtonImage]}/>
+        </TouchableOpacity>
+
         <TouchableOpacity style={[styles.button, styles.paddingTopButton]}>
-          <Image source={paddingTopImage} style={styles.paddingTopButtonImage}/>
+          <Image source={paddingTopImage} style={[styles.buttonImage, styles.paddingTopButtonImage]}/>
         </TouchableOpacity>
-        <View style={styles.contentRow}>
-          <TouchableOpacity style={[styles.button, styles.paddingLeftButton]}>
-            <Image source={paddingLeftImage} style={styles.paddingLeftButtonImage}/>
-          </TouchableOpacity>
-          <View style={[styles.contentColumn, { marginTop: -28 }]}>
-            <View style={styles.value}>
-              <Text style={styles.valueLabel}>
-                30
-              </Text>
-            </View>
-            <View style={styles.contentRow}>
-              <View style={styles.value}>
-                <Text style={styles.valueLabel}>
-                  30
-                </Text>
-              </View>
-              <View style={styles.contentColumn}/>
-              <View style={styles.value}>
-                <Text style={styles.valueLabel}>
-                  30
-                </Text>
-              </View>
-            </View>
-            <View style={styles.value}>
-              <Text style={styles.valueLabel}>
-                30
-              </Text>
-            </View>
-          </View>
-          <TouchableOpacity style={[styles.button, styles.paddingRightButton]}>
-            <Image source={paddingRightImage} style={styles.paddingRightButtonImage}/>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={[styles.button, styles.paddingRightButton]}>
+          <Image source={paddingRightImage} style={[styles.buttonImage, styles.paddingRightButtonImage]}/>
+        </TouchableOpacity>
         <TouchableOpacity style={[styles.button, styles.paddingBottomButton]}>
-          <Image source={paddingBottomImage} style={styles.paddingBottomButtonImage}/>
+          <Image source={paddingBottomImage} style={[styles.buttonImage, styles.paddingBottomButtonImage]}/>
         </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.paddingLeftButton]}>
+          <Image source={paddingLeftImage} style={[styles.buttonImage, styles.paddingLeftButtonImage]}/>
+        </TouchableOpacity>
+
+        <Text style={[styles.valueLabel, styles.paddingTopValueLabel]}>
+          30
+        </Text>
+        <Text style={[styles.valueLabel, styles.paddingLeftValueLabel]}>
+          30
+        </Text>
+        <Text style={[styles.valueLabel, styles.paddingRightValueLabel]}>
+          30
+        </Text>
+        <Text style={[styles.valueLabel, styles.paddingBottomValueLabel]}>
+          30
+        </Text>
       </View>
     );
   }
@@ -112,7 +97,7 @@ export default class MarginPaddingInput extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.renderMarginColumn()}
+        {this.renderMarginValueLabels()}
       </View>
     );
   }
