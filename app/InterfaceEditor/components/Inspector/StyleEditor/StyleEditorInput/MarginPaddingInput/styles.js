@@ -3,13 +3,8 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     alignItems: 'center',
-    borderBottomColor: '#383C3D',
-    borderBottomWidth: 1,
-    borderTopColor: '#383C3D',
-    borderTopWidth: 1,
     flex: 1,
     marginVertical: 20,
-    paddingVertical: 10,
   },
 
   controls: {

@@ -6,6 +6,12 @@ export default StyleSheet.create({
     flex: 1,
   },
 
+  subSection: {
+    borderBottomColor: '#383C3D',
+    borderBottomWidth: 1,
+    marginBottom: 10,
+    paddingBottom: 10,
+  },
   wrapRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
