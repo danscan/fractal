@@ -2,14 +2,14 @@ import React, { AlertIOS, Component, Image, PropTypes, Text, TouchableOpacity, V
 import styles from './styles';
 
 // (Image assets)
-import marginTopImage from '../assets/img/marginTop.png';
-import marginRightImage from '../assets/img/marginRight.png';
-import marginBottomImage from '../assets/img/marginBottom.png';
-import marginLeftImage from '../assets/img/marginLeft.png';
-import paddingTopImage from '../assets/img/paddingTop.png';
-import paddingRightImage from '../assets/img/paddingRight.png';
-import paddingBottomImage from '../assets/img/paddingBottom.png';
-import paddingLeftImage from '../assets/img/paddingLeft.png';
+import marginTopImage from '../../assets/img/marginTop.png';
+import marginRightImage from '../../assets/img/marginRight.png';
+import marginBottomImage from '../../assets/img/marginBottom.png';
+import marginLeftImage from '../../assets/img/marginLeft.png';
+import paddingTopImage from '../../assets/img/paddingTop.png';
+import paddingRightImage from '../../assets/img/paddingRight.png';
+import paddingBottomImage from '../../assets/img/paddingBottom.png';
+import paddingLeftImage from '../../assets/img/paddingLeft.png';
 
 export default class MarginPaddingInput extends Component {
   static propTypes = {
