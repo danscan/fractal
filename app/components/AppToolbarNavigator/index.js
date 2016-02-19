@@ -1,9 +1,12 @@
 import React, { Component, Image, PropTypes, ScrollView, TouchableOpacity, View } from 'react-native';
+import styles from './styles';
+
+// (Button image assets)
 import logoButtonImage from '../../assets/img/logoButton.png';
 import interfaceEditorButtonImage from '../../assets/img/interfaceEditorButton.png';
+import reducerButtonImage from '../../assets/img/reducerButton.png';
 import schemaButtonImage from '../../assets/img/schemaButton.png';
 import metricsButtonImage from '../../assets/img/metricsButton.png';
-import styles from './styles';
 
 export default class AppToolbarNavigator extends Component {
   static propTypes = {
@@ -18,8 +21,11 @@ export default class AppToolbarNavigator extends Component {
         </View>
         <ScrollView style={styles.toolbarItemsSection}>
           <TouchableOpacity style={[styles.toolbarButton, styles.toolbarButtonSelected]}>
-            <Image style={styles.toolbarButtonImage} source={interfaceEditorButtonImage}/>
+            <Image style={[styles.toolbarButtonImage, styles.toolbarButtonImageSelected]} source={interfaceEditorButtonImage}/>
           </TouchableOpacity>
+          <View style={[styles.toolbarButton, styles.toolbarButtonDisabled]}>
+            <Image style={[styles.toolbarButtonImage, styles.toolbarReducerButtonImage]} source={reducerButtonImage}/>
+          </View>
           <View style={[styles.toolbarButton, styles.toolbarButtonDisabled]}>
             <Image style={styles.toolbarButtonImage} source={schemaButtonImage}/>
           </View>

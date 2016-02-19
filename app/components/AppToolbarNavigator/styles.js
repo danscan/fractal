@@ -43,6 +43,12 @@ export default StyleSheet.create({
     tintColor: '#ccc',
     height: 22,
   },
+  toolbarReducerButtonImageSelected: {
+    tintColor: 'white',
+  },
+  toolbarReducerButtonImage: {
+    height: 18,
+  },
 
   scene: {
     flex: 1,
