@@ -28,8 +28,8 @@ export default StyleSheet.create({
     borderRightColor: '#191d1f',
     borderRightWidth: 1,
     justifyContent: 'center',
-    height: 28,
-    minWidth: 34,
+    height: 30,
+    minWidth: 32,
     paddingHorizontal: 4,
   },
   optionButtonSelected: {

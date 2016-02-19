@@ -25,7 +25,7 @@ export default StyleSheet.create({
     borderTopLeftRadius: 4,
     borderWidth: 1,
     flexDirection: 'row',
-    height: 30,
+    height: 32,
     padding: 7,
     width: 70,
   },
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     flex: 1,
     fontFamily: 'Avenir',
     fontSize: 12,
-    height: 16,
+    height: 18,
   },
   unit: {},
   unitLabel: {
@@ -56,7 +56,7 @@ export default StyleSheet.create({
     borderLeftWidth: 0,
     borderWidth: 1,
     justifyContent: 'center',
-    height: 30,
+    height: 32,
     width: 34,
   },
   incrementButtonImage: {
@@ -70,7 +70,7 @@ export default StyleSheet.create({
     borderLeftWidth: 0,
     borderWidth: 1,
     justifyContent: 'center',
-    height: 30,
+    height: 32,
     width: 34,
   },
   decrementButtonImage: {
