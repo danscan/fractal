@@ -4,6 +4,7 @@ import {
   addElementChild,
   removeElement,
   hideElement,
+  changeElementDisplayName,
   changeElementPath,
   applyElementProp,
   removeElementProp,
@@ -57,6 +58,20 @@ describe('interface editor: tree action creators', () => {
 
     expect(
       hideElement(elementPath)
+    ).toEqual(expectedAction);
+  });
+
+  it('should create an action to change element display name', () => {
+    const elementPath = {};
+    const newDisplayName = 'MyView';
+    const expectedAction = {
+      type: CHANGE_ELEMENT_PATH,
+      elementPath,
+      newDisplayName,
+    };
+
+    expect(
+      changeElementDisplayName(elementPath, newDisplayName)
     ).toEqual(expectedAction);
   });
 

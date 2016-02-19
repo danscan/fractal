@@ -43,6 +43,13 @@ export default StyleSheet.create({
     fontFamily: 'Avenir',
     fontSize: 12,
   },
+  changeElementDisplayNameButton: {
+    padding: 4,
+  },
+  changeElementDisplayNameButtonImage: {
+    width: 18,
+    height: 18,
+  },
 
   selectedElementActionsSection: {
     backgroundColor: '#4b4b4b',

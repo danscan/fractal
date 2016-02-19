@@ -2,6 +2,7 @@ import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   HIDE_ELEMENT,
+  CHANGE_ELEMENT_DISPLAY_NAME,
   CHANGE_ELEMENT_PATH,
   APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
@@ -28,6 +29,14 @@ export function hideElement(elementPath) {
   return {
     type: HIDE_ELEMENT,
     elementPath,
+  };
+}
+
+export function changeElementDisplayName(elementPath, newDisplayName) {
+  return {
+    type: CHANGE_ELEMENT_DISPLAY_NAME,
+    elementPath,
+    newDisplayName,
   };
 }
 

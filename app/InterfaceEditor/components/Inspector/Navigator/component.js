@@ -1,19 +1,35 @@
-import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import hideButtonImage from '../../../assets/img/hideButton.png';
-import deleteButtonImage from '../../../assets/img/deleteButton.png';
+import React, { AlertIOS, Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { elementPropType, elementPathPropType } from '../../../constants/propTypes';
 import elementDisplayNameByElement from '../../../utils/elementDisplayNameByElement';
 import { List } from 'immutable';
 import styles from './styles';
 
+// (Button image assets)
+import deleteButtonImage from '../../../assets/img/deleteButton.png';
+import editButtonImage from '../../../assets/img/editButton.png';
+import hideButtonImage from '../../../assets/img/hideButton.png';
+
 export default class Navigator extends Component {
   static propTypes = {
+    onPressChangeElementDisplayName: PropTypes.func.isRequired,
     onPressDelete: PropTypes.func.isRequired,
-    onPressHide: PropTypes.func.isRequired,
     onPressElement: PropTypes.func.isRequired,
+    onPressHide: PropTypes.func.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     root: elementPropType.isRequired,
   };
+
+  promptForElementDisplayName(elementPath) {
+    const { onPressChangeElementDisplayName } = this.props;
+
+    return AlertIOS.prompt(
+      `Enter new display name.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Set Display Name', onPress: (newDisplayName) => onPressChangeElementDisplayName(elementPath, newDisplayName) },
+      ],
+    );
+  }
 
   renderElementsSection() {
     const { root: element } = this.props;
@@ -39,10 +55,11 @@ export default class Navigator extends Component {
     const elementKey = elementPath.join(',');
     const elementDisplayName = elementDisplayNameByElement(element);
     const elementIsRoot = elementPath.isEmpty();
+    const elementIsSelectedElement = selectedElementPath.equals(elementPath);
     const elementHandleSectionStyle = [
       styles.elementHandleSection,
       elementIsRoot ? styles.rootElementHandleSection : {},
-      selectedElementPath.equals(elementPath) ? styles.selectedElementHandleSection : {},
+      elementIsSelectedElement ? styles.selectedElementHandleSection : {},
       { paddingLeft: 20 * elementPath.count() },
     ];
 
@@ -55,11 +72,28 @@ export default class Navigator extends Component {
               {elementDisplayName}
             </Text>
           </TouchableOpacity>
+          {this.renderChangeElementDisplayNameButton(elementPath)}
         </View>
         <View style={styles.elementChildrenSection}>
           {elementChildren.map((childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))}
         </View>
       </View>
+    );
+  }
+
+  renderChangeElementDisplayNameButton(elementPath) {
+    const { selectedElementPath } = this.props;
+    const elementIsSelectedElement = selectedElementPath.equals(elementPath);
+
+    // Don't render change element display name button for elements that aren't selected
+    if (!elementIsSelectedElement) {
+      return null;
+    }
+
+    return (
+      <TouchableOpacity onPress={() => this.promptForElementDisplayName(elementPath)} style={styles.changeElementDisplayNameButton}>
+        <Image source={editButtonImage} style={styles.changeElementDisplayNameButtonImage}/>
+      </TouchableOpacity>
     );
   }
 
