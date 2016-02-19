@@ -9,10 +9,12 @@ export default StyleSheet.create({
   headerSection: {
     alignItems: 'center',
     backgroundColor: '#333',
+    borderBottomColor: '#191d1f',
+    borderBottomWidth: 1,
     borderTopColor: 'hsla(0,0,100,0.1)',
     borderTopWidth: 1,
     flexDirection: 'row',
-    height: 48,
+    height: 38,
   },
   arrow: {},
   collapsedSectionArrowImage: {
@@ -30,7 +32,7 @@ export default StyleSheet.create({
   title: {},
   titleLabel: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Avenir',
     fontWeight: '600',
   },
