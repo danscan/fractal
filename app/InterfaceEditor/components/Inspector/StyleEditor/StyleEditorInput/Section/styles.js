@@ -38,6 +38,8 @@ export default StyleSheet.create({
   },
 
   childrenSection: {
+    borderBottomColor: '#191d1f',
+    borderBottomWidth: 1,
     paddingTop: 20,
     paddingBottom: 30,
     paddingLeft: 10,
