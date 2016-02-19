@@ -15,6 +15,7 @@ import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   HIDE_ELEMENT,
+  CHANGE_ELEMENT_DISPLAY_NAME,
   CHANGE_ELEMENT_PATH,
   APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
@@ -65,7 +66,7 @@ describe('interface editor: tree action creators', () => {
     const elementPath = {};
     const newDisplayName = 'MyView';
     const expectedAction = {
-      type: CHANGE_ELEMENT_PATH,
+      type: CHANGE_ELEMENT_DISPLAY_NAME,
       elementPath,
       newDisplayName,
     };
