@@ -25,9 +25,6 @@ export default StyleSheet.create({
   optionButton: {
     alignItems: 'center',
     backgroundColor: '#4b4b4b',
-    borderRadius: 4,
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
     borderRightColor: '#191d1f',
     borderRightWidth: 1,
     justifyContent: 'center',
@@ -37,6 +34,14 @@ export default StyleSheet.create({
   },
   optionButtonSelected: {
     backgroundColor: '#333',
+  },
+  firstOptionButton: {
+    borderTopLeftRadius: 3,
+    borderBottomLeftRadius: 3,
+  },
+  lastOptionButton: {
+    borderTopRightRadius: 3,
+    borderBottomRightRadius: 3,
   },
   buttonText: {
     color: 'white',

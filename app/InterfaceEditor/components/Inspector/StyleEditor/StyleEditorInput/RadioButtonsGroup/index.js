@@ -35,20 +35,26 @@ export default class RadioButtonsGroup extends Component {
 
     return (
       <View style={styles.buttonsGroupSection}>
-        {options.map(option => this.renderOptionButton(option))}
+        {options.map((option, optionIndex) => this.renderOptionButton(option, {
+          isFirstOption: optionIndex === 0,
+          isLastOption: optionIndex === options.length - 1,
+        }))}
       </View>
     );
   }
 
-  renderOptionButton({ image, text, propValue }) {
+  renderOptionButton({ image, text, propValue }, { isFirstOption, isLastOption }) {
     const {
       onChangeValue,
       value: selectedValue,
     } = this.props;
     const selected = selectedValue === propValue;
-    const buttonStyle = selected
-                      ? [styles.optionButton, styles.optionButtonSelected]
-                      : styles.optionButton;
+    const buttonStyle = [
+      styles.optionButton,
+      (selected ? styles.optionButtonSelected : {}),
+      (isFirstOption ? styles.firstOptionButton : {}),
+      (isLastOption ? styles.lastOptionButton : {}),
+    ];
     const buttonContents = text
                           ? (<Text style={styles.buttonText}>{text}</Text>)
                           : image;
