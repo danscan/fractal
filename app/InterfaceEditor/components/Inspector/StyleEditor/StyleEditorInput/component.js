@@ -117,85 +117,93 @@ export default class StyleEditorInput extends Component {
           value={propValue}
         />
         <View style={styles.wrapRow}>
-          <IncrementField
-            name="Width"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('width', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('width')}
-          />
-          <IncrementField
-            name="Min Width"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('minWidth', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('minWidth')}
-          />
-          <IncrementField
-            name="Max Width"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('maxWidth', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('maxWidth')}
-          />
-          <IncrementField
-            name="Height"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('height', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('height')}
-          />
-          <IncrementField
-            name="Min Height"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('minHeight', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('minHeight')}
-          />
-          <IncrementField
-            name="Max Height"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('maxHeight', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('maxHeight')}
-          />
-          <RadioButtonsGroup
-            name="Position"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('position', newValue))}
-            options={[
-              { text: 'Relative', propValue: 'relative' },
-              { text: 'Absolute', propValue: 'absolute' },
-            ]}
-            value={propValue.get('position', 'relative')}
-          />
-          <IncrementField
-            name="Top"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('top', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('top')}
-          />
-          <IncrementField
-            name="Right"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('right', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('right')}
-          />
-          <IncrementField
-            name="Bottom"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('bottom', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('bottom')}
-          />
-          <IncrementField
-            name="Left"
-            onChangeValue={(newValue) => onChangeValue(propValue.set('left', newValue))}
-            placeholder="--"
-            unit="px"
-            value={propValue.get('left')}
-          />
+          <View style={styles.widthColumn}>
+            <IncrementField
+              name="Width"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('width', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('width')}
+            />
+            <IncrementField
+              name="Min Width"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('minWidth', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('minWidth')}
+            />
+            <IncrementField
+              name="Max Width"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('maxWidth', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('maxWidth')}
+            />
+          </View>
+          <View style={styles.heightColumn}>
+            <IncrementField
+              name="Height"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('height', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('height')}
+            />
+            <IncrementField
+              name="Min Height"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('minHeight', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('minHeight')}
+            />
+            <IncrementField
+              name="Max Height"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('maxHeight', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('maxHeight')}
+            />
+          </View>
+          <View style={styles.positionColumn}>
+            <RadioButtonsGroup
+              name="Position"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('position', newValue))}
+              options={[
+                { text: 'Relative', propValue: 'relative' },
+                { text: 'Absolute', propValue: 'absolute' },
+              ]}
+              value={propValue.get('position', 'relative')}
+            />
+          </View>
+          <View style={styles.positionSidesColumn}>
+            <IncrementField
+              name="Top"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('top', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('top')}
+            />
+            <IncrementField
+              name="Right"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('right', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('right')}
+            />
+            <IncrementField
+              name="Bottom"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('bottom', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('bottom')}
+            />
+            <IncrementField
+              name="Left"
+              onChangeValue={(newValue) => onChangeValue(propValue.set('left', newValue))}
+              placeholder="--"
+              unit="px"
+              value={propValue.get('left')}
+            />
+          </View>
         </View>
       </Section>
     );

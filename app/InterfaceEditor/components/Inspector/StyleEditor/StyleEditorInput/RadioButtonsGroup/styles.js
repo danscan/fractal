@@ -31,9 +31,9 @@ export default StyleSheet.create({
     borderRightColor: '#191d1f',
     borderRightWidth: 1,
     justifyContent: 'center',
-    height: 34,
-    minWidth: 38,
-    paddingHorizontal: 10,
+    height: 28,
+    minWidth: 34,
+    paddingHorizontal: 4,
   },
   optionButtonSelected: {
     backgroundColor: '#333',

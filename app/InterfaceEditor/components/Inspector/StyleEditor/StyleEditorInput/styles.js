@@ -10,4 +10,14 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
+
+  widthColumn: {
+    marginRight: 10,
+  },
+  heightColumn: {},
+
+  positionColumn: {
+    marginRight: 53,
+  },
+  positionSidesColumn: {},
 });

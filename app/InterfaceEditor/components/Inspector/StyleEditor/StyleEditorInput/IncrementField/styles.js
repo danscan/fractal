@@ -25,8 +25,8 @@ export default StyleSheet.create({
     borderTopLeftRadius: 4,
     borderWidth: 1,
     flexDirection: 'row',
-    height: 34,
-    padding: 10,
+    height: 30,
+    padding: 7,
     width: 70,
   },
   valueInput: {
@@ -56,8 +56,8 @@ export default StyleSheet.create({
     borderLeftWidth: 0,
     borderWidth: 1,
     justifyContent: 'center',
-    height: 34,
-    width: 38,
+    height: 30,
+    width: 34,
   },
   incrementButtonImage: {
     height: 16,
@@ -70,8 +70,8 @@ export default StyleSheet.create({
     borderLeftWidth: 0,
     borderWidth: 1,
     justifyContent: 'center',
-    height: 34,
-    width: 38,
+    height: 30,
+    width: 34,
   },
   decrementButtonImage: {
     height: 1,
