@@ -22,6 +22,61 @@ export default class Navigator extends Component {
     root: elementPropType.isRequired,
   };
 
+  constructor(...args) {
+    super(...args);
+
+    this.state = {
+      movingElementFromPath: null,
+    };
+  }
+
+  onPressElement(elementPath) {
+    const { onPressElement } = this.props;
+    const { movingElementFromPath } = this.state;
+    const currentlyMovingElement = !!movingElementFromPath;
+
+    // If user is currently moving an element, commit the move when
+    // another element is pressed; otherwise default to normal onPressElement.
+    if (currentlyMovingElement) {
+      return this.commitMovingElement(elementPath);
+    }
+
+    return onPressElement(elementPath);
+  }
+
+  toggleMovingElement(elementPath) {
+    const { movingElementFromPath } = this.state;
+
+    if (!!movingElementFromPath) {
+      return this.cancelMovingElement();
+    }
+
+    this.setState({
+      movingElementFromPath: elementPath,
+    });
+  }
+
+  commitMovingElement(desiredParentElementPath) {
+    const {
+      onPressElement,
+      onPressMoveElement,
+    } = this.props;
+    const { movingElementFromPath: elementPath } = this.state;
+
+    // Select desired parent element, and then move element to it if possible
+    onPressElement(desiredParentElementPath);
+    onPressMoveElement(elementPath, desiredParentElementPath);
+
+    // Finish moving element
+    this.cancelMovingElement();
+  }
+
+  cancelMovingElement() {
+    this.setState({
+      movingElementFromPath: null,
+    });
+  }
+
   promptForElementDisplayName(elementPath) {
     const { onPressChangeElementDisplayName } = this.props;
 
@@ -45,10 +100,7 @@ export default class Navigator extends Component {
   }
 
   renderElement(element, elementPath) {
-    const {
-      onPressElement,
-      selectedElementPath,
-    } = this.props;
+    const { selectedElementPath } = this.props;
     if (typeof element === 'string') {
       return null;
     }
@@ -70,7 +122,7 @@ export default class Navigator extends Component {
       <View key={elementKey} style={styles.element}>
         <View style={elementHandleSectionStyle}>
           {/* <TouchableOpacity style={styles.elementToggleExpansionArrow}/> */}
-          <TouchableOpacity onPress={() => onPressElement(elementPath)} style={styles.elementHandle}>
+          <TouchableOpacity onPress={() => this.onPressElement(elementPath)} style={styles.elementHandle}>
             <Text style={styles.elementNameLabel}>
               {elementDisplayName}
             </Text>
@@ -104,16 +156,21 @@ export default class Navigator extends Component {
     const {
       onPressDeleteElement,
       onPressDuplicateElement,
-      onPressMoveElement,
       selectedElementPath,
     } = this.props;
+    const { movingElementFromPath } = this.state;
+    const currentlyMovingElement = !!movingElementFromPath;
+    const moveButtonStyle = [
+      styles.selectedElementActionButton,
+      (currentlyMovingElement ? styles.selectedSelectedElementActionButton : {}),
+    ];
 
     return (
       <View style={styles.selectedElementActionsSection}>
         <TouchableOpacity onPress={() => onPressDuplicateElement(selectedElementPath)} style={styles.selectedElementActionButton}>
           <Image source={duplicateButtonImage} style={styles.duplicateButtonImage}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => onPressMoveElement(selectedElementPath)} style={styles.selectedElementActionButton}>
+        <TouchableOpacity onPress={() => this.toggleMovingElement(selectedElementPath)} style={moveButtonStyle}>
           <Image source={moveButtonImage} style={styles.moveButtonImage}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => onPressDeleteElement(selectedElementPath)} style={styles.selectedElementActionButton}>

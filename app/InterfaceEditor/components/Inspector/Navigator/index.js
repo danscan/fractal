@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { setSelectedElementPath } from '../../../actions/editor';
 import {
-  changeElementPath,
   duplicateElement,
+  moveElement,
   removeElement,
   changeElementDisplayName,
 } from '../../../actions/tree';
@@ -19,7 +19,7 @@ const actionCreators = {
   onPressChangeElementDisplayName: (elementPath, newDisplayName) => changeElementDisplayName(elementPath, newDisplayName),
   onPressDeleteElement: (elementPath) => removeElement(elementPath),
   onPressDuplicateElement: (elementPath) => duplicateElement(elementPath),
-  onPressMoveElement: (elementPath, newElementPath) => changeElementPath(elementPath, newElementPath),
+  onPressMoveElement: (elementPath, desiredParentElementPath) => moveElement(elementPath, desiredParentElementPath),
   onPressElement: (elementPath) => setSelectedElementPath(elementPath),
   // onPressHide: (elementPath) => hideElement(elementPath),
 };

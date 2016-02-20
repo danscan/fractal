@@ -2,9 +2,9 @@ import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   DUPLICATE_ELEMENT,
+  MOVE_ELEMENT,
   HIDE_ELEMENT,
   CHANGE_ELEMENT_DISPLAY_NAME,
-  CHANGE_ELEMENT_PATH,
   APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
   REDO_TREE_ACTION,
@@ -33,6 +33,13 @@ export function duplicateElement(elementPath) {
   };
 }
 
+export function moveElement(elementPath, desiredParentElementPath) {
+  return {
+    type: MOVE_ELEMENT,
+    elementPath,
+    desiredParentElementPath,
+  };
+}
 
 export function hideElement(elementPath) {
   return {
@@ -46,14 +53,6 @@ export function changeElementDisplayName(elementPath, newDisplayName) {
     type: CHANGE_ELEMENT_DISPLAY_NAME,
     elementPath,
     newDisplayName,
-  };
-}
-
-export function changeElementPath(elementPath, newElementPath) {
-  return {
-    type: CHANGE_ELEMENT_PATH,
-    elementPath,
-    newElementPath,
   };
 }
 

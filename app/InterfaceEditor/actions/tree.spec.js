@@ -4,9 +4,9 @@ import {
   addElementChild,
   removeElement,
   duplicateElement,
+  moveElement,
   hideElement,
   changeElementDisplayName,
-  changeElementPath,
   applyElementProp,
   removeElementProp,
   redoTreeAction,
@@ -16,9 +16,9 @@ import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
   DUPLICATE_ELEMENT,
+  MOVE_ELEMENT,
   HIDE_ELEMENT,
   CHANGE_ELEMENT_DISPLAY_NAME,
-  CHANGE_ELEMENT_PATH,
   APPLY_ELEMENT_PROP,
   REMOVE_ELEMENT_PROP,
   REDO_TREE_ACTION,
@@ -64,6 +64,20 @@ describe('interface editor: tree action creators', () => {
     ).toEqual(expectedAction);
   });
 
+  it('should create an action to move element', () => {
+    const elementPath = {};
+    const desiredParentElementPath = {};
+    const expectedAction = {
+      type: MOVE_ELEMENT,
+      elementPath,
+      desiredParentElementPath
+    };
+
+    expect(
+      moveElement(elementPath, desiredParentElementPath)
+    ).toEqual(expectedAction);
+  });
+
   it('should create an action to hide element', () => {
     const elementPath = {};
     const expectedAction = {
@@ -87,20 +101,6 @@ describe('interface editor: tree action creators', () => {
 
     expect(
       changeElementDisplayName(elementPath, newDisplayName)
-    ).toEqual(expectedAction);
-  });
-
-  it('should create an action to change element path', () => {
-    const elementPath = {};
-    const newElementPath = {};
-    const expectedAction = {
-      type: CHANGE_ELEMENT_PATH,
-      elementPath,
-      newElementPath,
-    };
-
-    expect(
-      changeElementPath(elementPath, newElementPath)
     ).toEqual(expectedAction);
   });
 
