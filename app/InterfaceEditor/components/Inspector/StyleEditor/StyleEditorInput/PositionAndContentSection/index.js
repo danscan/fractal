@@ -100,8 +100,6 @@ export default class PositionAndContentSection extends Component {
               ]}
               value={propValue.get('alignSelf', 'auto')}
             />
-          </View>
-          <View style={styles.wrapRow}>
             <RadioButtonsGroup
               name="Overflow"
               onChangeValue={(newValue) => onChangeValue(propValue.set('overflow', newValue))}
