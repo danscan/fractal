@@ -1,6 +1,6 @@
 {
   "name": "fractalui",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
