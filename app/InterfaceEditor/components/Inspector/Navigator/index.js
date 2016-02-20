@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import { setSelectedElementPath } from '../../../actions/editor';
-import { hideElement, removeElement, changeElementDisplayName } from '../../../actions/tree';
+import {
+  changeElementPath,
+  duplicateElement,
+  removeElement,
+  changeElementDisplayName,
+} from '../../../actions/tree';
 import { selectedElementPath } from '../../../selectors/editor';
 import { treeRootElement } from '../../../selectors/tree';
 import Navigator from './component';
@@ -12,9 +17,11 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   onPressChangeElementDisplayName: (elementPath, newDisplayName) => changeElementDisplayName(elementPath, newDisplayName),
-  onPressDelete: (elementPath) => removeElement(elementPath),
+  onPressDeleteElement: (elementPath) => removeElement(elementPath),
+  onPressDuplicateElement: (elementPath) => duplicateElement(elementPath),
+  onPressMoveElement: (elementPath, newElementPath) => changeElementPath(elementPath, newElementPath),
   onPressElement: (elementPath) => setSelectedElementPath(elementPath),
-  onPressHide: (elementPath) => hideElement(elementPath),
+  // onPressHide: (elementPath) => hideElement(elementPath),
 };
 
 export default connect(mapStateToProps, actionCreators)(Navigator);

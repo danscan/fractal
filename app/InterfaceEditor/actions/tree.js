@@ -1,6 +1,7 @@
 import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
+  DUPLICATE_ELEMENT,
   HIDE_ELEMENT,
   CHANGE_ELEMENT_DISPLAY_NAME,
   CHANGE_ELEMENT_PATH,
@@ -24,6 +25,14 @@ export function removeElement(elementPath) {
     elementPath,
   };
 }
+
+export function duplicateElement(elementPath) {
+  return {
+    type: DUPLICATE_ELEMENT,
+    elementPath,
+  };
+}
+
 
 export function hideElement(elementPath) {
   return {

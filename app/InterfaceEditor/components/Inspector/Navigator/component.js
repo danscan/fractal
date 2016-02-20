@@ -6,15 +6,18 @@ import styles from './styles';
 
 // (Button image assets)
 import deleteButtonImage from '../../../assets/img/deleteButton.png';
+import duplicateButtonImage from '../../../assets/img/duplicateButton.png';
 import editButtonImage from '../../../assets/img/editButton.png';
-import hideButtonImage from '../../../assets/img/hideButton.png';
+import moveButtonImage from '../../../assets/img/moveButton.png';
 
 export default class Navigator extends Component {
   static propTypes = {
     onPressChangeElementDisplayName: PropTypes.func.isRequired,
-    onPressDelete: PropTypes.func.isRequired,
+    onPressDeleteElement: PropTypes.func.isRequired,
+    onPressDuplicateElement: PropTypes.func.isRequired,
     onPressElement: PropTypes.func.isRequired,
-    onPressHide: PropTypes.func.isRequired,
+    // onPressHide: PropTypes.func.isRequired,
+    onPressMoveElement: PropTypes.func.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     root: elementPropType.isRequired,
   };
@@ -99,17 +102,21 @@ export default class Navigator extends Component {
 
   renderSelectedElementActionsSection() {
     const {
-      onPressDelete,
-      onPressHide,
+      onPressDeleteElement,
+      onPressDuplicateElement,
+      onPressMoveElement,
       selectedElementPath,
     } = this.props;
 
     return (
       <View style={styles.selectedElementActionsSection}>
-        <TouchableOpacity onPress={() => onPressHide(selectedElementPath)} style={styles.selectedElementActionButton}>
-          <Image source={hideButtonImage} style={styles.hideButtonImage}/>
+        <TouchableOpacity onPress={() => onPressDuplicateElement(selectedElementPath)} style={styles.selectedElementActionButton}>
+          <Image source={duplicateButtonImage} style={styles.duplicateButtonImage}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => onPressDelete(selectedElementPath)} style={styles.selectedElementActionButton}>
+        <TouchableOpacity onPress={() => onPressMoveElement(selectedElementPath)} style={styles.selectedElementActionButton}>
+          <Image source={moveButtonImage} style={styles.moveButtonImage}/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onPressDeleteElement(selectedElementPath)} style={styles.selectedElementActionButton}>
           <Image source={deleteButtonImage} style={styles.deleteButtonImage}/>
         </TouchableOpacity>
       </View>

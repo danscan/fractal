@@ -3,6 +3,7 @@ import expect from 'expect';
 import {
   addElementChild,
   removeElement,
+  duplicateElement,
   hideElement,
   changeElementDisplayName,
   changeElementPath,
@@ -14,6 +15,7 @@ import {
 import {
   ADD_ELEMENT_CHILD,
   REMOVE_ELEMENT,
+  DUPLICATE_ELEMENT,
   HIDE_ELEMENT,
   CHANGE_ELEMENT_DISPLAY_NAME,
   CHANGE_ELEMENT_PATH,
@@ -47,6 +49,18 @@ describe('interface editor: tree action creators', () => {
 
     expect(
       removeElement(elementPath)
+    ).toEqual(expectedAction);
+  });
+
+  it('should create an action to duplicate element', () => {
+    const elementPath = {};
+    const expectedAction = {
+      type: DUPLICATE_ELEMENT,
+      elementPath,
+    };
+
+    expect(
+      duplicateElement(elementPath)
     ).toEqual(expectedAction);
   });
 
