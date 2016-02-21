@@ -70,7 +70,7 @@ describe('interface editor: tree action creators', () => {
     const expectedAction = {
       type: MOVE_ELEMENT,
       elementPath,
-      desiredParentElementPath
+      desiredParentElementPath,
     };
 
     expect(
