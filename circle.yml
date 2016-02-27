@@ -12,6 +12,8 @@ dependencies:
     # complain about "wrong-react-native"... >:(
     - rm ./node_modules/.bin/react-native && echo "good thing I deleted it" || echo "better safe than sorry"
     - npm install -g react-native-cli
+    # Remove old .babelrc that causes issues in deploy step...
+    - rm ./node_modules/redux-undo/.babelrc && echo "good thing I deleted it" || echo "better safe than sorry"
 
 # Deploy via Apphub
 deployment:
