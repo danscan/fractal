@@ -6,6 +6,7 @@
   },
   "rules": {
     "no-use-before-define": [2, "nofunc"],
-    "id-length": 0
+    "id-length": 0,
+    "react/no-multi-comp": 0
   }
 }
