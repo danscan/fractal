@@ -1,37 +1,21 @@
-// import * as KeyboardAwareView from './components/KeyboardAwareView';
-// import * as AppToolbarNavigator from './components/AppToolbarNavigator';
-// import InterfaceEditor from './InterfaceEditor';
-import * as InterfaceEditorWorkspace from './components/InterfaceEditorWorkspace';
-import run from './run';
+import React, { Component } from 'react-native';
+import { Provider } from 'react-redux';
+import getStore from './store/index';
+import KeyboardAwareView from './components/KeyboardAwareView';
+import AppToolbarNavigator from './components/AppToolbarNavigator';
+import InterfaceEditor from './components/InterfaceEditor';
 
-// export default function App() {
-//   return (
-//     <Runner
-//       Component={{
-//         init: () => AppToolbarNavigator.init(InterfaceEditor),
-//         update: (state, action) => AppToolbarNavigator.update(state, action),
-//         view: (...args) => KeyboardAwareView.view({ children: AppToolbarNavigator.view(...args) }),
-//       }}
-//     />
-//   );
-// }
+export default class App extends Component {
+  render() {
+    // Get Provider store
+    const store = getStore();
 
-import initialTree from './constants/initialTree';
-
-export default () => run({
-  ...InterfaceEditorWorkspace,
-  update: (state, action) => {
-    switch (action.type) {
-      case 'SET_SELECTED_ELEMENT_PATH':
-        return {
-          ...state,
-          selectedElementPath: action.selectedElementPath,
-        };
-      default:
-        return state;
-    }
-  },
-  init: () => InterfaceEditorWorkspace.init({
-    tree: initialTree,
-  }),
-});
+    return (
+      <Provider store={store}>
+        <KeyboardAwareView animated>
+          <AppToolbarNavigator scene={<InterfaceEditor/>}/>
+        </KeyboardAwareView>
+      </Provider>
+    );
+  }
+}
