@@ -18,6 +18,7 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
     onPressElement: PropTypes.func.isRequired,
     // onPressHide: PropTypes.func.isRequired,
     onPressMoveElement: PropTypes.func.isRequired,
+    selectedComponentKey: PropTypes.string.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     root: elementPropType.isRequired,
   };
@@ -60,12 +61,13 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
     const {
       onPressElement,
       onPressMoveElement,
+      selectedComponentKey,
     } = this.props;
     const { movingElementFromPath: elementPath } = this.state;
 
     // Select desired parent element, and then move element to it if possible
     onPressElement(desiredParentElementPath);
-    onPressMoveElement(elementPath, desiredParentElementPath);
+    onPressMoveElement(selectedComponentKey, elementPath, desiredParentElementPath);
 
     // Finish moving element
     this.cancelMovingElement();
@@ -78,13 +80,16 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
   }
 
   promptForElementDisplayName(elementPath) {
-    const { onPressChangeElementDisplayName } = this.props;
+    const {
+      onPressChangeElementDisplayName,
+      selectedComponentKey,
+    } = this.props;
 
     return AlertIOS.prompt(
       `Enter new display name.`,
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Set Display Name', onPress: (newDisplayName) => onPressChangeElementDisplayName(elementPath, newDisplayName) },
+        { text: 'Set Display Name', onPress: (newDisplayName) => onPressChangeElementDisplayName(selectedComponentKey, elementPath, newDisplayName) },
       ],
     );
   }
@@ -156,6 +161,7 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
     const {
       onPressDeleteElement,
       onPressDuplicateElement,
+      selectedComponentKey,
       selectedElementPath,
     } = this.props;
     const { movingElementFromPath } = this.state;
@@ -167,13 +173,13 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
 
     return (
       <View style={styles.selectedElementActionsSection}>
-        <TouchableOpacity onPress={() => onPressDuplicateElement(selectedElementPath)} style={styles.selectedElementActionButton}>
+        <TouchableOpacity onPress={() => onPressDuplicateElement(selectedComponentKey, selectedElementPath)} style={styles.selectedElementActionButton}>
           <Image source={duplicateButtonImage} style={styles.duplicateButtonImage}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.toggleMovingElement(selectedElementPath)} style={moveButtonStyle}>
           <Image source={moveButtonImage} style={styles.moveButtonImage}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => onPressDeleteElement(selectedElementPath)} style={styles.selectedElementActionButton}>
+        <TouchableOpacity onPress={() => onPressDeleteElement(selectedComponentKey, selectedElementPath)} style={styles.selectedElementActionButton}>
           <Image source={deleteButtonImage} style={styles.deleteButtonImage}/>
         </TouchableOpacity>
       </View>
