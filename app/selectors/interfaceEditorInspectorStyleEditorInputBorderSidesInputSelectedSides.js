@@ -1,0 +1,3 @@
+export function interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides(state) {
+  return state.interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides;
+}

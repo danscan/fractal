@@ -1,0 +1,3 @@
+export function interfaceEditorInspectorStyleEditorInputSelectedSizeClasses(state) {
+  return state.interfaceEditorInspectorStyleEditorInputSelectedSizeClasses;
+}
