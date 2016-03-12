@@ -46,7 +46,7 @@ export default class InterfaceEditorInspectorStyleEditor extends Component {
         <BoxMarginSides selectedSides={[TOP, RIGHT]}/>
         <BoxPaddingSides selectedSides={[BOTTOM, LEFT]}/>
 
-        <ColorField name="Color" value="red"/>
+        <ColorField name="Color" value="#94c600"/>
       </View>
     );
   }

@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    width: 142,
+  },
 
   row: {
     alignItems: 'center',
