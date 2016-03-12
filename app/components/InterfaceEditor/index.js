@@ -1,7 +1,7 @@
 import React, { Component, View } from 'react-native';
 import InterfaceEditorToolbar from '../InterfaceEditorToolbar';
 import InterfaceEditorWorkspace from '../InterfaceEditorWorkspace';
-// import InterfaceEditorInspector from '../InterfaceEditorInspector';
+import InterfaceEditorInspector from '../InterfaceEditorInspector';
 import styles from './styles';
 
 export default class InterfaceEditor extends Component {
@@ -13,7 +13,7 @@ export default class InterfaceEditor extends Component {
           <InterfaceEditorWorkspace/>
         </View>
         <View style={styles.inspectorSection}>
-          {/* <InterfaceEditorInspector/> */}
+          <InterfaceEditorInspector/>
         </View>
       </View>
     );

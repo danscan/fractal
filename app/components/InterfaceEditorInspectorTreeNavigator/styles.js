@@ -13,9 +13,9 @@ export default StyleSheet.create({
   },
   elementHandleSection: {
     alignItems: 'center',
-    borderBottomColor: 'hsla(0,0,0,0.3)',
+    borderBottomColor: 'hsla(0,0%,0%,0.3)',
     borderBottomWidth: 1,
-    borderTopColor: 'hsla(0,0,100,0.1)',
+    borderTopColor: 'hsla(0,0%,100%,0.1)',
     borderTopWidth: 1,
     flexDirection: 'row',
   },
@@ -25,7 +25,7 @@ export default StyleSheet.create({
   selectedElementHandleSection: {
     backgroundColor: '#00b5ec',
     borderBottomColor: '#191d1f',
-    borderTopColor: 'hsla(0,0,100,0.2)',
+    borderTopColor: 'hsla(0,0%,100%,0.2)',
   },
   elementToggleExpansionArrow: {
     backgroundColor: 'gray',
@@ -61,7 +61,7 @@ export default StyleSheet.create({
   },
   selectedElementActionButton: {
     alignItems: 'center',
-    borderTopColor: 'hsla(0,0,100,0.1)',
+    borderTopColor: 'hsla(0,0%,100%,0.1)',
     borderTopWidth: 1,
     borderRightColor: '#191d1f',
     borderRightWidth: 1,

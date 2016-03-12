@@ -1,7 +1,13 @@
+import { SET_INTERFACE_EDITOR_CANVAS_ORIENTATION } from '../../actions/interfaceEditorCanvasOrientation';
 import { portraitOrientation } from '../../constants/canvasOrientations';
 
-const initialState = portraitOrientation;
+export const initialState = portraitOrientation;
 
-export default function interfaceEditorCanvasOrientation(state = initialState) {
-  return state;
+export default function interfaceEditorCanvasOrientation(state = initialState, action) {
+  switch (action.type) {
+    case SET_INTERFACE_EDITOR_CANVAS_ORIENTATION:
+      return action.canvasOrientation;
+    default:
+      return state;
+  }
 }
