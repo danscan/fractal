@@ -13,7 +13,6 @@ export default class InterfaceEditorWorkspace extends Component {
     canvasOrientation: canvasOrientationPropType.isRequired,
     canvasZoom: PropTypes.number.isRequired,
     endFullScreenPreview: PropTypes.func.isRequired,
-    fullScreenPreview: PropTypes.bool.isRequired,
     selectedElementPath: elementPathPropType.isRequired,
     treeRootElement: elementPropType.isRequired,
   };
@@ -21,14 +20,12 @@ export default class InterfaceEditorWorkspace extends Component {
   renderFullScreenPreview() {
     const {
       endFullScreenPreview,
-      fullScreenPreview,
       treeRootElement,
     } = this.props;
 
     return (
       <InterfaceEditorFullscreenPreview
         element={treeRootElement}
-        visible={fullScreenPreview}
         onPressClose={endFullScreenPreview}
       />
     );
@@ -76,7 +73,7 @@ export default class InterfaceEditorWorkspace extends Component {
         </View>
         <InterfaceEditorWorkspaceToolbar/>
         <InterfaceEditorWorkspaceBreadcrumbBar/>
-        {/* this.renderFullScreenPreview() */}
+        {this.renderFullScreenPreview()}
       </View>
     );
   }
