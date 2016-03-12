@@ -1,5 +1,6 @@
 import React, { Component, View } from 'react-native';
 import CheckButtonsGroup from '../../vendor/pro-inputs/components/CheckButtonsGroup';
+import ColorField from '../../vendor/pro-inputs/components/ColorField';
 import NumberIncrementField from '../../vendor/pro-inputs/components/NumberIncrementField';
 import RadioButtonsGroup from '../../vendor/pro-inputs/components/RadioButtonsGroup';
 import BoxMarginSides, { TOP, RIGHT } from '../../vendor/pro-inputs/components/BoxMarginSides';
@@ -44,6 +45,8 @@ export default class InterfaceEditorInspectorStyleEditor extends Component {
 
         <BoxMarginSides selectedSides={[TOP, RIGHT]}/>
         <BoxPaddingSides selectedSides={[BOTTOM, LEFT]}/>
+
+        <ColorField name="Color" value="red"/>
       </View>
     );
   }
