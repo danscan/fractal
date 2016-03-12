@@ -1,13 +1,40 @@
 import { combineReducers } from 'redux';
 
 // (App reducers)
-import {
-  reducerMountPoint as interfaceEditorReducerMountPoint,
-  reducer as interfaceEditorReducer,
-} from '../InterfaceEditor';
+import interfaceEditorComponents from './interfaceEditorComponents';
+import interfaceEditorSelectedComponentKey from './interfaceEditorSelectedComponentKey';
+import interfaceEditorSelectedElementPath from './interfaceEditorSelectedElementPath';
+import interfaceEditorCanvasDevice from './interfaceEditorCanvasDevice';
+import interfaceEditorCanvasOrientation from './interfaceEditorCanvasOrientation';
+import interfaceEditorCanvasZoom from './interfaceEditorCanvasZoom';
+import interfaceEditorDirectSelectModeEnabled from './interfaceEditorDirectSelectModeEnabled';
+import interfaceEditorWorkspacePanelModalContent from './interfaceEditorWorkspacePanelModalContent';
+import interfaceEditorInspectorSelectedTabIndex from './interfaceEditorInspectorSelectedTabIndex';
+import interfaceEditorInspectorStyleEditorSelectedProp from './interfaceEditorInspectorStyleEditorSelectedProp';
+import interfaceEditorInspectorStyleEditorSelectedSizeClasses from './interfaceEditorInspectorStyleEditorSelectedSizeClasses';
+import interfaceEditorInspectorStyleEditorInputCollapsedSections from './interfaceEditorInspectorStyleEditorInputCollapsedSections';
+import interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides from './interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
+import interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides from './interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides';
+import interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides from './interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
+import interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners from './interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
 
 const reducer = combineReducers({
-  [interfaceEditorReducerMountPoint]: interfaceEditorReducer,
+  interfaceEditorComponents,
+  interfaceEditorSelectedComponentKey,
+  interfaceEditorSelectedElementPath,
+  interfaceEditorCanvasDevice,
+  interfaceEditorCanvasOrientation,
+  interfaceEditorCanvasZoom,
+  interfaceEditorDirectSelectModeEnabled,
+  interfaceEditorWorkspacePanelModalContent,
+  interfaceEditorInspectorSelectedTabIndex,
+  interfaceEditorInspectorStyleEditorSelectedProp,
+  interfaceEditorInspectorStyleEditorSelectedSizeClasses,
+  interfaceEditorInspectorStyleEditorInputCollapsedSections,
+  interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides,
+  interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides,
+  interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides,
+  interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners,
 });
 
 export default reducer;

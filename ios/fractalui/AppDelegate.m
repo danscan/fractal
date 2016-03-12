@@ -51,7 +51,7 @@
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
   rootView.backgroundColor = [UIColor blackColor];
-
+  
   UIViewController *rootViewController = [[UIViewController alloc] init];
   rootViewController.view = rootView;
   
@@ -101,7 +101,7 @@
 }
 
 - (NSURL *)javascriptBundleURL {
-// If target is simulator, use 1) dev server or 2) main.jsbundle.
+  // If target is simulator, use 1) dev server or 2) main.jsbundle.
 #if TARGET_IPHONE_SIMULATOR
   // Option 1) dev server
   return [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];

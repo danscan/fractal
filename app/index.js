@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import getStore from './store/index';
 import KeyboardAwareView from './components/KeyboardAwareView';
 import AppToolbarNavigator from './components/AppToolbarNavigator';
-import InterfaceEditor from './InterfaceEditor';
+import InterfaceEditor from './components/InterfaceEditor';
 
 export default class App extends Component {
   render() {

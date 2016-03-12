@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, ScrollView, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, ScrollView, StatusBar, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 // (Button image assets)
@@ -50,6 +50,7 @@ export default class AppToolbarNavigator extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar hidden/>
         {this.renderToolbar()}
         {this.renderScene()}
       </View>

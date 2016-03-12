@@ -28,7 +28,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: '#191d1f',
     borderBottomWidth: 1,
-    borderTopColor: 'hsla(0,0,100,0.2)',
+    borderTopColor: 'hsla(0,0%,100%,0.2)',
     borderTopWidth: 1,
     paddingVertical: 20,
   },
