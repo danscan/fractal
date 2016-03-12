@@ -37,9 +37,9 @@ export default StyleSheet.create({
     color: 'white',
     flexDirection: 'row',
     fontFamily: 'Avenir',
-    fontSize: 12,
+    fontSize: 11,
     height: 32,
-    padding: 7,
-    width: 70,
+    padding: 8,
+    width: 110,
   },
 });
