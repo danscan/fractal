@@ -19,6 +19,13 @@ export default StyleSheet.create({
     paddingRight: 25,
   },
 
+  breadCrumbElementImage: {
+    marginRight: 10,
+    resizeMode: 'contain',
+    tintColor: '#808080',
+    width: 12,
+  },
+
   breadCrumbElementLabel: {
     color: '#808080',
     fontFamily: 'Avenir',

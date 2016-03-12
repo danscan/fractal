@@ -133,3 +133,21 @@ export default new List([
     ]),
   }),
 ]);
+
+
+// -- List of all element types
+export const allElementTypes = new List([
+  ViewElementType,
+  ScrollViewElementType,
+  ImageElementType,
+  TextElementType,
+  TouchableOpacityElementType,
+  TouchableHighlightElementType,
+  TouchableWithoutFeedbackElementType,
+  TextInputElementType,
+  SliderIOSElementType,
+  SwitchElementType,
+  MapViewElementType,
+  WebViewElementType,
+  ActivityIndicatorIOSElementType,
+]);
