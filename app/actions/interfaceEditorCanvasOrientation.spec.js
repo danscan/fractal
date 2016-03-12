@@ -3,6 +3,9 @@ import expect from 'expect';
 import {
   SET_INTERFACE_EDITOR_CANVAS_ORIENTATION,
   setInterfaceEditorCanvasOrientation,
+
+  TOGGLE_INTERFACE_EDITOR_CANVAS_ORIENTATION,
+  toggleInterfaceEditorCanvasOrientation,
 } from './interfaceEditorCanvasOrientation';
 
 describe('interfaceEditorCanvasOrientation actions file', () => {
@@ -24,6 +27,16 @@ describe('interfaceEditorCanvasOrientation actions file', () => {
 
       expect(
         setInterfaceEditorCanvasOrientation(canvasOrientation)
+      ).toEqual(expectedAction);
+    });
+
+    it('should export an action creator for toggling interface editor canvas orientation', () => {
+      const expectedAction = {
+        type: TOGGLE_INTERFACE_EDITOR_CANVAS_ORIENTATION,
+      };
+
+      expect(
+        toggleInterfaceEditorCanvasOrientation()
       ).toEqual(expectedAction);
     });
   });

@@ -5,3 +5,10 @@ export function setInterfaceEditorCanvasOrientation(canvasOrientation) {
     canvasOrientation,
   };
 }
+
+export const TOGGLE_INTERFACE_EDITOR_CANVAS_ORIENTATION = 'TOGGLE_INTERFACE_EDITOR_CANVAS_ORIENTATION';
+export function toggleInterfaceEditorCanvasOrientation() {
+  return {
+    type: TOGGLE_INTERFACE_EDITOR_CANVAS_ORIENTATION,
+  };
+}
