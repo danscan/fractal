@@ -15,6 +15,12 @@ describe('interfaceEditorCanvasOrientation actions file', () => {
         SET_INTERFACE_EDITOR_CANVAS_ORIENTATION
       ).toExist();
     });
+
+    it('should export an action type for toggling interface editor canvas orientation', () => {
+      expect(
+        TOGGLE_INTERFACE_EDITOR_CANVAS_ORIENTATION
+      ).toExist();
+    });
   });
 
   describe('action creator(s)', () => {
