@@ -1,5 +1,10 @@
-import React, { Component, PropTypes, View } from 'react-native';
+import React, { Component, Image, PropTypes, View } from 'react-native';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import {
+  BoxBorderCorners,
+  NumberIncrementField,
+  boxCorners,
+} from 'pro-inputs';
 import styles from './styles';
 
 export default class BorderCornersInput extends Component {
@@ -14,7 +19,21 @@ export default class BorderCornersInput extends Component {
 
   render() {
     return (
-      <View style={styles.continer}/>
+      <View style={styles.container}>
+        <View style={styles.controlColumn}>
+          <BoxBorderCorners
+            selectedCorners={[boxCorners.TOP_RIGHT, boxCorners.BOTTOM_RIGHT]}
+          />
+        </View>
+        <View style={styles.inputsColumn}>
+          <NumberIncrementField
+            name="Radius"
+            placeholder="--"
+            unit="px"
+            value={undefined}
+          />
+        </View>
+      </View>
     );
   }
 }
