@@ -11,7 +11,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
   },
 
-  breadCrumbElement: {
+  breadcrumbElement: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -19,20 +19,20 @@ export default StyleSheet.create({
     paddingRight: 25,
   },
 
-  breadCrumbElementImage: {
+  breadcrumbElementImage: {
     marginRight: 10,
     resizeMode: 'contain',
     tintColor: '#808080',
     width: 12,
   },
 
-  breadCrumbElementLabel: {
+  breadcrumbElementLabel: {
     color: '#808080',
     fontFamily: 'Avenir',
     fontSize: 10,
   },
 
-  breadCrumbElementPoint: {
+  breadcrumbElementPoint: {
     position: 'absolute',
     top: 0,
     right: 0,

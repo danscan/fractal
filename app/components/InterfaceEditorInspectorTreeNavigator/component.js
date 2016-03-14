@@ -1,10 +1,12 @@
 import React, { AlertIOS, Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import { allElementTypes } from '../../constants/elementTypes';
 import elementDisplayNameByElement from '../../utils/elementDisplayNameByElement';
 import { List } from 'immutable';
 import styles from './styles';
 
 // (Button image assets)
+import rootElementTypeImage from '../../assets/img/elementTypes/root.png';
 import deleteButtonImage from '../../assets/img/deleteButton.png';
 import duplicateButtonImage from '../../assets/img/duplicateButton.png';
 import editButtonImage from '../../assets/img/editButton.png';
@@ -43,6 +45,21 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
     }
 
     return onPressElement(elementPath);
+  }
+
+  getElementTypeImageSource(element, elementPath) {
+    const elementType = allElementTypes.find(elementTypeDefinition => {
+      return element.get('type') === elementTypeDefinition.get('component');
+    });
+
+    if (typeof element === 'string' || !elementType || !elementType.get) {
+      return null;
+    }
+
+    // If element is root, use root element type image
+    return elementPath.isEmpty()
+      ? rootElementTypeImage
+      : elementType.get('imageSource');
   }
 
   toggleMovingElement(elementPath) {
@@ -122,12 +139,14 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
       elementIsSelectedElement ? styles.selectedElementHandleSection : {},
       { paddingLeft: 20 * elementPath.count() },
     ];
+    const elementTypeImageSource = this.getElementTypeImageSource(element, elementPath);
 
     return (
       <View key={elementKey} style={styles.element}>
         <View style={elementHandleSectionStyle}>
           {/* <TouchableOpacity style={styles.elementToggleExpansionArrow}/> */}
           <TouchableOpacity onPress={() => this.onPressElement(elementPath)} style={styles.elementHandle}>
+            <Image style={styles.elementTypeImage} source={elementTypeImageSource}/>
             <Text style={styles.elementNameLabel}>
               {elementDisplayName}
             </Text>

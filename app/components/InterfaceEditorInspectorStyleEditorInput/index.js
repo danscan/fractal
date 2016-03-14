@@ -1,22 +1,26 @@
-import React, { Component, PropTypes, View } from 'react-native';
-import ImmutablePropTypes from 'react-immutable-proptypes';
-import StyleEditorInput from '../../vendor/pro-style-editor/src';
-import styles from './styles';
+import { connect } from 'react-redux';
+import { interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners } from '../../selectors/interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
+import { interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
+import { interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
+import { interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides';
+import { setInterfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners } from '../../actions/interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
+import { setInterfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
+import { setInterfaceEditorInspectorStyleEditorInputMarginInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
+import { setInterfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides';
+import Component from './component';
 
-// (Prop type constants)
+const mapStateToProps = (state) => ({
+  borderCornersInputSelectedCorners: interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners(state),
+  borderSidesInputSelectedSides: interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides(state),
+  marginInputSelectedSides: interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides(state),
+  paddingInputSelectedSides: interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides(state),
+});
 
-export default class InterfaceEditorInspectorStyleEditor extends Component {
-  static propTypes = {
-    onChangeValue: PropTypes.func.isRequired,
-    propType: PropTypes.func,
-    value: ImmutablePropTypes.map,
-  };
+const actionCreators = {
+  onChangeBorderCornersInputSelectedCorners: setInterfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners,
+  onChangeBorderSidesInputSelectedSides: setInterfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides,
+  onChangeMarginInputSelectedSides: setInterfaceEditorInspectorStyleEditorInputMarginInputSelectedSides,
+  onChangePaddingInputSelectedSides: setInterfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides,
+};
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <StyleEditorInput {...this.props}/>
-      </View>
-    );
-  }
-}
+export default connect(mapStateToProps, actionCreators)(Component);

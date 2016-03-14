@@ -11,6 +11,8 @@ import styles from './styles';
 
 export default class BorderSidesInput extends Component {
   static propTypes = {
+    borderSidesInputSelectedSides: BoxBorderSides.propTypes.selectedSides,
+    onChangeBorderSidesInputSelectedSides: PropTypes.func.isRequired,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
   };
@@ -20,11 +22,17 @@ export default class BorderSidesInput extends Component {
   };
 
   render() {
+    const {
+      borderSidesInputSelectedSides,
+      onChangeBorderSidesInputSelectedSides,
+    } = this.props;
+
     return (
       <View style={styles.container}>
         <View style={styles.controlColumn}>
           <BoxBorderSides
-            selectedSides={[boxSides.TOP, boxSides.BOTTOM]}
+            onChangeSelectedSides={onChangeBorderSidesInputSelectedSides}
+            selectedSides={borderSidesInputSelectedSides}
           />
         </View>
         <View style={styles.inputsColumn}>

@@ -9,6 +9,8 @@ import styles from './styles';
 
 export default class MarginInput extends Component {
   static propTypes = {
+    marginInputSelectedSides: BoxMarginSides.propTypes.selectedSides,
+    onChangeMarginInputSelectedSides: PropTypes.func.isRequired,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
   };
@@ -18,10 +20,16 @@ export default class MarginInput extends Component {
   };
 
   render() {
+    const {
+      onChangeMarginInputSelectedSides,
+      marginInputSelectedSides,
+    } = this.props;
+
     return (
       <View style={styles.container}>
         <BoxMarginSides
-          selectedSides={[boxSides.TOP, boxSides.RIGHT]}
+          selectedSides={marginInputSelectedSides}
+          onChangeSelectedSides={onChangeMarginInputSelectedSides}
         />
         <NumberIncrementField
           name="Margin Vertical"

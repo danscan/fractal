@@ -1,40 +1,18 @@
-import React, { Component, ScrollView, View } from 'react-native';
-import { Picker } from 'pro-inputs';
-import InterfaceEditorInspectorStyleEditorInput from '../InterfaceEditorInspectorStyleEditorInput';
-import styles from './styles';
+import { connect } from 'react-redux';
+import { interfaceEditorInspectorStyleEditorSelectedProp } from '../../selectors/interfaceEditorInspectorStyleEditorSelectedProp';
+import { interfaceEditorInspectorStyleEditorSelectedSizeClasses } from '../../selectors/interfaceEditorInspectorStyleEditorSelectedSizeClasses';
+import { setInterfaceEditorInspectorStyleEditorSelectedProp } from '../../actions/interfaceEditorInspectorStyleEditorSelectedProp';
+import { setInterfaceEditorInspectorStyleEditorSelectedSizeClasses } from '../../actions/interfaceEditorInspectorStyleEditorSelectedSizeClasses';
+import Component from './component';
 
-export default class InterfaceEditorInspectorStyleEditor extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.inputContextPickers}>
-          <Picker
-            name="Prop"
-            items={[
-              { label: 'style', value: 'style' },
-              { label: 'contentContainerStyle', value: 'contentContainerStyle' },
-            ]}
-            selectedValue="style"
-          />
-          <Picker
-            name="Size Classes"
-            items={[
-              { label: 'All', value: 'all' },
-              { label: 'Phone', value: 'phone' },
-              { label: 'Tablet', value: 'tablet' },
-              { label: 'TV', value: 'tv' },
-              { label: 'Watch', value: 'watch' },
-            ]}
-            selectedValue="all"
-          />
-        </View>
-        <ScrollView
-          contentContainerStyle={styles.inputScrollViewContentContainer}
-          style={styles.inputScrollView}
-        >
-          <InterfaceEditorInspectorStyleEditorInput/>
-        </ScrollView>
-      </View>
-    );
-  }
-}
+const mapStateToProps = (state) => ({
+  selectedProp: interfaceEditorInspectorStyleEditorSelectedProp(state),
+  selectedSizeClasses: interfaceEditorInspectorStyleEditorSelectedSizeClasses(state),
+});
+
+const actionCreators = {
+  setSelectedProp: setInterfaceEditorInspectorStyleEditorSelectedProp,
+  setSelectedSizeClasses: setInterfaceEditorInspectorStyleEditorSelectedSizeClasses,
+};
+
+export default connect(mapStateToProps, actionCreators)(Component);

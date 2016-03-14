@@ -32,8 +32,16 @@ export default StyleSheet.create({
     height: 32,
     width: 24,
   },
+  elementTypeImage: {
+    marginRight: 10,
+    resizeMode: 'contain',
+    tintColor: 'white',
+    width: 12,
+  },
   elementHandle: {
+    alignItems: 'center',
     flex: 1,
+    flexDirection: 'row',
     paddingVertical: 10,
     paddingLeft: 10,
   },

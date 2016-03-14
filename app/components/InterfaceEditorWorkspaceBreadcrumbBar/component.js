@@ -27,16 +27,16 @@ export default class InterfaceEditorWorkspaceBreadcrumbBar extends Component {
       <TouchableOpacity
         key={elementPath.join()}
         onPress={() => onPressElement(elementPath)}
-        style={styles.breadCrumbElement}
+        style={styles.breadcrumbElement}
       >
         <Image
           source={elementTypeImageSource}
-          style={styles.breadCrumbElementImage}
+          style={styles.breadcrumbElementImage}
         />
-        <Text style={styles.breadCrumbElementLabel}>
+        <Text style={styles.breadcrumbElementLabel}>
           {elementDisplayName}
         </Text>
-        <View style={styles.breadCrumbElementPoint}/>
+        <View style={styles.breadcrumbElementPoint}/>
       </TouchableOpacity>
     );
   }

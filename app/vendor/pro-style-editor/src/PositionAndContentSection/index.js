@@ -329,21 +329,25 @@ export default class PositionAndContentSection extends Component {
           <NumberIncrementField
             name="Top"
             placeholder="Auto"
+            unit="px"
             value={undefined}
           />
           <NumberIncrementField
             name="Right"
             placeholder="Auto"
+            unit="px"
             value={undefined}
           />
           <NumberIncrementField
             name="Bottom"
             placeholder="Auto"
+            unit="px"
             value={undefined}
           />
           <NumberIncrementField
             name="Left"
             placeholder="Auto"
+            unit="px"
             value={undefined}
           />
         </View>
