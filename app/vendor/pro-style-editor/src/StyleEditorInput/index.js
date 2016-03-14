@@ -5,6 +5,8 @@ import PositionAndContentSection from '../PositionAndContentSection';
 import AppearanceSection from '../AppearanceSection';
 import BorderSection from '../BorderSection';
 import ShadowSection from '../ShadowSection';
+import ImageSection from '../ImageSection';
+import TypographySection from '../TypographySection';
 import styles from './styles';
 
 export default class StyleEditorInput extends Component {
@@ -33,8 +35,12 @@ export default class StyleEditorInput extends Component {
           <ShadowSection {...this.props}/>
         </CollapsibleListSection>
         {/* <CollapsibleListSection title="Transforms"/> */}
-        {/* <CollapsibleListSection title="Image"/> */}
-        {/* <CollapsibleListSection title="Typography"/> */}
+        <CollapsibleListSection title="Image">
+          <ImageSection {...this.props}/>
+        </CollapsibleListSection>
+        <CollapsibleListSection title="Typography">
+          <TypographySection {...this.props}/>
+        </CollapsibleListSection>
       </View>
     );
   }

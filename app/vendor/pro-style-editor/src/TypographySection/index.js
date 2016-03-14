@@ -14,7 +14,7 @@ export default class TypographySection extends Component {
 
   render() {
     return (
-      <View style={styles.continer}/>
+      <View style={styles.container}/>
     );
   }
 }
