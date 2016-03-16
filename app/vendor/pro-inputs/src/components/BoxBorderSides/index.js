@@ -1,24 +1,31 @@
 import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
-import { Set } from 'immutable';
 import {
   TOP,
   RIGHT,
   BOTTOM,
   LEFT,
   ALL_SIDES,
+  VERTICAL_SIDES,
+  HORIZONTAL_SIDES,
 } from '../../constants/boxSides';
-import reduceSelectedSides from '../../utils/reduceSelectedSides';
+import getSideSelectedState from '../../utils/getSideSelectedState';
 import boxBorderSideAllImage from '../../../assets/img/boxBorderSideAll.png';
 import boxBorderSideTopImage from '../../../assets/img/boxBorderSideTop.png';
 import styles from './styles';
 
 // (Prop type constants)
-const sidePropType = PropTypes.oneOf(ALL_SIDES);
+const selectedSidesPropType = PropTypes.oneOf([
+  TOP,
+  RIGHT,
+  BOTTOM,
+  LEFT,
+  ALL_SIDES,
+]);
 
 export default class BoxBorderSides extends Component {
   static propTypes = {
     onChangeSelectedSides: PropTypes.func.isRequired,
-    selectedSides: PropTypes.arrayOf(sidePropType).isRequired,
+    selectedSides: selectedSidesPropType.isRequired,
     style: View.propTypes.style,
   };
 
@@ -28,19 +35,14 @@ export default class BoxBorderSides extends Component {
   };
 
   toggleSelectedSidesMember(pressedSide) {
-    const {
-      onChangeSelectedSides,
-      selectedSides,
-    } = this.props;
-    const newSelectedSides = reduceSelectedSides(selectedSides, pressedSide);
+    const { onChangeSelectedSides } = this.props;
 
-    return onChangeSelectedSides(newSelectedSides);
+    return onChangeSelectedSides(pressedSide);
   }
 
   renderButton({ side, imageSource, imageStyle, style }) {
     const { selectedSides } = this.props;
-    const selectedSidesSet = new Set(selectedSides);
-    const isSelected = selectedSidesSet.has(side);
+    const isSelected = getSideSelectedState(selectedSides, side);
     const buttonStyle = [
       styles.button,
       (isSelected ? styles.buttonSelected : {}),

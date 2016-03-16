@@ -24,6 +24,11 @@ export default class MarginInput extends Component {
       onChangeMarginInputSelectedSides,
       marginInputSelectedSides,
     } = this.props;
+    const {
+      propName,
+      fieldName,
+    } = _getMarginProp(marginInputSelectedSides);
+    console.log('propName:', propName);
 
     return (
       <View style={styles.container}>
@@ -32,11 +37,26 @@ export default class MarginInput extends Component {
           onChangeSelectedSides={onChangeMarginInputSelectedSides}
         />
         <NumberIncrementField
-          name="Margin Vertical"
+          name={fieldName}
           unit="px"
           value={0}
         />
       </View>
     );
   }
+}
+
+// (Private helpers)
+function _getMarginProp(selectedSides) {
+  if (selectedSides === boxSides.ALL_SIDES) {
+    return {
+      propName: 'margin',
+      fieldName: 'Margin',
+    };
+  }
+
+  return {
+    propName: `margin${selectedSides}`,
+    fieldName: `Margin ${selectedSides}`,
+  };
 }

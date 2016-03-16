@@ -1,13 +1,15 @@
 import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
-import { Set } from 'immutable';
 import {
   TOP,
   RIGHT,
   BOTTOM,
   LEFT,
   ALL_SIDES,
+  VERTICAL_SIDES,
+  HORIZONTAL_SIDES,
 } from '../../constants/boxSides';
-import reduceSelectedSides from '../../utils/reduceSelectedSides';
+import getSideSelectedState from '../../utils/getSideSelectedState';
+import reduceBoxSelectedSides from '../../utils/reduceBoxSelectedSides';
 import sideAboveImage from '../../../assets/img/sideAbove.png';
 import sideAsideRightImage from '../../../assets/img/sideAsideRight.png';
 import sideBelowImage from '../../../assets/img/sideBelow.png';
@@ -15,12 +17,20 @@ import sideAsideLeftImage from '../../../assets/img/sideAsideLeft.png';
 import styles from './styles';
 
 // (Prop type constants)
-const sidePropType = PropTypes.oneOf(ALL_SIDES);
+const selectedSidesPropType = PropTypes.oneOf([
+  TOP,
+  RIGHT,
+  BOTTOM,
+  LEFT,
+  ALL_SIDES,
+  VERTICAL_SIDES,
+  HORIZONTAL_SIDES,
+]);
 
 export default class BoxPaddingSides extends Component {
   static propTypes = {
     onChangeSelectedSides: PropTypes.func.isRequired,
-    selectedSides: PropTypes.arrayOf(sidePropType).isRequired,
+    selectedSides: selectedSidesPropType.isRequired,
     style: View.propTypes.style,
   };
 
@@ -34,15 +44,14 @@ export default class BoxPaddingSides extends Component {
       onChangeSelectedSides,
       selectedSides,
     } = this.props;
-    const newSelectedSides = reduceSelectedSides(selectedSides, pressedSide);
+    const newSelectedSides = reduceBoxSelectedSides(selectedSides, pressedSide);
 
     return onChangeSelectedSides(newSelectedSides);
   }
 
   renderAllButton() {
     const { selectedSides } = this.props;
-    const selectedSidesSet = new Set(selectedSides);
-    const isSelected = selectedSidesSet.has(ALL_SIDES);
+    const isSelected = getSideSelectedState(selectedSides, ALL_SIDES);
     const buttonStyle = [
       styles.allButton,
       (isSelected ? styles.allButtonSelected : {}),
@@ -98,8 +107,7 @@ export default class BoxPaddingSides extends Component {
 
   renderSideButton({ side, imageSource, imageStyle, style }) {
     const { selectedSides } = this.props;
-    const selectedSidesSet = new Set(selectedSides);
-    const isSelected = selectedSidesSet.has(side);
+    const isSelected = getSideSelectedState(selectedSides, side);
     const buttonStyle = [
       styles.button,
       style,

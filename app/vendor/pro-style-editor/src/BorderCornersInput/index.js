@@ -24,6 +24,11 @@ export default class BorderCornersInput extends Component {
       borderCornersInputSelectedCorners,
       onChangeBorderCornersInputSelectedCorners,
     } = this.props;
+    const {
+      propName,
+      fieldName,
+    } = _getBorderRadiusProp(borderCornersInputSelectedCorners);
+    console.log('propName:', propName);
 
     return (
       <View style={styles.container}>
@@ -35,7 +40,7 @@ export default class BorderCornersInput extends Component {
         </View>
         <View style={styles.inputsColumn}>
           <NumberIncrementField
-            name="Radius"
+            name={fieldName}
             placeholder="--"
             unit="px"
             value={undefined}
@@ -44,4 +49,19 @@ export default class BorderCornersInput extends Component {
       </View>
     );
   }
+}
+
+// (Private helpers)
+function _getBorderRadiusProp(selectedCorners) {
+  if (selectedCorners === boxCorners.ALL_CORNERS) {
+    return {
+      propName: 'borderRadius',
+      fieldName: 'Radius',
+    };
+  }
+
+  return {
+    propName: `border${selectedCorners}Radius`,
+    fieldName: `${selectedCorners} Radius`,
+  };
 }

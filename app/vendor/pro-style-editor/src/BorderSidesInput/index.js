@@ -26,6 +26,12 @@ export default class BorderSidesInput extends Component {
       borderSidesInputSelectedSides,
       onChangeBorderSidesInputSelectedSides,
     } = this.props;
+    const colorPropName = _getBorderPropName(borderSidesInputSelectedSides, 'Color');
+    const stylePropName = _getBorderPropName(borderSidesInputSelectedSides, 'Style');
+    const widthPropName = _getBorderPropName(borderSidesInputSelectedSides, 'Width');
+    console.log('colorPropName:', colorPropName);
+    console.log('stylePropName:', stylePropName);
+    console.log('widthPropName:', widthPropName);
 
     return (
       <View style={styles.container}>
@@ -95,4 +101,13 @@ export default class BorderSidesInput extends Component {
       </View>
     );
   }
+}
+
+// (Private helpers)
+function _getBorderPropName(selectedSides, basePropName) {
+  if (selectedSides === boxSides.ALL_SIDES) {
+    return `border${basePropName}`;
+  }
+
+  return `border${selectedSides}${basePropName}`;
 }

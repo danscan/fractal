@@ -24,6 +24,11 @@ export default class PaddingInput extends Component {
       onChangePaddingInputSelectedSides,
       paddingInputSelectedSides,
     } = this.props;
+    const {
+      propName,
+      fieldName,
+    } = _getPaddingProp(paddingInputSelectedSides);
+    console.log('propName:', propName);
 
     return (
       <View style={styles.container}>
@@ -32,11 +37,26 @@ export default class PaddingInput extends Component {
           onChangeSelectedSides={onChangePaddingInputSelectedSides}
         />
         <NumberIncrementField
-          name="Padding Vertical"
+          name={fieldName}
           unit="px"
           value={0}
         />
       </View>
     );
   }
+}
+
+// (Private helpers)
+function _getPaddingProp(selectedSides) {
+  if (selectedSides === boxSides.ALL_SIDES) {
+    return {
+      propName: 'padding',
+      fieldName: 'Padding',
+    };
+  }
+
+  return {
+    propName: `padding${selectedSides}`,
+    fieldName: `Padding ${selectedSides}`,
+  };
 }

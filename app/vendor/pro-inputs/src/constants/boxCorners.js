@@ -1,5 +1,5 @@
-export const TOP_RIGHT = 'TOP_RIGHT';
-export const BOTTOM_RIGHT = 'BOTTOM_RIGHT';
-export const BOTTOM_LEFT = 'BOTTOM_LEFT';
-export const TOP_LEFT = 'TOP_LEFT';
-export const ALL_CORNERS = [TOP_RIGHT, BOTTOM_RIGHT, BOTTOM_LEFT, TOP_LEFT];
+export const TOP_RIGHT = 'TopRight';
+export const BOTTOM_RIGHT = 'BottomRight';
+export const BOTTOM_LEFT = 'BottomLeft';
+export const TOP_LEFT = 'TopLeft';
+export const ALL_CORNERS = 'AllCorners';
