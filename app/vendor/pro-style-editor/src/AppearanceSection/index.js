@@ -4,7 +4,7 @@ import {
   ColorField,
   NumberIncrementField,
   RadioButtonsGroup,
-} from 'pro-inputs';
+} from '../../../pro-inputs/src';
 import styles from './styles';
 
 export default class AppearanceSection extends Component {

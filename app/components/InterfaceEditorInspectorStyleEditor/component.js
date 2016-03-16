@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, ScrollView, View } from 'react-native';
-import { Picker } from 'pro-inputs';
+import { Picker } from '../../vendor/pro-inputs/src';
 import InterfaceEditorInspectorStyleEditorInput from '../InterfaceEditorInspectorStyleEditorInput';
 import styles from './styles';
 

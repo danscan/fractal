@@ -3,7 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
   NumberIncrementField,
   RadioButtonsGroup,
-} from 'pro-inputs';
+} from '../../../pro-inputs/src';
 import MarginInput from '../MarginInput';
 import PaddingInput from '../PaddingInput';
 import styles from './styles';

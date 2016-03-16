@@ -5,7 +5,7 @@ import {
   NumberIncrementField,
   Picker,
   RadioButtonsGroup,
-} from 'pro-inputs';
+} from '../../../pro-inputs/src';
 import styles from './styles';
 
 export default class TypographySection extends Component {

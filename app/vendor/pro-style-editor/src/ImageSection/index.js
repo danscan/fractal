@@ -3,7 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
   ColorField,
   Picker,
-} from 'pro-inputs';
+} from '../../../pro-inputs/src';
 import styles from './styles';
 
 export default class ImageSection extends Component {

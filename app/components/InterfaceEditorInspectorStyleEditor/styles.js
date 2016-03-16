@@ -10,6 +10,7 @@ export default StyleSheet.create({
     backgroundColor: '#4b4b4b',
     borderBottomColor: '#191d1f',
     borderBottomWidth: 1,
+    paddingLeft: 10,
     paddingVertical: 10,
   },
 });

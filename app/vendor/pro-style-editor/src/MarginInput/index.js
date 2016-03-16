@@ -4,7 +4,7 @@ import {
   BoxMarginSides,
   NumberIncrementField,
   boxSides,
-} from 'pro-inputs';
+} from '../../../pro-inputs/src';
 import styles from './styles';
 
 export default class MarginInput extends Component {
