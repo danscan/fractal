@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
 
   resizeModeSection: {
-    marginBottom: 10,
+    paddingLeft: 10,
   },
 
   tintColorSection: {
