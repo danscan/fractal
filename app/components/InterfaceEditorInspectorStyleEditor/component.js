@@ -5,25 +5,25 @@ import styles from './styles';
 
 export default class InterfaceEditorInspectorStyleEditor extends Component {
   static propTypes = {
+    propTypes: PropTypes.object,
     selectedProp: PropTypes.string.isRequired,
     setSelectedProp: PropTypes.func.isRequired,
   };
 
   render() {
     const {
+      propTypes,
       selectedProp,
       setSelectedProp,
     } = this.props;
+    const propPickerItems = _getPropPickerItems(propTypes);
 
     return (
       <View style={styles.container}>
         <View style={styles.inputContext}>
           <Picker
             name="Prop"
-            items={[
-              { label: 'style', value: 'style' },
-              { label: 'contentContainerStyle', value: 'contentContainerStyle' },
-            ]}
+            items={propPickerItems}
             onChangeSelectedValue={setSelectedProp}
             selectedValue={selectedProp}
           />
@@ -37,4 +37,14 @@ export default class InterfaceEditorInspectorStyleEditor extends Component {
       </View>
     );
   }
+}
+
+// (Private helpers)
+function _getPropPickerItems(propTypes = {}) {
+  const propNames = Object.keys(propTypes);
+
+  return propNames.map(propName => ({
+    label: propName,
+    value: propName,
+  }));
 }

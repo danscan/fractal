@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
+import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponents';
 import { interfaceEditorInspectorStyleEditorSelectedProp } from '../../selectors/interfaceEditorInspectorStyleEditorSelectedProp';
 import { setInterfaceEditorInspectorStyleEditorSelectedProp } from '../../actions/interfaceEditorInspectorStyleEditorSelectedProp';
 import Component from './component';
 
 const mapStateToProps = (state) => ({
+  propTypes: interfaceEditorSelectedElement(state).get('type').propTypes,
   selectedProp: interfaceEditorInspectorStyleEditorSelectedProp(state),
 });
 
