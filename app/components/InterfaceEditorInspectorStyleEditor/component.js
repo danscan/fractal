@@ -6,22 +6,18 @@ import styles from './styles';
 export default class InterfaceEditorInspectorStyleEditor extends Component {
   static propTypes = {
     selectedProp: PropTypes.string.isRequired,
-    selectedSizeClasses: PropTypes.string.isRequired,
     setSelectedProp: PropTypes.func.isRequired,
-    setSelectedSizeClasses: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       selectedProp,
-      selectedSizeClasses,
       setSelectedProp,
-      setSelectedSizeClasses,
     } = this.props;
 
     return (
       <View style={styles.container}>
-        <View style={styles.inputContextPickers}>
+        <View style={styles.inputContext}>
           <Picker
             name="Prop"
             items={[
@@ -30,18 +26,6 @@ export default class InterfaceEditorInspectorStyleEditor extends Component {
             ]}
             onChangeSelectedValue={setSelectedProp}
             selectedValue={selectedProp}
-          />
-          <Picker
-            name="Size Classes"
-            items={[
-              { label: 'All', value: 'all' },
-              { label: 'Phone', value: 'phone' },
-              { label: 'Tablet', value: 'tablet' },
-              { label: 'TV', value: 'tv' },
-              { label: 'Watch', value: 'watch' },
-            ]}
-            onChangeSelectedValue={setSelectedSizeClasses}
-            selectedValue={selectedSizeClasses}
           />
         </View>
         <ScrollView

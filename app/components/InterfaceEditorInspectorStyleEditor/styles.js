@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flex: 1,
   },
 
-  inputContextPickers: {
+  inputContext: {
     backgroundColor: '#4b4b4b',
     borderBottomColor: '#191d1f',
     borderBottomWidth: 1,
