@@ -19,11 +19,17 @@ export default class PositionAndContentSection extends Component {
   };
 
   renderContentPositioningSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.contentPositioningSection}>
         <NumberIncrementField
           name="Flex Grow"
-          value={1}
+          onChangeValue={(newValue) => onChangeValue(value.set('flex', newValue || undefined))}
+          value={value.get('flex')}
         />
         <RadioButtonsGroup
           name="Flex Direction"
@@ -49,7 +55,8 @@ export default class PositionAndContentSection extends Component {
               value: 'row',
             },
           ]}
-          selectedValue="column"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('flexDirection', newValue))}
+          selectedValue={value.get('flexDirection', 'column')}
         />
         <RadioButtonsGroup
           name="Flex Wrap"
@@ -63,7 +70,8 @@ export default class PositionAndContentSection extends Component {
               value: 'nowrap',
             },
           ]}
-          selectedValue="nowrap"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('flexWrap', newValue))}
+          selectedValue={value.get('flexWrap', 'nowrap')}
         />
         <RadioButtonsGroup
           name="Align Items"
@@ -113,7 +121,8 @@ export default class PositionAndContentSection extends Component {
               value: 'flex-end',
             },
           ]}
-          selectedValue="stretch"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('alignItems', newValue))}
+          selectedValue={value.get('alignItems', 'stretch')}
         />
         <RadioButtonsGroup
           name="Justify Content"
@@ -174,7 +183,8 @@ export default class PositionAndContentSection extends Component {
               value: 'space-around',
             },
           ]}
-          selectedValue="flex-start"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('justifyContent', newValue))}
+          selectedValue={value.get('justifyContent', 'flex-start')}
         />
         <RadioButtonsGroup
           name="Align Self"
@@ -224,7 +234,8 @@ export default class PositionAndContentSection extends Component {
               value: 'flex-end',
             },
           ]}
-          selectedValue="auto"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('alignSelf', newValue))}
+          selectedValue={value.get('alignSelf', 'auto')}
         />
         <RadioButtonsGroup
           name="Overflow"
@@ -250,7 +261,8 @@ export default class PositionAndContentSection extends Component {
               value: 'hidden',
             },
           ]}
-          selectedValue="visible"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('overflow', newValue))}
+          selectedValue={value.get('overflow', 'visible')}
         />
       </View>
     );
@@ -266,25 +278,33 @@ export default class PositionAndContentSection extends Component {
   }
 
   renderBoxSizeSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.boxSizeSection}>
         <View style={styles.boxSizeSectionColumn}>
           <NumberIncrementField
             name="Width"
             placeholder="--"
-            value={100}
+            onChangeValue={(newValue) => onChangeValue(value.set('width', newValue))}
+            value={value.get('width')}
             unit="px"
           />
           <NumberIncrementField
             name="Min Width"
             placeholder="--"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('minWidth', newValue))}
+            value={value.get('minWidth')}
             unit="px"
           />
           <NumberIncrementField
             name="Max Width"
             placeholder="--"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('maxWidth', newValue))}
+            value={value.get('maxWidth')}
             unit="px"
           />
         </View>
@@ -292,19 +312,22 @@ export default class PositionAndContentSection extends Component {
           <NumberIncrementField
             name="Height"
             placeholder="--"
-            value={100}
+            onChangeValue={(newValue) => onChangeValue(value.set('height', newValue))}
+            value={value.get('height')}
             unit="px"
           />
           <NumberIncrementField
             name="Min Height"
             placeholder="--"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('minHeight', newValue))}
+            value={value.get('minHeight')}
             unit="px"
           />
           <NumberIncrementField
             name="Max Height"
             placeholder="--"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('maxHeight', newValue))}
+            value={value.get('maxHeight')}
             unit="px"
           />
         </View>
@@ -313,6 +336,11 @@ export default class PositionAndContentSection extends Component {
   }
 
   renderBoxPositionSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.boxPositionSection}>
         <View style={styles.boxPositionSectionColumn}>
@@ -322,7 +350,8 @@ export default class PositionAndContentSection extends Component {
               { text: 'Relative', value: 'relative' },
               { text: 'Absolute', value: 'absolute' },
             ]}
-            selectedValue="relative"
+            onChangeSelectedValue={(newValue) => onChangeValue(value.set('position', newValue))}
+            selectedValue={value.get('position', 'relative')}
           />
         </View>
         <View style={styles.boxPositionSectionColumn}>
@@ -330,25 +359,29 @@ export default class PositionAndContentSection extends Component {
             name="Top"
             placeholder="Auto"
             unit="px"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('top', newValue))}
+            value={value.get('top')}
           />
           <NumberIncrementField
             name="Right"
             placeholder="Auto"
             unit="px"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('right', newValue))}
+            value={value.get('right')}
           />
           <NumberIncrementField
             name="Bottom"
             placeholder="Auto"
             unit="px"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('bottom', newValue))}
+            value={value.get('bottom')}
           />
           <NumberIncrementField
             name="Left"
             placeholder="Auto"
             unit="px"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set('left', newValue))}
+            value={value.get('left')}
           />
         </View>
       </View>

@@ -19,6 +19,11 @@ export default class TypographySection extends Component {
   };
 
   renderTypeAppearancePickersSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.typeAppearancePickersSection}>
         <Picker
@@ -28,22 +33,16 @@ export default class TypographySection extends Component {
             { label: 'Arial', value: 'Arial' },
             { label: 'Arial Rounded', value: 'ArialRoundedMTBold' },
             { label: 'Avenir', value: 'Avenir' },
-            { label: 'Avenir Next', value: 'AvenirNext' },
-            { label: 'Avenir Next Condensed', value: 'AvenirNextCondensed' },
-            { label: 'Bakersville', value: 'Bakersville' },
-            { label: 'Chalkboard', value: 'ChalkboardSE' },
             { label: 'Copperplate', value: 'Copperplate' },
             { label: 'Courier', value: 'Courier' },
-            { label: 'Courier New', value: 'CourierNew' },
             { label: 'Futura', value: 'Futura' },
             { label: 'Georgia', value: 'Georgia' },
             { label: 'Helvetica', value: 'Helvetica' },
             { label: 'Helvetica Neue', value: 'HelveticaNeue' },
-            { label: 'Times New Roman', value: 'TimesNewRoman' },
             { label: 'Verdana', value: 'Verdana' },
           ]}
-          selectedValue="Avenir"
-          itemStyle={{ fontFamily: 'Avenir' }}
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('fontFamily', newValue))}
+          selectedValue={value.get('fontFamily', 'Avenir')}
         />
         <Picker
           name="Font Weight"
@@ -60,13 +59,19 @@ export default class TypographySection extends Component {
             { label: '800', value: '800' },
             { label: '900', value: '900' },
           ]}
-          selectedValue="normal"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('fontWeight', newValue))}
+          selectedValue={value.get('fontWeight', 'normal')}
         />
       </View>
     );
   }
 
   renderTypeAppearanceSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.typeAppearanceSection}>
         <RadioButtonsGroup
@@ -93,21 +98,29 @@ export default class TypographySection extends Component {
               value: 'italic',
             },
           ]}
-          selectedValue="normal"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('fontStyle', newValue))}
+          selectedValue={value.get('fontStyle', 'normal')}
         />
         <ColorField
           name="Color"
-          value="black"
+          onChangeValue={(newValue) => onChangeValue(value.set('color', newValue))}
+          value={(value.get('color', 'black'))}
         />
         <NumberIncrementField
           name="Font Size"
-          value={14}
+          onChangeValue={(newValue) => onChangeValue(value.set('fontSize', newValue))}
+          value={(value.get('fontSize', 14))}
         />
       </View>
     );
   }
 
   renderTypeLayoutAndDecorationSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.typeLayoutAndDecorationSection}>
         <RadioButtonsGroup
@@ -154,7 +167,8 @@ export default class TypographySection extends Component {
               value: 'justify',
             },
           ]}
-          selectedValue="left"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('textAlign', newValue))}
+          selectedValue={value.get('textAlign', 'left')}
         />
         <RadioButtonsGroup
           name="Writing Direction"
@@ -180,7 +194,8 @@ export default class TypographySection extends Component {
               value: 'rtl',
             },
           ]}
-          selectedValue="ltr"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('writingDirection', newValue))}
+          selectedValue={value.get('writingDirection', 'ltr')}
         />
         <RadioButtonsGroup
           name="Text Decoration Line"
@@ -216,7 +231,8 @@ export default class TypographySection extends Component {
               value: 'line-through',
             },
           ]}
-          selectedValue={undefined}
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('textDecorationLine', newValue))}
+          selectedValue={value.get('textDecorationLine')}
         />
         <RadioButtonsGroup
           name="Text Decoration Style"
@@ -262,31 +278,40 @@ export default class TypographySection extends Component {
               value: 'dotted',
             },
           ]}
-          selectedValue={undefined}
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('textDecorationStyle', newValue))}
+          selectedValue={value.get('textDecorationStyle', 'solid')}
         />
         <ColorField
           name="Text Decoration Color"
           placeholder="Auto"
-          value={undefined}
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('textDecorationColor', newValue))}
+          selectedValue={value.get('textDecorationColor')}
         />
       </View>
     );
   }
 
   renderSpacingSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.spacingSection}>
         <NumberIncrementField
           name="Line Height"
-          placeholder="--"
+          placeholder="Auto"
           unit="px"
-          value={undefined}
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('lineHeight', newValue))}
+          selectedValue={value.get('lineHeight')}
         />
         <NumberIncrementField
           name="Letter Spacing"
-          placeholder="--"
+          placeholder="Auto"
           unit="px"
-          value={undefined}
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('letterSpacing', newValue))}
+          selectedValue={value.get('letterSpacing')}
         />
       </View>
     );

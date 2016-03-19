@@ -18,11 +18,17 @@ export default class AppearanceSection extends Component {
   };
 
   render() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.container}>
         <ColorField
           name="Background Color"
-          value="#96c400"
+          onChangeValue={(newValue) => onChangeValue(value.set('backgroundColor', newValue))}
+          value={value.get('backgroundColor')}
         />
 
         <RadioButtonsGroup
@@ -49,13 +55,15 @@ export default class AppearanceSection extends Component {
               value: 'hidden',
             },
           ]}
-          selectedValue="visible"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('backfaceVisibility', newValue))}
+          selectedValue={value.get('backfaceVisibility', 'hidden')}
         />
 
         <NumberIncrementField
           name="Opacity"
           unit="%"
-          value={100}
+          onChangeValue={(newValue) => onChangeValue(value.set('opacity', newValue / 100))}
+          value={(value.get('opacity', 1) * 100)}
         />
       </View>
     );

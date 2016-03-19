@@ -17,6 +17,11 @@ export default class ImageSection extends Component {
   };
 
   renderResizeModeSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.resizeModeSection}>
         <Picker
@@ -26,18 +31,25 @@ export default class ImageSection extends Component {
             { label: 'Cover', value: 'cover' },
             { label: 'Stretch', value: 'stretch' },
           ]}
-          selectedValue="contain"
+          onChangeSelectedValue={(newValue) => onChangeValue(value.set('resizeMode', newValue))}
+          selectedValue={value.get('resizeMode', 'contain')}
         />
       </View>
     );
   }
 
   renderTintColorSection() {
+    const {
+      onChangeValue,
+      value,
+    } = this.props;
+
     return (
       <View style={styles.tintColorSection}>
         <ColorField
           name="Tint Color"
-          value={undefined}
+          onChangeValue={(newValue) => onChangeValue(value.set('tintColor', newValue))}
+          value={(value.get('tintColor'))}
         />
       </View>
     );
