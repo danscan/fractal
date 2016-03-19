@@ -35,7 +35,11 @@ export default StyleSheet.create({
   },
 
   button: {
+    borderRadius: 4,
     padding: 8,
+  },
+  buttonActive: {
+    backgroundColor: '#666',
   },
   buttonImage: {
     height: 22,

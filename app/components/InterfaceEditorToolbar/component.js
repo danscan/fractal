@@ -9,6 +9,7 @@ export default class InterfaceEditorToolbar extends Component {
   static propTypes = {
     canRedo: PropTypes.bool.isRequired,
     canUndo: PropTypes.bool.isRequired,
+    isShowingAddElementPanel: PropTypes.bool.isRequired,
     onPressAddElement: PropTypes.func.isRequired,
     onPressRedo: PropTypes.func.isRequired,
     onPressUndo: PropTypes.func.isRequired,
@@ -47,6 +48,7 @@ export default class InterfaceEditorToolbar extends Component {
 
   renderAddElementButton() {
     const {
+      isShowingAddElementPanel,
       onPressAddElement,
       selectedElement,
     } = this.props;
@@ -59,7 +61,10 @@ export default class InterfaceEditorToolbar extends Component {
     return this.renderImageButton({
       buttonImageSource: addElementButtonImage,
       buttonImageStyle: styles.buttonImage,
-      buttonStyle: styles.button,
+      buttonStyle: [
+        styles.button,
+        (isShowingAddElementPanel ? styles.buttonActive : {}),
+      ],
       onPress: onPressAddElement,
       enabled: addElementButtonShouldBeEnabled,
     });
