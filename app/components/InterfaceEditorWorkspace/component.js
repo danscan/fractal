@@ -5,6 +5,7 @@ import InterfaceEditorWorkspaceToolbar from '../InterfaceEditorWorkspaceToolbar'
 import InterfaceEditorElement from '../InterfaceEditorElement';
 import InterfaceEditorFullscreenPreview from '../InterfaceEditorFullscreenPreview';
 import InterfaceEditorWorkspaceBreadcrumbBar from '../InterfaceEditorWorkspaceBreadcrumbBar';
+import InterfaceEditorWorkspacePanelModal from '../InterfaceEditorWorkspacePanelModal';
 import styles from './styles';
 
 export default class InterfaceEditorWorkspace extends Component {
@@ -69,6 +70,7 @@ export default class InterfaceEditorWorkspace extends Component {
         <InterfaceEditorWorkspaceToolbar/>
         <InterfaceEditorWorkspaceBreadcrumbBar/>
         {this.renderFullScreenPreview()}
+        <InterfaceEditorWorkspacePanelModal/>
       </View>
     );
   }

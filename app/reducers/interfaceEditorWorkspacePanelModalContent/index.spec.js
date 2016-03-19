@@ -1,6 +1,7 @@
 /* global it, describe */
 import expect from 'expect';
-import reducer, { initialState } from './';
+import reducer from './';
+import initialState from './initialState';
 import {
   setInterfaceEditorWorkspacePanelModalContent,
 } from '../../actions/interfaceEditorWorkspacePanelModalContent';
