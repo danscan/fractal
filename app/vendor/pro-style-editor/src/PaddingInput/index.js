@@ -22,13 +22,14 @@ export default class PaddingInput extends Component {
   render() {
     const {
       onChangePaddingInputSelectedSides,
+      onChangeValue,
       paddingInputSelectedSides,
+      value,
     } = this.props;
     const {
       propName,
       fieldName,
     } = _getPaddingProp(paddingInputSelectedSides);
-    console.log('propName:', propName);
 
     return (
       <View style={styles.container}>
@@ -38,8 +39,10 @@ export default class PaddingInput extends Component {
         />
         <NumberIncrementField
           name={fieldName}
+          placeholder="--"
           unit="px"
-          value={0}
+          onChangeValue={(newValue) => onChangeValue(value.set(propName, newValue))}
+          value={(value.get(propName))}
         />
       </View>
     );

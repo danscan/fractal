@@ -22,13 +22,14 @@ export default class MarginInput extends Component {
   render() {
     const {
       onChangeMarginInputSelectedSides,
+      onChangeValue,
       marginInputSelectedSides,
+      value,
     } = this.props;
     const {
       propName,
       fieldName,
     } = _getMarginProp(marginInputSelectedSides);
-    console.log('propName:', propName);
 
     return (
       <View style={styles.container}>
@@ -38,8 +39,10 @@ export default class MarginInput extends Component {
         />
         <NumberIncrementField
           name={fieldName}
+          placeholder="--"
           unit="px"
-          value={0}
+          onChangeValue={(newValue) => onChangeValue(value.set(propName, newValue))}
+          value={(value.get(propName))}
         />
       </View>
     );
