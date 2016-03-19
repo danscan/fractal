@@ -23,12 +23,13 @@ export default class BorderCornersInput extends Component {
     const {
       borderCornersInputSelectedCorners,
       onChangeBorderCornersInputSelectedCorners,
+      onChangeValue,
+      value,
     } = this.props;
     const {
       propName,
       fieldName,
     } = _getBorderRadiusProp(borderCornersInputSelectedCorners);
-    console.log('propName:', propName);
 
     return (
       <View style={styles.container}>
@@ -43,7 +44,8 @@ export default class BorderCornersInput extends Component {
             name={fieldName}
             placeholder="--"
             unit="px"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set(propName, newValue))}
+            value={(value.get(propName))}
           />
         </View>
       </View>
