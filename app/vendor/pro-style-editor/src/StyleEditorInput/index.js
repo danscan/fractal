@@ -31,7 +31,7 @@ export default class StyleEditorInput extends Component {
         <CollapsibleListSection title="Border">
           <BorderSection {...this.props}/>
         </CollapsibleListSection>
-        <CollapsibleListSection title="Shadows">
+        <CollapsibleListSection title="Shadow">
           <ShadowSection {...this.props}/>
         </CollapsibleListSection>
         {/* <CollapsibleListSection title="Transforms"/> */}
