@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponents';
+import { interfaceEditorSelectedComponentKey } from '../../selectors/interfaceEditorSelectedComponentKey';
+import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
 import { interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners } from '../../selectors/interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
 import { interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
 import { interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
 import { interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides';
 import { interfaceEditorInspectorStyleEditorSelectedProp } from '../../selectors/interfaceEditorInspectorStyleEditorSelectedProp';
+import { applyInterfaceEditorComponentElementProp } from '../../actions/interfaceEditorComponents';
 import { setInterfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners } from '../../actions/interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
 import { setInterfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
 import { setInterfaceEditorInspectorStyleEditorInputMarginInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
@@ -20,7 +23,10 @@ const mapStateToProps = (state) => {
     borderSidesInputSelectedSides: interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides(state),
     marginInputSelectedSides: interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides(state),
     paddingInputSelectedSides: interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides(state),
+    propName: styleEditorSelectedProp,
     propType: selectedElement.getIn(['type', 'propTypes', styleEditorSelectedProp]),
+    selectedComponentKey: interfaceEditorSelectedComponentKey(state),
+    selectedElementPath: interfaceEditorSelectedElementPath(state),
     value: selectedElement.getIn(['props', styleEditorSelectedProp]),
   };
 };
@@ -30,6 +36,29 @@ const actionCreators = {
   onChangeBorderSidesInputSelectedSides: setInterfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides,
   onChangeMarginInputSelectedSides: setInterfaceEditorInspectorStyleEditorInputMarginInputSelectedSides,
   onChangePaddingInputSelectedSides: setInterfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides,
+  onChangeValue: applyInterfaceEditorComponentElementProp,
 };
 
-export default connect(mapStateToProps, actionCreators)(Component);
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const {
+    propName,
+    selectedComponentKey,
+    selectedElementPath,
+  } = stateProps;
+  // Create onChangeValue function prop...
+  const onChangeValue = (value) => dispatchProps.onChangeValue(
+    selectedComponentKey,
+    selectedElementPath,
+    propName,
+    value,
+  );
+
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    onChangeValue,
+    ...ownProps,
+  };
+};
+
+export default connect(mapStateToProps, actionCreators, mergeProps)(Component);

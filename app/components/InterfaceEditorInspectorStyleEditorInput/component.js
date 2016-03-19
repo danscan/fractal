@@ -8,6 +8,7 @@ import styles from './styles';
 export default class InterfaceEditorInspectorStyleEditor extends Component {
   static propTypes = {
     onChangeValue: PropTypes.func.isRequired,
+    propName: PropTypes.string.isRequired,
     propType: PropTypes.func,
     value: ImmutablePropTypes.map,
   };
