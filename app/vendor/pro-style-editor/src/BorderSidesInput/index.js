@@ -25,13 +25,12 @@ export default class BorderSidesInput extends Component {
     const {
       borderSidesInputSelectedSides,
       onChangeBorderSidesInputSelectedSides,
+      onChangeValue,
+      value,
     } = this.props;
     const colorPropName = _getBorderPropName(borderSidesInputSelectedSides, 'Color');
     const stylePropName = _getBorderPropName(borderSidesInputSelectedSides, 'Style');
     const widthPropName = _getBorderPropName(borderSidesInputSelectedSides, 'Width');
-    console.log('colorPropName:', colorPropName);
-    console.log('stylePropName:', stylePropName);
-    console.log('widthPropName:', widthPropName);
 
     return (
       <View style={styles.container}>
@@ -86,16 +85,19 @@ export default class BorderSidesInput extends Component {
                 value: 'dotted',
               },
             ]}
-            selectedValue={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set(stylePropName, newValue))}
+            value={(value.get(stylePropName))}
           />
           <NumberIncrementField
             name="Width"
             placeholder="--"
             unit="px"
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set(widthPropName, newValue))}
+            value={(value.get(widthPropName))}
           />
           <ColorField
-            value={undefined}
+            onChangeValue={(newValue) => onChangeValue(value.set(colorPropName, newValue))}
+            value={(value.get(colorPropName))}
           />
         </View>
       </View>
