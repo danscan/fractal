@@ -2,8 +2,8 @@
 import expect from 'expect';
 import { List } from 'immutable';
 import reducer, { initialState } from './';
-import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEditorSelectedElementPath';
 import { removeInterfaceEditorComponentElement } from '../../actions/interfaceEditorComponents';
+import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEditorSelectedElementPath';
 
 describe('interfaceEditorSelectedElementPath reducer', () => {
   it('should return the initial state', () => {
