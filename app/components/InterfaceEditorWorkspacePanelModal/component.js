@@ -3,7 +3,7 @@ import styles from './styles';
 
 export default class InterfaceEditorWorkspacePanelModal extends Component {
   static propTypes = {
-    content: PropTypes.func,
+    content: PropTypes.element,
     style: View.propTypes.style,
   };
 
