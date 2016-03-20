@@ -9,7 +9,7 @@ import styles from './styles';
 
 export default class BorderCornersInput extends Component {
   static propTypes = {
-    borderCornersInputSelectedCorners: BoxBorderCorners.propTypes.selectedSides,
+    borderCornersInputSelectedCorners: BoxBorderCorners.propTypes.selectedCorners,
     onChangeBorderCornersInputSelectedCorners: PropTypes.func.isRequired,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
