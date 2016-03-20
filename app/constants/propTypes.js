@@ -13,7 +13,7 @@ export const canvasOrientationPropType = PropTypes.oneOf([
   landscapeOrientation,
 ]);
 
-export const elementTypePropType = PropTypes.shape({
+export const elementTypePropType = ImmutablePropTypes.contains({
   name: PropTypes.string.isRequired,
   component: PropTypes.func.isRequired,
   imageSource: Image.propTypes,
@@ -35,8 +35,3 @@ export const elementPropType = ImmutablePropTypes.contains({
   type: PropTypes.func.isRequired,
   props: PropTypes.object,
 });
-
-export const propInputTypePropType = PropTypes.oneOf([
-  'Object',
-  'Switch',
-]);

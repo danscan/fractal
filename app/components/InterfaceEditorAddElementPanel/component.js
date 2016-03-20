@@ -6,7 +6,7 @@ import styles from './styles';
 export default class InterfaceEditorAddElementPanel extends Component {
   static propTypes = {
     onPressElementType: PropTypes.func.isRequired,
-    elementTypeGroups: elementTypeGroupsListPropType,
+    elementTypeGroups: elementTypeGroupsListPropType.isRequired,
     style: View.propTypes.style,
   };
 
