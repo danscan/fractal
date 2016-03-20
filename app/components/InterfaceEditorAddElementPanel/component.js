@@ -1,4 +1,4 @@
-import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { elementTypeGroupsListPropType } from '../../constants/propTypes';
 import CollapsibleListSection from '../../components/CollapsibleListSection';
 import styles from './styles';
@@ -24,9 +24,9 @@ export default class InterfaceEditorAddElementPanel extends Component {
     const { elementTypeGroups } = this.props;
 
     return (
-      <View style={styles.contentSection}>
+      <ScrollView style={styles.contentSection}>
         {elementTypeGroups.map(elementTypeGroup => this.renderElementTypeGroup(elementTypeGroup))}
-      </View>
+      </ScrollView>
     );
   }
 
