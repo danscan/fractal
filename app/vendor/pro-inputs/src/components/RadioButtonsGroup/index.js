@@ -60,7 +60,7 @@ export default class RadioButtonsGroup extends Component {
       (isLastItem ? styles.lastItemButton : {}),
     ];
     const buttonContents = text
-                          ? (<Text style={styles.buttonText}>{text}</Text>)
+                          ? (<Text key={value} style={styles.buttonText}>{text}</Text>)
                           : image;
 
     return (
