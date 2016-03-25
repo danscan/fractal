@@ -11,52 +11,10 @@ export default StyleSheet.create({
   element: {
     backgroundColor: '#4b4b4b',
   },
-  elementHandleSection: {
-    alignItems: 'center',
-    borderBottomColor: 'hsla(0,0%,0%,0.3)',
-    borderBottomWidth: 1,
-    borderTopColor: 'hsla(0,0%,100%,0.1)',
-    borderTopWidth: 1,
-    flexDirection: 'row',
-  },
-  rootElementHandleSection: {
-    borderTopWidth: 0,
-  },
   selectedElementHandleSection: {
     backgroundColor: '#00b5ec',
     borderBottomColor: '#191d1f',
     borderTopColor: 'hsla(0,0%,100%,0.2)',
-  },
-  elementToggleExpansionArrow: {
-    backgroundColor: 'gray',
-    height: 32,
-    width: 24,
-  },
-  elementTypeImage: {
-    marginRight: 10,
-    resizeMode: 'contain',
-    tintColor: 'white',
-    width: 12,
-  },
-  elementHandle: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    paddingVertical: 10,
-    paddingLeft: 10,
-  },
-  elementChildrenSection: {},
-  elementNameLabel: {
-    color: 'white',
-    fontFamily: 'Avenir',
-    fontSize: 12,
-  },
-  changeElementDisplayNameButton: {
-    padding: 4,
-  },
-  changeElementDisplayNameButtonImage: {
-    width: 18,
-    height: 18,
   },
 
   selectedElementActionsSection: {

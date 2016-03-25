@@ -1,8 +1,10 @@
 /* global it, describe */
 import expect from 'expect';
+import { Set } from 'immutable';
 import reducer, { initialState } from './';
 import {
   setInterfaceEditorInspectorStyleEditorInputCollapsedSections,
+  toggleInterfaceEditorInspectorTreeNavigatorElementCollapsed,
 } from '../../actions/interfaceEditorInspectorStyleEditorInputCollapsedSections';
 
 describe('interfaceEditorInspectorStyleEditorInputCollapsedSections reducer', () => {
@@ -18,5 +20,14 @@ describe('interfaceEditorInspectorStyleEditorInputCollapsedSections reducer', ()
     expect(
       reducer(undefined, setInterfaceEditorInspectorStyleEditorInputCollapsedSections(collapsedSections))
     ).toEqual(collapsedSections);
+  });
+
+  it('should handle action created by the toggleInterfaceEditorInspectorTreeNavigatorElementCollapsed action creator', () => {
+    const elementPath = [0, 1];
+    const expectedState = new Set([elementPath]);
+
+    expect(
+      reducer(undefined, toggleInterfaceEditorInspectorTreeNavigatorElementCollapsed(elementPath))
+    ).toEqual(expectedState);
   });
 });

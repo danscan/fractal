@@ -2,7 +2,10 @@
 import expect from 'expect';
 import { List } from 'immutable';
 import reducer, { initialState } from './';
-import { removeInterfaceEditorComponentElement } from '../../actions/interfaceEditorComponents';
+import {
+  removeInterfaceEditorComponentElement,
+  moveInterfaceEditorComponentElement,
+} from '../../actions/interfaceEditorComponents';
 import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEditorSelectedElementPath';
 
 describe('interfaceEditorSelectedElementPath reducer', () => {
@@ -27,5 +30,14 @@ describe('interfaceEditorSelectedElementPath reducer', () => {
     expect(
       reducer(selectedElementPath, removeInterfaceEditorComponentElement(selectedElementPath))
     ).toEqual(expectedNewSelectedElementPath);
+  });
+
+  it('should handle action created by the moveInterfaceEditorComponentElement action creator', () => {
+    const selectedElementPath = new List([0, 1]);
+    const desiredParentElementPath = new List([1]);
+
+    expect(
+      reducer(selectedElementPath, moveInterfaceEditorComponentElement(selectedElementPath, desiredParentElementPath))
+    ).toEqual(desiredParentElementPath);
   });
 });

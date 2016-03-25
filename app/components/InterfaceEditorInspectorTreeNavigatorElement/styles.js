@@ -1,0 +1,58 @@
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+  container: {},
+
+  headerSection: {
+    alignItems: 'center',
+    borderBottomColor: 'hsla(0,0%,0%,0.3)',
+    borderBottomWidth: 1,
+    borderTopColor: 'hsla(0,0%,100%,0.1)',
+    borderTopWidth: 1,
+    flexDirection: 'row',
+  },
+  toggleCollapsedButton: {
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  toggleCollapsedButtonImage: {
+    width: 8,
+    height: 4,
+  },
+  toggleCollapsedButtonImageCollapsed: {
+    width: 4,
+    height: 8,
+  },
+  handle: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    paddingVertical: 10,
+    paddingLeft: 10,
+  },
+  elementTypeImage: {
+    marginRight: 10,
+    resizeMode: 'contain',
+    tintColor: 'white',
+    width: 12,
+  },
+  titleLabel: {
+    color: 'white',
+    fontFamily: 'Avenir',
+    fontSize: 12,
+  },
+  editButton: {
+    padding: 8,
+  },
+  editButtonImage: {
+    width: 18,
+    height: 18,
+  },
+
+  contentSection: {
+    paddingLeft: 18,
+  },
+  contentSectionCollapsed: {},
+});

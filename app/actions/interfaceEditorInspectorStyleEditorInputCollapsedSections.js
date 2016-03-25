@@ -1,8 +1,0 @@
-export const SET_INTERFACE_EDITOR_INSPECTOR_STYLE_EDITOR_INPUT_COLLAPSED_SECTIONS = 'SET_INTERFACE_EDITOR_INSPECTOR_STYLE_EDITOR_INPUT_COLLAPSED_SECTIONS';
-
-export function setInterfaceEditorInspectorStyleEditorInputCollapsedSections(collapsedSections) {
-  return {
-    type: SET_INTERFACE_EDITOR_INSPECTOR_STYLE_EDITOR_INPUT_COLLAPSED_SECTIONS,
-    collapsedSections,
-  };
-}
