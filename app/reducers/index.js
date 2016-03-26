@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 // (App reducers)
-import interfaceEditorComponents from './interfaceEditorComponents';
+import interfaceEditorComponent from './interfaceEditorComponent';
 import interfaceEditorSelectedComponentKey from './interfaceEditorSelectedComponentKey';
 import interfaceEditorSelectedElementPath from './interfaceEditorSelectedElementPath';
 import interfaceEditorCanvasDevice from './interfaceEditorCanvasDevice';
@@ -19,7 +19,7 @@ import interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners
 import interfaceEditorInspectorTreeNavigatorCollapsedElementPaths from './interfaceEditorInspectorTreeNavigatorCollapsedElementPaths';
 
 const reducer = combineReducers({
-  interfaceEditorComponents,
+  interfaceEditorComponent,
   interfaceEditorSelectedComponentKey,
   interfaceEditorSelectedElementPath,
   interfaceEditorCanvasDevice,

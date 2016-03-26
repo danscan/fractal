@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponents';
+import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponent';
 import { interfaceEditorSelectedComponentKey } from '../../selectors/interfaceEditorSelectedComponentKey';
 import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
 import { interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners } from '../../selectors/interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
@@ -7,7 +7,7 @@ import { interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides }
 import { interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
 import { interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides';
 import { interfaceEditorInspectorStyleEditorSelectedProp } from '../../selectors/interfaceEditorInspectorStyleEditorSelectedProp';
-import { applyInterfaceEditorComponentElementProp } from '../../actions/interfaceEditorComponents';
+import { applyInterfaceEditorComponentElementProp } from '../../actions/interfaceEditorComponent';
 import { setInterfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners } from '../../actions/interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
 import { setInterfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
 import { setInterfaceEditorInspectorStyleEditorInputMarginInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';

@@ -8,7 +8,7 @@ import {
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
   // UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
   // REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-} from '../../actions/interfaceEditorComponents';
+} from '../../actions/interfaceEditorComponent';
 
 import initialState from './initialState';
 
@@ -22,16 +22,7 @@ import reduceRemoveInterfaceEditorComponentElementProp from './reduceRemoveInter
 // import reduceUndoInterfaceEditorComponentAction from './reduceUndoInterfaceEditorComponentAction';
 // import reduceRedoInterfaceEditorComponentAction from './reduceRedoInterfaceEditorComponentAction';
 
-export default function interfaceEditorComponents(state = initialState, action) {
-  const { componentKey } = action;
-  const componentState = state.get(componentKey);
-
-  return state
-    .set(componentKey, _reduceActionWithComponentState(componentState, action));
-}
-
-// (Private helpers)
-function _reduceActionWithComponentState(state, action) {
+export default function interfaceEditorComponent(state = initialState, action) {
   switch (action.type) {
     case ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD:
       return reduceAddInterfaceEditorComponentElementChild(state, action);

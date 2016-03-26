@@ -8,78 +8,69 @@ export const REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP = 'REMOVE_INTERFACE_
 export const UNDO_INTERFACE_EDITOR_COMPONENT_ACTION = 'UNDO_INTERFACE_EDITOR_COMPONENT_ACTION';
 export const REDO_INTERFACE_EDITOR_COMPONENT_ACTION = 'REDO_INTERFACE_EDITOR_COMPONENT_ACTION';
 
-export function addInterfaceEditorComponentElementChild(componentKey, elementPath, child) {
+export function addInterfaceEditorComponentElementChild(elementPath, child) {
   return {
     type: ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD,
-    componentKey,
     elementPath,
     child,
   };
 }
 
-export function removeInterfaceEditorComponentElement(componentKey, elementPath) {
+export function removeInterfaceEditorComponentElement(elementPath) {
   return {
     type: REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-    componentKey,
     elementPath,
   };
 }
 
-export function duplicateInterfaceEditorComponentElement(componentKey, elementPath) {
+export function duplicateInterfaceEditorComponentElement(elementPath) {
   return {
     type: DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-    componentKey,
     elementPath,
   };
 }
 
-export function moveInterfaceEditorComponentElement(componentKey, elementPath, desiredParentElementPath) {
+export function moveInterfaceEditorComponentElement(elementPath, desiredParentElementPath) {
   return {
     type: MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-    componentKey,
     elementPath,
     desiredParentElementPath,
   };
 }
 
-export function changeInterfaceEditorComponentElementDisplayName(componentKey, elementPath, newDisplayName) {
+export function changeInterfaceEditorComponentElementDisplayName(elementPath, newDisplayName) {
   return {
     type: CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
-    componentKey,
     elementPath,
     newDisplayName,
   };
 }
 
-export function applyInterfaceEditorComponentElementProp(componentKey, elementPath, propName, propValue) {
+export function applyInterfaceEditorComponentElementProp(elementPath, propName, propValue) {
   return {
     type: APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-    componentKey,
     elementPath,
     propName,
     propValue,
   };
 }
 
-export function removeInterfaceEditorComponentElementProp(componentKey, elementPath, propName) {
+export function removeInterfaceEditorComponentElementProp(elementPath, propName) {
   return {
     type: REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-    componentKey,
     elementPath,
     propName,
   };
 }
 
-export function undoInterfaceEditorComponentAction(componentKey) {
+export function undoInterfaceEditorComponentAction() {
   return {
     type: UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-    componentKey,
   };
 }
 
-export function redoInterfaceEditorComponentAction(componentKey) {
+export function redoInterfaceEditorComponentAction() {
   return {
     type: REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-    componentKey,
   };
 }

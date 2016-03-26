@@ -5,7 +5,7 @@ import reducer, { initialState } from './';
 import {
   removeInterfaceEditorComponentElement,
   moveInterfaceEditorComponentElement,
-} from '../../actions/interfaceEditorComponents';
+} from '../../actions/interfaceEditorComponent';
 import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEditorSelectedElementPath';
 
 describe('interfaceEditorSelectedElementPath reducer', () => {

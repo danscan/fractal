@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponents';
+import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponent';
 import { interfaceEditorInspectorStyleEditorSelectedProp } from '../../selectors/interfaceEditorInspectorStyleEditorSelectedProp';
 import { setInterfaceEditorInspectorStyleEditorSelectedProp } from '../../actions/interfaceEditorInspectorStyleEditorSelectedProp';
 import Component from './component';

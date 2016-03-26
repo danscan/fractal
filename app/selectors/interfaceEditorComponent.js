@@ -1,35 +1,20 @@
 import { createSelector } from 'reselect';
 import { List, OrderedMap } from 'immutable';
-import { interfaceEditorSelectedComponentKey } from './interfaceEditorSelectedComponentKey';
 import { interfaceEditorSelectedElementPath } from './interfaceEditorSelectedElementPath';
 import treePathByElementPath from '../utils/treePathByElementPath';
 
-export function interfaceEditorComponents(state) {
-  return state.interfaceEditorComponents;
+export function interfaceEditorComponent(state) {
+  return state.interfaceEditorComponent;
 }
 
-export const interfaceEditorSelectedComponent = createSelector(
-  interfaceEditorComponents,
-  interfaceEditorSelectedComponentKey,
-  (componentsState, selectedComponentKeyState) => {
-    // If selectedComponentKey has a (truthy) value, return the component w/ its
-    // value as its key.  Otherwise return the first component.
-    if (selectedComponentKeyState) {
-      return componentsState.get(selectedComponentKeyState);
-    }
-
-    return componentsState.first();
-  },
-);
-
-export const interfaceEditorSelectedComponentTree = createSelector(
-  interfaceEditorSelectedComponent,
+export const interfaceEditorComponentTree = createSelector(
+  interfaceEditorComponent,
   // Currently, `interfaceEditorComponents` just stores component trees
   (treeState) => treeState,
 );
 
 export const interfaceEditorSelectedElement = createSelector(
-  interfaceEditorSelectedComponentTree,
+  interfaceEditorComponentTree,
   interfaceEditorSelectedElementPath,
   (treeState, selectedElementPathState) => {
     const selectedElementTreePath = treePathByElementPath(selectedElementPathState);
@@ -40,7 +25,7 @@ export const interfaceEditorSelectedElement = createSelector(
 
 export const interfaceEditorSelectedElementBreadcrumbElements = createSelector(
   interfaceEditorSelectedElementPath,
-  interfaceEditorSelectedComponentTree,
+  interfaceEditorComponentTree,
   (selectedElementPathState, treeState) => {
     const baseBreadCrumbElements = new OrderedMap([[new List(), treeState]]);
 

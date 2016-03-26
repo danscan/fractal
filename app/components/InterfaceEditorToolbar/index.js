@@ -1,7 +1,7 @@
 import React from 'react-native';
 import { connect } from 'react-redux';
 import { setInterfaceEditorWorkspacePanelModalContent } from '../../actions/interfaceEditorWorkspacePanelModalContent';
-import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponents';
+import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponent';
 import { interfaceEditorWorkspacePanelModalContent } from '../../selectors/interfaceEditorWorkspacePanelModalContent';
 import InterfaceEditorAddElementPanel from '../InterfaceEditorAddElementPanel';
 import Component from './component';

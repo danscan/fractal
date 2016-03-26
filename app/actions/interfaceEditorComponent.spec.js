@@ -2,34 +2,34 @@
 import expect from 'expect';
 import {
   ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD,
-  addInterfaceEditorComponentElementChild,
+  addInterfaceEditorComponentTreeElementChild,
 
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-  removeInterfaceEditorComponentElement,
+  removeInterfaceEditorComponentTreeElement,
 
   DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-  duplicateInterfaceEditorComponentElement,
+  duplicateInterfaceEditorComponentTreeElement,
 
   MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-  moveInterfaceEditorComponentElement,
+  moveInterfaceEditorComponentTreeElement,
 
   CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
-  changeInterfaceEditorComponentElementDisplayName,
+  changeInterfaceEditorComponentTreeElementDisplayName,
 
   APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-  applyInterfaceEditorComponentElementProp,
+  applyInterfaceEditorComponentTreeElementProp,
 
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-  removeInterfaceEditorComponentElementProp,
+  removeInterfaceEditorComponentTreeElementProp,
 
   UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
   undoInterfaceEditorComponentAction,
 
   REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
   redoInterfaceEditorComponentAction,
-} from './interfaceEditorComponents';
+} from './interfaceEditorComponentTrees';
 
-describe('interfaceEditorComponents actions file', () => {
+describe('interfaceEditorComponentTrees actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for adding interface editor component element child', () => {
       expect(
@@ -88,112 +88,98 @@ describe('interfaceEditorComponents actions file', () => {
 
   describe('action creator(s)', () => {
     it('should export an action creator for adding interface editor component element child', () => {
-      const componentKey = {};
       const elementPath = {};
       const child = {};
       const expectedAction = {
         type: ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD,
-        componentKey,
         elementPath,
         child,
       };
 
       expect(
-        addInterfaceEditorComponentElementChild(componentKey, elementPath, child)
+        addInterfaceEditorComponentTreeElementChild(elementPath, child)
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for removing interface editor component element', () => {
-      const componentKey = {};
       const elementPath = {};
       const expectedAction = {
         type: REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-        componentKey,
         elementPath,
       };
 
       expect(
-        removeInterfaceEditorComponentElement(componentKey, elementPath)
+        removeInterfaceEditorComponentTreeElement(elementPath)
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for duplicating interface editor component element', () => {
-      const componentKey = {};
       const elementPath = {};
       const expectedAction = {
         type: DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-        componentKey,
         elementPath,
       };
 
       expect(
-        duplicateInterfaceEditorComponentElement(componentKey, elementPath)
+        duplicateInterfaceEditorComponentTreeElement(elementPath)
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for moving interface editor component element', () => {
-      const componentKey = {};
       const elementPath = {};
       const desiredParentElementPath = {};
       const expectedAction = {
         type: MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-        componentKey,
         elementPath,
         desiredParentElementPath,
       };
 
       expect(
-        moveInterfaceEditorComponentElement(componentKey, elementPath, desiredParentElementPath)
+        moveInterfaceEditorComponentTreeElement(elementPath, desiredParentElementPath)
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for changing interface editor component element display name', () => {
-      const componentKey = {};
       const elementPath = {};
       const newDisplayName = {};
       const expectedAction = {
         type: CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
-        componentKey,
         elementPath,
         newDisplayName,
       };
 
       expect(
-        changeInterfaceEditorComponentElementDisplayName(componentKey, elementPath, newDisplayName)
+        changeInterfaceEditorComponentTreeElementDisplayName(elementPath, newDisplayName)
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for applying interface editor component element prop', () => {
-      const componentKey = {};
       const elementPath = {};
       const propName = {};
       const propValue = {};
       const expectedAction = {
         type: APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-        componentKey,
         elementPath,
         propName,
         propValue,
       };
 
       expect(
-        applyInterfaceEditorComponentElementProp(componentKey, elementPath, propName, propValue)
+        applyInterfaceEditorComponentTreeElementProp(elementPath, propName, propValue)
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for removing interface editor component element prop', () => {
-      const componentKey = {};
       const elementPath = {};
       const propName = {};
       const expectedAction = {
         type: REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-        componentKey,
         elementPath,
         propName,
       };
 
       expect(
-        removeInterfaceEditorComponentElementProp(componentKey, elementPath, propName)
+        removeInterfaceEditorComponentTreeElementProp(elementPath, propName)
       ).toEqual(expectedAction);
     });
 
