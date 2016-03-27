@@ -27,9 +27,9 @@ import {
 
   REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
   redoInterfaceEditorComponentAction,
-} from './interfaceEditorComponentTrees';
+} from './interfaceEditorComponent';
 
-describe('interfaceEditorComponentTrees actions file', () => {
+describe('interfaceEditorComponent actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for adding interface editor component element child', () => {
       expect(
