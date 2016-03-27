@@ -4,7 +4,7 @@ import { interfaceEditorSelectedElementPath } from './interfaceEditorSelectedEle
 import treePathByElementPath from '../utils/treePathByElementPath';
 
 export function interfaceEditorComponent(state) {
-  return state.interfaceEditorComponent;
+  return state.interfaceEditorComponent.present;
 }
 
 export const interfaceEditorComponentTree = createSelector(
@@ -43,3 +43,15 @@ export const interfaceEditorSelectedElementBreadcrumbElements = createSelector(
     }, baseBreadCrumbElements);
   },
 );
+
+export function canRedoInterfaceEditorComponentAction(state) {
+  const future = state.interfaceEditorComponent.future || [];
+
+  return future.length > 0;
+}
+
+export function canUndoInterfaceEditorComponentAction(state) {
+  const past = state.interfaceEditorComponent.past || [];
+
+  return past.length > 0;
+}

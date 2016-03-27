@@ -1,17 +1,29 @@
 import React from 'react-native';
 import { connect } from 'react-redux';
+import {
+  redoInterfaceEditorComponentAction,
+  undoInterfaceEditorComponentAction,
+} from '../../actions/interfaceEditorComponent';
 import { setInterfaceEditorWorkspacePanelModalContent } from '../../actions/interfaceEditorWorkspacePanelModalContent';
-import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponent';
+import {
+  canRedoInterfaceEditorComponentAction,
+  canUndoInterfaceEditorComponentAction,
+  interfaceEditorSelectedElement,
+} from '../../selectors/interfaceEditorComponent';
 import { interfaceEditorWorkspacePanelModalContent } from '../../selectors/interfaceEditorWorkspacePanelModalContent';
 import InterfaceEditorAddElementPanel from '../InterfaceEditorAddElementPanel';
 import Component from './component';
 
 const mapStateToProps = (state) => ({
+  canRedo: canRedoInterfaceEditorComponentAction(state),
+  canUndo: canUndoInterfaceEditorComponentAction(state),
   selectedElement: interfaceEditorSelectedElement(state),
   workspacePanelModalContent: interfaceEditorWorkspacePanelModalContent(state),
 });
 
 const actionCreators = {
+  onPressRedo: redoInterfaceEditorComponentAction,
+  onPressUndo: undoInterfaceEditorComponentAction,
   setInterfaceEditorWorkspacePanelModalContent,
 };
 

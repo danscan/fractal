@@ -6,9 +6,10 @@ import {
   CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
   APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-  // UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-  // REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
+  UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
+  REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
 } from '../../actions/interfaceEditorComponent';
+import undoable from 'redux-undo';
 
 import initialState from './initialState';
 
@@ -19,10 +20,8 @@ import reduceMoveInterfaceEditorComponentElement from './reduceMoveInterfaceEdit
 import reduceChangeInterfaceEditorComponentElementDisplayName from './reduceChangeInterfaceEditorComponentElementDisplayName';
 import reduceApplyInterfaceEditorComponentElementProp from './reduceApplyInterfaceEditorComponentElementProp';
 import reduceRemoveInterfaceEditorComponentElementProp from './reduceRemoveInterfaceEditorComponentElementProp';
-// import reduceUndoInterfaceEditorComponentAction from './reduceUndoInterfaceEditorComponentAction';
-// import reduceRedoInterfaceEditorComponentAction from './reduceRedoInterfaceEditorComponentAction';
 
-export default function interfaceEditorComponent(state = initialState, action) {
+export default undoable(function interfaceEditorComponent(state = initialState, action) {
   switch (action.type) {
     case ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD:
       return reduceAddInterfaceEditorComponentElementChild(state, action);
@@ -38,11 +37,28 @@ export default function interfaceEditorComponent(state = initialState, action) {
       return reduceApplyInterfaceEditorComponentElementProp(state, action);
     case REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
       return reduceRemoveInterfaceEditorComponentElementProp(state, action);
-    // case UNDO_INTERFACE_EDITOR_COMPONENT_ACTION:
-    //   return reduceUndoInterfaceEditorComponentAction(state, action);
-    // case REDO_INTERFACE_EDITOR_COMPONENT_ACTION:
-    //   return reduceRedoInterfaceEditorComponentAction(state, action);
     default:
       return state;
   }
+}, {
+  redoType: REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
+  undoType: UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
+
+  filter: filterUndoableActionTypes,
+});
+
+// Filter undoable action types
+function filterUndoableActionTypes(action) {
+  const undoableActionTypes = [
+    ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD,
+    REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
+    DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
+    MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
+    CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
+    APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
+    REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
+  ];
+
+
+  return undoableActionTypes.indexOf(action.type) >= 0;
 }
