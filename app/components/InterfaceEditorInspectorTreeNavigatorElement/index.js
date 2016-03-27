@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { AlertIOS } from 'react-native';
+import { changeInterfaceEditorComponentElementDisplayName } from '../../actions/interfaceEditorComponent';
 import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEditorSelectedElementPath';
 import { toggleInterfaceEditorInspectorTreeNavigatorElementCollapsed } from '../../actions/interfaceEditorInspectorTreeNavigatorCollapsedElementPaths';
 import { interfaceEditorInspectorTreeNavigatorCollapsedElementPaths } from '../../selectors/interfaceEditorInspectorTreeNavigatorCollapsedElementPaths';
@@ -10,6 +12,21 @@ const mapStateToProps = (state, ownProps) => ({
 
 const actionCreators = (dispatch, ownProps) => ({
   onPress: () => dispatch(setInterfaceEditorSelectedElementPath(ownProps.elementPath)),
+  onPressEdit: () => {
+    return AlertIOS.prompt(
+      `Enter new display name.`,
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Set Display Name',
+          onPress: (newDisplayName) => dispatch(changeInterfaceEditorComponentElementDisplayName(ownProps.elementPath, newDisplayName)),
+        },
+      ],
+    );
+  },
   onPressToggleCollapsed: () => dispatch(toggleInterfaceEditorInspectorTreeNavigatorElementCollapsed(ownProps.elementPath)),
 });
 
