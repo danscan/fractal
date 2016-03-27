@@ -1,88 +1,89 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorComponent');
+
 import {
   ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD,
-  addInterfaceEditorComponentTreeElementChild,
+  addInterfaceEditorComponentElementChild,
 
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-  removeInterfaceEditorComponentTreeElement,
+  removeInterfaceEditorComponentElement,
 
   DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-  duplicateInterfaceEditorComponentTreeElement,
+  duplicateInterfaceEditorComponentElement,
 
   MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-  moveInterfaceEditorComponentTreeElement,
+  moveInterfaceEditorComponentElement,
 
   CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
-  changeInterfaceEditorComponentTreeElementDisplayName,
+  changeInterfaceEditorComponentElementDisplayName,
 
   APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-  applyInterfaceEditorComponentTreeElementProp,
+  applyInterfaceEditorComponentElementProp,
 
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-  removeInterfaceEditorComponentTreeElementProp,
+  removeInterfaceEditorComponentElementProp,
 
   UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
   undoInterfaceEditorComponentAction,
 
   REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
   redoInterfaceEditorComponentAction,
-} from './interfaceEditorComponent';
+} from '../interfaceEditorComponent';
 
 describe('interfaceEditorComponent actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for adding interface editor component element child', () => {
       expect(
         ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for removing interface editor component element', () => {
       expect(
         REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for duplicating interface editor component element', () => {
       expect(
         DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for moving interface editor component element', () => {
       expect(
         MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for changing interface editor component element display name', () => {
       expect(
         CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for applying interface editor component element prop', () => {
       expect(
         APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for removing interface editor component element prop', () => {
       expect(
         REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for undoing interface editor component action', () => {
       expect(
         UNDO_INTERFACE_EDITOR_COMPONENT_ACTION
-      ).toExist();
+      ).toBeDefined();
     });
 
     it('should export an action type for redoing interface editor component action', () => {
       expect(
         REDO_INTERFACE_EDITOR_COMPONENT_ACTION
-      ).toExist();
+      ).toBeDefined();
     });
   });
 
@@ -97,7 +98,7 @@ describe('interfaceEditorComponent actions file', () => {
       };
 
       expect(
-        addInterfaceEditorComponentTreeElementChild(elementPath, child)
+        addInterfaceEditorComponentElementChild(elementPath, child)
       ).toEqual(expectedAction);
     });
 
@@ -109,7 +110,7 @@ describe('interfaceEditorComponent actions file', () => {
       };
 
       expect(
-        removeInterfaceEditorComponentTreeElement(elementPath)
+        removeInterfaceEditorComponentElement(elementPath)
       ).toEqual(expectedAction);
     });
 
@@ -121,7 +122,7 @@ describe('interfaceEditorComponent actions file', () => {
       };
 
       expect(
-        duplicateInterfaceEditorComponentTreeElement(elementPath)
+        duplicateInterfaceEditorComponentElement(elementPath)
       ).toEqual(expectedAction);
     });
 
@@ -135,7 +136,7 @@ describe('interfaceEditorComponent actions file', () => {
       };
 
       expect(
-        moveInterfaceEditorComponentTreeElement(elementPath, desiredParentElementPath)
+        moveInterfaceEditorComponentElement(elementPath, desiredParentElementPath)
       ).toEqual(expectedAction);
     });
 
@@ -149,7 +150,7 @@ describe('interfaceEditorComponent actions file', () => {
       };
 
       expect(
-        changeInterfaceEditorComponentTreeElementDisplayName(elementPath, newDisplayName)
+        changeInterfaceEditorComponentElementDisplayName(elementPath, newDisplayName)
       ).toEqual(expectedAction);
     });
 
@@ -165,7 +166,7 @@ describe('interfaceEditorComponent actions file', () => {
       };
 
       expect(
-        applyInterfaceEditorComponentTreeElementProp(elementPath, propName, propValue)
+        applyInterfaceEditorComponentElementProp(elementPath, propName, propValue)
       ).toEqual(expectedAction);
     });
 
@@ -179,31 +180,27 @@ describe('interfaceEditorComponent actions file', () => {
       };
 
       expect(
-        removeInterfaceEditorComponentTreeElementProp(elementPath, propName)
+        removeInterfaceEditorComponentElementProp(elementPath, propName)
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for undoing interface editor component action', () => {
-      const componentKey = {};
       const expectedAction = {
         type: UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-        componentKey,
       };
 
       expect(
-        undoInterfaceEditorComponentAction(componentKey)
+        undoInterfaceEditorComponentAction()
       ).toEqual(expectedAction);
     });
 
     it('should export an action creator for redoing interface editor component action', () => {
-      const componentKey = {};
       const expectedAction = {
         type: REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-        componentKey,
       };
 
       expect(
-        redoInterfaceEditorComponentAction(componentKey)
+        redoInterfaceEditorComponentAction()
       ).toEqual(expectedAction);
     });
   });

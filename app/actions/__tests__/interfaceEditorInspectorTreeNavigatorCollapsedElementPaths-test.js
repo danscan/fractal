@@ -1,32 +1,33 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorInspectorTreeNavigatorCollapsedElementPaths');
+
 import {
   SET_INTERFACE_EDITOR_INSPECTOR_TREE_NAVIGATOR_COLLAPSED_ELEMENT_PATHS,
   setInterfaceEditorInspectorTreeNavigatorCollapsedElementPaths,
 
   TOGGLE_INTERFACE_EDITOR_INSPECTOR_TREE_NAVIGATOR_ELEMENT,
   toggleInterfaceEditorInspectorTreeNavigatorElementCollapsed,
-} from './interfaceEditorInspectorTreeNavigatorCollapsedElementPaths';
+} from '../interfaceEditorInspectorTreeNavigatorCollapsedElementPaths';
 
 describe('interfaceEditorInspectorTreeNavigatorCollapsedElementPaths actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for setting interface editor inspector tree navigator collapsed element paths', () => {
       expect(
         SET_INTERFACE_EDITOR_INSPECTOR_TREE_NAVIGATOR_COLLAPSED_ELEMENT_PATHS
-      ).toExist();
+      ).toBeDefined();
     });
   });
 
   describe('action creator(s)', () => {
     it('should export an action creator for setting interface editor inspector tree navigator collapsed element paths', () => {
-      const collapsedSections = {};
+      const collapsedElementPaths = {};
       const expectedAction = {
         type: SET_INTERFACE_EDITOR_INSPECTOR_TREE_NAVIGATOR_COLLAPSED_ELEMENT_PATHS,
-        collapsedSections,
+        collapsedElementPaths,
       };
 
       expect(
-        setInterfaceEditorInspectorTreeNavigatorCollapsedElementPaths(collapsedSections)
+        setInterfaceEditorInspectorTreeNavigatorCollapsedElementPaths(collapsedElementPaths)
       ).toEqual(expectedAction);
     });
 

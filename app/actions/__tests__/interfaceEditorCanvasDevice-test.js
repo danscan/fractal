@@ -1,16 +1,17 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorCanvasDevice');
+
 import {
   SET_INTERFACE_EDITOR_CANVAS_DEVICE,
   setInterfaceEditorCanvasDevice,
-} from './interfaceEditorCanvasDevice';
+} from '../interfaceEditorCanvasDevice';
 
 describe('interfaceEditorCanvasDevice actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for setting interface editor canvas device', () => {
       expect(
         SET_INTERFACE_EDITOR_CANVAS_DEVICE
-      ).toExist();
+      ).toBeDefined();
     });
   });
 

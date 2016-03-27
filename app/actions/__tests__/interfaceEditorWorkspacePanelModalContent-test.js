@@ -1,16 +1,17 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorWorkspacePanelModalContent');
+
 import {
   SET_INTERFACE_EDITOR_WORKSPACE_PANEL_MODAL_CONTENT,
   setInterfaceEditorWorkspacePanelModalContent,
-} from './interfaceEditorWorkspacePanelModalContent';
+} from '../interfaceEditorWorkspacePanelModalContent';
 
 describe('interfaceEditorWorkspacePanelModalContent actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for setting interface editor workspace panel modal content', () => {
       expect(
         SET_INTERFACE_EDITOR_WORKSPACE_PANEL_MODAL_CONTENT
-      ).toExist();
+      ).toBeDefined();
     });
   });
 

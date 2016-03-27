@@ -1,16 +1,17 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorFullscreenPreview');
+
 import {
   SET_INTERFACE_EDITOR_FULLSCREEN_PREVIEW,
   setInterfaceEditorFullscreenPreview,
-} from './interfaceEditorFullscreenPreview';
+} from '../interfaceEditorFullscreenPreview';
 
 describe('interfaceEditorDirectSelectModeEnabled actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for setting interface editor fullscreen preview', () => {
       expect(
         SET_INTERFACE_EDITOR_FULLSCREEN_PREVIEW
-      ).toExist();
+      ).toBeDefined();
     });
   });
 

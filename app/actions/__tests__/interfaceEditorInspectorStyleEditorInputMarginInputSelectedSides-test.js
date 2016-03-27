@@ -1,16 +1,17 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides');
+
 import {
   SET_INTERFACE_EDITOR_INSPECTOR_STYLE_EDITOR_INPUT_MARGIN_INPUT_SELECTED_SIDES,
   setInterfaceEditorInspectorStyleEditorInputMarginInputSelectedSides,
-} from './interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
+} from '../interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
 
 describe('interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for setting interface editor inspector style editor input margin input selected sides', () => {
       expect(
         SET_INTERFACE_EDITOR_INSPECTOR_STYLE_EDITOR_INPUT_MARGIN_INPUT_SELECTED_SIDES
-      ).toExist();
+      ).toBeDefined();
     });
   });
 

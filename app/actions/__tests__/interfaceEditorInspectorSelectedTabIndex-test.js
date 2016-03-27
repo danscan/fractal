@@ -1,16 +1,17 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorInspectorSelectedTabIndex');
+
 import {
   SET_INTERFACE_EDITOR_INSPECTOR_SELECTED_TAB_INDEX,
   setInterfaceEditorInspectorSelectedTabIndex,
-} from './interfaceEditorInspectorSelectedTabIndex';
+} from '../interfaceEditorInspectorSelectedTabIndex';
 
 describe('interfaceEditorInspectorSelectedTabIndex actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for setting interface editor inspector selected tab index', () => {
       expect(
         SET_INTERFACE_EDITOR_INSPECTOR_SELECTED_TAB_INDEX
-      ).toExist();
+      ).toBeDefined();
     });
   });
 

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
-    "test": "node_modules/.bin/mocha --compilers js:babel-core/register app/**/*.spec.js app/**/**/*.spec.js app/**/**/**/*.spec.js",
+    "test": "NODE_ENV=test node_modules/.bin/jest",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {
@@ -13,29 +13,34 @@
     "pro-inputs": "^1.2.6",
     "react": "^0.14.3",
     "react-immutable-proptypes": "^1.5.1",
-    "react-native": "^0.22.0-rc",
+    "react-native": "^0.22.2",
     "react-native-redux-segment": "^1.0.0",
     "react-redux": "^4.4.0",
     "redux": "^3.3.0",
-    "redux-undo": "^0.6.0",
+    "redux-undo": "^0.6.1",
     "reselect": "^2.0.1",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "babel-core": "^6.5.0",
     "babel-eslint": "^4.1.6",
+    "babel-jest": "^9.0.3",
+    "babel-polyfill": "^6.7.4",
     "babel-preset-react-native": "^1.5.2",
+    "babel-register": "^6.7.2",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.1.1",
     "eslint-plugin-react": "^3.13.1",
-    "expect": "^1.14.0",
-    "mocha": "^2.4.5",
-    "react-native-mock": "0.0.7",
+    "install": "^0.6.1",
+    "jest-cli": "^0.9.2",
     "shelljs": "^0.6.0"
   },
   "babel": {
-    "presets": [
-      "react-native"
-    ]
+    "env": {
+      "test": {
+        "presets": [
+          "react-native"
+        ]
+      }
+    }
   }
 }

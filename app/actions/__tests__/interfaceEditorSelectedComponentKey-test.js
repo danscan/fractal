@@ -1,16 +1,17 @@
-/* global it, describe */
-import expect from 'expect';
+/* global it, describe, expect, jest */
+jest.unmock('../interfaceEditorSelectedComponentKey');
+
 import {
   SET_INTERFACE_EDITOR_SELECTED_COMPONENT_KEY,
   setInterfaceEditorSelectedComponentKey,
-} from './interfaceEditorSelectedComponentKey';
+} from '../interfaceEditorSelectedComponentKey';
 
 describe('interfaceEditorSelectedComponentKey actions file', () => {
   describe('action type(s)', () => {
     it('should export an action type for setting interface editor selected component key', () => {
       expect(
         SET_INTERFACE_EDITOR_SELECTED_COMPONENT_KEY
-      ).toExist();
+      ).toBeDefined();
     });
   });
 
