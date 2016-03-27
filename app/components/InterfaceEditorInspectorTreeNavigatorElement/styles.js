@@ -5,11 +5,17 @@ export default StyleSheet.create({
 
   headerSection: {
     alignItems: 'center',
+    backgroundColor: '#4b4b4b',
     borderBottomColor: 'hsla(0,0%,0%,0.3)',
     borderBottomWidth: 1,
     borderTopColor: 'hsla(0,0%,100%,0.1)',
     borderTopWidth: 1,
     flexDirection: 'row',
+  },
+  headerSectionSelected: {
+    backgroundColor: '#00b5ec',
+    borderBottomColor: '#191d1f',
+    borderTopColor: 'hsla(0,0%,100%,0.2)',
   },
   toggleCollapsedButton: {
     width: 32,

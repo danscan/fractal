@@ -11,11 +11,6 @@ export default StyleSheet.create({
   element: {
     backgroundColor: '#4b4b4b',
   },
-  selectedElementHandleSection: {
-    backgroundColor: '#00b5ec',
-    borderBottomColor: '#191d1f',
-    borderTopColor: 'hsla(0,0%,100%,0.2)',
-  },
 
   selectedElementActionsSection: {
     backgroundColor: '#4b4b4b',

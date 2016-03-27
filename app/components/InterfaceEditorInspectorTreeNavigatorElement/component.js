@@ -17,6 +17,7 @@ export default class InterfaceEditorInspectorTreeNavigatorElement extends Compon
     children: PropTypes.any,
     imageSource: Image.propTypes.source,
     isCollapsed: PropTypes.bool,
+    isSelected: PropTypes.bool,
     onPress: PropTypes.func.isRequired,
     onPressEdit: PropTypes.func.isRequired,
     onPressToggleCollapsed: PropTypes.func.isRequired,
@@ -54,12 +55,17 @@ export default class InterfaceEditorInspectorTreeNavigatorElement extends Compon
   renderHeaderSection() {
     const {
       imageSource,
+      isSelected,
       onPress,
       title,
     } = this.props;
+    const style = [
+      styles.headerSection,
+      (isSelected ? styles.headerSectionSelected : {}),
+    ];
 
     return (
-      <View style={styles.headerSection}>
+      <View style={style}>
         {this.renderToggleCollapsedButton()}
         <TouchableOpacity
           onPress={onPress}

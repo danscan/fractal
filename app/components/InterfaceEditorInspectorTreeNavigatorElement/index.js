@@ -4,10 +4,12 @@ import { changeInterfaceEditorComponentElementDisplayName } from '../../actions/
 import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEditorSelectedElementPath';
 import { toggleInterfaceEditorInspectorTreeNavigatorElementCollapsed } from '../../actions/interfaceEditorInspectorTreeNavigatorCollapsedElementPaths';
 import { interfaceEditorInspectorTreeNavigatorCollapsedElementPaths } from '../../selectors/interfaceEditorInspectorTreeNavigatorCollapsedElementPaths';
+import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
 import Component from './component';
 
 const mapStateToProps = (state, ownProps) => ({
   isCollapsed: interfaceEditorInspectorTreeNavigatorCollapsedElementPaths(state).has(ownProps.elementPath),
+  isSelected: interfaceEditorSelectedElementPath(state).equals(ownProps.elementPath),
 });
 
 const actionCreators = (dispatch, ownProps) => ({
