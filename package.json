@@ -1,6 +1,6 @@
 {
   "name": "fractalui",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
@@ -42,7 +42,11 @@
       "source-map",
       "./node_modules/react"
     ],
-    "moduleFileExtensions": ["js", "json", "jsx"],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ],
     "moduleNameMapper": {
       "^[./a-zA-Z0-9$_-]+[.]png$": "RelativeImageStub"
     }
