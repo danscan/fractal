@@ -54,3 +54,6 @@ const releaseSuccessful = exec(curlCall).code === 0;
 if (releaseSuccessful) {
   echo('Apphub build released for ' + apphubBuildTarget + ' users');
 }
+
+// - Remove build artifact -
+exec('rm build.zip');
