@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponent';
-import { interfaceEditorSelectedComponentKey } from '../../selectors/interfaceEditorSelectedComponentKey';
 import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
 import { interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners } from '../../selectors/interfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCorners';
 import { interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides } from '../../selectors/interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
@@ -25,7 +24,6 @@ const mapStateToProps = (state) => {
     paddingInputSelectedSides: interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides(state),
     propName: styleEditorSelectedProp,
     propType: selectedElement.getIn(['type', 'propTypes', styleEditorSelectedProp]),
-    selectedComponentKey: interfaceEditorSelectedComponentKey(state),
     selectedElementPath: interfaceEditorSelectedElementPath(state),
     value: selectedElement.getIn(['props', styleEditorSelectedProp]),
   };
@@ -42,12 +40,10 @@ const actionCreators = {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const {
     propName,
-    selectedComponentKey,
     selectedElementPath,
   } = stateProps;
   // Create onChangeValue function prop...
   const onChangeValue = (value) => dispatchProps.onChangeValue(
-    selectedComponentKey,
     selectedElementPath,
     propName,
     value,
