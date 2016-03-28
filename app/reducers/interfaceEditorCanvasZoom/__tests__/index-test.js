@@ -1,9 +1,11 @@
-/* global it, describe */
-import expect from 'expect';
-import reducer, { initialState } from './';
+/* global it, describe, expect, jest */
+jest.unmock('../');
+jest.unmock('../../../actions/interfaceEditorCanvasZoom');
+
+import reducer, { initialState } from '../';
 import {
   setInterfaceEditorCanvasZoom,
-} from '../../actions/interfaceEditorCanvasZoom';
+} from '../../../actions/interfaceEditorCanvasZoom';
 
 describe('interfaceEditorCanvasZoom reducer', () => {
   it('should return the initial state', () => {

@@ -1,9 +1,11 @@
-/* global it, describe */
-import expect from 'expect';
-import reducer, { initialState } from './';
+/* global it, describe, expect, jest */
+jest.unmock('../');
+jest.unmock('../../../actions/interfaceEditorDirectSelectModeEnabled');
+
+import reducer, { initialState } from '../';
 import {
   setInterfaceEditorDirectSelectModeEnabled,
-} from '../../actions/interfaceEditorDirectSelectModeEnabled';
+} from '../../../actions/interfaceEditorDirectSelectModeEnabled';
 
 describe('interfaceEditorDirectSelectModeEnabled reducer', () => {
   it('should return the initial state', () => {

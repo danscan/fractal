@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
-    "test": "NODE_ENV=test node_modules/.bin/jest",
+    "test": "NODE_ENV=test jest",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {
@@ -30,9 +30,22 @@
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.1.1",
     "eslint-plugin-react": "^3.13.1",
-    "install": "^0.6.1",
     "jest-cli": "^0.9.2",
     "shelljs": "^0.6.0"
+  },
+  "jest": {
+    "globals": {
+      "__DEV__": true
+    },
+    "unmockedModulePathPatterns": [
+      "promise",
+      "source-map",
+      "./node_modules/react"
+    ],
+    "moduleFileExtensions": ["js", "json", "jsx"],
+    "moduleNameMapper": {
+      "^[./a-zA-Z0-9$_-]+[.]png$": "RelativeImageStub"
+    }
   },
   "babel": {
     "env": {

@@ -1,9 +1,11 @@
-/* global it, describe */
-import expect from 'expect';
-import reducer, { initialState } from './';
+/* global it, describe, expect, jest */
+jest.unmock('../');
+jest.unmock('../../../actions/interfaceEditorFullscreenPreview');
+
+import reducer, { initialState } from '../';
 import {
   setInterfaceEditorFullscreenPreview,
-} from '../../actions/interfaceEditorFullscreenPreview';
+} from '../../../actions/interfaceEditorFullscreenPreview';
 
 describe('interfaceEditorFull reducer', () => {
   it('should return the initial state', () => {

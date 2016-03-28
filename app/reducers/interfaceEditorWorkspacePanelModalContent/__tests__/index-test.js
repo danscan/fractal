@@ -1,10 +1,13 @@
-/* global it, describe */
-import expect from 'expect';
-import reducer from './';
-import initialState from './initialState';
+/* global it, describe, expect, jest */
+jest.unmock('../');
+jest.unmock('../initialState');
+jest.unmock('../../../actions/interfaceEditorWorkspacePanelModalContent');
+
+import reducer from '../';
+import initialState from '../initialState';
 import {
   setInterfaceEditorWorkspacePanelModalContent,
-} from '../../actions/interfaceEditorWorkspacePanelModalContent';
+} from '../../../actions/interfaceEditorWorkspacePanelModalContent';
 
 describe('interfaceEditorWorkspacePanelModalContent reducer', () => {
   it('should return the initial state', () => {

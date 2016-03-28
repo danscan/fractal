@@ -1,9 +1,11 @@
-/* global it, describe */
-import expect from 'expect';
-import reducer, { initialState } from './';
+/* global it, describe, expect, jest */
+jest.unmock('../');
+jest.unmock('../../../actions/interfaceEditorSelectedComponentKey');
+
+import reducer, { initialState } from '../';
 import {
   setInterfaceEditorSelectedComponentKey,
-} from '../../actions/interfaceEditorSelectedComponentKey';
+} from '../../../actions/interfaceEditorSelectedComponentKey';
 
 describe('interfaceEditorSelectedComponentKey reducer', () => {
   it('should return the initial state', () => {

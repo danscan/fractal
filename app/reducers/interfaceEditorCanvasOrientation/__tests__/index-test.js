@@ -1,14 +1,16 @@
-/* global it, describe */
-import expect from 'expect';
-import reducer, { initialState } from './';
+/* global it, describe, expect, jest */
+jest.unmock('../');
+jest.unmock('../../../actions/interfaceEditorCanvasOrientation');
+
+import reducer, { initialState } from '../';
 import {
   setInterfaceEditorCanvasOrientation,
   toggleInterfaceEditorCanvasOrientation,
-} from '../../actions/interfaceEditorCanvasOrientation';
+} from '../../../actions/interfaceEditorCanvasOrientation';
 import {
   portraitOrientation,
   landscapeOrientation,
-} from '../../constants/canvasOrientations';
+} from '../../../constants/canvasOrientations';
 
 describe('interfaceEditorCanvasOrientation reducer', () => {
   it('should return the initial state', () => {
