@@ -11,6 +11,7 @@ import { setInterfaceEditorInspectorStyleEditorInputBorderCornersInputSelectedCo
 import { setInterfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputBorderSidesInputSelectedSides';
 import { setInterfaceEditorInspectorStyleEditorInputMarginInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputMarginInputSelectedSides';
 import { setInterfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides } from '../../actions/interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides';
+import elementStylePropValueByElementAndPropName from '../../utils/elementStylePropValueByElementAndPropName';
 import Component from './component';
 
 const mapStateToProps = (state) => {
@@ -25,7 +26,7 @@ const mapStateToProps = (state) => {
     propName: styleEditorSelectedProp,
     propType: selectedElement.getIn(['type', 'propTypes', styleEditorSelectedProp]),
     selectedElementPath: interfaceEditorSelectedElementPath(state),
-    value: selectedElement.getIn(['props', styleEditorSelectedProp]),
+    value: elementStylePropValueByElementAndPropName(selectedElement, styleEditorSelectedProp),
   };
 };
 

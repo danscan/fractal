@@ -1,6 +1,7 @@
 import React, { createElement, Component, Text } from 'react-native';
-import { elementPropType, elementPathPropType } from '../../constants/propTypes';
 import { List } from 'immutable';
+import { elementPropType, elementPathPropType } from '../../constants/propTypes';
+import elementChildrenByElement from '../../utils/elementChildrenByElement';
 import styles from './styles';
 
 export default class InterfaceEditorElement extends Component {
@@ -32,18 +33,21 @@ export default class InterfaceEditorElement extends Component {
 
     const elementType = element.get('type');
     const propsWithoutChildren = element.get('props').delete('children').toJS();
-    const children = element.getIn(['props', 'children']);
+    const children = elementChildrenByElement(element);
     const elementKeyProp = elementPath;
     const elementProps = {
       ...propsWithoutChildren,
       key: elementKeyProp,
       style: propsWithoutChildren.style,
     };
-    const elementChildren = children.map((childElement, childKey) => {
-      const childElementPath = elementPath.push(childKey);
+    const elementChildren = (children
+      ? children.map((childElement, childKey) => {
+        const childElementPath = elementPath.push(childKey);
 
-      return this.createElement(childElement, childElementPath);
-    }).push(this.getCallOutChild(elementPath, elementType));
+        return this.createElement(childElement, childElementPath);
+      }).push(this.getCallOutChild(elementPath, elementType))
+      : null
+    );
 
     return createElement(elementType, elementProps, elementChildren);
   }

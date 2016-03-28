@@ -4,6 +4,7 @@ import { List } from 'immutable';
 import { elementPropType, elementPathPropType } from '../../constants/propTypes';
 import { allElementTypes } from '../../constants/elementTypes';
 import elementDisplayNameByElement from '../../utils/elementDisplayNameByElement';
+import elementChildrenByElement from '../../utils/elementChildrenByElement';
 import InterfaceEditorInspectorTreeNavigatorElement from '../InterfaceEditorInspectorTreeNavigatorElement';
 import styles from './styles';
 
@@ -125,8 +126,7 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
       return null;
     }
 
-    const elementProps = element.get('props');
-    const elementChildren = elementProps.get('children');
+    const elementChildren = elementChildrenByElement(element);
     const elementKey = elementPath.join(',');
     const elementDisplayName = elementDisplayNameByElement(element);
     const elementTypeImageSource = this.getElementTypeImageSource(element, elementPath);
@@ -138,7 +138,11 @@ export default class InterfaceEditorInspectorTreeNavigator extends Component {
         imageSource={elementTypeImageSource}
         title={elementDisplayName}
       >
-        {elementChildren.map((childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))}
+        {(
+          elementChildren
+          ? elementChildren.map((childElement, childIndex) => this.renderElement(childElement, elementPath.push(childIndex)))
+          : null
+        )}
       </InterfaceEditorInspectorTreeNavigatorElement>
     );
   }

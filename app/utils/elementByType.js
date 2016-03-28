@@ -1,6 +1,6 @@
-import { Map, List } from 'immutable';
+import { Map } from 'immutable';
 
-const defaultProps = new Map({ children: new List([]), style: new Map({}) });
+const defaultProps = new Map({});
 
 export default function elementByType(type, props = defaultProps, displayName) {
   return new Map({
