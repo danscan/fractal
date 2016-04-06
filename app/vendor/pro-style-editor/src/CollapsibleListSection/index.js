@@ -11,7 +11,7 @@ export default class CollapsibleListSection extends Component {
   };
 
   static defaultProps = {
-    initiallyExpanded: true,
+    initiallyExpanded: false,
   };
 
   constructor(props) {
