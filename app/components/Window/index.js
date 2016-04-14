@@ -34,7 +34,13 @@ export default class Window extends Component {
 
       onPanResponderGrant: (event) => this.handleChangeWindowPositionGesture(event),
       onPanResponderMove: (event) => this.handleChangeWindowPositionGesture(event),
+
       onPanResponderRelease: () => this.handleEndChangeWindowPositionGesture(),
+
+      onShouldBlockNativeResponder: () => true,
+
+      onPanResponderTerminationRequest: () => true,
+      onPanResponderTerminate: () => this.handleEndChangeWindowPositionGesture(),
     });
   }
 

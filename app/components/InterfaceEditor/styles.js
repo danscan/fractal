@@ -10,11 +10,4 @@ export default StyleSheet.create({
   mainSection: {
     flex: 2,
   },
-
-  inspectorSection: {
-    backgroundColor: '#393939',
-    borderLeftColor: '#191d1f',
-    borderLeftWidth: 1,
-    flex: 1,
-  },
 });

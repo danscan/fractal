@@ -1,3 +1,0 @@
-export function interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides(state) {
-  return state.interfaceEditorInspectorStyleEditorInputPaddingInputSelectedSides;
-}

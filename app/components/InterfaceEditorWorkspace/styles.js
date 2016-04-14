@@ -44,8 +44,4 @@ export default StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 20,
   },
-
-  inspectorSection: {
-    flex: 1,
-  },
 });

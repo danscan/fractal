@@ -1,0 +1,8 @@
+export const SET_INTERFACE_EDITOR_STYLE_EDITOR_INPUT_BORDER_SIDES_INPUT_SELECTED_SIDES = 'SET_INTERFACE_EDITOR_STYLE_EDITOR_INPUT_BORDER_SIDES_INPUT_SELECTED_SIDES';
+
+export function setInterfaceEditorStyleEditorInputBorderSidesInputSelectedSides(selectedSides) {
+  return {
+    type: SET_INTERFACE_EDITOR_STYLE_EDITOR_INPUT_BORDER_SIDES_INPUT_SELECTED_SIDES,
+    selectedSides,
+  };
+}

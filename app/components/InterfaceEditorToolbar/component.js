@@ -55,7 +55,7 @@ export default class InterfaceEditorToolbar extends Component {
     const selectedElementType = selectedElement.get('type');
     // Add element button should be disabled if selected element type is Text.
     // Text elements can only have other Text elements as children, and text
-    // children should be edited using the Inspector's Text Editor tab instead.
+    // children should be edited using the 's Text Editor tab instead.
     const addElementButtonShouldBeEnabled = selectedElementType !== Text;
 
     return this.renderImageButton({

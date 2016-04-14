@@ -1,3 +1,0 @@
-export function interfaceEditorInspectorTreeNavigatorCollapsedElementPaths(state) {
-  return state.interfaceEditorInspectorTreeNavigatorCollapsedElementPaths;
-}
