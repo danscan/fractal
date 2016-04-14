@@ -161,7 +161,10 @@ export default class Window extends Component {
         {...this._panResponder.panHandlers}
         style={[styles.container, stateStyle, style, positionStyle]}
       >
-        <View style={styles.contents}>
+        <View
+          pointerEvents={isChangingPosition ? 'none' : 'auto'}
+          style={styles.contents}
+        >
           {children}
         </View>
       </View>
