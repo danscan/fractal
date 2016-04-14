@@ -32,7 +32,10 @@ export default class Window extends Component {
       onStartShouldSetPanResponder: (event) => this.gestureQualifiesAsChangeWindowPositionGesture(event),
       onMoveShouldSetPanResponder: (event) => this.gestureQualifiesAsChangeWindowPositionGesture(event),
 
-      onPanResponderGrant: (event) => this.handleChangeWindowPositionGesture(event),
+      onStartShouldSetPanResponderCapture: (event) => this.gestureQualifiesAsChangeWindowPositionGesture(event),
+      onMoveShouldSetPanResponderCapture: (event) => this.gestureQualifiesAsChangeWindowPositionGesture(event),
+
+      onPanResponderGrant: (event) => this.handleBeginChangeWindowPositionGesture(event.nativeEvent.touches),
       onPanResponderMove: (event) => this.handleChangeWindowPositionGesture(event),
 
       onPanResponderRelease: () => this.handleEndChangeWindowPositionGesture(),
@@ -50,9 +53,8 @@ export default class Window extends Component {
     return touches.length === 2;
   }
 
-  handleBeginChangeWindowPositionGesture(event) {
+  handleBeginChangeWindowPositionGesture(touches) {
     const { position } = this.props;
-    const touches = event.nativeEvent.touches;
 
     const gestureTouchPositions = getGestureTouchPositions(touches);
     const firstTouch = gestureTouchPositions.get(0);
@@ -70,6 +72,9 @@ export default class Window extends Component {
       maxY,
     });
 
+    // console.log('this._gestureInitialWindowPosition.toJS():', this._gestureInitialWindowPosition.toJS());
+    // console.log('this._gestureInitialWindowTouchLocations.toJS():', this._gestureInitialWindowTouchLocations.toJS());
+
     this.setState({
       isChangingPosition: true,
     });
@@ -78,8 +83,8 @@ export default class Window extends Component {
   handleChangeWindowPositionGesture(event) {
     const touches = event.nativeEvent.touches;
 
-    if (!this._gestureInitialWindowTouchLocations) {
-      this.handleBeginChangeWindowPositionGesture(event);
+    if (!this._gestureInitialWindowTouchLocations || !this._gestureInitialWindowPosition) {
+      requestAnimationFrame(() => this.handleBeginChangeWindowPositionGesture(touches));
     }
 
     return requestAnimationFrame(() => this.handleChangeWindowPositionGestureTouches(touches));
@@ -95,6 +100,8 @@ export default class Window extends Component {
     const gestureTouchPositions = getGestureTouchPositions(touches);
     const firstTouch = gestureTouchPositions.get(0);
     const secondTouch = gestureTouchPositions.get(1);
+    // console.log('firstTouch.toJS():', firstTouch.toJS());
+    // console.log('secondTouch.toJS():', secondTouch.toJS());
     if (!firstTouch || !secondTouch) return null;
     const gestureMinX = Math.min(firstTouch.get('pageX'), secondTouch.get('pageX'));
     const gestureMinY = Math.min(firstTouch.get('pageY'), secondTouch.get('pageY'));
@@ -136,6 +143,7 @@ export default class Window extends Component {
       isChangingPosition: false,
     });
 
+    this._gestureInitialWindowPosition = null;
     this._gestureInitialWindowTouchLocations = null;
   }
 
@@ -161,10 +169,7 @@ export default class Window extends Component {
         {...this._panResponder.panHandlers}
         style={[styles.container, stateStyle, style, positionStyle]}
       >
-        <View
-          pointerEvents={isChangingPosition ? 'none' : 'auto'}
-          style={styles.contents}
-        >
+        <View style={styles.contents}>
           {children}
         </View>
       </View>
