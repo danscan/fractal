@@ -55,7 +55,10 @@ export default class InterfaceEditorWorkspace extends Component {
     return (
       <View style={styles.previewSection}>
         <View style={previewElementWrapperStyle}>
-          <InterfaceEditorElement element={treeRootElement} callOutPath={selectedElementPath}/>
+          <InterfaceEditorElement
+            element={treeRootElement}
+            selectedElementPath={selectedElementPath}
+          />
         </View>
       </View>
     );

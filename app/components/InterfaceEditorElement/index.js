@@ -1,4 +1,4 @@
-import React, { createElement, Component, Text } from 'react-native';
+import React, { createElement, Component, Text, TextInput } from 'react-native';
 import { List } from 'immutable';
 import { elementPropType, elementPathPropType } from '../../constants/propTypes';
 import elementChildrenByElement from '../../utils/elementChildrenByElement';
@@ -7,26 +7,27 @@ import styles from './styles';
 export default class InterfaceEditorElement extends Component {
   static propTypes = {
     element: elementPropType.isRequired,
-    callOutPath: elementPathPropType,
+    selectedElementPath: elementPathPropType,
   };
 
-  getCallOutChild(elementPath, elementType) {
-    const { callOutPath } = this.props;
-    // Ensure that callOut element type can be a child of its parent...
-    // (Text cannot have View as a child, so View cannot be the element type
-    // of the callOut child.)
-    const ElementType = elementType === Text
-                      ? Text
-                      : elementType;
+  getSelectedElementChild(elementPath, ElementType) {
+    const { selectedElementPath } = this.props;
 
-    if (callOutPath && !callOutPath.isEmpty() && callOutPath.equals(elementPath)) {
-      return <ElementType key="callOut" style={styles.callOut}/>;
+    // If selectedElement type cannot have children, bail...
+    if (ElementType === Text || ElementType === TextInput) {
+      return null;
+    }
+
+    if (selectedElementPath && !selectedElementPath.isEmpty() && selectedElementPath.equals(elementPath)) {
+      return <ElementType key="selectedElement" style={styles.selectedElement}/>;
     }
 
     return null;
   }
 
   createElement(element, elementPath = new List()) {
+    const { selectedElementPath } = this.props;
+
     if (typeof element === 'string') {
       return element;
     }
@@ -45,9 +46,14 @@ export default class InterfaceEditorElement extends Component {
         const childElementPath = elementPath.push(childKey);
 
         return this.createElement(childElement, childElementPath);
-      }).push(this.getCallOutChild(elementPath, elementType))
+      }).push(this.getSelectedElementChild(elementPath, elementType))
       : null
     );
+
+    // If selected element is text, allow user to edit it
+    if (elementPath.equals(selectedElementPath) && elementType === Text) {
+      return createElement(TextInput, { ...elementProps, multiline: true }, elementChildren);
+    }
 
     return createElement(elementType, elementProps, elementChildren);
   }
