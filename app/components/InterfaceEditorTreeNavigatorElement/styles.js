@@ -17,6 +17,7 @@ export default StyleSheet.create({
   headerSectionSelected: {
     backgroundColor: '#00b5ec',
     borderBottomColor: '#191d1f',
+    borderRightWidth: 0,
     borderTopColor: 'hsla(0,0%,100%,0.2)',
   },
   toggleCollapsedButton: {
