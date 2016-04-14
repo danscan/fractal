@@ -105,15 +105,15 @@ export default class Window extends Component {
 
     // (Gesture initial window position)
     const gestureInitialWindowPosition = this._gestureInitialWindowPosition;
-    const gestureINitialWindowWidth = gestureInitialWindowPosition.get('width');
-    const gestureINitialWindowHeight = gestureInitialWindowPosition.get('height');
+    const gestureInitialWindowWidth = gestureInitialWindowPosition.get('width');
+    const gestureInitialWindowHeight = gestureInitialWindowPosition.get('height');
 
     // (New window position)
     const newWindowMinX = gestureMinX - gestureInitialWindowTouchLocationMinX;
     const newWindowMinY = gestureMinY - gestureInitialWindowTouchLocationMinY;
-    const newWindowMaxX = gestureMaxX + (gestureINitialWindowWidth - gestureInitialWindowTouchLocationMaxX);
+    const newWindowMaxX = gestureMaxX + (gestureInitialWindowWidth - gestureInitialWindowTouchLocationMaxX);
     const newWindowWidth = newWindowMaxX - newWindowMinX;
-    const newWindowMaxY = gestureMaxY + (gestureINitialWindowHeight - gestureInitialWindowTouchLocationMaxY);
+    const newWindowMaxY = gestureMaxY + (gestureInitialWindowHeight - gestureInitialWindowTouchLocationMaxY);
     const newWindowHeight = newWindowMaxY - newWindowMinY;
 
     const newPosition = position
