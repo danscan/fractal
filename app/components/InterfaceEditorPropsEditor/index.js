@@ -1,10 +1,18 @@
-import React, { Component, View } from 'react-native';
-import styles from './styles';
+import { connect } from 'react-redux';
+import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponent';
+import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
+import Component from './component';
 
-export default class InterfaceEditorPropsEditor extends Component {
-  render() {
-    return (
-      <View style={styles.container}/>
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const selectedElement = interfaceEditorSelectedElement(state);
+
+  return {
+    props: selectedElement.get('props'),
+    propTypes: selectedElement.get('type').propTypes,
+    selectedElementPath: interfaceEditorSelectedElementPath(state),
+  };
+};
+
+const actionCreators = {};
+
+export default connect(mapStateToProps, actionCreators)(Component);
