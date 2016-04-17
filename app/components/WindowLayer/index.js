@@ -1,10 +1,10 @@
 import React, { Component, PropTypes, View } from 'react-native';
-import { Map } from 'immutable';
+import { OrderedMap } from 'immutable';
 import Window from '../Window';
 import styles from './styles';
 
 // (Configuration constants)
-const DEFAULT_WINDOW_POSITION = new Map({
+const DEFAULT_WINDOW_POSITION = new OrderedMap({
   x: 140,
   y: 100,
 
@@ -36,7 +36,7 @@ export default class WindowLayer extends Component {
     super(props);
 
     this.state = {
-      windowPositions: new Map,
+      windowPositions: new OrderedMap,
     };
   }
 
@@ -62,7 +62,7 @@ export default class WindowLayer extends Component {
 
       return memo
         .set(key, windowPosition || DEFAULT_WINDOW_POSITION);
-    }, new Map);
+    }, new OrderedMap);
 
     this.setState({ windowPositions: nextWindowPositions });
   }
@@ -79,7 +79,9 @@ export default class WindowLayer extends Component {
       <Window
         key={window.key}
         onChangePosition={(newPosition) => this.setState({
-          windowPositions: windowPositions.set(window.key, newPosition),
+          windowPositions: windowPositions
+            .delete(window.key)
+            .set(window.key, newPosition),
         })}
         position={windowPosition}
       >
@@ -94,11 +96,16 @@ export default class WindowLayer extends Component {
       windows,
       style,
     } = this.props;
+    const { windowPositions } = this.state;
 
     return (
       <View style={[styles.container, style]}>
         {children}
-        {windows.map(window => this.renderWindow(window))}
+        {windowPositions.map((windowPosition, windowKey) => {
+          const window = windows.find(({ key }) => key === windowKey);
+
+          return this.renderWindow(window);
+        }).toArray()}
       </View>
     );
   }
