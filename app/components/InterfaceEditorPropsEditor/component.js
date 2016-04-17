@@ -33,7 +33,7 @@ export default class InterfaceEditorPropsEditor extends Component {
             >
               <Text>{propValue}</Text>
             </CollapsibleListSection>
-          ))}
+          )).toArray()}
         </ScrollView>
       </View>
     );
