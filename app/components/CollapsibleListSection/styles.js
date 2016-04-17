@@ -29,12 +29,19 @@ export default StyleSheet.create({
     width: 8,
     height: 4,
   },
-  title: {},
+  title: {
+    flex: 1,
+  },
   titleLabel: {
     color: 'white',
     fontSize: 14,
     fontFamily: 'Avenir',
     fontWeight: '600',
+  },
+
+  menuItems: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   childrenSection: {

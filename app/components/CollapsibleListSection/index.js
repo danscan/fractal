@@ -3,15 +3,23 @@ import collapsedSectionArrowImage from '../../assets/img/collapsedSectionArrow.p
 import expandedSectionArrowImage from '../../assets/img/expandedSectionArrow.png';
 import styles from './styles';
 
+// (Prop type constants)
+const menuItemPropType = PropTypes.shape({
+  element: PropTypes.element.isRequired,
+  onPress: PropTypes.func.isRequired,
+});
+
 export default class CollapsibleListSection extends Component {
   static propTypes = {
     children: PropTypes.any,
     initiallyExpanded: PropTypes.bool,
+    menuItems: PropTypes.arrayOf(menuItemPropType).isRequired,
     title: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
     initiallyExpanded: true,
+    menuItems: [],
   };
 
   constructor(props) {
@@ -41,6 +49,7 @@ export default class CollapsibleListSection extends Component {
             {title}
           </Text>
         </View>
+        {this.renderMenuItems()}
       </TouchableOpacity>
     );
   }
@@ -64,6 +73,20 @@ export default class CollapsibleListSection extends Component {
         source={collapsedSectionArrowImage}
         style={styles.collapsedSectionArrowImage}
       />
+    );
+  }
+
+  renderMenuItems() {
+    const { menuItems } = this.props;
+
+    return (
+      <View style={styles.menuItems}>
+        {menuItems.map((menuItem, index) => (
+          <TouchableOpacity key={index} onPress={menuItem.onPress}>
+            {menuItem.element}
+          </TouchableOpacity>
+        ))}
+      </View>
     );
   }
 
