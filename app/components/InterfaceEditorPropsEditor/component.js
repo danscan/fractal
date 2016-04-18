@@ -26,7 +26,7 @@ export default class InterfaceEditorPropsEditor extends Component {
               title={propName}
               menuItems={[
                 {
-                  element: <Text style={{ color: 'white', padding: 10 }}>X</Text>,
+                  element: <Text style={{ color: 'white', padding: 9 }}>X</Text>,
                   onPress: () => console.log('Delete me!'),
                 },
               ]}
