@@ -33,5 +33,5 @@ export const elementPathPropType = ImmutablePropTypes.listOf(
 export const elementPropType = ImmutablePropTypes.contains({
   displayName: PropTypes.string,
   type: PropTypes.func.isRequired,
-  props: PropTypes.object,
+  props: ImmutablePropTypes.map,
 });
