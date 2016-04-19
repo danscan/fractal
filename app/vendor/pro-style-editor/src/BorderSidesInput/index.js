@@ -43,11 +43,9 @@ export default class BorderSidesInput extends Component {
       <View style={styles.container}>
         <View style={styles.controlColumn}>
           <BoxBorderSides
-            onChangeSelectedSides={(newBorderSidesInputSelectedSides) => {
-              this.setState({
-                borderSidesInputSelectedSides: newBorderSidesInputSelectedSides,
-              });
-            }}
+            onChangeSelectedSides={(newBorderSidesInputSelectedSides) => this.setState({
+              borderSidesInputSelectedSides: newBorderSidesInputSelectedSides,
+            })}
             selectedSides={borderSidesInputSelectedSides}
           />
         </View>

@@ -42,11 +42,9 @@ export default class MarginInput extends Component {
       <View style={styles.container}>
         <BoxMarginSides
           selectedSides={marginInputSelectedSides}
-          onChangeSelectedSides={(newMarginInputSelectedSides) => {
-            this.setState({
-              marginInputSelectedSides: newMarginInputSelectedSides,
-            });
-          }}
+          onChangeSelectedSides={(newMarginInputSelectedSides) => this.setState({
+            marginInputSelectedSides: newMarginInputSelectedSides,
+          })}
         />
         <NumberIncrementField
           name={fieldName}

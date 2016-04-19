@@ -42,11 +42,9 @@ export default class BorderCornersInput extends Component {
       <View style={styles.container}>
         <View style={styles.controlColumn}>
           <BoxBorderCorners
-            onChangeSelectedCorners={(newBorderCornersInputSelectedCorners) => {
-              this.setState({
-                borderCornersInputSelectedCorners: newBorderCornersInputSelectedCorners,
-              });
-            }}
+            onChangeSelectedCorners={(newBorderCornersInputSelectedCorners) => this.setState({
+              borderCornersInputSelectedCorners: newBorderCornersInputSelectedCorners,
+            })}
             selectedCorners={borderCornersInputSelectedCorners}
           />
         </View>

@@ -42,11 +42,9 @@ export default class PaddingInput extends Component {
       <View style={styles.container}>
         <BoxPaddingSides
           selectedSides={paddingInputSelectedSides}
-          onChangeSelectedSides={(newPaddingInputSelectedSides) => {
-            this.setState({
-              paddingInputSelectedSides: newPaddingInputSelectedSides,
-            });
-          }}
+          onChangeSelectedSides={(newPaddingInputSelectedSides) => this.setState({
+            paddingInputSelectedSides: newPaddingInputSelectedSides,
+          })}
         />
         <NumberIncrementField
           name={fieldName}
