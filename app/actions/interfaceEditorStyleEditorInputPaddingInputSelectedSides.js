@@ -1,8 +1,0 @@
-export const SET_INTERFACE_EDITOR_STYLE_EDITOR_INPUT_PADDING_INPUT_SELECTED_SIDES = 'SET_INTERFACE_EDITOR_STYLE_EDITOR_INPUT_PADDING_INPUT_SELECTED_SIDES';
-
-export function setInterfaceEditorStyleEditorInputPaddingInputSelectedSides(selectedSides) {
-  return {
-    type: SET_INTERFACE_EDITOR_STYLE_EDITOR_INPUT_PADDING_INPUT_SELECTED_SIDES,
-    selectedSides,
-  };
-}

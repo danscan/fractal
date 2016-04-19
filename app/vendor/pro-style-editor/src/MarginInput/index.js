@@ -9,23 +9,30 @@ import styles from './styles';
 
 export default class MarginInput extends Component {
   static propTypes = {
-    marginInputSelectedSides: BoxMarginSides.propTypes.selectedSides,
-    onChangeMarginInputSelectedSides: PropTypes.func.isRequired,
+    initialMarginInputSelectedSides: BoxMarginSides.propTypes.selectedSides.isRequired,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
   };
 
   static defaultProps = {
+    initialMarginInputSelectedSides: boxSides.ALL_SIDES,
     onChangeValue: () => {},
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      marginInputSelectedSides: props.initialMarginInputSelectedSides,
+    };
+  }
+
   render() {
     const {
-      onChangeMarginInputSelectedSides,
       onChangeValue,
-      marginInputSelectedSides,
       value,
     } = this.props;
+    const { marginInputSelectedSides } = this.state;
     const {
       propName,
       fieldName,
@@ -35,7 +42,11 @@ export default class MarginInput extends Component {
       <View style={styles.container}>
         <BoxMarginSides
           selectedSides={marginInputSelectedSides}
-          onChangeSelectedSides={onChangeMarginInputSelectedSides}
+          onChangeSelectedSides={(newMarginInputSelectedSides) => {
+            this.setState({
+              marginInputSelectedSides: newMarginInputSelectedSides,
+            });
+          }}
         />
         <NumberIncrementField
           name={fieldName}

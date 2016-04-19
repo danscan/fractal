@@ -9,23 +9,30 @@ import styles from './styles';
 
 export default class PaddingInput extends Component {
   static propTypes = {
-    onChangePaddingInputSelectedSides: PropTypes.func.isRequired,
+    initialPaddingInputSelectedSides: BoxPaddingSides.propTypes.selectedSides.isRequired,
     onChangeValue: PropTypes.func.isRequired,
-    paddingInputSelectedSides: BoxPaddingSides.propTypes.selectedSides,
     value: ImmutablePropTypes.map.isRequired,
   };
 
   static defaultProps = {
+    initialPaddingInputSelectedSides: boxSides.ALL_SIDES,
     onChangeValue: () => {},
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      paddingInputSelectedSides: props.initialPaddingInputSelectedSides,
+    };
+  }
+
   render() {
     const {
-      onChangePaddingInputSelectedSides,
       onChangeValue,
-      paddingInputSelectedSides,
       value,
     } = this.props;
+    const { paddingInputSelectedSides } = this.state;
     const {
       propName,
       fieldName,
@@ -35,7 +42,11 @@ export default class PaddingInput extends Component {
       <View style={styles.container}>
         <BoxPaddingSides
           selectedSides={paddingInputSelectedSides}
-          onChangeSelectedSides={onChangePaddingInputSelectedSides}
+          onChangeSelectedSides={(newPaddingInputSelectedSides) => {
+            this.setState({
+              paddingInputSelectedSides: newPaddingInputSelectedSides,
+            });
+          }}
         />
         <NumberIncrementField
           name={fieldName}

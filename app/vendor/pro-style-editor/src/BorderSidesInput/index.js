@@ -11,23 +11,30 @@ import styles from './styles';
 
 export default class BorderSidesInput extends Component {
   static propTypes = {
-    borderSidesInputSelectedSides: BoxBorderSides.propTypes.selectedSides,
-    onChangeBorderSidesInputSelectedSides: PropTypes.func.isRequired,
+    initialBorderSidesInputSelectedSides: BoxBorderSides.propTypes.selectedSides.isRequired,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
   };
 
   static defaultProps = {
+    initialBorderSidesInputSelectedSides: boxSides.ALL_SIDES,
     onChangeValue: () => {},
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      borderSidesInputSelectedSides: props.initialBorderSidesInputSelectedSides,
+    };
+  }
+
   render() {
     const {
-      borderSidesInputSelectedSides,
-      onChangeBorderSidesInputSelectedSides,
       onChangeValue,
       value,
     } = this.props;
+    const { borderSidesInputSelectedSides } = this.state;
     const colorPropName = _getBorderPropName(borderSidesInputSelectedSides, 'Color');
     const stylePropName = _getBorderPropName(borderSidesInputSelectedSides, 'Style');
     const widthPropName = _getBorderPropName(borderSidesInputSelectedSides, 'Width');
@@ -36,7 +43,11 @@ export default class BorderSidesInput extends Component {
       <View style={styles.container}>
         <View style={styles.controlColumn}>
           <BoxBorderSides
-            onChangeSelectedSides={onChangeBorderSidesInputSelectedSides}
+            onChangeSelectedSides={(newBorderSidesInputSelectedSides) => {
+              this.setState({
+                borderSidesInputSelectedSides: newBorderSidesInputSelectedSides,
+              });
+            }}
             selectedSides={borderSidesInputSelectedSides}
           />
         </View>

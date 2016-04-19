@@ -11,10 +11,6 @@ import interfaceEditorDirectSelectModeEnabled from './interfaceEditorDirectSelec
 import interfaceEditorFullscreenPreview from './interfaceEditorFullscreenPreview';
 import interfaceEditorWorkspacePanelModalContent from './interfaceEditorWorkspacePanelModalContent';
 import interfaceEditorStyleEditorSelectedProp from './interfaceEditorStyleEditorSelectedProp';
-import interfaceEditorStyleEditorInputMarginInputSelectedSides from './interfaceEditorStyleEditorInputMarginInputSelectedSides';
-import interfaceEditorStyleEditorInputPaddingInputSelectedSides from './interfaceEditorStyleEditorInputPaddingInputSelectedSides';
-import interfaceEditorStyleEditorInputBorderSidesInputSelectedSides from './interfaceEditorStyleEditorInputBorderSidesInputSelectedSides';
-import interfaceEditorStyleEditorInputBorderCornersInputSelectedCorners from './interfaceEditorStyleEditorInputBorderCornersInputSelectedCorners';
 import interfaceEditorTreeNavigatorCollapsedElementPaths from './interfaceEditorTreeNavigatorCollapsedElementPaths';
 
 const reducer = combineReducers({
@@ -28,10 +24,6 @@ const reducer = combineReducers({
   interfaceEditorFullscreenPreview,
   interfaceEditorWorkspacePanelModalContent,
   interfaceEditorStyleEditorSelectedProp,
-  interfaceEditorStyleEditorInputMarginInputSelectedSides,
-  interfaceEditorStyleEditorInputPaddingInputSelectedSides,
-  interfaceEditorStyleEditorInputBorderSidesInputSelectedSides,
-  interfaceEditorStyleEditorInputBorderCornersInputSelectedCorners,
   interfaceEditorTreeNavigatorCollapsedElementPaths,
 });
 

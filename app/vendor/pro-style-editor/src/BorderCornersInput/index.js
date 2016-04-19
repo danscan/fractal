@@ -9,23 +9,30 @@ import styles from './styles';
 
 export default class BorderCornersInput extends Component {
   static propTypes = {
-    borderCornersInputSelectedCorners: BoxBorderCorners.propTypes.selectedCorners,
-    onChangeBorderCornersInputSelectedCorners: PropTypes.func.isRequired,
+    initialBorderCornersInputSelectedCorners: BoxBorderCorners.propTypes.selectedCorners.isRequired,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
   };
 
   static defaultProps = {
+    initialBorderCornersInputSelectedCorners: boxCorners.ALL_CORNERS,
     onChangeValue: () => {},
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      borderCornersInputSelectedCorners: props.initialBorderCornersInputSelectedCorners,
+    };
+  }
+
   render() {
     const {
-      borderCornersInputSelectedCorners,
-      onChangeBorderCornersInputSelectedCorners,
       onChangeValue,
       value,
     } = this.props;
+    const { borderCornersInputSelectedCorners } = this.state;
     const {
       propName,
       fieldName,
@@ -35,7 +42,11 @@ export default class BorderCornersInput extends Component {
       <View style={styles.container}>
         <View style={styles.controlColumn}>
           <BoxBorderCorners
-            onChangeSelectedCorners={onChangeBorderCornersInputSelectedCorners}
+            onChangeSelectedCorners={(newBorderCornersInputSelectedCorners) => {
+              this.setState({
+                borderCornersInputSelectedCorners: newBorderCornersInputSelectedCorners,
+              });
+            }}
             selectedCorners={borderCornersInputSelectedCorners}
           />
         </View>
