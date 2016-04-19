@@ -35,7 +35,7 @@ export default StyleSheet.create({
 
   previewSection: {
     alignItems: 'center',
-    flex: 2,
+    flex: 1,
     justifyContent: 'center',
   },
   previewElementWrapper: {
