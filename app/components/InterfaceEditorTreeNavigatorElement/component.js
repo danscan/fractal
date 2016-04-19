@@ -16,20 +16,30 @@ export default class InterfaceEditorTreeNavigatorElement extends Component {
   static propTypes = {
     children: PropTypes.any,
     imageSource: Image.propTypes.source,
-    isCollapsed: PropTypes.bool,
+    isInitiallyCollapsed: PropTypes.bool,
     isSelected: PropTypes.bool,
     onPress: PropTypes.func.isRequired,
     onPressEdit: PropTypes.func.isRequired,
-    onPressToggleCollapsed: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
   };
+
+  static defaultProps = {
+    isInitiallyCollapsed: true,
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isCollapsed: props.isInitiallyCollapsed,
+    };
+  }
 
   renderToggleCollapsedButton() {
     const {
       children,
-      isCollapsed,
-      onPressToggleCollapsed,
     } = this.props;
+    const { isCollapsed } = this.state;
     const imageSource = isCollapsed
       ? collapsedSectionArrowImage
       : expandedSectionArrowImage;
@@ -44,7 +54,7 @@ export default class InterfaceEditorTreeNavigatorElement extends Component {
 
     return (
       <TouchableOpacity
-        onPress={onPressToggleCollapsed}
+        onPress={() => this.setState({ isCollapsed: !isCollapsed })}
         style={styles.toggleCollapsedButton}
       >
         <Image source={imageSource} style={imageStyle}/>
@@ -83,8 +93,8 @@ export default class InterfaceEditorTreeNavigatorElement extends Component {
   renderContentSection() {
     const {
       children,
-      isCollapsed,
     } = this.props;
+    const { isCollapsed } = this.state;
     const sectionStyle = [
       styles.contentSection,
       ((isCollapsed || !children) ? styles.contentSectionCollapsed : {}),

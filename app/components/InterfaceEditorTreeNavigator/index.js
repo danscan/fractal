@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { interfaceEditorComponentTree } from '../../selectors/interfaceEditorComponent';
 import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
-import { interfaceEditorTreeNavigatorCollapsedElementPaths } from '../../selectors/interfaceEditorTreeNavigatorCollapsedElementPaths';
 import {
   changeInterfaceEditorComponentElementDisplayName,
   removeInterfaceEditorComponentElement,
@@ -12,7 +11,6 @@ import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEd
 import Component from './component';
 
 const mapStateToProps = (state) => ({
-  collapsedElementPaths: interfaceEditorTreeNavigatorCollapsedElementPaths(state),
   root: interfaceEditorComponentTree(state),
   selectedElementPath: interfaceEditorSelectedElementPath(state),
 });

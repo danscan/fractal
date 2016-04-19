@@ -10,7 +10,6 @@ import interfaceEditorDirectSelectModeEnabled from './interfaceEditorDirectSelec
 import interfaceEditorFullscreenPreview from './interfaceEditorFullscreenPreview';
 import interfaceEditorWorkspacePanelModalContent from './interfaceEditorWorkspacePanelModalContent';
 import interfaceEditorStyleEditorSelectedProp from './interfaceEditorStyleEditorSelectedProp';
-import interfaceEditorTreeNavigatorCollapsedElementPaths from './interfaceEditorTreeNavigatorCollapsedElementPaths';
 import modules from './modules';
 
 const reducer = combineReducers({
@@ -23,7 +22,6 @@ const reducer = combineReducers({
   interfaceEditorFullscreenPreview,
   interfaceEditorWorkspacePanelModalContent,
   interfaceEditorStyleEditorSelectedProp,
-  interfaceEditorTreeNavigatorCollapsedElementPaths,
   modules,
 });
 

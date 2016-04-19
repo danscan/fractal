@@ -130,11 +130,14 @@ export default class InterfaceEditorTreeNavigator extends Component {
     const elementKey = elementPath.join(',');
     const elementDisplayName = elementDisplayNameByElement(element);
     const elementTypeImageSource = this.getElementTypeImageSource(element, elementPath);
+    // Only the child elements of the root should be expanded initially.
+    const isInitiallyCollapsed = elementPath.size > 0;
 
     return (
       <InterfaceEditorTreeNavigatorElement
         key={elementKey}
         elementPath={elementPath}
+        isInitiallyCollapsed={isInitiallyCollapsed}
         imageSource={elementTypeImageSource}
         title={elementDisplayName}
       >
