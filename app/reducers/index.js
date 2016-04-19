@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 
 // (App reducers)
 import interfaceEditorComponent from './interfaceEditorComponent';
-import interfaceEditorSelectedComponentKey from './interfaceEditorSelectedComponentKey';
 import interfaceEditorSelectedElementPath from './interfaceEditorSelectedElementPath';
 import interfaceEditorCanvasDevice from './interfaceEditorCanvasDevice';
 import interfaceEditorCanvasOrientation from './interfaceEditorCanvasOrientation';
@@ -12,10 +11,10 @@ import interfaceEditorFullscreenPreview from './interfaceEditorFullscreenPreview
 import interfaceEditorWorkspacePanelModalContent from './interfaceEditorWorkspacePanelModalContent';
 import interfaceEditorStyleEditorSelectedProp from './interfaceEditorStyleEditorSelectedProp';
 import interfaceEditorTreeNavigatorCollapsedElementPaths from './interfaceEditorTreeNavigatorCollapsedElementPaths';
+import modules from './modules';
 
 const reducer = combineReducers({
   interfaceEditorComponent,
-  interfaceEditorSelectedComponentKey,
   interfaceEditorSelectedElementPath,
   interfaceEditorCanvasDevice,
   interfaceEditorCanvasOrientation,
@@ -25,6 +24,7 @@ const reducer = combineReducers({
   interfaceEditorWorkspacePanelModalContent,
   interfaceEditorStyleEditorSelectedProp,
   interfaceEditorTreeNavigatorCollapsedElementPaths,
+  modules,
 });
 
 export default reducer;
