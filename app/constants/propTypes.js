@@ -1,6 +1,7 @@
 import { Image, PropTypes } from 'react-native';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { portraitOrientation, landscapeOrientation } from './canvasOrientations';
+import propValueInputTypes from './propValueInputTypes';
 
 export const canvasDevicePropType = ImmutablePropTypes.contains({
   name: PropTypes.string.isRequired,
@@ -30,8 +31,13 @@ export const elementPathPropType = ImmutablePropTypes.listOf(
   PropTypes.number,
 );
 
+export const elementPropPropType = ImmutablePropTypes.contains({
+  value: PropTypes.any,
+  valueInputType: PropTypes.oneOf(propValueInputTypes).isRequired,
+});
+
 export const elementPropType = ImmutablePropTypes.contains({
   displayName: PropTypes.string,
   type: PropTypes.func.isRequired,
-  props: ImmutablePropTypes.map,
+  props: ImmutablePropTypes.mapOf(elementPropPropType).isRequired,
 });

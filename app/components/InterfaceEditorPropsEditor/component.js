@@ -37,9 +37,9 @@ export default class InterfaceEditorPropsEditor extends Component {
   renderPropListProp(propValue, propName) {
     const {
       onPressProp,
-      selectedProp,
+      selectedPropName,
     } = this.props;
-    const isSelectedProp = propName === selectedProp;
+    const isSelectedProp = propName === selectedPropName;
     const propHeaderSectionStyle = isSelectedProp
       ? styles.selectedPropHeaderSection
       : null;
@@ -51,12 +51,6 @@ export default class InterfaceEditorPropsEditor extends Component {
       <CollapsibleListSection
         key={propName}
         headerSectionStyle={propHeaderSectionStyle}
-        menuItems={[
-          {
-            element: <Text style={{ color: 'white', padding: 9 }}>X</Text>,
-            onPress: () => console.log('Delete prop... propName:', propName),
-          },
-        ]}
         onPress={() => onPressProp(propName)}
         title={propName}
         titleLabelStyle={propTitleLabelStyle}
@@ -71,11 +65,11 @@ export default class InterfaceEditorPropsEditor extends Component {
       onPressDeleteProp,
       onPressDuplicateProp,
       selectedElementPath,
-      selectedProp,
+      selectedPropName,
     } = this.props;
 
     // If no prop is selected, don't render any options UI for it
-    if (!selectedProp) {
+    if (!selectedPropName) {
       return null;
     }
 
@@ -83,7 +77,7 @@ export default class InterfaceEditorPropsEditor extends Component {
       <View style={styles.selectedPropOptions}>
         <View style={styles.selectedPropOptionsRow}>
           <TouchableOpacity
-            onPress={() => console.log('Change input type for prop:', selectedProp)}
+            onPress={() => console.log('Change input type for prop:', selectedPropName)}
             style={styles.selectedPropOptionsColumn}
           >
             <Text style={styles.selectedPropOptionLabel}>
@@ -95,10 +89,10 @@ export default class InterfaceEditorPropsEditor extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.selectedPropActionsSection}>
-          <TouchableOpacity onPress={() => onPressDuplicateProp(selectedElementPath, selectedProp)} style={styles.selectedPropActionButton}>
+          <TouchableOpacity onPress={() => onPressDuplicateProp(selectedElementPath, selectedPropName)} style={styles.selectedPropActionButton}>
             <Image source={duplicateButtonImage} style={styles.selectedPropActionButtonImage}/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => onPressDeleteProp(selectedElementPath, selectedProp)} style={styles.selectedPropActionButton}>
+          <TouchableOpacity onPress={() => onPressDeleteProp(selectedElementPath, selectedPropName)} style={styles.selectedPropActionButton}>
             <Image source={deleteButtonImage} style={styles.selectedPropActionButtonImage}/>
           </TouchableOpacity>
         </View>
