@@ -12,9 +12,12 @@ const menuItemPropType = PropTypes.shape({
 export default class CollapsibleListSection extends Component {
   static propTypes = {
     children: PropTypes.any,
+    headerSectionStyle: View.propTypes.style,
     initiallyExpanded: PropTypes.bool,
     menuItems: PropTypes.arrayOf(menuItemPropType).isRequired,
+    onPress: PropTypes.func,
     title: PropTypes.string.isRequired,
+    titleLabelStyle: Text.propTypes.style,
   };
 
   static defaultProps = {
@@ -37,15 +40,41 @@ export default class CollapsibleListSection extends Component {
   }
 
   renderHeaderSection() {
-    const { title } = this.props;
-
-    return (
-      <TouchableOpacity onPress={() => this.toggleExpanded()} style={styles.headerSection}>
+    const {
+      headerSectionStyle,
+      onPress,
+      title,
+      titleLabelStyle,
+    } = this.props;
+    // If an `onPress` prop was passed, it should be invoked on headerSection
+    // press (only pressing the arrow will toggle expanded). Else, headerSection
+    // press will toggle expanded.
+    const onPressHeaderSection = onPress
+      ? onPress
+      : () => this.toggleExpanded();
+    const arrow = onPress
+      ? (
+        <TouchableOpacity
+          onPress={() => this.toggleExpanded()}
+          style={styles.arrow}
+        >
+          {this.renderArrowImage()}
+        </TouchableOpacity>
+      )
+      : (
         <View style={styles.arrow}>
           {this.renderArrowImage()}
         </View>
+      );
+
+    return (
+      <TouchableOpacity
+        onPress={onPressHeaderSection}
+        style={[styles.headerSection, headerSectionStyle]}
+      >
+        {arrow}
         <View style={styles.title}>
-          <Text style={styles.titleLabel}>
+          <Text style={[styles.titleLabel, titleLabelStyle]}>
             {title}
           </Text>
         </View>

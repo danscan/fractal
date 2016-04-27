@@ -9,7 +9,6 @@ import InterfaceEditorTreeNavigatorElement from '../InterfaceEditorTreeNavigator
 import styles from './styles';
 
 // (Button image assets)
-import rootElementTypeImage from '../../assets/img/elementTypes/root.png';
 import deleteButtonImage from '../../assets/img/deleteButton.png';
 import duplicateButtonImage from '../../assets/img/duplicateButton.png';
 import moveButtonImage from '../../assets/img/moveButton.png';
@@ -49,7 +48,7 @@ export default class InterfaceEditorTreeNavigator extends Component {
     return onPressElement(elementPath);
   }
 
-  getElementTypeImageSource(element, elementPath) {
+  getElementTypeImageSource(element) {
     const elementType = allElementTypes.find(elementTypeDefinition => {
       return element.get('type') === elementTypeDefinition.get('component');
     });
@@ -59,9 +58,7 @@ export default class InterfaceEditorTreeNavigator extends Component {
     }
 
     // If element is root, use root element type image
-    return elementPath.isEmpty()
-      ? rootElementTypeImage
-      : elementType.get('imageSource');
+    return elementType.get('imageSource');
   }
 
   toggleMovingElement(elementPath) {
@@ -129,7 +126,7 @@ export default class InterfaceEditorTreeNavigator extends Component {
     const elementChildren = elementChildrenByElement(element);
     const elementKey = elementPath.join(',');
     const elementDisplayName = elementDisplayNameByElement(element);
-    const elementTypeImageSource = this.getElementTypeImageSource(element, elementPath);
+    const elementTypeImageSource = this.getElementTypeImageSource(element);
     // Only the child elements of the root should be expanded initially.
     const isInitiallyCollapsed = elementPath.size > 0;
 

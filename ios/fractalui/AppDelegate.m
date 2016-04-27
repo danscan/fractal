@@ -76,7 +76,7 @@
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   [self.window makeKeyAndVisible];
 }
-
+//
 - (void)setupFabric {
   [Fabric with:@[[Crashlytics class]]];
 }
@@ -108,9 +108,14 @@
   // Option 2) main.jsbundle
   //  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #else
-  AHBuild *build = [[AppHub buildManager] currentBuild];
-  return [build.bundle URLForResource:@"main"
-                        withExtension:@"jsbundle"];
+  // Dev Server
+  return [NSURL URLWithString:@"http://10.0.0.8:8081/index.ios.bundle?platform=ios&dev=true"];
+  // Bundle
+//  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  // AppHub
+//  AHBuild *build = [[AppHub buildManager] currentBuild];
+//  return [build.bundle URLForResource:@"main"
+//                        withExtension:@"jsbundle"];
 #endif
 }
 

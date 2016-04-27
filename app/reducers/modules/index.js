@@ -3,9 +3,7 @@ import {
   SET_MODULE,
   DELETE_MODULE,
 } from '../../actions/modules';
-import { Map } from 'immutable';
-
-export const initialState = new Map;
+import initialState from './initialState';
 
 export default function modules(state = initialState, action) {
   switch (action.type) {

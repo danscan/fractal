@@ -1,9 +1,11 @@
 /* global it, describe, expect, jest */
 jest.unmock('immutable');
 jest.unmock('../');
+jest.unmock('../initialState');
 jest.unmock('../../../actions/modules');
 
-import reducer, { initialState } from '../';
+import reducer from '../';
+import initialState from '../initialState';
 import {
   setModules,
   setModule,

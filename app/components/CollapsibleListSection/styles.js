@@ -17,8 +17,10 @@ export default StyleSheet.create({
     height: 38,
   },
   arrow: {
-    marginLeft: 10,
-    width: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 28,
+    width: 28,
   },
   collapsedSectionArrowImage: {
     width: 4,

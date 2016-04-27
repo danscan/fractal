@@ -1,20 +1,29 @@
 import React, { Component, PropTypes, View } from 'react-native';
-import { OrderedMap } from 'immutable';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import { Map, OrderedMap } from 'immutable';
 import Window from '../Window';
 import styles from './styles';
 
 // (Configuration constants)
-const DEFAULT_WINDOW_POSITION = new OrderedMap({
-  x: 140,
-  y: 100,
+const DEFAULT_WINDOW_POSITION = new Map({
+  x: 30,
+  y: 80,
 
   width: 375,
   height: 405,
 });
 
 // (Prop type constants)
+const windowPositionPropType = ImmutablePropTypes.contains({
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+});
 const windowPropType = PropTypes.shape({
   contents: PropTypes.any,
+  initialPosition: windowPositionPropType,
   key: PropTypes.string.isRequired,
   visible: PropTypes.bool,
 });
@@ -57,11 +66,11 @@ export default class WindowLayer extends Component {
 
   applyWindows(windows) {
     const { windowPositions } = this.state;
-    const nextWindowPositions = windows.reduce((memo, { key }) => {
+    const nextWindowPositions = windows.reduce((memo, { key, initialPosition }) => {
       const windowPosition = windowPositions.get(key);
 
       return memo
-        .set(key, windowPosition || DEFAULT_WINDOW_POSITION);
+        .set(key, windowPosition || initialPosition || DEFAULT_WINDOW_POSITION);
     }, new OrderedMap);
 
     this.setState({ windowPositions: nextWindowPositions });

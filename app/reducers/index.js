@@ -8,6 +8,7 @@ import interfaceEditorCanvasOrientation from './interfaceEditorCanvasOrientation
 import interfaceEditorCanvasZoom from './interfaceEditorCanvasZoom';
 import interfaceEditorDirectSelectModeEnabled from './interfaceEditorDirectSelectModeEnabled';
 import interfaceEditorFullscreenPreview from './interfaceEditorFullscreenPreview';
+import interfaceEditorPropsEditorSelectedProp from './interfaceEditorPropsEditorSelectedProp';
 import interfaceEditorWorkspacePanelModalContent from './interfaceEditorWorkspacePanelModalContent';
 import interfaceEditorStyleEditorSelectedProp from './interfaceEditorStyleEditorSelectedProp';
 import modules from './modules';
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   interfaceEditorCanvasZoom,
   interfaceEditorDirectSelectModeEnabled,
   interfaceEditorFullscreenPreview,
+  interfaceEditorPropsEditorSelectedProp,
   interfaceEditorWorkspacePanelModalContent,
   interfaceEditorStyleEditorSelectedProp,
   modules,

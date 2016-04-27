@@ -1,6 +1,8 @@
 import React, { Component, StatusBar, View } from 'react-native';
+import { Map } from 'immutable';
 import InterfaceEditorToolbar from '../InterfaceEditorToolbar';
 import InterfaceEditorWorkspace from '../InterfaceEditorWorkspace';
+import InterfaceEditorPropsEditor from '../InterfaceEditorPropsEditor';
 import InterfaceEditorStyleEditor from '../InterfaceEditorStyleEditor';
 import InterfaceEditorTreeNavigator from '../InterfaceEditorTreeNavigator';
 import WindowLayer from '../WindowLayer';
@@ -12,13 +14,39 @@ export default class InterfaceEditor extends Component {
       <WindowLayer
         windows={[
           {
+            contents: <InterfaceEditorPropsEditor/>,
+            initialPosition: new Map({
+              x: 20,
+              y: 100,
+
+              width: 300,
+              height: 290,
+            }),
+            key: 'propsEditor',
+            visible: true,
+          },
+          {
             contents: <InterfaceEditorTreeNavigator/>,
             key: 'treeNavigator',
+            initialPosition: new Map({
+              x: 20,
+              y: 410,
+
+              width: 300,
+              height: 320,
+            }),
             visible: true,
           },
           {
             contents: <InterfaceEditorStyleEditor/>,
             key: 'styleEditor',
+            initialPosition: new Map({
+              x: 690,
+              y: 100,
+
+              width: 300,
+              height: 600,
+            }),
             visible: true,
           },
         ]}
