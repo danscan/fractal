@@ -66,12 +66,12 @@ export default class CheckButtonsGroup extends Component {
         {items.map((item, itemIndex) => this.renderItemButton(item, {
           isFirstItem: itemIndex === 0,
           isLastItem: itemIndex === items.length - 1,
-        }))}
+        }, itemIndex))}
       </View>
     );
   }
 
-  renderItemButton({ image, text, value }, { isFirstItem, isLastItem }) {
+  renderItemButton({ image, text, value }, { isFirstItem, isLastItem }, key) {
     const { selectedValues } = this.props;
     const selectedValuesSet = new Set(selectedValues);
     const isSelected = selectedValuesSet.has(value);
@@ -87,7 +87,7 @@ export default class CheckButtonsGroup extends Component {
 
     return (
       <TouchableOpacity
-        key={value}
+        key={key}
         onPress={() => this.toggleSelectedValuesMember(value)}
         style={buttonStyle}
       >

@@ -42,12 +42,12 @@ export default class RadioButtonsGroup extends Component {
         {items.map((item, itemIndex) => this.renderItemButton(item, {
           isFirstItem: itemIndex === 0,
           isLastItem: itemIndex === items.length - 1,
-        }))}
+        }, itemIndex))}
       </View>
     );
   }
 
-  renderItemButton({ image, text, value }, { isFirstItem, isLastItem }) {
+  renderItemButton({ image, text, value }, { isFirstItem, isLastItem }, key) {
     const {
       onChangeSelectedValue,
       selectedValue,
@@ -64,7 +64,11 @@ export default class RadioButtonsGroup extends Component {
                           : image;
 
     return (
-      <TouchableOpacity key={value} onPress={() => onChangeSelectedValue(value)} style={buttonStyle}>
+      <TouchableOpacity
+        key={key}
+        onPress={() => onChangeSelectedValue(value)}
+        style={buttonStyle}
+      >
         {buttonContents}
       </TouchableOpacity>
     );
