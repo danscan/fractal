@@ -1,6 +1,8 @@
 import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { OrderedMap } from 'immutable';
 import { elementPathPropType } from '../../constants/propTypes';
+import propValueByProp from '../../utils/propValueByProp';
+import propValueInputTypeByProp from '../../utils/propValueInputTypeByProp';
 import CollapsibleListSection from '../CollapsibleListSection';
 import styles from './styles';
 
@@ -29,12 +31,12 @@ export default class InterfaceEditorPropsEditor extends Component {
 
     return (
       <ScrollView style={styles.propsList}>
-        {propsMap.map((propValue, propName) => this.renderPropListProp(propValue, propName)).toArray()}
+        {propsMap.map((prop, propName) => this.renderPropListProp(prop, propName)).toArray()}
       </ScrollView>
     );
   }
 
-  renderPropListProp(propValue, propName) {
+  renderPropListProp(prop, propName) {
     const {
       onPressProp,
       selectedPropName,
@@ -46,6 +48,9 @@ export default class InterfaceEditorPropsEditor extends Component {
     const propTitleLabelStyle = isSelectedProp
       ? styles.selectedPropTitleLabel
       : null;
+    const propValue = propValueByProp(prop);
+    const propValueInputType = propValueInputTypeByProp(prop);
+    console.log('renderPropListProp... propName:', propName, 'propValueInputType:', propValueInputType);
 
     return (
       <CollapsibleListSection
