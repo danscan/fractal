@@ -33,11 +33,9 @@ export default class InterfaceEditorElement extends Component {
       return element;
     }
 
-    console.log('element:', element);
     const elementType = element.get('type');
     const propsWithoutChildren = element.get('props').delete('children');
     const children = elementChildrenByElement(element);
-    console.log('children:', children);
     const elementKeyPropValue = elementPath;
     const elementProps = propsWithoutChildren
     .map((prop, propName) => elementPropValueByElementAndPropName(element, propName))
