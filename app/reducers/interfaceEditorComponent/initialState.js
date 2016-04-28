@@ -72,8 +72,9 @@ const cell = ({ name, username, body }) => elementByType(View, fromJS({
     }), 'Post Body'),
   ],
   style: {
-    borderBottomColor: '#ddd',
-    borderBottomWidth: 1,
+    backgroundColor: 'white',
+    borderRadius: 4,
+    marginBottom: 10,
     padding: 20,
   },
 }), 'Cell');
