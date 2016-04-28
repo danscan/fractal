@@ -4,11 +4,11 @@ import getStore from './store/index';
 import KeyboardAwareView from './components/KeyboardAwareView';
 import InterfaceEditor from './components/InterfaceEditor';
 
+const store = getStore();
+GLOBAL.store = store;
+
 export default class App extends Component {
   render() {
-    // Get Provider store
-    const store = getStore();
-
     return (
       <Provider store={store}>
         <KeyboardAwareView animated>

@@ -3,7 +3,7 @@ import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorC
 import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
 import { interfaceEditorStyleEditorSelectedProp } from '../../selectors/interfaceEditorStyleEditorSelectedProp';
 import { applyInterfaceEditorComponentElementProp } from '../../actions/interfaceEditorComponent';
-import elementStylePropValueByElementAndPropName from '../../utils/elementStylePropValueByElementAndPropName';
+import elementPropValueByElementAndPropName from '../../utils/elementPropValueByElementAndPropName';
 import Component from './component';
 
 const mapStateToProps = (state) => {
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
     propName: styleEditorSelectedProp,
     propType: selectedElement.getIn(['type', 'propTypes', styleEditorSelectedProp]),
     selectedElementPath: interfaceEditorSelectedElementPath(state),
-    value: elementStylePropValueByElementAndPropName(selectedElement, styleEditorSelectedProp),
+    value: elementPropValueByElementAndPropName(selectedElement, styleEditorSelectedProp),
   };
 };
 
