@@ -15,8 +15,8 @@ export default class InterfaceEditorPropsEditor extends Component {
     onPressDeleteProp: PropTypes.func.isRequired,
     onPressDuplicateProp: PropTypes.func.isRequired,
     onPressProp: PropTypes.func.isRequired,
-    props: PropTypes.object,
-    propTypes: PropTypes.object,
+    props: PropTypes.objectOf(PropTypes.any),
+    propTypes: PropTypes.objectOf(PropTypes.any),
     selectedElementPath: elementPathPropType,
     selectedProp: PropTypes.string,
   };

@@ -9,7 +9,6 @@ export default class InterfaceEditorStyleEditor extends Component {
   static propTypes = {
     onChangeValue: PropTypes.func.isRequired,
     propName: PropTypes.string.isRequired,
-    propType: PropTypes.func,
     value: ImmutablePropTypes.map,
   };
 

@@ -1,24 +1,78 @@
 import { fromJS } from 'immutable';
-import { Text, ScrollView, View } from 'react-native';
+import { Text, ScrollView, StyleSheet, View } from 'react-native';
 import elementByType from '../../utils/elementByType';
 
-const navBar = elementByType(View, fromJS({
-  children: [
-    elementByType(Text, fromJS({
-      children: ['Talker'],
-      style: {
-        color: 'white',
-        fontFamily: 'Avenir',
-        fontSize: 18,
-      },
-    })),
-  ],
-  style: {
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
+  },
+
+  navBar: {
     alignItems: 'center',
     backgroundColor: '#00b5ec',
     justifyContent: 'center',
     height: 48,
   },
+  navBarTitleLabel: {
+    color: 'white',
+    fontFamily: 'Avenir',
+    fontSize: 18,
+  },
+
+  feed: {
+    backgroundColor: '#f0f0f0',
+    flex: 1,
+  },
+  feedContentContainer: {
+    padding: 8,
+  },
+
+  cell: {
+    backgroundColor: 'white',
+    borderRadius: 4,
+    marginBottom: 10,
+    padding: 20,
+  },
+  authorInfoSection: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  avatarImage: {
+    backgroundColor: '#ccc',
+    borderRadius: 8,
+    marginRight: 10,
+    height: 50,
+    width: 50,
+  },
+  authorProfileInfo: {},
+  authorNameLabel: {
+    color: '#333',
+    fontFamily: 'Avenir',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  authorUsernameLabel: {
+    color: '#666',
+    fontFamily: 'Avenir',
+    fontSize: 14,
+  },
+  postBodyLabel: {
+    color: '#444',
+    fontFamily: 'Avenir',
+    fontSize: 14,
+  },
+});
+
+const navBar = elementByType(View, fromJS({
+  children: [
+    elementByType(Text, fromJS({
+      children: ['Talker'],
+      style: styles.navBarTitleLabel,
+    })),
+  ],
+  style: styles.navBar,
 }), 'NavBar');
 
 const cell = ({ name, username, body }) => elementByType(View, fromJS({
@@ -26,57 +80,30 @@ const cell = ({ name, username, body }) => elementByType(View, fromJS({
     elementByType(View, fromJS({
       children: [
         elementByType(View, fromJS({
-          style: {
-            backgroundColor: '#ccc',
-            borderRadius: 8,
-            marginRight: 10,
-            height: 50,
-            width: 50,
-          },
+          style: styles.avatarImage,
         }), 'Avatar Image'),
         elementByType(View, fromJS({
           children: [
             elementByType(Text, fromJS({
               children: [name],
-              style: {
-                color: '#333',
-                fontFamily: 'Avenir',
-                fontSize: 14,
-                fontWeight: '600',
-              },
+              style: styles.authorNameLabel,
             })),
             elementByType(Text, fromJS({
               children: [username],
-              style: {
-                color: '#666',
-                fontFamily: 'Avenir',
-                fontSize: 14,
-              },
+              style: styles.authorUsernameLabel,
             })),
           ],
+          style: styles.authorProfileInfo,
         }), 'Author Profile Info'),
       ],
-      style: {
-        alignItems: 'center',
-        flexDirection: 'row',
-        marginBottom: 20,
-      },
+      style: styles.authorInfoSection,
     }), 'Author Info Section'),
     elementByType(Text, fromJS({
       children: [body],
-      style: {
-        color: '#444',
-        fontFamily: 'Avenir',
-        fontSize: 14,
-      },
+      style: styles.postBodyLabel,
     }), 'Post Body'),
   ],
-  style: {
-    backgroundColor: 'white',
-    borderRadius: 4,
-    marginBottom: 10,
-    padding: 20,
-  },
+  style: styles.cell,
 }), 'Cell');
 
 const feed = elementByType(ScrollView, fromJS({
@@ -97,22 +124,16 @@ const feed = elementByType(ScrollView, fromJS({
       body: 'Just published a @peachapp clone... built in 20 minutes 0_0. @megafractal is the future []_[].',
     }),
   ],
-  contentContainerStyle: {
-    padding: 8,
-  },
-  style: {
-    backgroundColor: '#f0f0f0',
-    flex: 1,
-  },
+  contentContainerStyle: styles.feedContentContainer,
+  style: styles.feed,
 }), 'Feed');
 
-export default elementByType(View, fromJS({
+const component = elementByType(View, fromJS({
   children: [
     navBar,
     feed,
   ],
-  style: {
-    backgroundColor: 'white',
-    flex: 1,
-  },
+  style: styles.container,
 }), 'Root');
+
+export default component;

@@ -1,11 +1,11 @@
 import treePathByElementPath from '../../utils/treePathByElementPath';
-import elementChildrenTreePathByElementPath from '../../utils/elementChildrenTreePathByElementPath';
+import elementPropValueTreePathByElementPathAndPropName from '../../utils/elementPropValueTreePathByElementPathAndPropName';
 
 export default function reduceMoveInterfaceEditorComponentElement(state, { elementPath, desiredParentElementPath }) {
   const elementTreePath = treePathByElementPath(elementPath);
   const element = state.getIn(elementTreePath);
 
-  const desiredParentElementChildrenTreePath = elementChildrenTreePathByElementPath(desiredParentElementPath);
+  const desiredParentElementChildrenTreePath = elementPropValueTreePathByElementPathAndPropName(desiredParentElementPath, 'children');
   const oldDesiredParentElementChildren = state.getIn(desiredParentElementChildrenTreePath);
   const newDesiredParentElementChildren = oldDesiredParentElementChildren.push(element);
   const treeWithElementAtNewLocation = state.setIn(desiredParentElementChildrenTreePath, newDesiredParentElementChildren);

@@ -1,7 +1,7 @@
-import elementChildrenTreePathByElementPath from '../../utils/elementChildrenTreePathByElementPath';
+import elementPropValueTreePathByElementPathAndPropName from '../../utils/elementPropValueTreePathByElementPathAndPropName';
 
 export default function reduceAddInterfaceEditorComponentElementChild(state, { elementPath, child }) {
-  const elementChildrenTreePath = elementChildrenTreePathByElementPath(elementPath);
+  const elementChildrenTreePath = elementPropValueTreePathByElementPathAndPropName(elementPath, 'children');
   const oldElementChildren = state.getIn(elementChildrenTreePath);
   const newElementChildren = oldElementChildren.push(child);
 

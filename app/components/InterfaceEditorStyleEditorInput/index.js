@@ -1,20 +1,20 @@
+import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponent';
 import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
-import { interfaceEditorStyleEditorSelectedProp } from '../../selectors/interfaceEditorStyleEditorSelectedProp';
+import { interfaceEditorStyleSheetEditorSelectedStyleName } from '../../selectors/interfaceEditorStyleSheetEditorSelectedStyleName';
 import { applyInterfaceEditorComponentElementProp } from '../../actions/interfaceEditorComponent';
 import elementPropValueByElementAndPropName from '../../utils/elementPropValueByElementAndPropName';
 import Component from './component';
 
 const mapStateToProps = (state) => {
   const selectedElement = interfaceEditorSelectedElement(state);
-  const styleEditorSelectedProp = interfaceEditorStyleEditorSelectedProp(state);
+  const styleSheetEditorSelectedStyleName = interfaceEditorStyleSheetEditorSelectedStyleName(state);
 
   return {
-    propName: styleEditorSelectedProp,
-    propType: selectedElement.getIn(['type', 'propTypes', styleEditorSelectedProp]),
+    propName: styleSheetEditorSelectedStyleName,
     selectedElementPath: interfaceEditorSelectedElementPath(state),
-    value: elementPropValueByElementAndPropName(selectedElement, styleEditorSelectedProp),
+    value: StyleSheet.flatten(elementPropValueByElementAndPropName(selectedElement, styleSheetEditorSelectedStyleName)),
   };
 };
 

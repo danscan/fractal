@@ -1,0 +1,8 @@
+export const SET_INTERFACE_EDITOR_STYLE_SHEET_EDITOR_SELECTED_STYLE_NAME = 'SET_INTERFACE_EDITOR_STYLE_SHEET_EDITOR_SELECTED_STYLE_NAME';
+
+export function setInterfaceEditorStyleSheetEditorSelectedStyleName(styleName) {
+  return {
+    type: SET_INTERFACE_EDITOR_STYLE_SHEET_EDITOR_SELECTED_STYLE_NAME,
+    styleName,
+  };
+}

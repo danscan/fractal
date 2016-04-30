@@ -9,7 +9,7 @@ export function interfaceEditorComponent(state) {
 
 export const interfaceEditorComponentTree = createSelector(
   interfaceEditorComponent,
-  // Currently, `interfaceEditorComponents` just stores component trees
+  // Currently, `interfaceEditorComponent` just stores the component tree
   (treeState) => treeState,
 );
 

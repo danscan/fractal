@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import InterfaceEditorToolbar from '../InterfaceEditorToolbar';
 import InterfaceEditorWorkspace from '../InterfaceEditorWorkspace';
 import InterfaceEditorPropsEditor from '../InterfaceEditorPropsEditor';
-import InterfaceEditorStyleEditor from '../InterfaceEditorStyleEditor';
+import InterfaceEditorStyleSheetEditor from '../InterfaceEditorStyleSheetEditor';
 import InterfaceEditorTreeNavigator from '../InterfaceEditorTreeNavigator';
 import WindowLayer from '../WindowLayer';
 import styles from './styles';
@@ -38,8 +38,8 @@ export default class InterfaceEditor extends Component {
             visible: true,
           },
           {
-            contents: <InterfaceEditorStyleEditor/>,
-            key: 'styleEditor',
+            contents: <InterfaceEditorStyleSheetEditor/>,
+            key: 'styleSheetEditor',
             initialPosition: new Map({
               x: 690,
               y: 100,
