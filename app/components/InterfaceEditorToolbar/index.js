@@ -8,8 +8,10 @@ import { setInterfaceEditorWorkspacePanelModalContent } from '../../actions/inte
 import {
   canRedoInterfaceEditorComponentAction,
   canUndoInterfaceEditorComponentAction,
-  interfaceEditorSelectedElement,
 } from '../../selectors/interfaceEditorComponent';
+import {
+  interfaceEditorSelectedElement,
+} from '../../selectors/interfaceEditorComponentElement';
 import { interfaceEditorWorkspacePanelModalContent } from '../../selectors/interfaceEditorWorkspacePanelModalContent';
 import InterfaceEditorAddElementPanel from '../InterfaceEditorAddElementPanel';
 import Component from './component';

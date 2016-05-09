@@ -42,20 +42,25 @@ export default StyleSheet.create({
     fontWeight: '600',
   },
 
-  selectedPropActionsSection: {
+  propsActionsSection: {
+    backgroundColor: '#f5f5f5',
     borderTopColor: '#ccc',
     borderTopWidth: 1,
     flexDirection: 'row',
   },
-  selectedPropActionButton: {
+  propsActionButton: {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
     height: 38,
   },
-  selectedPropActionButtonImage: {
+  propsActionButtonImage: {
     height: 22,
     tintColor: '#404040',
     width: 22,
+  },
+  propsAddActionButtonImage: {
+    height: 19,
+    width: 19,
   },
 });

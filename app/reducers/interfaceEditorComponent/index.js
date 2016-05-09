@@ -1,3 +1,8 @@
+import undoable from 'redux-undo';
+import {
+  UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
+  REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
+} from '../../actions/interfaceEditorComponent';
 import {
   ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD,
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
@@ -6,41 +11,26 @@ import {
   CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
   APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
-  UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-  REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
-} from '../../actions/interfaceEditorComponent';
-import undoable from 'redux-undo';
+} from '../../actions/interfaceEditorComponentElement';
+import {
+  SET_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
+  ADD_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
+  DELETE_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
+  DUPLICATE_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
+} from '../../actions/interfaceEditorComponentStyleSheet';
+import interfaceEditorComponentElement from '../interfaceEditorComponentElement';
+import interfaceEditorComponentStyleSheet from '../interfaceEditorComponentStyleSheet';
 
-import initialState from './initialState';
+const initialState = interfaceEditorComponent({}, {});
 
-import reduceAddInterfaceEditorComponentElementChild from './reduceAddInterfaceEditorComponentElementChild';
-import reduceRemoveInterfaceEditorComponentElement from './reduceRemoveInterfaceEditorComponentElement';
-import reduceDuplicateInterfaceEditorComponentElement from './reduceDuplicateInterfaceEditorComponentElement';
-import reduceMoveInterfaceEditorComponentElement from './reduceMoveInterfaceEditorComponentElement';
-import reduceChangeInterfaceEditorComponentElementDisplayName from './reduceChangeInterfaceEditorComponentElementDisplayName';
-import reduceApplyInterfaceEditorComponentElementProp from './reduceApplyInterfaceEditorComponentElementProp';
-import reduceRemoveInterfaceEditorComponentElementProp from './reduceRemoveInterfaceEditorComponentElementProp';
+function interfaceEditorComponent(state = initialState, action) {
+  return {
+    element: interfaceEditorComponentElement(state.element, action),
+    styleSheet: interfaceEditorComponentStyleSheet(state.styleSheet, action),
+  };
+}
 
-export default undoable(function interfaceEditorComponent(state = initialState, action) {
-  switch (action.type) {
-    case ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD:
-      return reduceAddInterfaceEditorComponentElementChild(state, action);
-    case REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT:
-      return reduceRemoveInterfaceEditorComponentElement(state, action);
-    case DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT:
-      return reduceDuplicateInterfaceEditorComponentElement(state, action);
-    case MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT:
-      return reduceMoveInterfaceEditorComponentElement(state, action);
-    case CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME:
-      return reduceChangeInterfaceEditorComponentElementDisplayName(state, action);
-    case APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
-      return reduceApplyInterfaceEditorComponentElementProp(state, action);
-    case REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
-      return reduceRemoveInterfaceEditorComponentElementProp(state, action);
-    default:
-      return state;
-  }
-}, {
+export default undoable(interfaceEditorComponent, {
   redoType: REDO_INTERFACE_EDITOR_COMPONENT_ACTION,
   undoType: UNDO_INTERFACE_EDITOR_COMPONENT_ACTION,
 
@@ -50,6 +40,7 @@ export default undoable(function interfaceEditorComponent(state = initialState, 
 // Filter undoable action types
 function filterUndoableActionTypes(action) {
   const undoableActionTypes = [
+    // interfaceEditorComponentElement actions
     ADD_INTERFACE_EDITOR_COMPONENT_ELEMENT_CHILD,
     REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
     DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
@@ -57,6 +48,12 @@ function filterUndoableActionTypes(action) {
     CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
     APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
     REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
+
+    // interfaceEditorComponentStyleSheet actions
+    SET_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
+    ADD_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
+    DELETE_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
+    DUPLICATE_INTERFACE_EDITOR_COMPONENT_STYLE_SHEET_STYLE,
   ];
 
 

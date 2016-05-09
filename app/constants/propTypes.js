@@ -41,3 +41,5 @@ export const elementPropType = ImmutablePropTypes.contains({
   type: PropTypes.func.isRequired,
   props: ImmutablePropTypes.mapOf(elementPropPropType).isRequired,
 });
+
+export const componentStyleSheetMapPropType = ImmutablePropTypes.map;

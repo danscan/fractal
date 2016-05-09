@@ -19,33 +19,26 @@ export default StyleSheet.create({
   selectedStyleNameOptionsColumn: {
     flex: 1,
   },
-  selectedStyleNameOptionLabel: {
-    color: '#999',
-    fontFamily: 'Avenir',
-    fontSize: 10,
-    marginBottom: 6,
-  },
-  selectedStyleNameOptionValueLabel: {
-    color: '#404040',
-    fontFamily: 'Avenir',
-    fontSize: 12,
-    fontWeight: '600',
-  },
 
-  selectedStyleNameActionsSection: {
+  stylesActionsSection: {
+    backgroundColor: '#f5f5f5',
     borderTopColor: '#ccc',
     borderTopWidth: 1,
     flexDirection: 'row',
   },
-  selectedStyleNameActionButton: {
+  stylesActionButton: {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
     height: 38,
   },
-  selectedStyleNameActionButtonImage: {
+  stylesActionButtonImage: {
     height: 22,
     tintColor: '#404040',
     width: 22,
+  },
+  stylesAddActionButtonImage: {
+    height: 19,
+    width: 19,
   },
 });

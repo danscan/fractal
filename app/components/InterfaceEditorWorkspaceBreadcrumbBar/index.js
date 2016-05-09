@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { interfaceEditorSelectedElementBreadcrumbElements } from '../../selectors/interfaceEditorComponent';
+import { interfaceEditorSelectedElementBreadcrumbElements } from '../../selectors/interfaceEditorComponentElement';
 import { setInterfaceEditorSelectedElementPath } from '../../actions/interfaceEditorSelectedElementPath';
 import Component from './component';
 

@@ -7,11 +7,13 @@ import CollapsibleListSection from '../CollapsibleListSection';
 import styles from './styles';
 
 // (Button image assets)
+import addButtonImage from '../../assets/img/addButton.png';
 import deleteButtonImage from '../../assets/img/deleteButton.png';
 import duplicateButtonImage from '../../assets/img/duplicateButton.png';
 
 export default class InterfaceEditorPropsEditor extends Component {
   static propTypes = {
+    onPressAddProp: PropTypes.func.isRequired,
     onPressDeleteProp: PropTypes.func.isRequired,
     onPressDuplicateProp: PropTypes.func.isRequired,
     onPressProp: PropTypes.func.isRequired,
@@ -66,12 +68,7 @@ export default class InterfaceEditorPropsEditor extends Component {
   }
 
   renderSelectedPropOptions() {
-    const {
-      onPressDeleteProp,
-      onPressDuplicateProp,
-      selectedElementPath,
-      selectedPropName,
-    } = this.props;
+    const { selectedPropName } = this.props;
 
     // If no prop is selected, don't render any options UI for it
     if (!selectedPropName) {
@@ -93,14 +90,30 @@ export default class InterfaceEditorPropsEditor extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.selectedPropActionsSection}>
-          <TouchableOpacity onPress={() => onPressDuplicateProp(selectedElementPath, selectedPropName)} style={styles.selectedPropActionButton}>
-            <Image source={duplicateButtonImage} style={styles.selectedPropActionButtonImage}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => onPressDeleteProp(selectedElementPath, selectedPropName)} style={styles.selectedPropActionButton}>
-            <Image source={deleteButtonImage} style={styles.selectedPropActionButtonImage}/>
-          </TouchableOpacity>
-        </View>
+      </View>
+    );
+  }
+
+  renderPropsActionsSection() {
+    const {
+      onPressAddProp,
+      onPressDeleteProp,
+      onPressDuplicateProp,
+      selectedElementPath,
+      selectedPropName,
+    } = this.props;
+
+    return (
+      <View style={styles.propsActionsSection}>
+        <TouchableOpacity onPress={() => onPressAddProp(selectedElementPath, 'TODO: Get prop name')} style={styles.propsActionButton}>
+          <Image source={addButtonImage} style={[styles.propsActionButtonImage, styles.propsAddActionButtonImage]}/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onPressDuplicateProp(selectedElementPath, selectedPropName)} style={styles.propsActionButton}>
+          <Image source={duplicateButtonImage} style={styles.propsActionButtonImage}/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onPressDeleteProp(selectedElementPath, selectedPropName)} style={styles.propsActionButton}>
+          <Image source={deleteButtonImage} style={styles.propsActionButtonImage}/>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -110,6 +123,7 @@ export default class InterfaceEditorPropsEditor extends Component {
       <View style={styles.container}>
         {this.renderPropsList()}
         {this.renderSelectedPropOptions()}
+        {this.renderPropsActionsSection()}
       </View>
     );
   }
