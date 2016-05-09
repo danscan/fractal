@@ -3,6 +3,7 @@ import { List, OrderedMap } from 'immutable';
 import { interfaceEditorComponent } from './interfaceEditorComponent';
 import { interfaceEditorSelectedElementPath } from './interfaceEditorSelectedElementPath';
 import { interfaceEditorComponentStyleSheet } from './interfaceEditorComponentStyleSheet';
+import elementByElementWithStyleSheetStyleRefs from '../utils/elementByElementWithStyleSheetStyleRefs';
 import treePathByElementPath from '../utils/treePathByElementPath';
 
 export function interfaceEditorComponentElement(state) {
@@ -12,7 +13,7 @@ export function interfaceEditorComponentElement(state) {
 export const interfaceEditorComponentElementTree = createSelector(
   interfaceEditorComponentElement,
   interfaceEditorComponentStyleSheet,
-  (renderTree, styleSheet) => renderTree({ styleSheet }),
+  (treeWithStyleSheetStyleRefs, componentStyleSheet) => elementByElementWithStyleSheetStyleRefs(treeWithStyleSheetStyleRefs, componentStyleSheet),
 );
 
 export const interfaceEditorSelectedElement = createSelector(

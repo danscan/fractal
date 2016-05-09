@@ -69,14 +69,19 @@ export default class InterfaceEditorStyleSheetEditor extends Component {
   }
 
   renderStyleEditorInputScrollView() {
-    const { onChangeStyleValue } = this.props;
+    const {
+      onChangeStyleValue,
+      selectedStyleName,
+    } = this.props;
 
     return (
       <ScrollView
         contentContainerStyle={styles.inputScrollViewContentContainer}
         style={styles.inputScrollView}
       >
-        <InterfaceEditorStyleEditorInput onChangeValue={onChangeStyleValue}/>
+        <InterfaceEditorStyleEditorInput
+          onChangeValue={(newValue) => onChangeStyleValue(selectedStyleName, newValue)}
+        />
       </ScrollView>
     );
   }
