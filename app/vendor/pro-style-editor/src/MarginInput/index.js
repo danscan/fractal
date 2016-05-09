@@ -9,7 +9,7 @@ import styles from './styles';
 
 export default class MarginInput extends Component {
   static propTypes = {
-    initialMarginInputSelectedSides: BoxMarginSides.propTypes.selectedSides.isRequired,
+    initialMarginInputSelectedSides: BoxMarginSides.propTypes.selectedSides,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
   };

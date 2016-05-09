@@ -9,7 +9,7 @@ import styles from './styles';
 
 export default class PaddingInput extends Component {
   static propTypes = {
-    initialPaddingInputSelectedSides: BoxPaddingSides.propTypes.selectedSides.isRequired,
+    initialPaddingInputSelectedSides: BoxPaddingSides.propTypes.selectedSides,
     onChangeValue: PropTypes.func.isRequired,
     value: ImmutablePropTypes.map.isRequired,
   };

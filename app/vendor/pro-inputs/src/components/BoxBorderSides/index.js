@@ -5,8 +5,6 @@ import {
   BOTTOM,
   LEFT,
   ALL_SIDES,
-  VERTICAL_SIDES,
-  HORIZONTAL_SIDES,
 } from '../../constants/boxSides';
 import getSideSelectedState from '../../utils/getSideSelectedState';
 import boxBorderSideAllImage from '../../../assets/img/boxBorderSideAll.png';
