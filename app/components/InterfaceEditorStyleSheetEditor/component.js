@@ -1,4 +1,5 @@
 import React, {
+  AlertIOS,
   Component,
   Image,
   PropTypes,
@@ -26,6 +27,46 @@ export default class InterfaceEditorStyleSheetEditor extends Component {
     setSelectedStyleName: PropTypes.func.isRequired,
     styleSheetMap: componentStyleSheetMapPropType.isRequired,
   };
+
+  promptToAddStyle() {
+    const { onPressAddStyle } = this.props;
+
+    return AlertIOS.prompt(
+      'Enter New Style Name',
+      'Enter a name for the new style:',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancelled promptToAddStyle...'),
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: (styleName) => onPressAddStyle(styleName),
+        },
+      ],
+    );
+  }
+
+  promptToDuplicateStyle(styleName) {
+    const { onPressDuplicateStyle } = this.props;
+
+    return AlertIOS.prompt(
+      'Enter New Style Name',
+      'Enter a name for the new style:',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancelled promptToDuplicateStyle...'),
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: (newStyleName) => onPressDuplicateStyle(styleName, newStyleName),
+        },
+      ],
+    );
+  }
 
   renderStyleEditorInputScrollView() {
     const { onChangeStyleValue } = this.props;
@@ -70,18 +111,16 @@ export default class InterfaceEditorStyleSheetEditor extends Component {
 
   renderStylesActionsSection() {
     const {
-      onPressAddStyle,
       onPressDeleteStyle,
-      onPressDuplicateStyle,
       selectedStyleName,
     } = this.props;
 
     return (
       <View style={styles.stylesActionsSection}>
-        <TouchableOpacity onPress={() => onPressAddStyle('TODO: Get style name')} style={styles.stylesActionButton}>
+        <TouchableOpacity onPress={() => this.promptToAddStyle()} style={styles.stylesActionButton}>
           <Image source={addButtonImage} style={[styles.stylesActionButtonImage, styles.stylesAddActionButtonImage]}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => onPressDuplicateStyle(selectedStyleName)} style={styles.stylesActionButton}>
+        <TouchableOpacity onPress={() => this.promptToDuplicateStyle(selectedStyleName)} style={styles.stylesActionButton}>
           <Image source={duplicateButtonImage} style={styles.stylesActionButtonImage}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => onPressDeleteStyle(selectedStyleName)} style={styles.stylesActionButton}>
