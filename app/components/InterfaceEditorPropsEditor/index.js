@@ -1,4 +1,8 @@
 import { connect } from 'react-redux';
+import {
+  applyInterfaceEditorComponentElementProp,
+  removeInterfaceEditorComponentElementProp,
+} from '../../actions/interfaceEditorComponentElement';
 import { setInterfaceEditorPropsEditorSelectedPropName } from '../../actions/interfaceEditorPropsEditorSelectedPropName';
 import { interfaceEditorSelectedElement } from '../../selectors/interfaceEditorComponentElement';
 import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
@@ -17,9 +21,9 @@ const mapStateToProps = (state) => {
 };
 
 const actionCreators = {
-  onChangePropValue: (elementPath, propName, propValue) => ({ type: 'TODO...SET_PROP_VALUE', elementPath, propName, propValue }),
-  onPressAddProp: (elementPath, propName) => ({ type: 'TODO...SET_ELEMENT_PROP', elementPath, propName, propValue: null }),
-  onPressDeleteProp: (elementPath, propName) => ({ type: 'TODO...DELETE_ELEMENT_PROP', elementPath, propName }),
+  onChangePropValue: (elementPath, propName, propValue) => applyInterfaceEditorComponentElementProp(elementPath, propName, propValue),
+  onPressAddProp: (elementPath, propName) => applyInterfaceEditorComponentElementProp(elementPath, propName, null),
+  onPressDeleteProp: (elementPath, propName) => removeInterfaceEditorComponentElementProp(elementPath, propName),
   onPressDuplicateProp: (elementPath, propName, newPropName) => ({ type: 'TODO...DUPLICATE_ELEMENT_PROP', elementPath, propName, newPropName }),
   onPressProp: (propName) => setInterfaceEditorPropsEditorSelectedPropName(propName),
 };

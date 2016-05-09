@@ -1,4 +1,13 @@
-import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, {
+  AlertIOS,
+  Component,
+  Image,
+  PropTypes,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { OrderedMap } from 'immutable';
 import { elementPathPropType } from '../../constants/propTypes';
 import propValueByProp from '../../utils/propValueByProp';
@@ -22,6 +31,52 @@ export default class InterfaceEditorPropsEditor extends Component {
     selectedElementPath: elementPathPropType,
     selectedProp: PropTypes.string,
   };
+
+  promptToAddProp() {
+    const {
+      onPressAddProp,
+      selectedElementPath,
+    } = this.props;
+
+    return AlertIOS.prompt(
+      'Enter New Prop Name',
+      'Enter a name for the new prop:',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancelled promptToAddProp...'),
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: (propName) => onPressAddProp(selectedElementPath, propName),
+        },
+      ],
+    );
+  }
+
+  promptToDuplicateProp(propName) {
+    const {
+      onPressDuplicateProp,
+      selectedElementPath,
+    } = this.props;
+
+    return AlertIOS.prompt(
+      'Enter New Prop Name',
+      'Enter a name for the new prop:',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancelled promptToDuplicateProp...'),
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: (newPropName) => onPressDuplicateProp(selectedElementPath, propName, newPropName),
+        },
+      ],
+    );
+  }
 
   renderPropsList() {
     const { props } = this.props;
@@ -96,19 +151,17 @@ export default class InterfaceEditorPropsEditor extends Component {
 
   renderPropsActionsSection() {
     const {
-      onPressAddProp,
       onPressDeleteProp,
-      onPressDuplicateProp,
       selectedElementPath,
       selectedPropName,
     } = this.props;
 
     return (
       <View style={styles.propsActionsSection}>
-        <TouchableOpacity onPress={() => onPressAddProp(selectedElementPath, 'TODO: Get prop name')} style={styles.propsActionButton}>
+        <TouchableOpacity onPress={() => this.promptToAddProp()} style={styles.propsActionButton}>
           <Image source={addButtonImage} style={[styles.propsActionButtonImage, styles.propsAddActionButtonImage]}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => onPressDuplicateProp(selectedElementPath, selectedPropName)} style={styles.propsActionButton}>
+        <TouchableOpacity onPress={() => this.promptToDuplicateProp(selectedPropName)} style={styles.propsActionButton}>
           <Image source={duplicateButtonImage} style={styles.propsActionButtonImage}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => onPressDeleteProp(selectedElementPath, selectedPropName)} style={styles.propsActionButton}>
