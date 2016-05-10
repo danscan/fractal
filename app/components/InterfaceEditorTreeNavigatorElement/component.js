@@ -19,7 +19,6 @@ export default class InterfaceEditorTreeNavigatorElement extends Component {
     isInitiallyCollapsed: PropTypes.bool,
     isSelected: PropTypes.bool,
     onPress: PropTypes.func.isRequired,
-    onPressEdit: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
   };
 

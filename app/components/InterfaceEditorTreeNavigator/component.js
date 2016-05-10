@@ -38,6 +38,7 @@ export default class InterfaceEditorTreeNavigator extends Component {
     const { onPressElement } = this.props;
     const { movingElementFromPath } = this.state;
     const currentlyMovingElement = !!movingElementFromPath;
+    console.log('movingElementFromPath:', movingElementFromPath);
 
     // If user is currently moving an element, commit the move when
     // another element is pressed; otherwise default to normal onPressElement.
@@ -74,6 +75,7 @@ export default class InterfaceEditorTreeNavigator extends Component {
   }
 
   commitMovingElement(desiredParentElementPath) {
+    console.log('commit moving element!');
     const {
       onPressElement,
       onPressMoveElement,
@@ -136,6 +138,7 @@ export default class InterfaceEditorTreeNavigator extends Component {
         elementPath={elementPath}
         isInitiallyCollapsed={isInitiallyCollapsed}
         imageSource={elementTypeImageSource}
+        onPress={() => this.onPressElement(elementPath)}
         title={elementDisplayName}
       >
         {(
