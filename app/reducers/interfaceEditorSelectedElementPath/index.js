@@ -1,7 +1,7 @@
 import {
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
   MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
-} from '../../actions/interfaceEditorComponent';
+} from '../../actions/interfaceEditorComponentElement';
 import { SET_INTERFACE_EDITOR_SELECTED_ELEMENT_PATH } from '../../actions/interfaceEditorSelectedElementPath';
 import { List } from 'immutable';
 
