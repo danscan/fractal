@@ -109,13 +109,13 @@
   //  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #else
   // Dev Server
-  return [NSURL URLWithString:@"http://10.0.0.8:8081/index.ios.bundle?platform=ios&dev=true"];
+//  return [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
   // Bundle
 //  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   // AppHub
-//  AHBuild *build = [[AppHub buildManager] currentBuild];
-//  return [build.bundle URLForResource:@"main"
-//                        withExtension:@"jsbundle"];
+  AHBuild *build = [[AppHub buildManager] currentBuild];
+  return [build.bundle URLForResource:@"main"
+                        withExtension:@"jsbundle"];
 #endif
 }
 
