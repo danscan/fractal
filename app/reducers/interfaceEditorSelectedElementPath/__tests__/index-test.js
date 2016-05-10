@@ -1,7 +1,7 @@
 /* global it, describe, expect, jest */
 jest.unmock('immutable');
 jest.unmock('../');
-jest.unmock('../../../actions/interfaceEditorComponent');
+jest.unmock('../../../actions/interfaceEditorComponentElement');
 jest.unmock('../../../actions/interfaceEditorSelectedElementPath');
 
 import { List } from 'immutable';
@@ -9,7 +9,7 @@ import reducer, { initialState } from '../';
 import {
   removeInterfaceEditorComponentElement,
   moveInterfaceEditorComponentElement,
-} from '../../../actions/interfaceEditorComponent';
+} from '../../../actions/interfaceEditorComponentElement';
 import { setInterfaceEditorSelectedElementPath } from '../../../actions/interfaceEditorSelectedElementPath';
 
 describe('interfaceEditorSelectedElementPath reducer', () => {
