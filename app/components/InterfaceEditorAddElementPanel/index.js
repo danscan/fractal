@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addInterfaceEditorComponentElementChild } from '../../actions/interfaceEditorComponent';
+import { addInterfaceEditorComponentElementChild } from '../../actions/interfaceEditorComponentElement';
 import elementTypeGroups from '../../constants/elementTypes';
 import { interfaceEditorSelectedElementPath } from '../../selectors/interfaceEditorSelectedElementPath';
 import elementByType from '../../utils/elementByType';
