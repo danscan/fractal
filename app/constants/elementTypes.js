@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  SliderIOS,
+  Slider,
   Switch,
   MapView,
   WebView,
@@ -66,9 +66,9 @@ export const TextInputElementType = new Map({
   imageSource: require('../assets/img/elementTypes/textInput.png'),
 });
 
-export const SliderIOSElementType = new Map({
-  name: 'Slider (iOS)',
-  component: SliderIOS,
+export const SliderElementType = new Map({
+  name: 'Slider',
+  component: Slider,
   imageSource: require('../assets/img/elementTypes/slider.png'),
 });
 
@@ -115,7 +115,7 @@ export default new List([
       TouchableHighlightElementType,
       TouchableWithoutFeedbackElementType,
       TextInputElementType,
-      SliderIOSElementType,
+      SliderElementType,
       SwitchElementType,
     ]),
   }),
@@ -145,7 +145,7 @@ export const allElementTypes = new List([
   TouchableHighlightElementType,
   TouchableWithoutFeedbackElementType,
   TextInputElementType,
-  SliderIOSElementType,
+  SliderElementType,
   SwitchElementType,
   MapViewElementType,
   WebViewElementType,
