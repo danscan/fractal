@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
   applyInterfaceEditorComponentElementProp,
+  duplicateInterfaceEditorComponentElementProp,
   removeInterfaceEditorComponentElementProp,
 } from '../../actions/interfaceEditorComponentElement';
 import { setInterfaceEditorPropsEditorSelectedPropName } from '../../actions/interfaceEditorPropsEditorSelectedPropName';
@@ -24,7 +25,7 @@ const actionCreators = {
   onChangePropValue: (elementPath, propName, propValue) => applyInterfaceEditorComponentElementProp(elementPath, propName, propValue),
   onPressAddProp: (elementPath, propName) => applyInterfaceEditorComponentElementProp(elementPath, propName, null),
   onPressDeleteProp: (elementPath, propName) => removeInterfaceEditorComponentElementProp(elementPath, propName),
-  onPressDuplicateProp: (elementPath, propName, newPropName) => ({ type: 'TODO...DUPLICATE_ELEMENT_PROP', elementPath, propName, newPropName }),
+  onPressDuplicateProp: (elementPath, propName, newPropName) => duplicateInterfaceEditorComponentElementProp(elementPath, propName, newPropName),
   onPressProp: (propName) => setInterfaceEditorPropsEditorSelectedPropName(propName),
 };
 

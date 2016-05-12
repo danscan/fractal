@@ -20,6 +20,9 @@ import {
   APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
   applyInterfaceEditorComponentElementProp,
 
+  DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
+  duplicateInterfaceEditorComponentElementProp,
+
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
   removeInterfaceEditorComponentElementProp,
 } from '../interfaceEditorComponentElement';
@@ -59,6 +62,12 @@ describe('interfaceEditorComponentElement actions file', () => {
     it('should export an action type for applying interface editor component element prop', () => {
       expect(
         APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP
+      ).toBeDefined();
+    });
+
+    it('should export an action type for duplicating interface editor component element prop', () => {
+      expect(
+        DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP
       ).toBeDefined();
     });
 
@@ -149,6 +158,22 @@ describe('interfaceEditorComponentElement actions file', () => {
 
       expect(
         applyInterfaceEditorComponentElementProp(elementPath, propName, propValue)
+      ).toEqual(expectedAction);
+    });
+
+    it('should export an action creator for duplicating interface editor component element prop', () => {
+      const elementPath = {};
+      const propName = {};
+      const newPropName = {};
+      const expectedAction = {
+        type: DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
+        elementPath,
+        propName,
+        newPropName,
+      };
+
+      expect(
+        duplicateInterfaceEditorComponentElementProp(elementPath, propName, newPropName)
       ).toEqual(expectedAction);
     });
 

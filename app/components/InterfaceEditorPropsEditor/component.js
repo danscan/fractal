@@ -158,14 +158,12 @@ export default class InterfaceEditorPropsEditor extends Component {
 
     return (
       <View style={styles.propsActionsSection}>
-        {/*
         <TouchableOpacity onPress={() => this.promptToAddProp()} style={styles.propsActionButton}>
           <Image source={addButtonImage} style={[styles.propsActionButtonImage, styles.propsAddActionButtonImage]}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.promptToDuplicateProp(selectedPropName)} style={styles.propsActionButton}>
           <Image source={duplicateButtonImage} style={styles.propsActionButtonImage}/>
         </TouchableOpacity>
-        */}
         <TouchableOpacity onPress={() => onPressDeleteProp(selectedElementPath, selectedPropName)} style={styles.propsActionButton}>
           <Image source={deleteButtonImage} style={styles.propsActionButtonImage}/>
         </TouchableOpacity>

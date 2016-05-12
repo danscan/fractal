@@ -5,6 +5,7 @@ import {
   MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT,
   CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME,
   APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
+  DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
   REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
 } from '../../actions/interfaceEditorComponentElement';
 
@@ -16,6 +17,7 @@ import reduceDuplicateInterfaceEditorComponentElement from './reduceDuplicateInt
 import reduceMoveInterfaceEditorComponentElement from './reduceMoveInterfaceEditorComponentElement';
 import reduceChangeInterfaceEditorComponentElementDisplayName from './reduceChangeInterfaceEditorComponentElementDisplayName';
 import reduceApplyInterfaceEditorComponentElementProp from './reduceApplyInterfaceEditorComponentElementProp';
+import reduceDuplicateInterfaceEditorComponentElementProp from './reduceDuplicateInterfaceEditorComponentElementProp';
 import reduceRemoveInterfaceEditorComponentElementProp from './reduceRemoveInterfaceEditorComponentElementProp';
 
 export default function interfaceEditorComponentElement(state = initialState, action) {
@@ -32,6 +34,8 @@ export default function interfaceEditorComponentElement(state = initialState, ac
       return reduceChangeInterfaceEditorComponentElementDisplayName(state, action);
     case APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
       return reduceApplyInterfaceEditorComponentElementProp(state, action);
+    case DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
+      return reduceDuplicateInterfaceEditorComponentElementProp(state, action);
     case REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
       return reduceRemoveInterfaceEditorComponentElementProp(state, action);
     default:

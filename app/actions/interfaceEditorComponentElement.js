@@ -4,6 +4,7 @@ export const DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT = 'DUPLICATE_INTERFACE
 export const MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT = 'MOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT';
 export const CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME = 'CHANGE_INTERFACE_EDITOR_COMPONENT_ELEMENT_DISPLAY_NAME';
 export const APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP = 'APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP';
+export const DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP = 'DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP';
 export const REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP = 'REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP';
 
 export function addInterfaceEditorComponentElementChild(elementPath, child) {
@@ -50,6 +51,15 @@ export function applyInterfaceEditorComponentElementProp(elementPath, propName, 
     elementPath,
     propName,
     propValue,
+  };
+}
+
+export function duplicateInterfaceEditorComponentElementProp(elementPath, propName, newPropName) {
+  return {
+    type: DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
+    elementPath,
+    propName,
+    newPropName,
   };
 }
 
