@@ -15,7 +15,7 @@ export default [
   STYLES_LIST,
 ];
 
-export const defaultPropValueInputTypeByPropType = new Map([
+export const defaultPropValueInputTypesByPropType = new Map([
   [PropTypes.bool, BOOLEAN],
   [PropTypes.bool.isRequired, BOOLEAN],
 
@@ -38,4 +38,12 @@ export const defaultPropValueInputTypeByPropType = new Map([
   [Text.propTypes.style.isRequired, STYLES_LIST],
   [View.propTypes.style, STYLES_LIST],
   [View.propTypes.style.isRequired, STYLES_LIST],
+]);
+
+export const propValueInputTypeDisplayNamesByPropValueInputType = new Map([
+  [BOOLEAN, 'Boolean'],
+  [LITERAL, 'Literal'],
+  [NUMBER, 'Number'],
+  [STRING, 'String'],
+  [STYLES_LIST, 'Styles List'],
 ]);

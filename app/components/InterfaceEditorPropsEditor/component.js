@@ -9,7 +9,13 @@ import React, {
   View,
 } from 'react-native';
 import { OrderedMap } from 'immutable';
-import { elementPathPropType } from '../../constants/propTypes';
+import {
+  elementPathPropType,
+  elementPropPropType,
+} from '../../constants/propTypes';
+import {
+  propValueInputTypeDisplayNamesByPropValueInputType,
+} from '../../constants/propValueInputTypes';
 import propValueByProp from '../../utils/propValueByProp';
 import propValueInputTypeByProp from '../../utils/propValueInputTypeByProp';
 import CollapsibleListSection from '../CollapsibleListSection';
@@ -29,7 +35,8 @@ export default class InterfaceEditorPropsEditor extends Component {
     props: PropTypes.objectOf(PropTypes.any),
     propTypes: PropTypes.objectOf(PropTypes.any),
     selectedElementPath: elementPathPropType,
-    selectedProp: PropTypes.string,
+    selectedPropName: PropTypes.string,
+    selectedProp: elementPropPropType,
   };
 
   promptToAddProp() {
@@ -123,12 +130,18 @@ export default class InterfaceEditorPropsEditor extends Component {
   }
 
   renderSelectedPropOptions() {
-    const { selectedPropName } = this.props;
+    const {
+      selectedProp,
+      selectedPropName,
+    } = this.props;
 
     // If no prop is selected, don't render any options UI for it
     if (!selectedPropName) {
       return null;
     }
+
+    const selectedPropValueInputType = propValueInputTypeByProp(selectedProp);
+    const selectedPropValueInputTypeDisplayName = propValueInputTypeDisplayNamesByPropValueInputType.get(selectedPropValueInputType);
 
     return (
       <View style={styles.selectedPropOptions}>
@@ -141,7 +154,7 @@ export default class InterfaceEditorPropsEditor extends Component {
               Input Type
             </Text>
             <Text style={styles.selectedPropOptionValueLabel}>
-              Literal
+              {selectedPropValueInputTypeDisplayName}
             </Text>
           </TouchableOpacity>
         </View>

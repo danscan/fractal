@@ -12,12 +12,14 @@ import Component from './component';
 
 const mapStateToProps = (state) => {
   const selectedElement = interfaceEditorSelectedElement(state);
+  const selectedPropName = interfaceEditorPropsEditorSelectedPropName(state);
 
   return {
     props: selectedElement.get('props'),
     propTypes: selectedElement.get('type').propTypes,
     selectedElementPath: interfaceEditorSelectedElementPath(state),
-    selectedPropName: interfaceEditorPropsEditorSelectedPropName(state),
+    selectedProp: selectedElement.getIn(['props', selectedPropName]),
+    selectedPropName,
   };
 };
 
