@@ -1,4 +1,5 @@
 import { SET_INTERFACE_EDITOR_PROPS_EDITOR_SELECTED_PROP_NAME } from '../../actions/interfaceEditorPropsEditorSelectedPropName';
+import { SET_INTERFACE_EDITOR_SELECTED_ELEMENT_PATH } from '../../actions/interfaceEditorSelectedElementPath';
 import {
   APPLY_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
   DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP,
@@ -14,6 +15,7 @@ export default function interfaceEditorPropsEditorSelectedPropName(state = initi
     case DUPLICATE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
       return action.propName;
     case REMOVE_INTERFACE_EDITOR_COMPONENT_ELEMENT_PROP:
+    case SET_INTERFACE_EDITOR_SELECTED_ELEMENT_PATH:
       return initialState;
     default:
       return state;
