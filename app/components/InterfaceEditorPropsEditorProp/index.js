@@ -121,6 +121,7 @@ export default class InterfaceEditorPropsEditorProp extends Component {
             return onChangeValue(jsLiteral);
           }
         }}
+        returnKeyType="done"
         value={stringPropValue}
         style={styles.literalPropValueTextInput}
       />
