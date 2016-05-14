@@ -16,9 +16,8 @@ import {
 import {
   propValueInputTypeDisplayNamesByPropValueInputType,
 } from '../../constants/propValueInputTypes';
-import propValueByProp from '../../utils/propValueByProp';
 import propValueInputTypeByProp from '../../utils/propValueInputTypeByProp';
-import CollapsibleListSection from '../CollapsibleListSection';
+import InterfaceEditorPropsEditorProp from '../InterfaceEditorPropsEditorProp';
 import styles from './styles';
 
 // (Button image assets)
@@ -28,6 +27,7 @@ import duplicateButtonImage from '../../assets/img/duplicateButton.png';
 
 export default class InterfaceEditorPropsEditor extends Component {
   static propTypes = {
+    onChangePropValue: PropTypes.func.isRequired,
     onPressAddProp: PropTypes.func.isRequired,
     onPressDeleteProp: PropTypes.func.isRequired,
     onPressDuplicateProp: PropTypes.func.isRequired,
@@ -102,30 +102,22 @@ export default class InterfaceEditorPropsEditor extends Component {
 
   renderPropListProp(prop, propName) {
     const {
+      onChangePropValue,
       onPressProp,
+      selectedElementPath,
       selectedPropName,
     } = this.props;
     const isSelectedProp = propName === selectedPropName;
-    const propHeaderSectionStyle = isSelectedProp
-      ? styles.selectedPropHeaderSection
-      : null;
-    const propTitleLabelStyle = isSelectedProp
-      ? styles.selectedPropTitleLabel
-      : null;
-    const propValue = propValueByProp(prop);
-    const propValueInputType = propValueInputTypeByProp(prop);
-    console.log('renderPropListProp... propName:', propName, 'propValueInputType:', propValueInputType);
 
     return (
-      <CollapsibleListSection
+      <InterfaceEditorPropsEditorProp
         key={propName}
-        headerSectionStyle={propHeaderSectionStyle}
+        isSelected={isSelectedProp}
+        onChangeValue={(newPropValue) => onChangePropValue(selectedElementPath, selectedPropName, newPropValue)}
         onPress={() => onPressProp(propName)}
-        title={propName}
-        titleLabelStyle={propTitleLabelStyle}
-      >
-        <Text>{propValue}</Text>
-      </CollapsibleListSection>
+        prop={prop}
+        propName={propName}
+      />
     );
   }
 

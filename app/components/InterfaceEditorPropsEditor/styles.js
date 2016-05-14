@@ -9,12 +9,6 @@ export default StyleSheet.create({
   propsList: {
     flex: 1,
   },
-  selectedPropHeaderSection: {
-    backgroundColor: '#00b5ec',
-  },
-  selectedPropTitleLabel: {
-    color: 'white',
-  },
 
   selectedPropOptions: {
     backgroundColor: '#f5f5f5',
