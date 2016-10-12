@@ -2,6 +2,10 @@
 [![Circle CI](https://circleci.com/gh/danscan/fractal.svg?style=svg&circle-token=24d876f249dc801dcf72c529937bb7450466042d)](https://circleci.com/gh/danscan/fractal)
 Visual app development workspace.  
 
+![ipad pro add element](https://cloud.githubusercontent.com/assets/1638987/19312230/842b15a4-905f-11e6-81c6-320d3d8d83e3.png)
+> UI mockup.  This resembles the current state of the app, but unfortunately I ran out of time to work on it while making some significant UI changes.
+
+
 ### [Demo Video](https://www.youtube.com/watch?v=wtoPXsadpQI&feature=youtu.be)
 
 ### Project Status
