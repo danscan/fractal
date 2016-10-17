@@ -1,4 +1,5 @@
-import React, { Component, Image, PropTypes, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Image, TouchableOpacity, View } from 'react-native';
 import {
   TOP_RIGHT,
   BOTTOM_RIGHT,

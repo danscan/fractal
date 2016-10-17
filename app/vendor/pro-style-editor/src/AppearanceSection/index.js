@@ -1,4 +1,5 @@
-import React, { Component, Image, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Image, View } from 'react-native';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
   ColorField,

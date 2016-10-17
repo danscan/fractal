@@ -1,4 +1,5 @@
-import React, { Component, Image, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import addElementButtonImage from '../../assets/img/addElementButton.png';
 import redoButtonImage from '../../assets/img/redoButton.png';
 import undoButtonImage from '../../assets/img/undoButton.png';
