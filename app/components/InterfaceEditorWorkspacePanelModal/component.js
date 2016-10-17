@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { View } from 'react-native';
 import styles from './styles';
 
 export default class InterfaceEditorWorkspacePanelModal extends Component {

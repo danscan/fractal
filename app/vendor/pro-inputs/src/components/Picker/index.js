@@ -1,4 +1,5 @@
-import React, { Component, Image, Picker, PropTypes, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Image, Picker, Text, TouchableOpacity, View } from 'react-native';
 import pickerIconImage from '../../../assets/img/pickerIcon.png';
 import styles from './styles';
 

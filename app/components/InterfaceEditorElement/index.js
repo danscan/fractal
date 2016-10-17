@@ -1,4 +1,5 @@
-import React, { createElement, Component, Text, TextInput } from 'react-native';
+import React, { createElement, Component } from 'react';
+import { Text, TextInput } from 'react-native';
 import { List } from 'immutable';
 import { elementPropType, elementPathPropType } from '../../constants/propTypes';
 import elementChildrenByElement from '../../utils/elementChildrenByElement';
