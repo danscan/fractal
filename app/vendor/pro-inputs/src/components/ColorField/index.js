@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, Text, TextInput, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Text, TextInput, View } from 'react-native';
 import styles from './styles';
 
 export default class ColorField extends Component {

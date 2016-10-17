@@ -1,4 +1,5 @@
-import React, { AlertIOS, Component, Image, PropTypes, ScrollView, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { AlertIOS, Image, ScrollView, TouchableOpacity, View } from 'react-native';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { List } from 'immutable';
 import { elementPropType, elementPathPropType } from '../../constants/propTypes';

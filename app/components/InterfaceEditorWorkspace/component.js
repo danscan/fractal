@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { View } from 'react-native';
 import { canvasDevicePropType, canvasOrientationPropType, elementPropType, elementPathPropType } from '../../constants/propTypes';
 import { portraitOrientation } from '../../constants/canvasOrientations';
 import InterfaceEditorWorkspaceToolbar from '../InterfaceEditorWorkspaceToolbar';

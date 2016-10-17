@@ -1,5 +1,7 @@
 import {
-  Component,
+  Component
+} from 'react';
+import {
   ScrollView,
   StyleSheet,
   Text,

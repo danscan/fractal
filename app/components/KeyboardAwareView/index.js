@@ -1,9 +1,11 @@
 import React, {
-  Animated,
   Component,
+  PropTypes
+} from 'react';
+import {
+  Animated,
   DeviceEventEmitter,
   Easing,
-  PropTypes,
   View,
 } from 'react-native';
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';

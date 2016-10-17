@@ -1,4 +1,5 @@
-import React, { Component, PanResponder, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { PanResponder, View } from 'react-native';
 import { List, Map } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import styles from './styles';

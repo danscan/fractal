@@ -1,4 +1,5 @@
-import React, { Component, StatusBar, View } from 'react-native';
+import React, { Component } from 'react';
+import { StatusBar, View } from 'react-native';
 import { Map } from 'immutable';
 import InterfaceEditorToolbar from '../InterfaceEditorToolbar';
 import InterfaceEditorWorkspace from '../InterfaceEditorWorkspace';

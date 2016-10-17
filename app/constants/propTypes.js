@@ -1,4 +1,5 @@
-import { Image, PropTypes } from 'react-native';
+import { PropTypes } from 'react';
+import { Image } from 'react-native';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { portraitOrientation, landscapeOrientation } from './canvasOrientations';
 import propValueInputTypes from './propValueInputTypes';

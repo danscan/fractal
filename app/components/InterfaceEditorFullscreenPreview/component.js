@@ -1,4 +1,5 @@
-import React, { Component, Image, Modal, PropTypes, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Image, Modal, TouchableOpacity, View } from 'react-native';
 import { elementPropType } from '../../constants/propTypes';
 import closeButtonImage from '../../assets/img/closeButton.png';
 import InterfaceEditorElement from '../InterfaceEditorElement';
