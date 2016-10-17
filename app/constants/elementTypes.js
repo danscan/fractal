@@ -12,7 +12,7 @@ import {
   Switch,
   MapView,
   WebView,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
 } from 'react-native';
 
 
@@ -90,9 +90,9 @@ export const WebViewElementType = new Map({
   imageSource: require('../assets/img/elementTypes/webView.png'),
 });
 
-export const ActivityIndicatorIOSElementType = new Map({
-  name: 'Activity Indicator (iOS)',
-  component: ActivityIndicatorIOS,
+export const ActivityIndicatorElementType = new Map({
+  name: 'Activity Indicator',
+  component: ActivityIndicator,
   imageSource: require('../assets/img/elementTypes/activityIndicator.png'),
 });
 
@@ -129,7 +129,7 @@ export default new List([
   new Map({
     name: 'Status Indicators',
     elementTypes: new List([
-      ActivityIndicatorIOSElementType,
+      ActivityIndicatorElementType,
     ]),
   }),
 ]);
@@ -149,5 +149,5 @@ export const allElementTypes = new List([
   SwitchElementType,
   MapViewElementType,
   WebViewElementType,
-  ActivityIndicatorIOSElementType,
+  ActivityIndicatorElementType,
 ]);

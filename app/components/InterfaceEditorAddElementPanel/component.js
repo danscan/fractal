@@ -1,4 +1,5 @@
-import React, { Component, Image, PropTypes, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { elementTypeGroupsListPropType } from '../../constants/propTypes';
 import CollapsibleListSection from '../../components/CollapsibleListSection';
 import styles from './styles';

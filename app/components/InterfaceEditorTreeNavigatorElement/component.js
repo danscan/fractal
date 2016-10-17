@@ -1,7 +1,9 @@
 import React, {
   Component,
-  Image,
   PropTypes,
+} from 'react';
+import {
+  Image,
   Text,
   TouchableOpacity,
   View,

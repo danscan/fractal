@@ -1,8 +1,10 @@
 import React, {
-  AlertIOS,
   Component,
-  Image,
   PropTypes,
+} from 'react';
+import {
+  AlertIOS,
+  Image,
   ScrollView,
   TouchableOpacity,
   View,

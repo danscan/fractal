@@ -1,4 +1,5 @@
-import { Image, PropTypes, Text, View } from 'react-native';
+import { PropTypes } from 'react';
+import { Image, Text, View } from 'react-native';
 import { Map } from 'immutable';
 
 export const BOOLEAN = 'PROP_VALUE_INPUT_TYPE_BOOLEAN';

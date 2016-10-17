@@ -1,4 +1,5 @@
-import React, { Component, Image, PropTypes, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import incrementButtonImage from '../../../assets/img/incrementButton.png';
 import decrementButtonImage from '../../../assets/img/decrementButton.png';
 import styles from './styles';
